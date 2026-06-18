@@ -41,7 +41,7 @@
     "notes": "Recorded main repository commit e04380a, which split R3a-v2 dev replay into selected-evidence and full-selector protocols and added replay outputs for audit."
   },
   "selected_evidence_report": {
-    "path": "outputs\\r3a_v2_dev_replay\\r3a_v2_selected_evidence_replay_report.md",
+    "path": "outputs/r3a_v2_dev_replay/r3a_v2_selected_evidence_replay_report.md",
     "true_retention": "9/18 (50.00%)",
     "false_rejection": "126/131 (96.18%)",
     "false_retention": "5/131 (3.82%)",
@@ -50,7 +50,7 @@
     "kept_count": "18"
   },
   "full_selector_report": {
-    "path": "outputs\\r3a_v2_dev_replay\\r3a_v2_full_selector_replay_report.md",
+    "path": "outputs/r3a_v2_dev_replay/r3a_v2_full_selector_replay_report.md",
     "v2_triggered_count": "30",
     "matched_original_v1_selected": null,
     "banned_metric_terms_found": [],
