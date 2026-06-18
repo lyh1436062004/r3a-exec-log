@@ -1,0 +1,32 @@
+{
+  "round": "0002",
+  "modified_files": [
+    "脚本/3.0/run_r3a_v2_dev_replay.py"
+  ],
+  "added_files": [
+    "outputs/r3a_v2_dev_replay/r3a_v2_full_selector_replay.jsonl",
+    "outputs/r3a_v2_dev_replay/r3a_v2_full_selector_replay_report.md",
+    "outputs/r3a_v2_dev_replay/r3a_v2_new_audit_candidates.csv",
+    "outputs/r3a_v2_dev_replay/r3a_v2_selected_evidence_replay.jsonl",
+    "outputs/r3a_v2_dev_replay/r3a_v2_selected_evidence_replay_report.md"
+  ],
+  "deleted_files": [],
+  "test_result": "not_run_protocol_only_replay_update",
+  "dev_replay_summary": {
+    "selected_evidence_replay": {
+      "true_retention": "50.00%",
+      "false_rejection": "96.18%",
+      "false_retention": "3.82%",
+      "retained_precision_strict": "64.29%",
+      "retained_acceptable_rate": "72.22%",
+      "kept_count": 18
+    },
+    "full_selector_replay": {
+      "v2_triggered_count": 30,
+      "trigger_rate": "16.67%",
+      "matched_original_v1_selected_count": 13,
+      "matched_original_v1_selected_rate": "43.33%"
+    }
+  },
+  "notes": "Recorded main repository commit e04380a, which split R3a-v2 dev replay into selected-evidence and full-selector protocols and added replay outputs for audit."
+}
