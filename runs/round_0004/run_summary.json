@@ -1,0 +1,50 @@
+﻿{
+    "round":  "0004",
+    "task":  "R3a-v2.2 full-selector precision patch from 精进.md",
+    "modified_files":  [
+                           "脚本/3.0/r3a_v2_selector.py",
+                           "tests/test_r3a_v2_selector.py",
+                           "outputs/r3a_v2_dev_replay/r3a_v2_selected_evidence_replay.jsonl",
+                           "outputs/r3a_v2_dev_replay/r3a_v2_selected_evidence_replay_report.md",
+                           "outputs/r3a_v2_dev_replay/r3a_v2_full_selector_replay.jsonl",
+                           "outputs/r3a_v2_dev_replay/r3a_v2_full_selector_replay_report.md",
+                           "outputs/r3a_v2_dev_replay/r3a_v2_new_audit_candidates.csv"
+                       ],
+    "added_files":  [
+
+                    ],
+    "deleted_files":  [
+
+                      ],
+    "commands_run":  [
+                         "git status --short",
+                         "\u0026 \"D:\\conda_envs\\o1\\python.exe\" tests/test_r3a_v2_selector.py",
+                         "\u0026 \"D:\\conda_envs\\o1\\python.exe\" \"D:\\幻觉\\脚本\\3.0\\run_r3a_v2_dev_replay.py\" --annotations \"D:\\幻觉\\临时\\人工审查\\终版--上传.xlsx\" --qa-jsonl \"D:\\幻觉\\data\\mem0\\medium\\mem0_medium_qa.jsonl\" --out-dir \"D:\\幻觉\\outputs\\r3a_v2_dev_replay\""
+                     ],
+    "test_result":  "PASS: 27/27 selector tests via direct python fallback script",
+    "dev_replay_summary":  {
+                               "selected":  {
+                                                "true_retention":  "66.67%",
+                                                "false_rejection":  "99.24%",
+                                                "false_retention":  "0.76%",
+                                                "retained_precision_strict":  "92.31%",
+                                                "retained_acceptable_rate":  "94.12%",
+                                                "kept_count":  17
+                                            },
+                               "full_selector":  {
+                                                     "v2_triggered_count":  20,
+                                                     "v2_trigger_rate":  "11.11%",
+                                                     "matched_original_v1_selected_count":  13,
+                                                     "matched_original_v1_selected_rate_among_triggered":  "65.00%",
+                                                     "new_audit_candidates_rows":  20
+                                                 }
+                           },
+    "outputs_created":  [
+                            "outputs/r3a_v2_dev_replay/r3a_v2_selected_evidence_replay.jsonl",
+                            "outputs/r3a_v2_dev_replay/r3a_v2_selected_evidence_replay_report.md",
+                            "outputs/r3a_v2_dev_replay/r3a_v2_full_selector_replay.jsonl",
+                            "outputs/r3a_v2_dev_replay/r3a_v2_full_selector_replay_report.md",
+                            "outputs/r3a_v2_dev_replay/r3a_v2_new_audit_candidates.csv"
+                        ],
+    "notes":  "No replay protocol, AB5, prompt, retriever, memory store, R3b/R3c, or selector ablation changes. Selector runtime does not use gold/question_type/baseline_label or audit labels."
+}
