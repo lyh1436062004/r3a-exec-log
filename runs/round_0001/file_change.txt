@@ -1,0 +1,7 @@
+A	README.md
+A	.gitignore
+A	.github/workflows/r3a_round_analyzer.yml
+A	tools/analyze_round.py
+A	runs/round_0001/run_summary.json
+A	runs/round_0001/diff.txt
+A	runs/round_0001/file_change.txt

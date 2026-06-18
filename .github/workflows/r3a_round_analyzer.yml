@@ -1,0 +1,60 @@
+name: R3a Round Analyzer
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - "runs/**"
+      - "outputs/**"
+      - "脚本/**"
+      - "tests/**"
+      - "tools/**"
+      - ".github/workflows/r3a_round_analyzer.yml"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: r3a-round-analyzer
+  cancel-in-progress: true
+
+jobs:
+  analyze:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Run selector tests if present
+        run: |
+          if [ -f "tests/test_r3a_v2_selector.py" ]; then
+            python tests/test_r3a_v2_selector.py
+          else
+            echo "No selector tests found."
+          fi
+
+      - name: Analyze latest round
+        run: |
+          python tools/analyze_round.py
+
+      - name: Commit analysis report
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add analysis/
+          if git diff --cached --quiet; then
+            echo "No analysis changes to commit."
+          else
+            git commit -m "analysis: update latest round report [skip ci]"
+            git push
+          fi
