@@ -1,0 +1,16 @@
+Task: Archive the final revised R3a_v2_2_MC manual audit workbook.
+
+Source workbook:
+- C:\Users\78443\Downloads\R3a_v2_2_MC人工审计表_二审最终修订版.xlsx
+
+Artifacts added:
+- runs\round_0012\artifacts\R3a_v2_2_MC_manual_audit_final_revision.xlsx
+- runs\round_0012\artifacts\manual_audit_final_revision.csv
+- runs/round_0012/run_summary.json
+- runs/round_0012/file_change.txt
+- runs/round_0012/diff.txt
+
+Notes:
+- This task did not modify source code.
+- Existing dirty files in the project workspace were not touched.
+- Workbook copy SHA256 matches source: True.

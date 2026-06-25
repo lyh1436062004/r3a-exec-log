@@ -1,0 +1,171 @@
+{
+  "round": "round_0012",
+  "task": "Archive final revised R3a_v2_2_MC manual audit workbook to GitHub execution log",
+  "completed_at_local": "2026-06-25T20:10:23+08:00",
+  "workspace": "D:\\幻觉",
+  "source_workbook": "C:\\Users\\78443\\Downloads\\R3a_v2_2_MC人工审计表_二审最终修订版.xlsx",
+  "artifact_workbook": "runs\\round_0012\\artifacts\\R3a_v2_2_MC_manual_audit_final_revision.xlsx",
+  "artifact_csv": "runs\\round_0012\\artifacts\\manual_audit_final_revision.csv",
+  "sheet": "二审最终表",
+  "header_row": 3,
+  "data_rows": 102,
+  "max_column": 30,
+  "validation": {
+    "source_sha256": "368EFC6BBCE79DB56432F22B5A7E4C1A2EBB650CC2EC0B12FDF59112FF3DA6B5",
+    "artifact_xlsx_sha256": "368EFC6BBCE79DB56432F22B5A7E4C1A2EBB650CC2EC0B12FDF59112FF3DA6B5",
+    "copied_xlsx_hash_matches_source": true,
+    "csv_export_created": true,
+    "github_actions_workflow_present": true
+  },
+  "audit_counts": {
+    "最终_是否有已检索反证": {
+      "不确定": 4,
+      "明确有": 2,
+      "没有": 96
+    },
+    "最终_问题前提抽取是否正确": {
+      "正确": 21,
+      "部分正确": 44,
+      "错误": 37
+    },
+    "最终_槽位归类是否正确": {
+      "正确": 26,
+      "过宽": 66,
+      "错误": 10
+    },
+    "最终_这条记忆是否反驳问题前提": {
+      "不是反证": 63,
+      "不是反证但有用": 33,
+      "模糊反证": 4,
+      "真反证": 2
+    },
+    "最终_是否本该触发R3a": {
+      "不确定": 4,
+      "不该触发": 96,
+      "应该触发": 2
+    },
+    "最终_自动拒绝是否合理": {
+      "合理": 98,
+      "部分合理": 4
+    },
+    "最终_失败来源": {
+      "None": 98,
+      "人工无法判断": 4
+    },
+    "最终_审计备注": {
+      "“准备接受新挑战”只可能反驳“closed to new experiences”的一部分，但没有触及“sports that challenge him mentally”。原标为真反证过强。": 1,
+      "严格二审下，该记忆说明当前 director 角色负面影响心理健康，但未明确对应“promotion in March 2029”之后的状态；不能作为明确真反证，只能作为模糊反证。": 1,
+      "人工标注与严格复核一致。": 95,
+      "喜欢 puzzle/board games 不能等同于仍对 strategy-based games 有兴趣，也没有 layoff 后的时间条件。原标为模糊反证偏宽。": 1,
+      "新岗位带来 relief 和更好平衡，不能直接反驳“薪资增加后的生活方式变化导致工作满意度下降”；原因链和 job satisfaction 未直接对应。原标为模糊反证偏宽。": 1,
+      "转到新岗位可能反驳“正式开始退休”，但缺少与 2028-06-01 的直接时间对应；严格审计下不宜直接标真反证。": 1,
+      "转到新岗位可能反驳“退休”，但问题是“从 Huaxin Consulting 提前退休”且日期不明确；它不是足够严格的真反证。": 1,
+      "这条记忆只说明喜欢舒适运动服、偏好环保面料；它没有明确反驳“继续使用传统运动服”。原标为“模糊反证/不确定”偏宽。": 1
+    },
+    "审计者": {
+      "陆含": 102
+    },
+    "复核状态": {
+      "已二审": 102
+    },
+    "最终裁决依据": {
+      "严格复核发现原人工标注偏宽，最终采纳复核字段。": 6,
+      "二审按更严格时间/状态一致性标准，将“真反证”降为“模糊反证”。": 1,
+      "人工标注与严格复核一致。": 95
+    }
+  },
+  "audit_blank_counts": {
+    "最终_是否有已检索反证": 0,
+    "最终_问题前提抽取是否正确": 0,
+    "最终_槽位归类是否正确": 0,
+    "最终_这条记忆是否反驳问题前提": 0,
+    "最终_是否本该触发R3a": 0,
+    "最终_自动拒绝是否合理": 0,
+    "最终_失败来源": 98,
+    "最终_审计备注": 0,
+    "审计者": 0,
+    "复核状态": 0,
+    "最终裁决依据": 0
+  },
+  "project_git_status_short": [
+    "M AGENTS.md",
+    " M outputs/r3a_v2_dev_replay/r3a_v2_dev_replay_report.md",
+    " M outputs/r3a_v2_dev_replay/r3a_v2_full_selector_replay.jsonl",
+    " M outputs/r3a_v2_dev_replay/r3a_v2_full_selector_replay_report.md",
+    " M outputs/r3a_v2_dev_replay/r3a_v2_new_audit_candidates.csv",
+    " M outputs/r3a_v2_dev_replay/r3a_v2_selected_evidence_replay.jsonl",
+    " M outputs/r3a_v2_dev_replay/r3a_v2_selected_evidence_replay_report.md",
+    " M tests/test_r3a_v2_selector.py",
+    " D 指令/第七次---DU诊断（纯统计不发API）.md",
+    " D \"指令/第三次---推广V1到Dynamic Update和Memory Boundary.md\"",
+    " D \"指令/第二次---跑 Dynamic Update  Memory Boundary.md\"",
+    " D 指令/第二次修复实验指令.md",
+    " D 指令/第五次---基础评测执行指令.md",
+    " D 指令/第八次---DU专项normal_qa的prompt_AB实验.md",
+    " D 指令/第六次---5系统真实API评测指令.md",
+    " D 指令/第六次---多系统评测执行指令（完整版）.md",
+    " D 指令/第十一次---Mem0_Long离线A2挂载评测.md",
+    " D 指令/第十二次---Memobase本地部署与安装验证.md",
+    " D 指令/第十五次---完整Context资产采集（离线拦截基础设施）.md",
+    " D 指令/第十四次---A2后端信号自适应阶段1（纯config零改本体）.md",
+    " D 指令/第十次---环境修复与验证.md",
+    " D 指令/第四次---多系统评测设计与执行.md",
+    " M 脚本/3.0/r3a_v2_selector.py",
+    "?? outputs/baseline_full/baseline_full_run_summary.md",
+    "?? outputs/baseline_full/memobase_baseline_runbook_2026-06-01.md",
+    "?? outputs/baseline_sharded_v2/mem0_medium/key_04_user4/run.log",
+    "?? outputs/baseline_sharded_v2/mem0_medium/key_10_user10/run.log",
+    "?? outputs/baseline_sharded_v2/mem0_medium/manifest.json",
+    "?? outputs/r3a_v2_2_ab5_smoke/",
+    "?? outputs/r3a_v2_2_mc_stratified_coverage_audit/",
+    "?? outputs/r3a_v2_2_smoke_diagnostics/",
+    "?? outputs/supermemory_long_user0_key_capacity_test/manifest.json",
+    "?? run_mem0_long_gold_only_rejudge.py",
+    "?? 临时/交接/",
+    "?? 临时/人工审查/R3a_v2_2_MC人工审计表_完整已填固定信息.xlsx",
+    "?? 临时/人工审查/r3a_v2_new_audit_candidates.xlsx",
+    "?? 临时/人工审查/三审--V2.md",
+    "?? 临时/人工审查/四审.md",
+    "?? 临时/人工审查/审查20条.md",
+    "?? 临时/纠错/",
+    "?? 修正V3/_run_mem0_tuning.py",
+    "?? 修正V3/_run_proj_mem0.py",
+    "?? 修正V3/_run_proj_supermemory.py",
+    "?? 修正V3/_run_supermemory_heldout.py",
+    "?? 修正V3/adaptive_stage1_runner.py",
+    "?? 修正V3/adaptive_threshold_proj.py",
+    "?? 修正V3/build_context_assets.py",
+    "?? 指令/从前6.19/",
+    "?? 指令/修改R3a/",
+    "?? 脚本/2.0-修复版/_diag_sm_threshold.py",
+    "?? 脚本/2.0-修复版/_test_a2_offline_replay.py",
+    "?? 脚本/2.0-修复版/_test_mem0_a2_qa_user0.py",
+    "?? 脚本/2.0-修复版/_test_mem0_quota_user0_long.py",
+    "?? 脚本/2.0-修复版/_test_sm_a2_qa_user0.py",
+    "?? 脚本/2.0-修复版/_test_sm_a2_qa_user0_v2.py",
+    "?? 脚本/2.0-修复版/_test_sm_quota_1user.py",
+    "?? 脚本/2.0-修复版/_verify_sm_key_isolation.py",
+    "?? 脚本/2.0-修复版/run_mem0_medium_3way_offline.py",
+    "?? 脚本/2.0-修复版/run_mem0_medium_ab_offline.py",
+    "?? 脚本/2.0-修复版/run_memobase_long_baseline.py",
+    "?? 脚本/2.0-修复版/run_memobase_medium_baseline.py",
+    "?? 脚本/2.0-修复版/run_sm_baseline_full.py",
+    "?? 脚本/2.0-修复版/smoke_memobase.py",
+    "?? 脚本/2.0-修复版/smoke_memos.py",
+    "?? 脚本/2.0-修复版/smoke_supermemory.py",
+    "?? 脚本/2.0-修复版/smoke_zep.py",
+    "?? 脚本/3.0/audit_r3a_v2_2_mc_coverage.py",
+    "?? 脚本/3.0/diagnose_r3a_v2_2_low_trigger.py"
+  ],
+  "exec_log_git_status_before_round_files": [
+    "?? runs/round_0012/"
+  ],
+  "selected_audit_counts": {
+    "Q_explicit_counterevidence": 2,
+    "Q_no_counterevidence": 96,
+    "T_true_refutation": 2,
+    "T_fuzzy_refutation": 4,
+    "U_should_trigger": 2,
+    "V_unreasonable": 0
+  }
+}
