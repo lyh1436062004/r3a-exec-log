@@ -15,7 +15,7 @@
 
 ## Selected-Evidence Replay
 
-- report: `outputs\r3a_v2_dev_replay\r3a_v2_selected_evidence_replay_report.md`
+- report: `outputs/r3a_v2_dev_replay/r3a_v2_selected_evidence_replay_report.md`
 - true retention: 12/18 (66.67%)
 - false rejection: 130/131 (99.24%)
 - false retention: 1/131 (0.76%)
@@ -25,7 +25,7 @@
 
 ## Full-Selector Replay
 
-- report: `outputs\r3a_v2_dev_replay\r3a_v2_full_selector_replay_report.md`
+- report: `outputs/r3a_v2_dev_replay/r3a_v2_full_selector_replay_report.md`
 - v2 triggered count: 20
 - matched_original_v1_selected count: 13
 - matched original v1 selected: None

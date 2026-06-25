@@ -57,7 +57,7 @@
     "notes": "Synchronization repair only. No selector, replay protocol, AB5, prompt, retriever, memory store, R3b/R3c, or selector ablation changes."
   },
   "selected_evidence_report": {
-    "path": "outputs\\r3a_v2_dev_replay\\r3a_v2_selected_evidence_replay_report.md",
+    "path": "outputs/r3a_v2_dev_replay/r3a_v2_selected_evidence_replay_report.md",
     "true_retention": "12/18 (66.67%)",
     "false_rejection": "130/131 (99.24%)",
     "false_retention": "1/131 (0.76%)",
@@ -66,7 +66,7 @@
     "kept_count": "17"
   },
   "full_selector_report": {
-    "path": "outputs\\r3a_v2_dev_replay\\r3a_v2_full_selector_replay_report.md",
+    "path": "outputs/r3a_v2_dev_replay/r3a_v2_full_selector_replay_report.md",
     "v2_triggered_count": "20",
     "matched_original_v1_selected_count": "13",
     "matched_original_v1_selected": null,
