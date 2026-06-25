@@ -1,0 +1,223 @@
+{
+  "task": "R3a-v2.2 Memory Conflict human audit integration",
+  "input_round": "round_0009",
+  "api_calls": 0,
+  "changed_selector_logic": false,
+  "changed_prompt": false,
+  "changed_retriever": false,
+  "changed_memory_store": false,
+  "human_audit_file": "C:\\Users\\78443\\Downloads\\R3a_v2_2_MC人工审计表_二审最终修订版.xlsx",
+  "round_0009_inputs": {
+    "summary_json": "D:\\幻觉\\outputs\\r3a_v2_2_mc_stratified_coverage_audit\\mc_coverage_audit_summary.json",
+    "report_md": "D:\\幻觉\\outputs\\r3a_v2_2_mc_stratified_coverage_audit\\mc_coverage_audit_report.md",
+    "manual_candidates_csv": "D:\\幻觉\\outputs\\r3a_v2_2_mc_stratified_coverage_audit\\mc_manual_audit_candidates.csv",
+    "candidate_csv_rows": 102
+  },
+  "candidate_rows": 102,
+  "unique_samples": 45,
+  "modified_original_human_field_rows": 7,
+  "final_explicit_retrieved_counterevidence_rows": 2,
+  "final_true_counterevidence_rows": 2,
+  "final_fuzzy_counterevidence_rows": 4,
+  "final_should_trigger_rows": 2,
+  "final_not_should_trigger_rows": 96,
+  "final_uncertain_rows": 4,
+  "auto_reject_reasonable_rows": 98,
+  "auto_reject_partly_reasonable_rows": 4,
+  "auto_reject_unreasonable_rows": 0,
+  "auto_reject_reasonable_rate": 0.9607843137254902,
+  "sample_level": {
+    "samples_with_true_counterevidence": 2,
+    "samples_with_should_trigger": 2,
+    "all_true_counterevidence_samples_already_triggered": true,
+    "all_should_trigger_samples_already_triggered": true,
+    "missed_true_counterevidence_samples": [],
+    "missed_should_trigger_samples": [],
+    "untriggered_uncertain_or_fuzzy_samples": [
+      {
+        "sample_id": "44",
+        "question_id": "1:21:3",
+        "question": "Was Martin closed to new experiences and uninterested in sports that challenge him mentally after May 05, 2028?",
+        "candidate_rows": 3,
+        "r3a_triggered": false,
+        "has_true_counterevidence": false,
+        "has_should_trigger": false,
+        "has_uncertain_or_fuzzy": true,
+        "true_counterevidence_rows": 0,
+        "should_trigger_rows": 0,
+        "uncertain_rows": 1,
+        "fuzzy_rows": 1
+      },
+      {
+        "sample_id": "46",
+        "question_id": "1:22:1",
+        "question": "Did Martin retire early from Huaxin Consulting on March 10, 2028?",
+        "candidate_rows": 3,
+        "r3a_triggered": false,
+        "has_true_counterevidence": false,
+        "has_should_trigger": false,
+        "has_uncertain_or_fuzzy": true,
+        "true_counterevidence_rows": 0,
+        "should_trigger_rows": 0,
+        "uncertain_rows": 1,
+        "fuzzy_rows": 1
+      },
+      {
+        "sample_id": "48",
+        "question_id": "1:22:3",
+        "question": "Did Martin officially begin his retirement on June 1, 2028?",
+        "candidate_rows": 3,
+        "r3a_triggered": false,
+        "has_true_counterevidence": false,
+        "has_should_trigger": false,
+        "has_uncertain_or_fuzzy": true,
+        "true_counterevidence_rows": 0,
+        "should_trigger_rows": 0,
+        "uncertain_rows": 1,
+        "fuzzy_rows": 1
+      },
+      {
+        "sample_id": "75",
+        "question_id": "1:30:5",
+        "question": "Did Martin's mental health improve after his promotion in March 2029?",
+        "candidate_rows": 3,
+        "r3a_triggered": false,
+        "has_true_counterevidence": false,
+        "has_should_trigger": false,
+        "has_uncertain_or_fuzzy": true,
+        "true_counterevidence_rows": 0,
+        "should_trigger_rows": 0,
+        "uncertain_rows": 1,
+        "fuzzy_rows": 1
+      }
+    ]
+  },
+  "key_checks": {
+    "A_true_counterevidence_rows_all_from_triggered_samples": true,
+    "B_has_true_counterevidence_but_untriggered": false,
+    "C_has_should_trigger_but_untriggered": false,
+    "D_ambiguous_or_uncertain_cases": [
+      {
+        "excel_row": 12,
+        "sample_id": "44",
+        "question_id": "1:21:3",
+        "question": "Was Martin closed to new experiences and uninterested in sports that challenge him mentally after May 05, 2028?",
+        "r3a_triggered": false,
+        "memory_id": "12",
+        "candidate_memory": "Martin expresses readiness to take on new challenges and opportunities in his current position.",
+        "final_t": "模糊反证",
+        "final_u": "不确定",
+        "final_v": "部分合理",
+        "final_w": "人工无法判断",
+        "final_note": "“准备接受新挑战”只可能反驳“closed to new experiences”的一部分，但没有触及“sports that challenge him mentally”。原标为真反证过强。"
+      },
+      {
+        "excel_row": 26,
+        "sample_id": "75",
+        "question_id": "1:30:5",
+        "question": "Did Martin's mental health improve after his promotion in March 2029?",
+        "r3a_triggered": false,
+        "memory_id": "4",
+        "candidate_memory": "User reflected that his current role as director at Huaxin Consulting is negatively affecting his mental health and recognized the need for a career change.",
+        "final_t": "模糊反证",
+        "final_u": "不确定",
+        "final_v": "部分合理",
+        "final_w": "人工无法判断",
+        "final_note": "严格二审下，该记忆说明当前 director 角色负面影响心理健康，但未明确对应“promotion in March 2029”之后的状态；不能作为明确真反证，只能作为模糊反证。"
+      },
+      {
+        "excel_row": 93,
+        "sample_id": "46",
+        "question_id": "1:22:1",
+        "question": "Did Martin retire early from Huaxin Consulting on March 10, 2028?",
+        "r3a_triggered": false,
+        "memory_id": "11",
+        "candidate_memory": "Martin transitioned to a new role, reporting huge relief and a much healthier balance between work and personal life, marking a significant improvement over his previous position.",
+        "final_t": "模糊反证",
+        "final_u": "不确定",
+        "final_v": "部分合理",
+        "final_w": "人工无法判断",
+        "final_note": "转到新岗位可能反驳“退休”，但问题是“从 Huaxin Consulting 提前退休”且日期不明确；它不是足够严格的真反证。"
+      },
+      {
+        "excel_row": 96,
+        "sample_id": "48",
+        "question_id": "1:22:3",
+        "question": "Did Martin officially begin his retirement on June 1, 2028?",
+        "r3a_triggered": false,
+        "memory_id": "6",
+        "candidate_memory": "Martin transitioned to a new role, reporting huge relief and a much healthier balance between work and personal life, marking a significant improvement over his previous position.",
+        "final_t": "模糊反证",
+        "final_u": "不确定",
+        "final_v": "部分合理",
+        "final_w": "人工无法判断",
+        "final_note": "转到新岗位可能反驳“正式开始退休”，但缺少与 2028-06-01 的直接时间对应；严格审计下不宜直接标真反证。"
+      }
+    ],
+    "E_auto_premise_or_slot_errors_caused_confirmed_misses": false
+  },
+  "round_0009_auto_diagnosis": {
+    "dominant_failure_source": "premise_extraction_error",
+    "failure_source_counts": {
+      "premise_extraction_error": 15,
+      "slot_mapping_error": 13,
+      "no_counterevidence_in_raw_memories": 11,
+      "temporal_gate_too_strict": 5,
+      "explicit_refutation_gate_too_strict": 3,
+      "already_triggered": 2
+    },
+    "recommended_next_decision": "revise_premise_or_slot_or_refutation_after_manual_audit"
+  },
+  "auto_failure_source_vs_human": [
+    {
+      "auto_failure_source": "premise_extraction_error",
+      "candidate_rows": 38,
+      "human_true_counterevidence_rows": 0,
+      "human_should_trigger_rows": 0,
+      "confirmed_missed_true_rows": 0,
+      "confirmed_missed_should_rows": 0
+    },
+    {
+      "auto_failure_source": "no_counterevidence_in_raw_memories",
+      "candidate_rows": 22,
+      "human_true_counterevidence_rows": 0,
+      "human_should_trigger_rows": 0,
+      "confirmed_missed_true_rows": 0,
+      "confirmed_missed_should_rows": 0
+    },
+    {
+      "auto_failure_source": "slot_mapping_error",
+      "candidate_rows": 22,
+      "human_true_counterevidence_rows": 0,
+      "human_should_trigger_rows": 0,
+      "confirmed_missed_true_rows": 0,
+      "confirmed_missed_should_rows": 0
+    },
+    {
+      "auto_failure_source": "temporal_gate_too_strict",
+      "candidate_rows": 13,
+      "human_true_counterevidence_rows": 0,
+      "human_should_trigger_rows": 0,
+      "confirmed_missed_true_rows": 0,
+      "confirmed_missed_should_rows": 0
+    },
+    {
+      "auto_failure_source": "explicit_refutation_gate_too_strict",
+      "candidate_rows": 5,
+      "human_true_counterevidence_rows": 0,
+      "human_should_trigger_rows": 0,
+      "confirmed_missed_true_rows": 0,
+      "confirmed_missed_should_rows": 0
+    },
+    {
+      "auto_failure_source": "already_triggered",
+      "candidate_rows": 2,
+      "human_true_counterevidence_rows": 2,
+      "human_should_trigger_rows": 2,
+      "confirmed_missed_true_rows": 0,
+      "confirmed_missed_should_rows": 0
+    }
+  ],
+  "decision_update": "do_not_revise_selector_yet",
+  "recommended_next_decision": "full_offline_opportunity_census_or_uncertain_case_audit"
+}
