@@ -11,7 +11,7 @@ on:
       - ".github/workflows/r3a_round_analyzer.yml"
 
 permissions:
-  contents: write
+  contents: read
 
 concurrency:
   group: r3a-round-analyzer
@@ -37,14 +37,16 @@ jobs:
         run: |
           python tools/analyze_round.py
 
-      - name: Commit analysis report
+      - name: Add analysis to job summary
         run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add analysis/
-          if git diff --cached --quiet; then
-            echo "No analysis changes to commit."
+          if [ -f analysis/latest_round_analysis.md ]; then
+            cat analysis/latest_round_analysis.md >> "$GITHUB_STEP_SUMMARY"
           else
-            git commit -m "analysis: update latest round report [skip ci]"
-            git push
+            echo "No latest analysis report generated." >> "$GITHUB_STEP_SUMMARY"
           fi
+
+      - name: Upload analysis artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: r3a-round-analysis
+          path: analysis/
