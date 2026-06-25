@@ -1,0 +1,33 @@
+{
+  "round": "0016",
+  "input_round": "round_0015",
+  "task": "fill_p1_manual_audit_sheet_from_5shen_guidelines",
+  "audit_file": "D:\\幻觉\\outputs\\r3a_v2_2_p1_manual_audit_prep\\p1_manual_audit_sheet.xlsx",
+  "candidate_rows": 120,
+  "unique_samples": 91,
+  "manual_final_label_counts": {
+    "非反证": 75,
+    "非反证但有用": 43,
+    "模糊反证": 1,
+    "真反证": 1
+  },
+  "manual_should_trigger_counts": {
+    "否": 118,
+    "不确定": 1,
+    "是": 1
+  },
+  "manual_failure_source_counts": {
+    "候选发现器误报": 118,
+    "时间判断问题": 1,
+    "R3a漏触发": 1
+  },
+  "final_true_counterevidence_rows": 1,
+  "final_ambiguous_counterevidence_rows": 1,
+  "final_should_trigger_rows": 1,
+  "api_calls": 0,
+  "changed_selector_logic": false,
+  "changed_prompt": false,
+  "changed_retriever": false,
+  "changed_memory_store": false,
+  "audit_principle": "Conservative: related memory is not true counterevidence unless it clearly refutes the question premise."
+}
