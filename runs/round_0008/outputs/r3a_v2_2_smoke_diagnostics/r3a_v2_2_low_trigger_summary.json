@@ -1,0 +1,84 @@
+{
+  "selector_version": "r3a_v2.2_premise_refutation",
+  "total_samples": 200,
+  "triggered_samples": 2,
+  "trigger_rate": 0.01,
+  "non_triggered_samples": 198,
+  "selected_evidence_count_distribution": {
+    "0": 198,
+    "1": 2
+  },
+  "relation_distribution": {
+    "REFUTES_PREMISE": 2
+  },
+  "per_memory_reject_reason_distribution": {
+    "premise_anchor_mismatch": 492,
+    "slot_mismatch": 284,
+    "absence_not_refutation": 81,
+    "temporal_mismatch": 52,
+    "not_refuting": 23,
+    "object_specificity_mismatch": 2
+  },
+  "per_sample_dominant_reject_reason_distribution": {
+    "triggered_or_no_rejections": 153,
+    "premise_anchor_mismatch": 29,
+    "slot_mismatch": 17,
+    "absence_not_refutation": 1
+  },
+  "near_miss_type_counts": {
+    "no_candidate_overlap": 153,
+    "absence_not_refutation": 25,
+    "related_but_not_refuting": 11,
+    "slot_value_near_miss": 8,
+    "triggered": 2,
+    "temporal_near_miss": 1
+  },
+  "near_miss_count": 122,
+  "potential_r3a_opportunity_count": 18,
+  "potential_r3a_opportunity_by_r0_label": {
+    "hallucination": 4,
+    "omission": 14
+  },
+  "harm_risk_count_among_r0_correct": 2,
+  "root_cause_attribution": {
+    "retrieved_evidence_genuinely_insufficient": {
+      "count": 153,
+      "rate": 0.765
+    },
+    "selector_too_strict": {
+      "count": 20,
+      "rate": 0.1
+    },
+    "router_or_premise_extraction_failure": {
+      "count": 0,
+      "rate": 0.0
+    },
+    "sample_contains_few_r3a_opportunity_cases": {
+      "count": 182,
+      "rate": 0.91
+    },
+    "non_r3a_relation_cases": {
+      "count": 0,
+      "rate": 0.0
+    },
+    "diagnostic_inconclusive": {
+      "count": 0,
+      "rate": 0.0
+    },
+    "dominant_low_trigger_cause": "retrieved_evidence_genuinely_insufficient",
+    "top_reject_reasons": {
+      "premise_anchor_mismatch": 492,
+      "slot_mismatch": 284,
+      "absence_not_refutation": 81,
+      "temporal_mismatch": 52,
+      "not_refuting": 23,
+      "object_specificity_mismatch": 2
+    }
+  },
+  "recommended_next_decision": "keep_selector_and_change_sampling",
+  "api_calls": 0,
+  "changed_selector_logic": false,
+  "changed_prompt": false,
+  "changed_retriever": false,
+  "changed_memory_store": false
+}

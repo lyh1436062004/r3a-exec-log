@@ -1,0 +1,29 @@
+﻿{
+    "round":  "0008",
+    "task":  "R3a-v2.2 low-trigger diagnostic",
+    "input_round":  "round_0007",
+    "selector_version":  "r3a_v2.2_premise_refutation",
+    "api_calls":  0,
+    "changed_selector_logic":  false,
+    "changed_prompt":  false,
+    "changed_retriever":  false,
+    "changed_memory_store":  false,
+    "commands_run":  [
+                         "\u0026 \"D:\\conda_envs\\o1\\python.exe\" \"D:\\幻觉\\脚本\\3.0\\diagnose_r3a_v2_2_low_trigger.py\" --input \"D:\\幻觉\\outputs\\r3a_v2_2_ab5_smoke\\r3a_v2_2_ab5_smoke.jsonl\" --outdir \"D:\\幻觉\\outputs\\r3a_v2_2_smoke_diagnostics\""
+                     ],
+    "outputs_created":  [
+                            "outputs/r3a_v2_2_smoke_diagnostics/r3a_v2_2_trigger_diagnostic.jsonl",
+                            "outputs/r3a_v2_2_smoke_diagnostics/r3a_v2_2_trigger_diagnostic_report.md",
+                            "outputs/r3a_v2_2_smoke_diagnostics/r3a_v2_2_near_miss_candidates.csv",
+                            "outputs/r3a_v2_2_smoke_diagnostics/r3a_v2_2_low_trigger_summary.json"
+                        ],
+    "key_findings":  {
+                         "trigger_rate":  0.01,
+                         "near_miss_count":  122,
+                         "potential_r3a_opportunity_count":  18,
+                         "dominant_low_trigger_cause":  "retrieved_evidence_genuinely_insufficient"
+                     },
+    "decision":  "diagnose_before_revision",
+    "recommended_next_decision":  "keep_selector_and_change_sampling",
+    "notes":  "Offline diagnostic only. No selector, AB5 runner, prompt, retriever, or memory-store changes."
+}
