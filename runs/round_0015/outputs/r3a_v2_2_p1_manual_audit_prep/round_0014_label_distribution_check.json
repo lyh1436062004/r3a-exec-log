@@ -1,0 +1,31 @@
+{
+  "reported_distribution": {
+    "correct": 743,
+    "hallucination": 542,
+    "omission": 1424
+  },
+  "reported_total": 2709,
+  "recomputed_memory_conflict_untriggered_suspected_distribution": {
+    "correct": 200,
+    "hallucination": 62,
+    "omission": 387
+  },
+  "recomputed_memory_conflict_untriggered_suspected_total": 649,
+  "recomputed_all_untriggered_suspected_distribution": {
+    "correct": 743,
+    "hallucination": 542,
+    "omission": 1424
+  },
+  "recomputed_all_untriggered_suspected_total": 2709,
+  "csv_all_untriggered_suspected_distribution": {
+    "correct": 743,
+    "hallucination": 542,
+    "omission": 1424
+  },
+  "csv_all_untriggered_suspected_total": 2709,
+  "reported_matches_memory_conflict_untriggered_suspected": false,
+  "reported_matches_all_untriggered_suspected": true,
+  "csv_matches_sample_census_all_untriggered_suspected": true,
+  "is_round_0014_label_distribution_name_correct": false,
+  "explanation": "round_0014 中该字段实际对应全量未触发且存在疑似候选的 baseline_label 分布，不是 Memory Conflict 子集分布；字段名或报告中的上下文应修正为“全量未触发疑似候选 baseline_label 分布”。"
+}

@@ -1,0 +1,42 @@
+{
+  "round": "0015",
+  "task": "R3a-v2.2 P1 manual audit preparation and label distribution check",
+  "input_round": "round_0014",
+  "api_calls": 0,
+  "changed_selector_logic": false,
+  "changed_prompt": false,
+  "changed_retriever": false,
+  "changed_memory_store": false,
+  "p1_candidate_rows": 120,
+  "p1_unique_samples": 91,
+  "label_distribution_check_passed": false,
+  "round_0014_label_distribution_issue": "reported_distribution_matches_all_untriggered_suspected_not_memory_conflict_subset",
+  "label_distribution_check": {
+    "reported_distribution": {
+      "correct": 743,
+      "hallucination": 542,
+      "omission": 1424
+    },
+    "memory_conflict_untriggered_suspected_distribution": {
+      "correct": 200,
+      "hallucination": 62,
+      "omission": 387
+    },
+    "all_untriggered_suspected_distribution": {
+      "correct": 743,
+      "hallucination": 542,
+      "omission": 1424
+    },
+    "explanation": "round_0014 中该字段实际对应全量未触发且存在疑似候选的 baseline_label 分布，不是 Memory Conflict 子集分布；字段名或报告中的上下文应修正为“全量未触发疑似候选 baseline_label 分布”。"
+  },
+  "outputs_created": [
+    "outputs/r3a_v2_2_p1_manual_audit_prep/p1_audit_prep_report.md",
+    "outputs/r3a_v2_2_p1_manual_audit_prep/p1_audit_prep_summary.json",
+    "outputs/r3a_v2_2_p1_manual_audit_prep/p1_manual_audit_sheet.csv",
+    "outputs/r3a_v2_2_p1_manual_audit_prep/p1_manual_audit_sheet.xlsx",
+    "outputs/r3a_v2_2_p1_manual_audit_prep/round_0014_label_distribution_check.json",
+    "outputs/r3a_v2_2_p1_manual_audit_prep/round_0014_label_distribution_check.md"
+  ],
+  "recommended_next_decision": "human_fill_p1_manual_audit_sheet",
+  "created_at": "2026-06-25T21:08:06"
+}
