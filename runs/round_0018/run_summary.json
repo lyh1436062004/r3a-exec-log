@@ -1,0 +1,34 @@
+﻿{
+    "round":  "0018",
+    "outputs_created":  [
+                            "outputs/r3a_v2_2_triggered_utility_eval/triggered_utility_eval_summary.json",
+                            "outputs/r3a_v2_2_triggered_utility_eval/triggered_utility_eval_report.md",
+                            "outputs/r3a_v2_2_triggered_utility_eval/triggered_route_outputs.jsonl",
+                            "outputs/r3a_v2_2_triggered_utility_eval/triggered_transition_table.csv",
+                            "outputs/r3a_v2_2_triggered_utility_eval/triggered_manual_audit_sheet.xlsx",
+                            "outputs/r3a_v2_2_triggered_utility_eval/triggered_manual_audit_sheet.csv",
+                            "outputs/r3a_v2_2_triggered_utility_eval/triggered_selected_evidence.csv",
+                            "outputs/r3a_v2_2_triggered_utility_eval/triggered_stats.json"
+                        ],
+    "notes":  "Evaluated 78 R3a-v2.2 triggered Memory Conflict samples. A_triggered reused 78 old AB5 prompt-only outputs. B_triggered reused 2 v2 smoke outputs and generated 76 targeted B responses plus judges with allow_api=true. B vs R0: correct +2.56 pp, hallucination -1.28 pp, omission -1.28 pp, net repairs +2. B vs A: hallucination -20.51 pp but omission +30.77 pp and correct -10.26 pp. B_memory_only skipped by design. No selector/replay/retriever/memory-store code was modified.",
+    "dev_replay_summary":  {
+
+                           },
+    "deleted_files":  [
+
+                      ],
+    "task":  "R3a-v2.2 triggered sample answer utility evaluation",
+    "commands_run":  [
+                         "python 脚本/3.0/evaluate_r3a_v2_2_triggered_utility.py --triggered outputs/r3a_v2_2_full_offline_opportunity_census/r3a_triggered_samples.csv --qa data/mem0/medium/mem0_medium_qa.jsonl --selector 脚本/3.0/r3a_v2_selector.py --outdir outputs/r3a_v2_2_triggered_utility_eval --allow_api true --max_samples 78",
+                         "python -m py_compile 脚本/3.0/evaluate_r3a_v2_2_triggered_utility.py",
+                         "git status --short",
+                         "git diff"
+                     ],
+    "modified_files":  [
+
+                       ],
+    "test_result":  "py_compile passed; route output integrity check passed: 78 rows, 78 unique qa_key, all Memory Conflict, all selector_version=r3a_v2_premise_refutation",
+    "added_files":  [
+                        "脚本/3.0/evaluate_r3a_v2_2_triggered_utility.py"
+                    ]
+}
