@@ -1,0 +1,7 @@
+﻿failure_source,count,rate
+premise_extraction_error,15,0.30612244897959184
+slot_mapping_error,13,0.2653061224489796
+no_counterevidence_in_raw_memories,11,0.22448979591836735
+temporal_gate_too_strict,5,0.10204081632653061
+explicit_refutation_gate_too_strict,3,0.061224489795918366
+already_triggered,2,0.04081632653061224

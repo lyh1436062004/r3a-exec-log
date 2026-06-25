@@ -1,0 +1,29 @@
+﻿{
+    "round":  "0009",
+    "task":  "R3a-v2.2 Memory Conflict stratified coverage audit",
+    "input_round":  "round_0008",
+    "api_calls":  0,
+    "changed_selector_logic":  false,
+    "changed_prompt":  false,
+    "changed_retriever":  false,
+    "changed_memory_store":  false,
+    "commands_run":  [
+                         "\u0026 \"D:\\conda_envs\\o1\\python.exe\" \"D:\\幻觉\\脚本\\3.0\\audit_r3a_v2_2_mc_coverage.py\" --smoke \"D:\\幻觉\\outputs\\r3a_v2_2_ab5_smoke\\r3a_v2_2_ab5_smoke.jsonl\" --diagnostic \"D:\\幻觉\\outputs\\r3a_v2_2_smoke_diagnostics\\r3a_v2_2_trigger_diagnostic.jsonl\" --outdir \"D:\\幻觉\\outputs\\r3a_v2_2_mc_stratified_coverage_audit\""
+                     ],
+    "outputs_created":  [
+                            "outputs/r3a_v2_2_mc_stratified_coverage_audit/mc_coverage_audit_report.md",
+                            "outputs/r3a_v2_2_mc_stratified_coverage_audit/mc_coverage_audit_summary.json",
+                            "outputs/r3a_v2_2_mc_stratified_coverage_audit/mc_sample_level_diagnostic.jsonl",
+                            "outputs/r3a_v2_2_mc_stratified_coverage_audit/mc_manual_audit_candidates.csv",
+                            "outputs/r3a_v2_2_mc_stratified_coverage_audit/mc_failure_source_table.csv"
+                        ],
+    "key_findings":  {
+                         "memory_conflict_count":  49,
+                         "memory_conflict_rate":  0.245,
+                         "mc_trigger_rate":  0.04081632653061224,
+                         "dominant_failure_source":  "premise_extraction_error",
+                         "can_accept_low_opportunity_explanation":  false
+                     },
+    "recommended_next_decision":  "revise_premise_or_slot_or_refutation_after_manual_audit",
+    "notes":  "Offline MC stratified coverage audit only. No selector, prompt, retriever, memory-store, API, or AB5 rerun changes."
+}
