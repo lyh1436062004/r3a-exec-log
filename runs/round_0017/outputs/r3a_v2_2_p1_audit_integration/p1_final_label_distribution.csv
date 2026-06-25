@@ -1,0 +1,13 @@
+﻿category,label,count,rate
+raw_manual_final_label,模糊反证,1,0.008333333333333333
+raw_manual_final_label,真反证,1,0.008333333333333333
+raw_manual_final_label,非反证,75,0.625
+raw_manual_final_label,非反证但有用,43,0.35833333333333334
+raw_manual_should_trigger,不确定,1,0.008333333333333333
+raw_manual_should_trigger,否,118,0.9833333333333333
+raw_manual_should_trigger,是,1,0.008333333333333333
+raw_manual_failure_source,R3a漏触发,1,0.008333333333333333
+raw_manual_failure_source,候选发现器误报,118,0.9833333333333333
+raw_manual_failure_source,时间判断问题,1,0.008333333333333333
+strict_integration_decision_metric,final_true_counterevidence_should_trigger,0,0.0
+strict_integration_decision_metric,confirmed_r3a_missed_true_counterevidence,0,0.0

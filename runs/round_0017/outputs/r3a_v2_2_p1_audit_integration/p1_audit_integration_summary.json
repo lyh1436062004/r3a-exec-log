@@ -1,0 +1,66 @@
+{
+  "round": "0017",
+  "input_round": "round_0015",
+  "actual_latest_prior_round": "round_0016",
+  "task": "R3a-v2.2 P1 human audit integration and decision freeze",
+  "audit_file_used": "D:\\幻觉\\outputs\\r3a_v2_2_p1_manual_audit_prep\\p1_manual_audit_sheet.xlsx",
+  "used_strict_review_file": false,
+  "p1_candidate_rows": 120,
+  "p1_unique_samples": 91,
+  "raw_manual_final_label_counts": {
+    "非反证": 75,
+    "非反证但有用": 43,
+    "模糊反证": 1,
+    "真反证": 1
+  },
+  "raw_manual_should_trigger_counts": {
+    "否": 118,
+    "不确定": 1,
+    "是": 1
+  },
+  "raw_manual_failure_source_counts": {
+    "候选发现器误报": 118,
+    "时间判断问题": 1,
+    "R3a漏触发": 1
+  },
+  "raw_manual_refutation_counts": {
+    "否": 118,
+    "模糊": 1,
+    "是": 1
+  },
+  "raw_manual_time_mismatch_counts": {
+    "不确定": 90,
+    "是": 29,
+    "否": 1
+  },
+  "raw_true_counterevidence_should_trigger_rows": 1,
+  "raw_ambiguous_counterevidence_rows": 1,
+  "strict_integration_excluded_raw_true_should_rows": [
+    {
+      "row_id": "P1-0077",
+      "sample_id": "1197",
+      "question": "Did Taylor David express satisfaction with herbal teas for maintaining energy during meal planning on Jul 29, 2038?",
+      "memory_index": "1",
+      "memory_text": "User has been feeling quite stressed during intense meal‑plan planning phases and reports that herbal teas, which previously helped him relax, are no longer effective as of mid‑October 2027.",
+      "raw_manual_label": "真反证",
+      "raw_manual_should_trigger": "是",
+      "integration_decision": "not_confirmed_missed_true_counterevidence",
+      "integration_reason": "严格整合口径排除：候选记忆为 mid-October 2027 的状态，问题时间为 Jul 29, 2038；时间跨度过大，不能作为确认的当前真反证漏触发。"
+    }
+  ],
+  "final_true_counterevidence_should_trigger": 0,
+  "confirmed_r3a_missed_true_counterevidence": 0,
+  "dominant_case": "candidate_finder_false_positives",
+  "false_positive_or_non_refuting_rows": 118,
+  "false_positive_or_non_refuting_rate": 0.9833333333333333,
+  "decision": "do_not_revise_r3a_v2_2",
+  "next_step": "evaluate_r3a_v2_2_triggered_samples_utility",
+  "do_not_continue_p2_p3_now": true,
+  "do_not_start_r3b_now": true,
+  "api_calls": 0,
+  "changed_selector_logic": false,
+  "changed_prompt": false,
+  "changed_retriever": false,
+  "changed_memory_store": false,
+  "created_at": "2026-06-25T22:01:43"
+}

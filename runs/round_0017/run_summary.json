@@ -1,0 +1,27 @@
+{
+  "round": "0017",
+  "task": "R3a-v2.2 P1 audit integration and decision freeze",
+  "input_round": "round_0015",
+  "actual_latest_prior_round": "round_0016",
+  "api_calls": 0,
+  "changed_selector_logic": false,
+  "changed_prompt": false,
+  "changed_retriever": false,
+  "changed_memory_store": false,
+  "p1_candidate_rows": 120,
+  "p1_unique_samples": 91,
+  "final_true_counterevidence_should_trigger": 0,
+  "confirmed_r3a_missed_true_counterevidence": 0,
+  "dominant_case": "candidate_finder_false_positives",
+  "decision": "do_not_revise_r3a_v2_2",
+  "next_step": "evaluate_r3a_v2_2_triggered_samples_utility",
+  "do_not_continue_p2_p3_now": true,
+  "do_not_start_r3b_now": true,
+  "outputs_created": [
+    "outputs/r3a_v2_2_p1_audit_integration/p1_audit_integration_report.md",
+    "outputs/r3a_v2_2_p1_audit_integration/p1_audit_integration_summary.json",
+    "outputs/r3a_v2_2_p1_audit_integration/p1_decision_freeze.md",
+    "outputs/r3a_v2_2_p1_audit_integration/p1_final_label_distribution.csv"
+  ],
+  "created_at": "2026-06-25T22:04:41"
+}
