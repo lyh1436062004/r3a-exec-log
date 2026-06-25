@@ -1,45 +1,34 @@
-# R3a Round Analysis: round_0005
+﻿# Round 0007 Analysis: R3a-v2.2 Audit Acceptance + AB5 Smoke
 
-## File Changes
+## Audit Gate
+- strict precision: 72.73%
+- acceptable rate: 85.00%
+- false_counterevidence count: 3
+- decision: pass
 
-- `M	outputs/r3a_v2_dev_replay/r3a_v2_selected_evidence_replay.jsonl`
-- `M	outputs/r3a_v2_dev_replay/r3a_v2_selected_evidence_replay_report.md`
-- `M	outputs/r3a_v2_dev_replay/r3a_v2_full_selector_replay.jsonl`
-- `M	outputs/r3a_v2_dev_replay/r3a_v2_full_selector_replay_report.md`
-- `M	outputs/r3a_v2_dev_replay/r3a_v2_new_audit_candidates.csv`
-- `M	tools/analyze_round.py`
-- `M	.github/workflows/r3a_round_analyzer.yml`
-- `A	runs/round_0005/run_summary.json`
-- `A	runs/round_0005/file_change.txt`
-- `A	runs/round_0005/diff.txt`
+## AB5 Smoke Scope
+- system: mem0 medium
+- sample size: 200
+- seed metadata: 20260618
+- sample method: first 200 records via runner --limit; runner has no --seed option
+- selector version: r3a_v2.2_premise_refutation
 
-## Selected-Evidence Replay
+## Overall Metrics
+- R0 correct/hallucination/omission: 76 / 32 / 92
+- A_gated correct/hallucination/omission: 76 / 32 / 92
+- B_gated_v2_2 correct/hallucination/omission: 76 / 32 / 92
 
-- report: `outputs/r3a_v2_dev_replay/r3a_v2_selected_evidence_replay_report.md`
-- true retention: 12/18 (66.67%)
-- false rejection: 130/131 (99.24%)
-- false retention: 1/131 (0.76%)
-- retained precision strict: 12/13 (92.31%)
-- retained acceptable rate: 16/17 (94.12%)
-- kept count: 17
+## Gate Behavior
+- trigger count: 2
+- trigger rate: 1.00%
+- top reject reasons: premise_anchor_mismatch=492, slot_mismatch=284, absence_not_refutation=81
 
-## Full-Selector Replay
+## Safety
+- repair count: 0
+- harm count: 0
+- net repair: 0
 
-- report: `outputs/r3a_v2_dev_replay/r3a_v2_full_selector_replay_report.md`
-- v2 triggered count: 20
-- matched_original_v1_selected count: 13
-- matched original v1 selected: None
-- full report metric protocol ok: True
-- banned metric terms found: []
+## Decision
+revise_selector
 
-## Metric Consistency
-
-- metric consistency ok: True
-- mismatches: []
-
-## Leakage Check
-
-- selector files checked: []
-- leakage ok: True
-- leakage hits: {}
-
+Reason: audit gate passed and no harm was observed, but B_gated_v2_2 did not improve R0 correct rate and trigger rate was below the 5%-15% smoke threshold.

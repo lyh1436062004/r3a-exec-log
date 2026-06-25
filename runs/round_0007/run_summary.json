@@ -1,0 +1,36 @@
+﻿{
+    "round":  "0007",
+    "task":  "R3a-v2.2 audit acceptance and AB5 smoke",
+    "selector_version":  "r3a_v2.2_premise_refutation",
+    "audit_gate":  {
+                       "passed":  true,
+                       "strict_precision":  0.7272727273,
+                       "acceptable_rate":  0.85,
+                       "false_counterevidence_count":  3
+                   },
+    "ab5_smoke":  {
+                      "sample_size":  200,
+                      "seed":  20260618,
+                      "sample_method":  "first_200_via_runner_limit; runner has no seed option",
+                      "r0_correct_rate":  0.38,
+                      "b_gated_v2_2_correct_rate":  0.38,
+                      "r0_hallucination_rate":  0.16,
+                      "b_gated_v2_2_hallucination_rate":  0.16,
+                      "trigger_rate":  0.01,
+                      "repair_count":  0,
+                      "harm_count":  0,
+                      "net_repair":  0,
+                      "decision":  "revise_selector"
+                  },
+    "outputs_created":  [
+                            "outputs/r3a_v2_2_ab5_smoke/r3a_v2_2_ab5_smoke.jsonl",
+                            "outputs/r3a_v2_2_ab5_smoke/r3a_v2_2_ab5_smoke_report.md",
+                            "outputs/r3a_v2_2_ab5_smoke/r3a_v2_2_ab5_smoke_report_raw.md",
+                            "outputs/r3a_v2_2_ab5_smoke/r3a_v2_2_ab5_smoke_summary.json"
+                        ],
+    "commands_run":  [
+                         "\u0026 \"D:\\conda_envs\\o1\\python.exe\" \"D:\\幻觉\\脚本\\3.0\\run_mem0_medium_ab5_offline.py\" --help",
+                         "\u0026 \"D:\\conda_envs\\o1\\python.exe\" \"D:\\幻觉\\脚本\\3.0\\run_mem0_medium_ab5_offline.py\" --limit 200 --skip-oracle --output \"D:\\幻觉\\outputs\\r3a_v2_2_ab5_smoke\\r3a_v2_2_ab5_smoke.jsonl\" --report \"D:\\幻觉\\outputs\\r3a_v2_2_ab5_smoke\\r3a_v2_2_ab5_smoke_report_raw.md\""
+                     ],
+    "notes":  "No selector/replay protocol/prompt/retriever/memory-store changes."
+}

@@ -1,0 +1,110 @@
+﻿{
+    "round":  "0007",
+    "task":  "R3a-v2.2 audit acceptance and AB5 smoke",
+    "audit_gate":  {
+                       "passed":  true,
+                       "strict_precision":  0.7272727273,
+                       "acceptable_rate":  0.85,
+                       "false_counterevidence_count":  3
+                   },
+    "ab5_smoke":  {
+                      "sample_size":  200,
+                      "seed":  20260618,
+                      "sample_method":  "first_200_via_runner_limit; runner has no seed option",
+                      "selector_version":  "r3a_v2.2_premise_refutation",
+                      "no_benchmark_labels_used_by_selector":  true,
+                      "audit_acceptance":  {
+                                               "candidate_rows":  20,
+                                               "strict_precision":  0.7272727272727273,
+                                               "acceptable_rate":  0.85,
+                                               "false_counterevidence_count":  3,
+                                               "true_counterevidence_count":  8,
+                                               "ambiguous_counterevidence_count":  8,
+                                               "not_counterevidence_but_useful_count":  1,
+                                               "passed":  true
+                                           },
+                      "overall":  {
+                                      "R0":  {
+                                                 "correct":  {
+                                                                 "count":  76,
+                                                                 "rate":  0.38
+                                                             },
+                                                 "hallucination":  {
+                                                                       "count":  32,
+                                                                       "rate":  0.16
+                                                                   },
+                                                 "omission":  {
+                                                                  "count":  92,
+                                                                  "rate":  0.46
+                                                              }
+                                             },
+                                      "A_gated":  {
+                                                      "correct":  {
+                                                                      "count":  76,
+                                                                      "rate":  0.38
+                                                                  },
+                                                      "hallucination":  {
+                                                                            "count":  32,
+                                                                            "rate":  0.16
+                                                                        },
+                                                      "omission":  {
+                                                                       "count":  92,
+                                                                       "rate":  0.46
+                                                                   }
+                                                  },
+                                      "B_gated_v2_2":  {
+                                                           "correct":  {
+                                                                           "count":  76,
+                                                                           "rate":  0.38
+                                                                       },
+                                                           "hallucination":  {
+                                                                                 "count":  32,
+                                                                                 "rate":  0.16
+                                                                             },
+                                                           "omission":  {
+                                                                            "count":  92,
+                                                                            "rate":  0.46
+                                                                        }
+                                                       }
+                                  },
+                      "transitions":  {
+                                          "R0 omission -\u003e B_gated_v2_2 correct":  0,
+                                          "R0 hallucination -\u003e B_gated_v2_2 correct":  0,
+                                          "R0 correct -\u003e B_gated_v2_2 hallucination":  0,
+                                          "A_gated hallucination -\u003e B_gated_v2_2 correct":  0,
+                                          "A_gated correct -\u003e B_gated_v2_2 hallucination":  0
+                                      },
+                      "gate_behavior":  {
+                                            "total_rows":  200,
+                                            "triggered_count":  2,
+                                            "trigger_rate":  0.01,
+                                            "average_selected_evidence_count":  0.01,
+                                            "relation_distribution":  {
+                                                                          "REFUTES_PREMISE":  2
+                                                                      },
+                                            "reject_reason_distribution":  {
+                                                                               "premise_anchor_mismatch":  492,
+                                                                               "slot_mismatch":  284,
+                                                                               "absence_not_refutation":  81,
+                                                                               "temporal_mismatch":  52,
+                                                                               "not_refuting":  23,
+                                                                               "object_specificity_mismatch":  2
+                                                                           }
+                                        },
+                      "safety":  {
+                                     "repair_count":  0,
+                                     "harm_count":  0,
+                                     "net_repair":  0
+                                 },
+                      "decision":  "revise_selector",
+                      "thresholds":  {
+                                         "b_correct_gt_r0_correct":  false,
+                                         "b_hallucination_within_r0_plus_2pp":  true,
+                                         "harm_le_repair_div_3":  true,
+                                         "trigger_rate_between_5_and_15_percent":  false,
+                                         "no_gold_question_type_baseline_label_used_by_selector":  true
+                                     }
+                  },
+    "decision":  "revise_selector",
+    "notes":  "No selector/replay protocol/prompt/retriever/memory-store changes. Runner supports --limit but no --seed; smoke used first 200 records."
+}
