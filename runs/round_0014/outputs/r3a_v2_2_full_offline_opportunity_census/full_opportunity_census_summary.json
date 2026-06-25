@@ -1,0 +1,78 @@
+{
+  "round": "0014",
+  "task": "r3a_v2_2_full_offline_opportunity_census",
+  "input_round": "round_0013",
+  "input_file": "D:\\幻觉\\data\\mem0\\medium\\mem0_medium_qa.jsonl",
+  "selector_file": "D:\\幻觉\\脚本\\3.0\\r3a_v2_selector.py",
+  "total_samples": 3467,
+  "question_type_counts": {
+    "Memory Boundary": 828,
+    "Basic Fact Recall": 746,
+    "Memory Conflict": 769,
+    "Generalization & Application": 746,
+    "Multi-hop Inference": 198,
+    "Dynamic Update": 180
+  },
+  "question_type_rates": {
+    "Memory Boundary": 0.23882319007787714,
+    "Basic Fact Recall": 0.2151716181136429,
+    "Memory Conflict": 0.22180559561580618,
+    "Generalization & Application": 0.2151716181136429,
+    "Multi-hop Inference": 0.057109893279492355,
+    "Dynamic Update": 0.05191808479953851
+  },
+  "r3a_triggered_count": 78,
+  "r3a_trigger_rate": 0.022497836746466687,
+  "memory_conflict_count": 769,
+  "memory_conflict_rate": 0.22180559561580618,
+  "mc_r3a_triggered_count": 78,
+  "mc_r3a_trigger_rate": 0.10143042912873862,
+  "mc_untriggered_count": 691,
+  "mc_with_suspected_counterevidence_count": 727,
+  "mc_untriggered_with_suspected_counterevidence_count": 649,
+  "mc_r0_omission_with_suspected_counterevidence_count": 387,
+  "mc_r0_hallucination_with_suspected_counterevidence_count": 62,
+  "mc_r0_correct_with_suspected_counterevidence_count": 200,
+  "r3a_triggered_baseline_label_distribution": {
+    "correct": 34,
+    "hallucination": 9,
+    "omission": 35
+  },
+  "r3a_untriggered_suspected_baseline_label_distribution": {
+    "correct": 743,
+    "hallucination": 542,
+    "omission": 1424
+  },
+  "memory_conflict_suspected_candidate_count_distribution": {
+    "3": 155,
+    "4": 166,
+    "2": 145,
+    "6": 41,
+    "5": 88,
+    "7": 17,
+    "0": 42,
+    "8": 9,
+    "1": 96,
+    "11": 3,
+    "12": 1,
+    "9": 6
+  },
+  "manual_audit_candidate_rows": 380,
+  "manual_audit_unique_samples": 273,
+  "manual_audit_priority_group_counts": {
+    "P1_memory_conflict_omission_untriggered_suspected": 120,
+    "P2_memory_conflict_hallucination_untriggered_suspected": 80,
+    "P3_memory_conflict_correct_untriggered_suspected": 50,
+    "P4_memory_conflict_r3a_triggered": 80,
+    "P5_non_memory_conflict_high_suspicion": 50
+  },
+  "top_priority_candidate_rows": 120,
+  "api_calls": 0,
+  "changed_selector_logic": false,
+  "changed_prompt": false,
+  "changed_retriever": false,
+  "changed_memory_store": false,
+  "decision": "prepare_manual_audit_candidates",
+  "recommended_next_decision": "audit_first_priority_candidates_before_any_selector_change",
+  "caveat": "Suspicious candidates are not true counterevidence and are not R3a should-trigger labels."
+}

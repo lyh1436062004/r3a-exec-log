@@ -1,0 +1,38 @@
+{
+  "round": "0014",
+  "task": "R3a-v2.2 full offline counterevidence opportunity census",
+  "input_round": "round_0013",
+  "api_calls": 0,
+  "changed_selector_logic": false,
+  "changed_prompt": false,
+  "changed_retriever": false,
+  "changed_memory_store": false,
+  "input_data_file": "D:\\幻觉\\data\\mem0\\medium\\mem0_medium_qa.jsonl",
+  "script": "D:\\幻觉\\脚本\\3.0\\census_r3a_v2_2_full_offline_opportunities.py",
+  "output_dir": "D:\\幻觉\\outputs\\r3a_v2_2_full_offline_opportunity_census",
+  "key_findings": {
+    "total_samples": 3467,
+    "memory_conflict_samples": 769,
+    "memory_conflict_rate": 0.22180559561580618,
+    "r3a_triggered_samples": 78,
+    "r3a_trigger_rate": 0.022497836746466687,
+    "mc_r3a_triggered_samples": 78,
+    "mc_r3a_trigger_rate": 0.10143042912873862,
+    "mc_untriggered_samples": 691,
+    "mc_untriggered_with_suspected_counterevidence": 649,
+    "mc_r0_omission_with_suspected_counterevidence": 387,
+    "manual_audit_candidate_rows": 380,
+    "manual_audit_unique_samples": 273,
+    "manual_priority_counts": {
+      "P1_memory_conflict_omission_untriggered_suspected": 120,
+      "P2_memory_conflict_hallucination_untriggered_suspected": 80,
+      "P3_memory_conflict_correct_untriggered_suspected": 50,
+      "P4_memory_conflict_r3a_triggered": 80,
+      "P5_non_memory_conflict_high_suspicion": 50
+    }
+  },
+  "decision": "prepare_manual_audit_candidates",
+  "recommended_next_decision": "audit_first_priority_candidates_before_any_selector_change",
+  "caveat": "Suspected counterevidence candidates are high-recall manual-audit leads only, not true counterevidence labels and not should-trigger labels.",
+  "created_at": "2026-06-25T20:47:25"
+}
