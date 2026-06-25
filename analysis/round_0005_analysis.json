@@ -1,0 +1,85 @@
+{
+  "round": "round_0005",
+  "file_change_txt": [
+    "M\toutputs/r3a_v2_dev_replay/r3a_v2_selected_evidence_replay.jsonl",
+    "M\toutputs/r3a_v2_dev_replay/r3a_v2_selected_evidence_replay_report.md",
+    "M\toutputs/r3a_v2_dev_replay/r3a_v2_full_selector_replay.jsonl",
+    "M\toutputs/r3a_v2_dev_replay/r3a_v2_full_selector_replay_report.md",
+    "M\toutputs/r3a_v2_dev_replay/r3a_v2_new_audit_candidates.csv",
+    "M\ttools/analyze_round.py",
+    "M\t.github/workflows/r3a_round_analyzer.yml",
+    "A\truns/round_0005/run_summary.json",
+    "A\truns/round_0005/file_change.txt",
+    "A\truns/round_0005/diff.txt"
+  ],
+  "run_summary": {
+    "round": "0005",
+    "task": "Repair r3a-exec-log synchronization and GitHub Actions analyzer",
+    "modified_files": [
+      "outputs/r3a_v2_dev_replay/r3a_v2_selected_evidence_replay.jsonl",
+      "outputs/r3a_v2_dev_replay/r3a_v2_selected_evidence_replay_report.md",
+      "outputs/r3a_v2_dev_replay/r3a_v2_full_selector_replay.jsonl",
+      "outputs/r3a_v2_dev_replay/r3a_v2_full_selector_replay_report.md",
+      "outputs/r3a_v2_dev_replay/r3a_v2_new_audit_candidates.csv",
+      "tools/analyze_round.py",
+      ".github/workflows/r3a_round_analyzer.yml"
+    ],
+    "added_files": [
+      "runs/round_0005/run_summary.json",
+      "runs/round_0005/file_change.txt",
+      "runs/round_0005/diff.txt"
+    ],
+    "deleted_files": [],
+    "commands_run": [
+      "git status --short",
+      "git pull --ff-only",
+      "copy latest r3a_v2_dev_replay outputs from D:\\幻觉 to r3a-exec-log",
+      "python tools/analyze_round.py"
+    ],
+    "test_result": "not_applicable_sync_repair",
+    "dev_replay_summary": {
+      "selected": {
+        "true_retention": "66.67%",
+        "false_rejection": "99.24%",
+        "false_retention": "0.76%",
+        "retained_precision_strict": "92.31%",
+        "retained_acceptable_rate": "94.12%",
+        "kept_count": 17
+      },
+      "full_selector": {
+        "v2_triggered_count": 20,
+        "v2_trigger_rate": "11.11%",
+        "matched_original_v1_selected_count": 13,
+        "matched_original_v1_selected_rate_among_triggered": "65.00%",
+        "new_audit_candidates_rows": 20
+      }
+    },
+    "notes": "Synchronization repair only. No selector, replay protocol, AB5, prompt, retriever, memory store, R3b/R3c, or selector ablation changes."
+  },
+  "selected_evidence_report": {
+    "path": "outputs\\r3a_v2_dev_replay\\r3a_v2_selected_evidence_replay_report.md",
+    "true_retention": "12/18 (66.67%)",
+    "false_rejection": "130/131 (99.24%)",
+    "false_retention": "1/131 (0.76%)",
+    "retained_precision_strict": "12/13 (92.31%)",
+    "retained_acceptable_rate": "16/17 (94.12%)",
+    "kept_count": "17"
+  },
+  "full_selector_report": {
+    "path": "outputs\\r3a_v2_dev_replay\\r3a_v2_full_selector_replay_report.md",
+    "v2_triggered_count": "20",
+    "matched_original_v1_selected_count": "13",
+    "matched_original_v1_selected": null,
+    "banned_metric_terms_found": [],
+    "full_report_metric_protocol_ok": true
+  },
+  "metric_consistency_check": {
+    "metric_consistency_ok": true,
+    "mismatches": []
+  },
+  "selector_leakage_check": {
+    "selector_files_checked": [],
+    "leakage_hits": {},
+    "leakage_ok": true
+  }
+}

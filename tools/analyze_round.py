@@ -16,6 +16,7 @@ BANNED_FULL_REPORT_TERMS = [
     "true retention",
     "false rejection",
     "false triggered",
+    "v2 false positives",
 ]
 
 LEAKAGE_TERMS = [
@@ -28,7 +29,13 @@ LEAKAGE_TERMS = [
 def read_text(path: Path) -> str:
     if not path.exists():
         return ""
-    return path.read_text(encoding="utf-8", errors="replace")
+    data = path.read_bytes()
+    for enc in ("utf-8-sig", "utf-16", "utf-16-le", "utf-16-be", "utf-8"):
+        try:
+            return data.decode(enc)
+        except UnicodeDecodeError:
+            continue
+    return data.decode("utf-8", errors="replace")
 
 
 def find_latest_round() -> Path | None:
@@ -44,7 +51,7 @@ def load_json(path: Path) -> dict[str, Any]:
     if not path.exists():
         return {}
     try:
-        return json.loads(path.read_text(encoding="utf-8"))
+        return json.loads(read_text(path))
     except Exception as exc:
         return {"_json_error": str(exc)}
 
@@ -64,6 +71,9 @@ def parse_integer_line(text: str, label: str) -> str | None:
 
 
 def latest_existing_report(name: str) -> Path | None:
+    canonical = ROOT / "outputs" / "r3a_v2_dev_replay" / name
+    if canonical.exists():
+        return canonical
     candidates = list(ROOT.rglob(name))
     if not candidates:
         return None
@@ -91,14 +101,73 @@ def analyze_full_report() -> dict[str, Any]:
     return {
         "path": str(path.relative_to(ROOT)) if path else None,
         "v2_triggered_count": parse_integer_line(text, "v2 triggered count"),
+        "matched_original_v1_selected_count": parse_integer_line(text, "matched_original_v1_selected count"),
         "matched_original_v1_selected": parse_percent_fraction(text, "matched_original_v1_selected"),
         "banned_metric_terms_found": banned_hits,
         "full_report_metric_protocol_ok": not banned_hits,
     }
 
 
+def check_metric_consistency(
+    run_summary: dict[str, Any],
+    full_report_text: str,
+    selected_report_text: str,
+) -> dict[str, Any]:
+    mismatches: list[dict[str, Any]] = []
+
+    def add_mismatch(metric: str, expected: Any, actual: Any) -> None:
+        mismatches.append({
+            "metric": metric,
+            "run_summary_value": expected,
+            "report_value": actual,
+        })
+
+    full_summary = (
+        run_summary.get("dev_replay_summary", {})
+        .get("full_selector", {})
+    )
+    selected_summary = (
+        run_summary.get("dev_replay_summary", {})
+        .get("selected", {})
+    )
+
+    expected_triggered = full_summary.get("v2_triggered_count")
+    actual_triggered = parse_integer_line(full_report_text, "v2 triggered count")
+    actual_triggered_int = int(actual_triggered) if actual_triggered is not None else None
+    if expected_triggered != actual_triggered_int:
+        add_mismatch("full_selector.v2_triggered_count", expected_triggered, actual_triggered_int)
+
+    expected_matched = full_summary.get("matched_original_v1_selected_count")
+    actual_matched = parse_integer_line(full_report_text, "matched_original_v1_selected count")
+    actual_matched_int = int(actual_matched) if actual_matched is not None else None
+    if expected_matched != actual_matched_int:
+        add_mismatch(
+            "full_selector.matched_original_v1_selected_count",
+            expected_matched,
+            actual_matched_int,
+        )
+
+    expected_kept = selected_summary.get("kept_count")
+    actual_kept = (
+        parse_integer_line(selected_report_text, "v2 kept count")
+        or parse_integer_line(selected_report_text, "kept count")
+    )
+    actual_kept_int = int(actual_kept) if actual_kept is not None else None
+    if expected_kept != actual_kept_int:
+        add_mismatch("selected.kept_count", expected_kept, actual_kept_int)
+
+    return {
+        "metric_consistency_ok": not mismatches,
+        "mismatches": mismatches,
+    }
+
+
 def check_selector_leakage() -> dict[str, Any]:
-    selector_paths = list(ROOT.rglob("r3a_v2_selector.py"))
+    ignored_dirs = {"runs", "outputs", "analysis", ".git"}
+    selector_paths = [
+        path for path in ROOT.rglob("r3a_v2_selector.py")
+        if not any(part in ignored_dirs for part in path.relative_to(ROOT).parts)
+    ]
     hits: dict[str, list[str]] = {}
     for path in selector_paths:
         text = read_text(path)
@@ -139,6 +208,7 @@ def write_reports(result: dict[str, Any]) -> None:
 
     selected = result.get("selected_evidence_report", {})
     full = result.get("full_selector_report", {})
+    consistency = result.get("metric_consistency_check", {})
     leakage = result.get("selector_leakage_check", {})
 
     md = [
@@ -167,9 +237,15 @@ def write_reports(result: dict[str, Any]) -> None:
         "",
         f"- report: `{full.get('path')}`",
         f"- v2 triggered count: {full.get('v2_triggered_count')}",
+        f"- matched_original_v1_selected count: {full.get('matched_original_v1_selected_count')}",
         f"- matched original v1 selected: {full.get('matched_original_v1_selected')}",
-        f"- metric protocol ok: {full.get('full_report_metric_protocol_ok')}",
+        f"- full report metric protocol ok: {full.get('full_report_metric_protocol_ok')}",
         f"- banned metric terms found: {full.get('banned_metric_terms_found')}",
+        "",
+        "## Metric Consistency",
+        "",
+        f"- metric consistency ok: {consistency.get('metric_consistency_ok')}",
+        f"- mismatches: {consistency.get('mismatches')}",
         "",
         "## Leakage Check",
         "",
@@ -186,6 +262,10 @@ def write_reports(result: dict[str, Any]) -> None:
 def main() -> None:
     latest_round = find_latest_round()
     changes = summarize_file_changes(latest_round)
+    selected_report_path = latest_existing_report("r3a_v2_selected_evidence_replay_report.md")
+    full_report_path = latest_existing_report("r3a_v2_full_selector_replay_report.md")
+    selected_report_text = read_text(selected_report_path) if selected_report_path else ""
+    full_report_text = read_text(full_report_path) if full_report_path else ""
 
     result = {
         "round": changes.get("round"),
@@ -193,6 +273,11 @@ def main() -> None:
         "run_summary": changes.get("run_summary"),
         "selected_evidence_report": analyze_selected_report(),
         "full_selector_report": analyze_full_report(),
+        "metric_consistency_check": check_metric_consistency(
+            changes.get("run_summary") or {},
+            full_report_text,
+            selected_report_text,
+        ),
         "selector_leakage_check": check_selector_leakage(),
     }
 

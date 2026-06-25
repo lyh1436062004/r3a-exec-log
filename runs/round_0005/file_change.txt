@@ -1,0 +1,10 @@
+M	outputs/r3a_v2_dev_replay/r3a_v2_selected_evidence_replay.jsonl
+M	outputs/r3a_v2_dev_replay/r3a_v2_selected_evidence_replay_report.md
+M	outputs/r3a_v2_dev_replay/r3a_v2_full_selector_replay.jsonl
+M	outputs/r3a_v2_dev_replay/r3a_v2_full_selector_replay_report.md
+M	outputs/r3a_v2_dev_replay/r3a_v2_new_audit_candidates.csv
+M	tools/analyze_round.py
+M	.github/workflows/r3a_round_analyzer.yml
+A	runs/round_0005/run_summary.json
+A	runs/round_0005/file_change.txt
+A	runs/round_0005/diff.txt

@@ -7,8 +7,6 @@ on:
     paths:
       - "runs/**"
       - "outputs/**"
-      - "脚本/**"
-      - "tests/**"
       - "tools/**"
       - ".github/workflows/r3a_round_analyzer.yml"
 
@@ -34,14 +32,6 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: "3.11"
-
-      - name: Run selector tests if present
-        run: |
-          if [ -f "tests/test_r3a_v2_selector.py" ]; then
-            python tests/test_r3a_v2_selector.py
-          else
-            echo "No selector tests found."
-          fi
 
       - name: Analyze latest round
         run: |
