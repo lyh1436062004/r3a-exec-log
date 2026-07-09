@@ -1,0 +1,9 @@
+﻿Changed files:
+- D:\幻觉\指令\重构\oracle_实验协议.md
+
+Summary:
+- Rewrote the Oracle Admission E1 protocol for the current A2/HaluMem project state.
+- Filled baseline paths, support-cache paths, model, prompt, judge, API env, and output directory.
+- Replaced the old 200-sample design with the full Memos pool: 989 medium + 998 long = 1987.
+- Preserved strict retrieved-evidence reporting as the main headroom denominator: 896 strict-supported cases.
+- Updated API call budget, deliverables, leakage checks, and no-retriever/no-store-change constraints.

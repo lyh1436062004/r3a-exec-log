@@ -1,0 +1,472 @@
+﻿git.exe : warning: in the working copy of 'D:\幻觉\指令\重构\oracle_实验协议.md', LF will be replaced by CRLF the next time Git t
+ouches it
+At line:8 char:15
++ ... iffOutput = & git -C $project diff --no-index -- /dev/null $protocol  ...
++                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (warning: in the... Git touches it:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+diff --git "a/D:\\幻觉\\指令\\重构\\oracle_实验协议.md" "b/D:\\幻觉\\指令\\重构\\oracle_实验协议.md"
+new file mode 100644
+index 0000000..224cbb5
+--- /dev/null
++++ "b/D:\\幻觉\\指令\\重构\\oracle_实验协议.md"
+@@ -0,0 +1,457 @@
++# 实验协议：Oracle Admission 翻转实验（E1，Memos 全量版）
++
++> 目的：在 **Memos baseline 已经答错且样本有 gold evidence** 的集合上，测量有多少错误可以仅通过**检索后准入层干预**被矫正。
++>
++> 准入层干预只允许重排、过滤、授权标注；不改 memory store，不重跑 retriever，不加入 raw_memories 之外的新记忆，不修改生成器，不泄漏 gold answer。
++>
++> 本实验是 oracle 上界测量：允许使用 gold evidence 和 HaluMem question_type/gold 标签来构造理想准入决策；正式 A2 方法不可接触这些 oracle 信息。
++
++---
++
++## 0. 本轮固定配置
++
++本协议已按当前项目产物填好原占位项，不再保留待填写字段。
++
++| 项 | 固定值 |
++|---|---|
++| 项目根目录 | `D:\幻觉` |
++| Python | `D:\conda_envs\o1\python.exe` |
++| Medium baseline QA | `D:\幻觉\outputs\baseline_full\memos_medium\memos_medium_qa.jsonl` |
++| Long baseline QA | `D:\幻觉\outputs\baseline_full\memos_long\memos_long_qa.jsonl` |
++| Medium baseline summary | `D:\幻觉\outputs\baseline_full\memos_medium\memos_medium_baseline_summary.md` |
++| Long baseline summary | `D:\幻觉\outputs\baseline_full\memos_long\memos_long_baseline_summary.md` |
++| 支撑判定缓存 | `D:\幻觉\outputs\baseline_wrong_gold_semantic_audit\semantic_gold_evidence_detail.jsonl` |
++| 支撑判定摘要 | `D:\幻觉\outputs\baseline_wrong_gold_semantic_audit\semantic_gold_evidence_summary.json` |
++| 支撑判定报告 | `D:\幻觉\outputs\baseline_wrong_gold_semantic_audit\semantic_gold_evidence_report.md` |
++| 生成器模型 | `deepseek-chat` |
++| 生成温度 | `temperature=0` |
++| 生成 max_tokens | `128`，与 `脚本\2.0-修复版\run_baseline_full.py::call_chat` 保持一致 |
++| 回答 prompt | `D:\幻觉\github\HaluMem\eval\prompts.py` 中的 `PROMPT_MEMOS`，逐字复用 |
++| 裁判模型 | `deepseek-chat` |
++| 裁判 prompt | `D:\幻觉\脚本\2.0-修复版\run_baseline_full.py::build_gold_only_judge_prompt`，逐字复用 |
++| API 环境变量 | `OPENAI_API_KEY`，`OPENAI_BASE_URL=https://api.deepseek.com` |
++| 输出目录 | `D:\幻觉\outputs\e1_memos_full_oracle\` |
++| 随机种子 | `20260709`，仅用于审计抽样和 judge 稳定性重跑 |
++
++说明：本项目 baseline 复现使用的是 gold-only 裁判，而不是论文官方 `evaluation_for_question` 裁判。为了和现有 `baseline_label` 可比，E1 继续使用同一 gold-only 裁判。
++
++---
++
++## 1. 输入数据与样本池
++
++### 1.1 原始 Memos baseline 规模
++
++| 子集 | QA 总数 | baseline correct | hallucination | omission |
++|---|---:|---:|---:|---:|
++| Memos Medium | 3467 | 2270 | 848 | 349 |
++| Memos Long | 3467 | 2258 | 850 | 359 |
++
++### 1.2 E1 全量池
++
++E1 不再抽样 200 条。直接使用 Memos 两个子集里满足以下条件的全量样本：
++
++1. `baseline_label != "correct"`；
++2. `gold_evidence` / `evidence` 非空；
++3. `raw_memories` 已保存，且来自原 baseline QA 时实际返回的 Memos 检索结果。
++
++全量池规模固定为：
++
++| run_id | 子集 | wrong + gold evidence | strict semantic supported | partial/support | strict supported rate |
++|---|---|---:|---:|---:|---:|
++| `memos_medium` | Medium | 989 | 445 | 565 | 44.99% |
++| `memos_long` | Long | 998 | 451 | 564 | 45.19% |
++| **合计** | Medium + Long | **1987** | **896** | **1129** | **45.09%** |
++
++其中：
++
++- `wrong + gold evidence` 是本实验实际运行全集，共 `989 + 998 = 1987` 条。
++- `strict semantic supported` 表示 semantic judge 认定至少一条 `raw_memories` 完整支撑至少一条 gold evidence，共 `445 + 451 = 896` 条。
++- `partial/support` 表示至少 partial 或 supported，共 `565 + 564 = 1129` 条。
++
++后续报告必须同时给出两个分母：
++
++1. **Full-pool 指标**：在全部 1987 条上计算，回答“当前 Memos 错误集合里，准入层最多能救多少”。
++2. **Retrieved-strict 指标**：只在 896 条 strict semantic supported 上计算，回答“证据已经检回但答错时，准入层能救多少”。这是 E1 的主上界指标。
++
++---
++
++## 2. 逐样本字段要求
++
++从 baseline QA 与 semantic support cache 合并生成 `samples_memos_full.jsonl`。每条至少包含：
++
++```text
++case_id
++run_id                         # memos_medium / memos_long
++dataset                        # medium / long
++source_file
++line_no
++qa_key
++uuid
++question_type                  # HaluMem question_type
++question
++gold_answer
++gold_evidence                  # list[str]
++raw_memories                   # baseline 当时保存的 Memos 检索返回
++baseline_answer
++baseline_verdict               # correct / hallucination / omission
++retrieval_stratum              # strict_supported / partial_supported / no_gold_retrieved
++semantic_any_supported
++semantic_any_partial_or_supported
++semantic_any_contradicted
++gold_memory_ids                # strict supported 的 raw memory id，如 m3/m7
++partial_memory_ids             # partially_supported 的 raw memory id
++other_memory_ids
++support_evidence_results       # semantic cache 原始 evidence_results
++```
++
++`case_id` 必须沿用支撑判定缓存中的格式：`memos_medium:<line_no>` 或 `memos_long:<line_no>`。这样可以稳定关联 `semantic_gold_evidence_detail.jsonl` 与原始 QA JSONL。
++
++---
++
++## 3. 样本选择脚本：`01_select_memos_full.py`
++
++输入：
++
++- `outputs/baseline_full/memos_medium/memos_medium_qa.jsonl`
++- `outputs/baseline_full/memos_long/memos_long_qa.jsonl`
++- `outputs/baseline_wrong_gold_semantic_audit/semantic_gold_evidence_detail.jsonl`
++
++步骤：
++
++1. 读取两个 Memos baseline QA 文件。
++2. 保留 `baseline_label != correct` 且 gold evidence 非空的样本。
++3. 按 `run_id + line_no` 合并 semantic support cache。
++4. 从 `evidence_results[*].best_memory_ids` 中构造：
++   - `gold_memory_ids`：status 为 `supported` 的 memory ids；
++   - `partial_memory_ids`：status 为 `partially_supported` 的 memory ids；
++   - `other_memory_ids`：其余 raw memory ids。
++5. 设置 `retrieval_stratum`：
++   - `strict_supported`：`gold_memory_ids` 非空；
++   - `partial_supported`：无 strict，但 `partial_memory_ids` 非空；
++   - `no_gold_retrieved`：两者都为空。
++6. 不抽样，输出全部 1987 条到 `outputs/e1_memos_full_oracle/samples_memos_full.jsonl`。
++7. 输出 `sample_pool_summary.md`，必须复核行数：
++   - `memos_medium = 989`
++   - `memos_long = 998`
++   - `total = 1987`
++   - `strict_supported total = 896`
++   - `partial/support total = 1129`
++
++如果上述计数不匹配，立即停止，不进入生成阶段。
++
++---
++
++## 4. 实验条件（within-subject）
++
++同一样本跑全部条件。唯一变量是传给 `PROMPT_MEMOS` 的 memory context 内容、顺序或标注。
++
++| 条件 | 名称 | 上下文构造 |
++|---|---|---|
++| A0 | replay | 原始 `raw_memories`，原顺序，无标注；用于复现 baseline |
++| A1 | oracle-promote | 保留全部 `raw_memories`，把 `gold_memory_ids` 移到最前；其余记忆原相对顺序不变 |
++| A2 | oracle-filter | 仅保留 `gold_memory_ids`；若无 strict gold memory，则上下文为空并标记 `no_strict_evidence` |
++| A3 | oracle-full | A2 过滤 + 按第 5 节给保留记忆附 oracle license 标注 |
++| A4 | license-only | 原始 `raw_memories` 原顺序不过滤，仅给 `gold_memory_ids` 附 oracle license 标注 |
++
++主实验默认跑 A0-A4 全部 5 个条件。
++
++对于 `retrieval_stratum != strict_supported` 的样本：
++
++- A1 不移动任何记忆，等价于 A0 的 memory 顺序，但仍重新生成一次以保持 within-subject 结构。
++- A2/A3 使用空 memory context，不得把 gold evidence 直接塞入上下文。
++- 这些样本纳入 full-pool 指标，但不纳入 retrieved-strict 主指标。
++
++---
++
++## 5. License 标注规则（A3/A4）
++
++license 只附加在 `gold_memory_ids` 对应的检索记忆上。标注文本必须来自固定模板，严禁包含 gold answer 或 gold evidence 的改写。
++
++| 规则 | license | 固定模板 |
++|---|---|---|
++| `question_type == "Memory Conflict"` | REFUTE | `[证据说明] 该记忆与问题中的某个前提直接矛盾。你被允许且应当依据该记忆指出前提错误，而不是回答"不知道"。` |
++| `question_type == "Dynamic Update"` | SELECT | `[证据说明] 该记忆是关于此事项的最新有效状态，若与其他记忆冲突，以本条为准。` |
++| 记忆或问题含显式条件 cue，如 `if / only when / under / unless / as long as / depends on` | CONDITION | `[证据说明] 该记忆仅在其所述条件下成立，回答时必须显式说明该条件。` |
++| 其余 question_type | ASSERT | 不加标注，等同裸记忆 |
++
++映射函数必须显式实现为：
++
++```python
++def label_to_license(question_type: str, sample: dict, memory: dict) -> str:
++    ...
++```
++
++规则不确定时落到 `ASSERT`，并在 `run_config.yaml` 与 `results_summary.md` 中记录 license 分布。
++
++---
++
++## 6. 泄漏与合规自检
++
++每次构造 A3/A4 context 后必须执行自检：
++
++1. license 标注文本必须完全等于第 5 节固定模板之一。
++2. license 标注文本中不得出现 `gold_answer` 字符串。
++3. license 标注文本中不得出现任一 gold evidence 的连续 8 个以上 token。
++4. `gold_answer` 或 gold evidence 出现在原始 memory 文本中允许，因为那是 baseline 已检索内容；但不得出现在新增标注文本中。
++5. 不调用 Memos search，不修改 Memos memory store，不删除、不更新、不追加任何 memory。
++
++自检失败则该样本该条件不得生成，写入 `leakage_failures.jsonl` 并停止整轮。
++
++---
++
++## 7. 生成与裁判脚本
++
++### 7.1 `02_generate_memos_full.py`
++
++运行：
++
++```powershell
++& "D:\conda_envs\o1\python.exe" "D:\幻觉\脚本\3.0\02_generate_memos_full.py"
++```
++
++生成规模：
++
++```text
++1987 样本 × 5 条件 = 9935 次 deepseek-chat 生成调用
++```
++
++要求：
++
++- 使用 `PROMPT_MEMOS.format(context=context, question=question)`。
++- `temperature=0`，`max_tokens=128`，`timeout=300`，`retries=3`。
++- 所有请求和响应落盘缓存，缓存键为：
++
++```text
++sha256(case_id + condition + hash(context) + model + prompt_template_hash)
++```
++
++- 输出：
++
++```text
++outputs/e1_memos_full_oracle/generations/A0.jsonl
++outputs/e1_memos_full_oracle/generations/A1.jsonl
++outputs/e1_memos_full_oracle/generations/A2.jsonl
++outputs/e1_memos_full_oracle/generations/A3.jsonl
++outputs/e1_memos_full_oracle/generations/A4.jsonl
++```
++
++### 7.2 `03_judge_memos_full.py`
++
++运行：
++
++```powershell
++& "D:\conda_envs\o1\python.exe" "D:\幻觉\脚本\3.0\03_judge_memos_full.py"
++```
++
++裁判规模：
++
++```text
++9935 次 deepseek-chat judge 调用
++```
++
++要求：
++
++- 裁判 prompt 逐字复用 `run_baseline_full.py::build_gold_only_judge_prompt`。
++- 输出 label 只能为 `correct / hallucination / omission`。
++- 随机抽 200 条判定重跑一次，报告 self-agreement；若低于 0.90，停止并人工复核。
++
++---
++
++## 8. 指标与统计脚本：`04_analyze_memos_full.py`
++
++先定义：
++
++```text
++stable_wrong = A0 replay 判定仍为 non-correct 的样本
++retrieved_strict = stable_wrong ∩ retrieval_stratum == strict_supported
++full_pool = stable_wrong 的全部样本
++```
++
++必须报告 A0 复现率：
++
++```text
++A0_replay_noncorrect_rate = |stable_wrong| / 1987
++```
++
++若 A0 replay non-correct rate < 85%，所有翻转率必须标注“replay unstable”。
++
++### 8.1 主指标
++
++对每个条件 X ∈ {A1, A2, A3, A4} 同时报告：
++
++```text
++flip_rate_full_pool(X) = P(judge_label_X == correct | full_pool)
++flip_rate_retrieved_strict(X) = P(judge_label_X == correct | retrieved_strict)
++```
++
++`flip_rate_retrieved_strict(A3)` 是 E1 的主上界指标。
++
++### 8.2 转移矩阵
++
++在 full_pool 与 retrieved_strict 两个分母下分别报告：
++
++```text
++baseline/A0 的 {hallucination, omission}
++    -> X 的 {correct, hallucination, omission}
++```
++
++重点单列：
++
++- `H -> C`：理想纠错；
++- `H -> O`：从幻觉变沉默，次优；
++- `O -> H`：恶化，必须标红；
++- `C_after_A0_replay -> non-C`：replay 波动，不计入 stable-wrong 主指标但要报告。
++
++### 8.3 配对检验与增益分解
++
++报告 McNemar 检验：
++
++- A3 vs A1：授权 + 过滤 + 位置 是否显著优于纯位置；
++- A3 vs A2：license 授权增量；
++- A4 vs A0：纯授权效应。
++
++输出瀑布图数据：
++
++```text
++flip(A1)                 # 位置效应
++flip(A2) - flip(A1)      # 过滤增量
++flip(A3) - flip(A2)      # 授权增量
++flip(A4) - flip(A0)      # 纯授权效应
++```
++
++### 8.4 分层报告
++
++至少按以下字段分层：
++
++- dataset：medium / long
++- question_type
++- retrieval_stratum：strict_supported / partial_supported / no_gold_retrieved
++- baseline_label：hallucination / omission
++- semantic_any_contradicted：true / false
++
++---
++
++## 9. 人工审计脚本：`05_audit_memos_full.py`
++
++从 `retrieved_strict ∩ stable_wrong` 中随机抽 60 条，从 `partial_supported ∩ stable_wrong` 中随机抽 30 条，从 `no_gold_retrieved ∩ stable_wrong` 中随机抽 30 条，共 120 条，导出：
++
++```text
++outputs/e1_memos_full_oracle/audit/audit_samples.csv
++```
++
++字段：
++
++```text
++case_id
++dataset
++question_type
++baseline_label
++retrieval_stratum
++question
++gold_answer
++gold_evidence
++support_memory_texts
++A0_answer
++A0_label
++A3_answer
++A3_label
++human_support_valid
++human_flip_valid
++human_notes
++```
++
++人工审计目标：
++
++1. 支撑判定是否真的成立，尤其排查 Memos 聚合/改写导致的 judge 偏宽。
++2. A3 翻转是否真正基于检索记忆，而不是碰巧答对。
++3. 对 `partial_supported` 样本，判断 partial 是否足以构成实际回答证据。
++
++回收后计算 judge-human agreement，并写入最终报告。
++
++---
++
++## 10. 交付物
++
++```text
++outputs/e1_memos_full_oracle/
++  run_config.yaml
++  sample_pool_summary.md
++  samples_memos_full.jsonl
++  leakage_failures.jsonl
++  generations/
++    A0.jsonl
++    A1.jsonl
++    A2.jsonl
++    A3.jsonl
++    A4.jsonl
++  verdicts/
++    A0.jsonl
++    A1.jsonl
++    A2.jsonl
++    A3.jsonl
++    A4.jsonl
++  results_summary.md
++  transitions_full_pool.csv
++  transitions_retrieved_strict.csv
++  waterfall_full_pool.csv
++  waterfall_retrieved_strict.csv
++  by_dataset.csv
++  by_question_type.csv
++  by_retrieval_stratum.csv
++  by_baseline_label.csv
++  judge_self_agreement.json
++  audit/
++    audit_samples.csv
++    audit_with_human_labels.csv
++    human_agreement.md
++```
++
++---
++
++## 11. 工程要求
++
++- 所有脚本放在 `D:\幻觉\脚本\3.0\`。
++- 所有 prompt 模板放在 `outputs/e1_memos_full_oracle/prompts/`，同时记录原始来源文件和 SHA256。
++- 脚本必须幂等、可断点续跑。
++- 不得重跑 Memos retriever；只能读取 baseline 已保存的 `raw_memories`。
++- 不得修改 memory store 或 retriever。
++- 不得使用 HaluMem 标签作为正式方法特征；标签仅用于本 oracle 上界实验和分层分析。
++- 全程记录 token 用量、API 调用次数、失败重试次数和成本估计。
++- 生成前打印预算 sanity check：
++
++```text
++generation calls: 9935
++judge calls: 9935
++judge stability reruns: 200
++total API calls: 20070
++estimated input tokens if avg context is 4k: about 80M tokens
++```
++
++若预算确认未通过，不进入生成阶段。
++
++---
++
++## 附录 P-J1：语义支撑判定 prompt 来源
++
++本轮默认不重跑支撑判定，直接复用：
++
++```text
++D:\幻觉\outputs\baseline_wrong_gold_semantic_audit\semantic_gold_evidence_detail.jsonl
++```
++
++该缓存由：
++
++```text
++D:\幻觉\脚本\3.0\audit_gold_evidence_semantic_retrieval.py
++```
++
++生成，模型为 `deepseek-chat`，温度为 `0`。判定状态包括：
++
++```text
++supported
++partially_supported
++not_supported
++contradicted
++```
++
++如缓存缺失或行数不匹配，只允许补跑缺失样本的支撑判定，不得改变原始 baseline QA、retriever 或 memory store。
+
