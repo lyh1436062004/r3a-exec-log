@@ -1,0 +1,5 @@
+﻿pool,component,value
+retrieved_strict,position_A1,0.10869565217391304
+retrieved_strict,filter_A2_minus_A1,0.2959866220735786
+retrieved_strict,license_A3_minus_A2,0.04347826086956519
+retrieved_strict,license_only_A4_minus_A0,0.09197324414715718

@@ -1,0 +1,5 @@
+﻿pool,component,value
+full_pool,position_A1,0.04577240940877304
+full_pool,filter_A2_minus_A1,0.11061665607120154
+full_pool,license_A3_minus_A2,0.01652892561983471
+full_pool,license_only_A4_minus_A0,0.03814367450731087

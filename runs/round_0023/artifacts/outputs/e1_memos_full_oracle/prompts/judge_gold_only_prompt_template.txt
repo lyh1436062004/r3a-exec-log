@@ -1,0 +1,17 @@
+You are judging a memory QA answer.
+
+Use the gold answer as the reference. Classify the model answer into exactly one label:
+- correct: semantically matches the gold answer.
+- omission: says unknown/insufficient/no answer when the gold answer is known, or fails to answer the asked fact.
+- hallucination: gives a concrete answer that contradicts or is unsupported by the gold answer.
+
+Return only JSON with keys: label, rationale.
+
+Question:
+{question}
+
+Gold answer:
+{gold_answer}
+
+Model answer:
+{model_answer}

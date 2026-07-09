@@ -1,0 +1,139 @@
+{
+  "sample_count": 1987,
+  "missing_verdicts": {
+    "A0": 0,
+    "A1": 0,
+    "A2": 0,
+    "A3": 0,
+    "A4": 0
+  },
+  "a0_judged": 1987,
+  "stable_wrong": 1573,
+  "retrieved_strict": 598,
+  "a0_replay_noncorrect_rate": 0.7916456970306995,
+  "replay_unstable": true,
+  "flip_rates": [
+    {
+      "pool": "full_pool",
+      "condition": "A1",
+      "n": 1573,
+      "correct": 72,
+      "flip_rate": 0.04577240940877304,
+      "wilson_low": 0.03650450005427505,
+      "wilson_high": 0.05725347288186493
+    },
+    {
+      "pool": "full_pool",
+      "condition": "A2",
+      "n": 1573,
+      "correct": 246,
+      "flip_rate": 0.15638906547997458,
+      "wilson_low": 0.13927877227931693,
+      "wilson_high": 0.175173550144733
+    },
+    {
+      "pool": "full_pool",
+      "condition": "A3",
+      "n": 1573,
+      "correct": 272,
+      "flip_rate": 0.1729179910998093,
+      "wilson_low": 0.15503194000966747,
+      "wilson_high": 0.1923976990045299
+    },
+    {
+      "pool": "full_pool",
+      "condition": "A4",
+      "n": 1573,
+      "correct": 60,
+      "flip_rate": 0.03814367450731087,
+      "wilson_low": 0.029748011965154288,
+      "wilson_high": 0.04878966100630224
+    },
+    {
+      "pool": "retrieved_strict",
+      "condition": "A1",
+      "n": 598,
+      "correct": 65,
+      "flip_rate": 0.10869565217391304,
+      "wilson_low": 0.08620101352437111,
+      "wilson_high": 0.1361855583195758
+    },
+    {
+      "pool": "retrieved_strict",
+      "condition": "A2",
+      "n": 598,
+      "correct": 242,
+      "flip_rate": 0.40468227424749165,
+      "wilson_low": 0.3660721882032514,
+      "wilson_high": 0.4445091562202742
+    },
+    {
+      "pool": "retrieved_strict",
+      "condition": "A3",
+      "n": 598,
+      "correct": 268,
+      "flip_rate": 0.44816053511705684,
+      "wilson_low": 0.4087589739115301,
+      "wilson_high": 0.48822386252933464
+    },
+    {
+      "pool": "retrieved_strict",
+      "condition": "A4",
+      "n": 598,
+      "correct": 55,
+      "flip_rate": 0.09197324414715718,
+      "wilson_low": 0.07134314737012139,
+      "wilson_high": 0.11781208139023351
+    }
+  ],
+  "mcnemar": [
+    {
+      "pool": "full_pool",
+      "comparison": "A3_vs_A1",
+      "n": 1573,
+      "b": 226,
+      "c": 26,
+      "p_value": 5.556201295407909e-41
+    },
+    {
+      "pool": "full_pool",
+      "comparison": "A3_vs_A2",
+      "n": 1573,
+      "b": 38,
+      "c": 12,
+      "p_value": 0.00030586400160359517
+    },
+    {
+      "pool": "full_pool",
+      "comparison": "A4_vs_A0",
+      "n": 1573,
+      "b": 60,
+      "c": 0,
+      "p_value": 1.734723475976807e-18
+    },
+    {
+      "pool": "retrieved_strict",
+      "comparison": "A3_vs_A1",
+      "n": 598,
+      "b": 222,
+      "c": 19,
+      "p_value": 4.447751416480466e-45
+    },
+    {
+      "pool": "retrieved_strict",
+      "comparison": "A3_vs_A2",
+      "n": 598,
+      "b": 38,
+      "c": 12,
+      "p_value": 0.00030586400160359517
+    },
+    {
+      "pool": "retrieved_strict",
+      "comparison": "A4_vs_A0",
+      "n": 598,
+      "b": 55,
+      "c": 0,
+      "p_value": 5.551115123125783e-17
+    }
+  ]
+}

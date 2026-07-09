@@ -1,0 +1,19 @@
+﻿Changed files:
+- D:\幻觉\脚本\3.0\e1_memos_oracle_common.py
+- D:\幻觉\脚本\3.0\01_select_memos_full.py
+- D:\幻觉\脚本\3.0\02_generate_memos_full.py
+- D:\幻觉\脚本\3.0\03_judge_memos_full.py
+- D:\幻觉\脚本\3.0\04_analyze_memos_full.py
+- D:\幻觉\脚本\3.0\05_audit_memos_full.py
+
+Output directory:
+- D:\幻觉\outputs\e1_memos_full_oracle
+
+Summary:
+- Built the Memos full E1 sample pool: 989 medium + 998 long = 1987.
+- Ran A0-A4 generation for all 1987 cases, with 1987 successful cases per condition.
+- Ran gold-only judge for all A0-A4 outputs, with 1987 successful verdicts per condition.
+- Judge self-agreement: 199/200 = 0.995.
+- A0 replay non-correct rate: 79.16%, below the 85% protocol threshold; results are marked replay_unstable.
+- Main retrieved-strict A3 flip rate: 268/598 = 44.82%.
+- Human audit files were exported; human agreement is pending manual labels.

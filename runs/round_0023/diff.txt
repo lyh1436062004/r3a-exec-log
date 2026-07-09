@@ -1,0 +1,1440 @@
+﻿# Added E1 Memos full oracle scripts
+
+
+*** Add File: 脚本\3.0\e1_memos_oracle_common.py
++from __future__ import annotations
++
++import csv
++import hashlib
++import json
++import os
++import random
++import re
++import sys
++import time
++from collections import Counter
++from pathlib import Path
++from threading import Lock
++from typing import Any
++
++from dotenv import load_dotenv
++from openai import OpenAI
++
++
++ROOT = Path(__file__).resolve().parents[2]
++HALUMEM_EVAL = ROOT / "github" / "HaluMem" / "eval"
++ENV_PATH = HALUMEM_EVAL / ".env"
++OUT_DIR = ROOT / "outputs" / "e1_memos_full_oracle"
++
++MEDIUM_QA = ROOT / "outputs" / "baseline_full" / "memos_medium" / "memos_medium_qa.jsonl"
++LONG_QA = ROOT / "outputs" / "baseline_full" / "memos_long" / "memos_long_qa.jsonl"
++SEMANTIC_DETAIL = (
++    ROOT
++    / "outputs"
++    / "baseline_wrong_gold_semantic_audit"
++    / "semantic_gold_evidence_detail.jsonl"
++)
++
++MODEL = "deepseek-chat"
++TEMPERATURE = 0
++GEN_MAX_TOKENS = 128
++JUDGE_MAX_TOKENS = 256
++TIMEOUT = 300
++RETRIES = 3
++SEED = 20260709
++CONDITIONS = ["A0", "A1", "A2", "A3", "A4"]
++
++EXPECTED_COUNTS = {
++    "memos_medium": 989,
++    "memos_long": 998,
++    "total": 1987,
++    "strict_supported": 896,
++    "partial_or_supported": 1129,
++}
++
++LICENSE_TEMPLATES = {
++    "REFUTE": '[证据说明] 该记忆与问题中的某个前提直接矛盾。你被允许且应当依据该记忆指出前提错误，而不是回答"不知道"。',
++    "SELECT": "[证据说明] 该记忆是关于此事项的最新有效状态，若与其他记忆冲突，以本条为准。",
++    "CONDITION": "[证据说明] 该记忆仅在其所述条件下成立，回答时必须显式说明该条件。",
++}
++
++TOKEN_RE = re.compile(r"[A-Za-z0-9]+")
++CONDITION_CUE_RE = re.compile(
++    r"\b(if|only when|under|unless|as long as|depends on|provided that|in case of)\b",
++    re.IGNORECASE,
++)
++
++sys.path.insert(0, str(HALUMEM_EVAL))
++from prompts import PROMPT_MEMOS  # type: ignore  # noqa: E402
++
++
++def load_env() -> None:
++    if ENV_PATH.exists():
++        load_dotenv(ENV_PATH, override=True)
++    if not os.getenv("OPENAI_API_KEY") and os.getenv("DEEPSEEK_API_KEY"):
++        os.environ["OPENAI_API_KEY"] = os.environ["DEEPSEEK_API_KEY"]
++    os.environ.setdefault("OPENAI_BASE_URL", os.getenv("DEEPSEEK_BASE_URL", "https://api.deepseek.com"))
++
++
++def make_client() -> OpenAI:
++    load_env()
++    api_key = os.getenv("OPENAI_API_KEY")
++    if not api_key:
++        raise RuntimeError("OPENAI_API_KEY is not set")
++    return OpenAI(api_key=api_key, base_url=os.getenv("OPENAI_BASE_URL", "https://api.deepseek.com"))
++
++
++def sha256_text(text: str) -> str:
++    return hashlib.sha256(text.encode("utf-8")).hexdigest()
++
++
++def read_jsonl(path: Path) -> list[dict[str, Any]]:
++    rows: list[dict[str, Any]] = []
++    if not path.exists():
++        return rows
++    with path.open("r", encoding="utf-8") as f:
++        for line in f:
++            if line.strip():
++                rows.append(json.loads(line))
++    return rows
++
++
++def append_jsonl(path: Path, row: dict[str, Any], lock: Lock | None = None) -> None:
++    path.parent.mkdir(parents=True, exist_ok=True)
++    line = json.dumps(row, ensure_ascii=False) + "\n"
++    if lock:
++        with lock:
++            with path.open("a", encoding="utf-8") as f:
++                f.write(line)
++                f.flush()
++    else:
++        with path.open("a", encoding="utf-8") as f:
++            f.write(line)
++
++
++def write_json(path: Path, data: Any) -> None:
++    path.parent.mkdir(parents=True, exist_ok=True)
++    path.write_text(json.dumps(data, ensure_ascii=False, indent=2), encoding="utf-8")
++
++
++def write_csv(path: Path, rows: list[dict[str, Any]], fieldnames: list[str]) -> None:
++    path.parent.mkdir(parents=True, exist_ok=True)
++    with path.open("w", encoding="utf-8-sig", newline="") as f:
++        writer = csv.DictWriter(f, fieldnames=fieldnames)
++        writer.writeheader()
++        for row in rows:
++            writer.writerow({key: row.get(key, "") for key in fieldnames})
++
++
++def evidence_texts(record: dict[str, Any]) -> list[str]:
++    value = record.get("evidence")
++    if value is None:
++        value = record.get("gold_evidence")
++    if value is None:
++        return []
++    if isinstance(value, str):
++        return [value] if value.strip() else []
++    if isinstance(value, list):
++        return [str(item) for item in value if str(item).strip()]
++    return [str(value)] if str(value).strip() else []
++
++
++def memory_text(item: Any) -> str:
++    if item is None:
++        return ""
++    if isinstance(item, str):
++        return item.strip()
++    if not isinstance(item, dict):
++        return str(item).strip()
++
++    for key in ("memory", "memory_value", "content", "text"):
++        value = item.get(key)
++        if isinstance(value, str) and value.strip():
++            return value.strip()
++
++    preference = item.get("preference")
++    reasoning = item.get("reasoning")
++    if isinstance(preference, str) and preference.strip():
++        if isinstance(reasoning, str) and reasoning.strip():
++            return f"Preference: {preference.strip()}\nReasoning: {reasoning.strip()}"
++        return f"Preference: {preference.strip()}"
++
++    value = item.get("memory_key")
++    if isinstance(value, str) and value.strip():
++        return value.strip()
++
++    metadata = item.get("metadata")
++    if isinstance(metadata, dict):
++        return memory_text(metadata)
++    return ""
++
++
++def raw_id_to_index(memory_id: str) -> int | None:
++    if not isinstance(memory_id, str) or not memory_id.startswith("m"):
++        return None
++    suffix = memory_id[1:]
++    if not suffix.isdigit():
++        return None
++    index = int(suffix) - 1
++    return index if index >= 0 else None
++
++
++def ids_for_raw(raw_memories: list[Any]) -> list[str]:
++    return [f"m{idx}" for idx in range(1, len(raw_memories) + 1)]
++
++
++def unique_ordered(values: list[str]) -> list[str]:
++    seen: set[str] = set()
++    out: list[str] = []
++    for value in values:
++        if value not in seen:
++            seen.add(value)
++            out.append(value)
++    return out
++
++
++def label_to_license(question_type: str, sample: dict[str, Any], memory: dict[str, Any]) -> str:
++    text = f"{sample.get('question', '')}\n{memory_text(memory)}"
++    if CONDITION_CUE_RE.search(text):
++        return "CONDITION"
++    if question_type == "Memory Conflict":
++        return "REFUTE"
++    if question_type == "Dynamic Update":
++        return "SELECT"
++    return "ASSERT"
++
++
++def license_text(license_name: str) -> str:
++    return LICENSE_TEMPLATES.get(license_name, "")
++
++
++def token_list(text: str) -> list[str]:
++    return TOKEN_RE.findall(str(text or "").lower())
++
++
++def has_long_evidence_ngram(label: str, evidence: str, n: int = 8) -> bool:
++    label_tokens = token_list(label)
++    evidence_tokens = token_list(evidence)
++    if len(evidence_tokens) < n or len(label_tokens) < n:
++        return False
++    label_ngrams = {tuple(label_tokens[i : i + n]) for i in range(0, len(label_tokens) - n + 1)}
++    return any(tuple(evidence_tokens[i : i + n]) in label_ngrams for i in range(0, len(evidence_tokens) - n + 1))
++
++
++def check_license_leakage(sample: dict[str, Any], annotations: list[str]) -> list[str]:
++    errors: list[str] = []
++    fixed = set(LICENSE_TEMPLATES.values())
++    gold_answer = str(sample.get("gold_answer") or "").strip()
++    norm_gold = "".join(gold_answer.lower().split())
++    for label in annotations:
++        if label not in fixed:
++            errors.append("license_text_not_fixed_template")
++        if gold_answer and gold_answer in label:
++            errors.append("gold_answer_exact_in_license")
++        if norm_gold and norm_gold in "".join(label.lower().split()):
++            errors.append("gold_answer_normalized_in_license")
++        for evidence in sample.get("gold_evidence") or []:
++            if has_long_evidence_ngram(label, str(evidence)):
++                errors.append("gold_evidence_8gram_in_license")
++    return sorted(set(errors))
++
++
++def extract_note_block(context: str) -> str:
++    marker = "\n# Note:"
++    if marker not in context:
++        return ""
++    return context[context.index(marker) :].strip()
++
++
++def build_memory_sequence(sample: dict[str, Any], condition: str) -> list[tuple[str, Any, str]]:
++    raw_memories = list(sample.get("raw_memories") or [])
++    all_ids = ids_for_raw(raw_memories)
++    gold_ids = [mid for mid in sample.get("gold_memory_ids") or [] if mid in all_ids]
++
++    if condition == "A0":
++        order = all_ids
++    elif condition == "A1":
++        order = unique_ordered(gold_ids + [mid for mid in all_ids if mid not in gold_ids])
++    elif condition == "A2":
++        order = gold_ids
++    elif condition == "A3":
++        order = gold_ids
++    elif condition == "A4":
++        order = all_ids
++    else:
++        raise ValueError(f"Unknown condition: {condition}")
++
++    rows: list[tuple[str, Any, str]] = []
++    for memory_id in order:
++        index = raw_id_to_index(memory_id)
++        if index is None or index >= len(raw_memories):
++            continue
++        memory = raw_memories[index]
++        license_name = "ASSERT"
++        if condition in {"A3", "A4"} and memory_id in gold_ids:
++            license_name = label_to_license(str(sample.get("question_type") or ""), sample, memory)
++        rows.append((memory_id, memory, license_name))
++    return rows
++
++
++def build_context(sample: dict[str, Any], condition: str) -> tuple[str, dict[str, Any]]:
++    rows = build_memory_sequence(sample, condition)
++    annotations: list[str] = []
++    license_counter: Counter[str] = Counter()
++    lines: list[str] = []
++
++    for _memory_id, memory, license_name in rows:
++        text = memory_text(memory)
++        if not text:
++            continue
++        license_counter[license_name] += 1
++        label = license_text(license_name)
++        if label:
++            annotations.append(label)
++            lines.append(f"{label}\n{text}")
++        else:
++            lines.append(text)
++
++    leakage = check_license_leakage(sample, annotations)
++    if leakage:
++        return "", {"leakage_errors": leakage, "license_counts": dict(license_counter)}
++
++    user_name = sample.get("user_name") or sample.get("uuid") or "unknown_user"
++    if lines:
++        context = f"Memories for user {user_name}:\n\n    " + "\n".join(lines)
++    else:
++        context = f"Memories for user {user_name}:\n\n    No retrieved memories."
++
++    note = str(sample.get("memos_note") or "")
++    if note and condition in {"A0", "A1", "A4"}:
++        context = f"{context}\n\n{note}"
++
++    meta = {
++        "n_context_memories": len(lines),
++        "license_counts": dict(license_counter),
++        "context_hash": sha256_text(context),
++        "leakage_errors": [],
++    }
++    return context, meta
++
++
++def build_answer_prompt(context: str, question: str) -> str:
++    return PROMPT_MEMOS.format(context=context, question=question)
++
++
++def build_gold_only_judge_prompt(record: dict[str, str]) -> str:
++    return f"""
++You are judging a memory QA answer.
++
++Use the gold answer as the reference. Classify the model answer into exactly one label:
++- correct: semantically matches the gold answer.
++- omission: says unknown/insufficient/no answer when the gold answer is known, or fails to answer the asked fact.
++- hallucination: gives a concrete answer that contradicts or is unsupported by the gold answer.
++
++Return only JSON with keys: label, rationale.
++
++Question:
++{record["question"]}
++
++Gold answer:
++{record["gold_answer"]}
++
++Model answer:
++{record["model_answer"]}
++""".strip()
++
++
++def parse_json_object(content: str) -> dict[str, Any]:
++    text = (content or "").strip()
++    start = text.find("{")
++    end = text.rfind("}")
++    if start >= 0 and end >= start:
++        text = text[start : end + 1]
++    return json.loads(text)
++
++
++def retry_call(label: str, fn, retries: int = RETRIES, sleep_base: float = 2.0) -> Any:
++    last_error: Exception | None = None
++    for attempt in range(1, retries + 1):
++        try:
++            return fn()
++        except Exception as exc:  # noqa: BLE001
++            last_error = exc
++            if attempt < retries:
++                time.sleep(min(sleep_base * attempt, 30.0))
++    raise RuntimeError(f"{label} failed after {retries} retries: {last_error}")
++
++
++def call_chat(client: OpenAI, prompt: str) -> tuple[str, dict[str, Any]]:
++    started = time.time()
++
++    def _call() -> Any:
++        return client.chat.completions.create(
++            model=MODEL,
++            messages=[{"role": "user", "content": prompt}],
++            temperature=TEMPERATURE,
++            max_tokens=GEN_MAX_TOKENS,
++            timeout=TIMEOUT,
++        )
++
++    response = retry_call("generation", _call)
++    usage = response.usage.model_dump() if getattr(response, "usage", None) else {}
++    return response.choices[0].message.content or "", {
++        "latency_ms": round((time.time() - started) * 1000, 2),
++        "usage": usage,
++    }
++
++
++def call_judge(client: OpenAI, question: str, gold_answer: str, model_answer: str) -> tuple[dict[str, str], dict[str, Any]]:
++    prompt = build_gold_only_judge_prompt(
++        {"question": question, "gold_answer": gold_answer, "model_answer": model_answer}
++    )
++    started = time.time()
++
++    def _call() -> Any:
++        return client.chat.completions.create(
++            model=MODEL,
++            messages=[{"role": "user", "content": prompt}],
++            response_format={"type": "json_object"},
++            temperature=TEMPERATURE,
++            max_tokens=JUDGE_MAX_TOKENS,
++            timeout=TIMEOUT,
++        )
++
++    response = retry_call("judge", _call)
++    parsed = parse_json_object(response.choices[0].message.content or "{}")
++    label = str(parsed.get("label", "")).strip().lower()
++    if label == "incorrect":
++        empty_markers = ("unknown", "not enough", "insufficient", "cannot answer", "not provided", "no answer")
++        answer_l = str(model_answer or "").strip().lower()
++        label = "omission" if not answer_l or any(marker in answer_l for marker in empty_markers) else "hallucination"
++    if label not in {"correct", "hallucination", "omission"}:
++        raise ValueError(f"Bad judge label: {label}")
++    usage = response.usage.model_dump() if getattr(response, "usage", None) else {}
++    return {"label": label, "rationale": str(parsed.get("rationale", ""))}, {
++        "latency_ms": round((time.time() - started) * 1000, 2),
++        "usage": usage,
++        "judge_prompt_hash": sha256_text(prompt),
++    }
++
++
++def load_samples() -> list[dict[str, Any]]:
++    return read_jsonl(OUT_DIR / "samples_memos_full.jsonl")
++
++
++def sample_by_case(samples: list[dict[str, Any]]) -> dict[str, dict[str, Any]]:
++    return {str(row["case_id"]): row for row in samples}
++
++
++def completed_by_cache(path: Path) -> dict[str, dict[str, Any]]:
++    rows: dict[str, dict[str, Any]] = {}
++    for row in read_jsonl(path):
++        if row.get("ok") and row.get("cache_key"):
++            rows[str(row["cache_key"])] = row
++    return rows
++
++
++def completed_by_case_condition(path: Path) -> dict[tuple[str, str], dict[str, Any]]:
++    rows: dict[tuple[str, str], dict[str, Any]] = {}
++    for row in read_jsonl(path):
++        if row.get("ok"):
++            rows[(str(row.get("case_id")), str(row.get("condition")))] = row
++    return rows
++
++
++def deterministic_sample(rows: list[Any], n: int, seed: int = SEED) -> list[Any]:
++    rng = random.Random(seed)
++    rows = list(rows)
++    rng.shuffle(rows)
++    return rows[: min(n, len(rows))]
++
++
++def prompt_hashes() -> dict[str, str]:
++    return {
++        "answer_prompt_hash": sha256_text(PROMPT_MEMOS),
++        "judge_prompt_template_hash": sha256_text(
++            build_gold_only_judge_prompt({"question": "{question}", "gold_answer": "{gold_answer}", "model_answer": "{model_answer}"})
++        ),
++        "license_templates_hash": sha256_text(json.dumps(LICENSE_TEMPLATES, ensure_ascii=False, sort_keys=True)),
++    }
+
+*** Add File: 脚本\3.0\01_select_memos_full.py
++from __future__ import annotations
++
++import json
++from collections import Counter
++from pathlib import Path
++from typing import Any
++
++from e1_memos_oracle_common import (
++    CONDITIONS,
++    EXPECTED_COUNTS,
++    LICENSE_TEMPLATES,
++    LONG_QA,
++    MEDIUM_QA,
++    MODEL,
++    OUT_DIR,
++    PROMPT_MEMOS,
++    ROOT,
++    SEED,
++    SEMANTIC_DETAIL,
++    build_gold_only_judge_prompt,
++    evidence_texts,
++    extract_note_block,
++    ids_for_raw,
++    prompt_hashes,
++    read_jsonl,
++    sha256_text,
++    write_json,
++)
++
++
++RUNS = {
++    "memos_medium": ("medium", MEDIUM_QA),
++    "memos_long": ("long", LONG_QA),
++}
++
++
++def load_semantic_cache() -> dict[str, dict[str, Any]]:
++    rows = {}
++    for row in read_jsonl(SEMANTIC_DETAIL):
++        if row.get("run_id") in RUNS:
++            rows[str(row["case_id"])] = row
++    return rows
++
++
++def collect_memory_ids(semantic: dict[str, Any], raw_count: int) -> tuple[list[str], list[str], list[str]]:
++    all_ids = set(ids_for_raw([None] * raw_count))
++    gold_ids: list[str] = []
++    partial_ids: list[str] = []
++    for result in semantic.get("evidence_results") or []:
++        status = result.get("status")
++        best_ids = [mid for mid in result.get("best_memory_ids") or [] if mid in all_ids]
++        if status == "supported":
++            gold_ids.extend(best_ids)
++        elif status == "partially_supported":
++            partial_ids.extend(best_ids)
++
++    def unique(values: list[str]) -> list[str]:
++        out = []
++        seen = set()
++        for value in values:
++            if value not in seen:
++                seen.add(value)
++                out.append(value)
++        return out
++
++    gold = unique(gold_ids)
++    partial = [mid for mid in unique(partial_ids) if mid not in set(gold)]
++    other = [mid for mid in ids_for_raw([None] * raw_count) if mid not in set(gold) and mid not in set(partial)]
++    return gold, partial, other
++
++
++def build_samples() -> list[dict[str, Any]]:
++    semantic_cache = load_semantic_cache()
++    samples: list[dict[str, Any]] = []
++    missing_semantic: list[str] = []
++
++    for run_id, (dataset, path) in RUNS.items():
++        with path.open("r", encoding="utf-8") as f:
++            for line_no, line in enumerate(f, 1):
++                if not line.strip():
++                    continue
++                record = json.loads(line)
++                if record.get("baseline_label") == "correct":
++                    continue
++                evidence = evidence_texts(record)
++                if not evidence:
++                    continue
++                case_id = f"{run_id}:{line_no}"
++                semantic = semantic_cache.get(case_id)
++                if semantic is None:
++                    missing_semantic.append(case_id)
++                    continue
++                raw_memories = record.get("raw_memories") or []
++                gold_ids, partial_ids, other_ids = collect_memory_ids(semantic, len(raw_memories))
++                if gold_ids:
++                    stratum = "strict_supported"
++                elif partial_ids:
++                    stratum = "partial_supported"
++                else:
++                    stratum = "no_gold_retrieved"
++
++                samples.append(
++                    {
++                        "case_id": case_id,
++                        "run_id": run_id,
++                        "dataset": dataset,
++                        "source_file": str(path.relative_to(ROOT)),
++                        "line_no": line_no,
++                        "qa_key": record.get("qa_key") or "",
++                        "uuid": record.get("uuid") or "",
++                        "user_name": record.get("user_name") or "",
++                        "question_type": record.get("question_type") or "UNKNOWN",
++                        "question": record.get("question") or "",
++                        "gold_answer": record.get("gold_answer") or "",
++                        "gold_evidence": evidence,
++                        "raw_memories": raw_memories,
++                        "baseline_answer": record.get("baseline_response") or "",
++                        "baseline_response": record.get("baseline_response") or "",
++                        "baseline_verdict": record.get("baseline_label") or "",
++                        "baseline_label": record.get("baseline_label") or "",
++                        "context_str_full": record.get("context_str_full") or "",
++                        "memos_note": extract_note_block(record.get("context_str_full") or ""),
++                        "retrieval_stratum": stratum,
++                        "semantic_any_supported": bool(semantic.get("semantic_any_supported")),
++                        "semantic_any_partial_or_supported": bool(semantic.get("semantic_any_partial_or_supported")),
++                        "semantic_any_contradicted": bool(semantic.get("semantic_any_contradicted")),
++                        "gold_memory_ids": gold_ids,
++                        "partial_memory_ids": partial_ids,
++                        "other_memory_ids": other_ids,
++                        "support_evidence_results": semantic.get("evidence_results") or [],
++                        "case_rationale": semantic.get("case_rationale") or "",
++                    }
++                )
++
++    if missing_semantic:
++        raise RuntimeError(f"Missing semantic cache rows: {len(missing_semantic)}; first={missing_semantic[:5]}")
++    return samples
++
++
++def write_prompt_assets() -> None:
++    prompt_dir = OUT_DIR / "prompts"
++    prompt_dir.mkdir(parents=True, exist_ok=True)
++    (prompt_dir / "PROMPT_MEMOS.txt").write_text(PROMPT_MEMOS, encoding="utf-8")
++    (prompt_dir / "judge_gold_only_prompt_template.txt").write_text(
++        build_gold_only_judge_prompt(
++            {"question": "{question}", "gold_answer": "{gold_answer}", "model_answer": "{model_answer}"}
++        ),
++        encoding="utf-8",
++    )
++    write_json(prompt_dir / "license_templates.json", LICENSE_TEMPLATES)
++
++
++def write_run_config(samples: list[dict[str, Any]]) -> None:
++    hashes = prompt_hashes()
++    lines = [
++        "experiment: e1_memos_full_oracle",
++        f"root: {ROOT}",
++        f"model: {MODEL}",
++        "temperature: 0",
++        "generation_max_tokens: 128",
++        "judge_max_tokens: 256",
++        f"seed: {SEED}",
++        f"conditions: {', '.join(CONDITIONS)}",
++        f"medium_qa: {MEDIUM_QA}",
++        f"long_qa: {LONG_QA}",
++        f"semantic_detail: {SEMANTIC_DETAIL}",
++        f"sample_count: {len(samples)}",
++        f"answer_prompt_hash: {hashes['answer_prompt_hash']}",
++        f"judge_prompt_template_hash: {hashes['judge_prompt_template_hash']}",
++        f"license_templates_hash: {hashes['license_templates_hash']}",
++        "no_retriever_or_memory_store_changes: true",
++    ]
++    OUT_DIR.mkdir(parents=True, exist_ok=True)
++    (OUT_DIR / "run_config.yaml").write_text("\n".join(lines) + "\n", encoding="utf-8")
++
++
++def write_summary(samples: list[dict[str, Any]]) -> None:
++    by_run = Counter(row["run_id"] for row in samples)
++    by_stratum = Counter(row["retrieval_stratum"] for row in samples)
++    partial_or_supported = by_stratum["strict_supported"] + by_stratum["partial_supported"]
++    lines = [
++        "# E1 Memos Full Sample Pool",
++        "",
++        "| metric | value |",
++        "|---|---:|",
++        f"| memos_medium wrong+evidence | {by_run['memos_medium']} |",
++        f"| memos_long wrong+evidence | {by_run['memos_long']} |",
++        f"| total wrong+evidence | {len(samples)} |",
++        f"| strict_supported | {by_stratum['strict_supported']} |",
++        f"| partial_supported | {by_stratum['partial_supported']} |",
++        f"| no_gold_retrieved | {by_stratum['no_gold_retrieved']} |",
++        f"| partial_or_supported | {partial_or_supported} |",
++        "",
++        "## By Dataset And Stratum",
++        "",
++        "| run_id | strict_supported | partial_supported | no_gold_retrieved | total |",
++        "|---|---:|---:|---:|---:|",
++    ]
++    for run_id in ("memos_medium", "memos_long"):
++        rows = [row for row in samples if row["run_id"] == run_id]
++        counts = Counter(row["retrieval_stratum"] for row in rows)
++        lines.append(
++            f"| {run_id} | {counts['strict_supported']} | {counts['partial_supported']} | {counts['no_gold_retrieved']} | {len(rows)} |"
++        )
++    (OUT_DIR / "sample_pool_summary.md").write_text("\n".join(lines) + "\n", encoding="utf-8")
++
++
++def validate_counts(samples: list[dict[str, Any]]) -> None:
++    by_run = Counter(row["run_id"] for row in samples)
++    by_stratum = Counter(row["retrieval_stratum"] for row in samples)
++    partial_or_supported = by_stratum["strict_supported"] + by_stratum["partial_supported"]
++    checks = {
++        "memos_medium": by_run["memos_medium"],
++        "memos_long": by_run["memos_long"],
++        "total": len(samples),
++        "strict_supported": by_stratum["strict_supported"],
++        "partial_or_supported": partial_or_supported,
++    }
++    mismatches = {key: (actual, EXPECTED_COUNTS[key]) for key, actual in checks.items() if actual != EXPECTED_COUNTS[key]}
++    if mismatches:
++        raise RuntimeError(f"Sample count mismatch: {mismatches}")
++
++
++def main() -> None:
++    samples = build_samples()
++    validate_counts(samples)
++    OUT_DIR.mkdir(parents=True, exist_ok=True)
++    with (OUT_DIR / "samples_memos_full.jsonl").open("w", encoding="utf-8") as f:
++        for row in samples:
++            f.write(json.dumps(row, ensure_ascii=False) + "\n")
++    (OUT_DIR / "leakage_failures.jsonl").write_text("", encoding="utf-8")
++    write_prompt_assets()
++    write_run_config(samples)
++    write_summary(samples)
++    print(f"wrote {len(samples)} samples to {OUT_DIR / 'samples_memos_full.jsonl'}")
++
++
++if __name__ == "__main__":
++    main()
+
+*** Add File: 脚本\3.0\02_generate_memos_full.py
++from __future__ import annotations
++
++import argparse
++import json
++import time
++from concurrent.futures import ThreadPoolExecutor, as_completed
++from pathlib import Path
++from threading import Lock
++from typing import Any
++
++from e1_memos_oracle_common import (
++    CONDITIONS,
++    GEN_MAX_TOKENS,
++    MODEL,
++    OUT_DIR,
++    PROMPT_MEMOS,
++    TEMPERATURE,
++    append_jsonl,
++    build_answer_prompt,
++    build_context,
++    call_chat,
++    completed_by_cache,
++    load_samples,
++    make_client,
++    prompt_hashes,
++    sha256_text,
++)
++
++
++def parse_args() -> argparse.Namespace:
++    parser = argparse.ArgumentParser()
++    parser.add_argument("--conditions", default=",".join(CONDITIONS))
++    parser.add_argument("--limit", type=int, default=0)
++    parser.add_argument("--workers", type=int, default=6)
++    parser.add_argument("--yes", action="store_true")
++    parser.add_argument("--dry-run", action="store_true")
++    return parser.parse_args()
++
++
++def build_task(sample: dict[str, Any], condition: str) -> dict[str, Any]:
++    context, meta = build_context(sample, condition)
++    if meta.get("leakage_errors"):
++        return {
++            "ok": False,
++            "case_id": sample["case_id"],
++            "condition": condition,
++            "error_type": "leakage",
++            "errors": meta["leakage_errors"],
++            "meta": meta,
++        }
++    prompt = build_answer_prompt(context, sample["question"])
++    hashes = prompt_hashes()
++    cache_key = sha256_text(
++        "|".join(
++            [
++                str(sample["case_id"]),
++                condition,
++                meta["context_hash"],
++                MODEL,
++                hashes["answer_prompt_hash"],
++            ]
++        )
++    )
++    return {
++        "ok": True,
++        "cache_key": cache_key,
++        "condition": condition,
++        "case_id": sample["case_id"],
++        "sample": sample,
++        "context": context,
++        "prompt": prompt,
++        "meta": meta,
++        **hashes,
++    }
++
++
++def generation_record(task: dict[str, Any], answer: str, api_meta: dict[str, Any]) -> dict[str, Any]:
++    sample = task["sample"]
++    return {
++        "ok": True,
++        "cache_key": task["cache_key"],
++        "case_id": sample["case_id"],
++        "condition": task["condition"],
++        "run_id": sample["run_id"],
++        "dataset": sample["dataset"],
++        "qa_key": sample["qa_key"],
++        "uuid": sample["uuid"],
++        "question_type": sample["question_type"],
++        "baseline_label": sample["baseline_label"],
++        "retrieval_stratum": sample["retrieval_stratum"],
++        "semantic_any_supported": sample["semantic_any_supported"],
++        "semantic_any_partial_or_supported": sample["semantic_any_partial_or_supported"],
++        "question": sample["question"],
++        "gold_answer": sample["gold_answer"],
++        "gold_evidence": sample["gold_evidence"],
++        "model_answer": answer,
++        "context": task["context"],
++        "prompt": task["prompt"],
++        "model": MODEL,
++        "temperature": TEMPERATURE,
++        "max_tokens": GEN_MAX_TOKENS,
++        "context_hash": task["meta"]["context_hash"],
++        "prompt_hash": sha256_text(task["prompt"]),
++        "answer_prompt_hash": task["answer_prompt_hash"],
++        "license_counts": task["meta"].get("license_counts", {}),
++        "n_context_memories": task["meta"].get("n_context_memories", 0),
++        "latency_ms": api_meta.get("latency_ms"),
++        "usage": api_meta.get("usage", {}),
++        "created_at": time.strftime("%Y-%m-%dT%H:%M:%S%z"),
++    }
++
++
++def main() -> None:
++    args = parse_args()
++    conditions = [item.strip() for item in args.conditions.split(",") if item.strip()]
++    bad_conditions = [item for item in conditions if item not in CONDITIONS]
++    if bad_conditions:
++        raise ValueError(f"Unknown conditions: {bad_conditions}")
++
++    samples = load_samples()
++    if args.limit:
++        samples = samples[: args.limit]
++
++    total_calls = len(samples) * len(conditions)
++    print("Budget sanity check")
++    print(f"generation calls: {total_calls}")
++    print("judge calls: 9935 for full run, handled by 03_judge_memos_full.py")
++    print("judge stability reruns: 200 for full run")
++    print("estimated full-run total API calls: 20070")
++    print("estimated input tokens if avg context is 4k: about 80M tokens")
++    if not args.yes and not args.dry_run:
++        raise RuntimeError("Pass --yes to acknowledge the budget sanity check.")
++
++    OUT_DIR.mkdir(parents=True, exist_ok=True)
++    (OUT_DIR / "generations").mkdir(parents=True, exist_ok=True)
++
++    tasks: list[dict[str, Any]] = []
++    leakage_failures: list[dict[str, Any]] = []
++    existing_by_condition = {
++        condition: completed_by_cache(OUT_DIR / "generations" / f"{condition}.jsonl")
++        for condition in conditions
++    }
++    for sample in samples:
++        for condition in conditions:
++            task = build_task(sample, condition)
++            if not task.get("ok"):
++                leakage_failures.append(task)
++                continue
++            if task["cache_key"] in existing_by_condition[condition]:
++                continue
++            tasks.append(task)
++
++    if leakage_failures:
++        with (OUT_DIR / "leakage_failures.jsonl").open("a", encoding="utf-8") as f:
++            for row in leakage_failures:
++                f.write(json.dumps(row, ensure_ascii=False) + "\n")
++        raise RuntimeError(f"Leakage check failed for {len(leakage_failures)} tasks")
++
++    print(f"pending generation tasks: {len(tasks)}")
++    if args.dry_run:
++        return
++
++    client = make_client()
++    lock = Lock()
++
++    def worker(task: dict[str, Any]) -> dict[str, Any]:
++        try:
++            answer, api_meta = call_chat(client, task["prompt"])
++            return generation_record(task, answer, api_meta)
++        except Exception as exc:  # noqa: BLE001
++            return {
++                "ok": False,
++                "cache_key": task["cache_key"],
++                "case_id": task["case_id"],
++                "condition": task["condition"],
++                "error": repr(exc),
++                "created_at": time.strftime("%Y-%m-%dT%H:%M:%S%z"),
++            }
++
++    done = 0
++    with ThreadPoolExecutor(max_workers=args.workers) as executor:
++        futures = [executor.submit(worker, task) for task in tasks]
++        for future in as_completed(futures):
++            row = future.result()
++            out_path = OUT_DIR / "generations" / f"{row['condition']}.jsonl"
++            append_jsonl(out_path, row, lock)
++            done += 1
++            if done % 50 == 0 or done == len(tasks):
++                print(f"generated {done}/{len(tasks)}")
++
++
++if __name__ == "__main__":
++    main()
+
+*** Add File: 脚本\3.0\03_judge_memos_full.py
++from __future__ import annotations
++
++import argparse
++import json
++import time
++from concurrent.futures import ThreadPoolExecutor, as_completed
++from threading import Lock
++from typing import Any
++
++from e1_memos_oracle_common import (
++    CONDITIONS,
++    MODEL,
++    OUT_DIR,
++    SEED,
++    append_jsonl,
++    call_judge,
++    completed_by_cache,
++    deterministic_sample,
++    make_client,
++    read_jsonl,
++    sha256_text,
++    write_json,
++)
++
++
++def parse_args() -> argparse.Namespace:
++    parser = argparse.ArgumentParser()
++    parser.add_argument("--conditions", default=",".join(CONDITIONS))
++    parser.add_argument("--limit", type=int, default=0)
++    parser.add_argument("--workers", type=int, default=6)
++    parser.add_argument("--stability-size", type=int, default=200)
++    return parser.parse_args()
++
++
++def load_generation_rows(condition: str) -> list[dict[str, Any]]:
++    rows = [row for row in read_jsonl(OUT_DIR / "generations" / f"{condition}.jsonl") if row.get("ok")]
++    rows.sort(key=lambda row: str(row.get("case_id")))
++    return rows
++
++
++def judge_cache_key(gen: dict[str, Any]) -> str:
++    return sha256_text("|".join([str(gen["cache_key"]), MODEL, str(gen.get("model_answer", ""))]))
++
++
++def verdict_record(gen: dict[str, Any], verdict: dict[str, str], api_meta: dict[str, Any]) -> dict[str, Any]:
++    return {
++        "ok": True,
++        "cache_key": judge_cache_key(gen),
++        "generation_cache_key": gen["cache_key"],
++        "case_id": gen["case_id"],
++        "condition": gen["condition"],
++        "run_id": gen["run_id"],
++        "dataset": gen["dataset"],
++        "qa_key": gen["qa_key"],
++        "uuid": gen["uuid"],
++        "question_type": gen["question_type"],
++        "baseline_label": gen["baseline_label"],
++        "retrieval_stratum": gen["retrieval_stratum"],
++        "semantic_any_supported": gen["semantic_any_supported"],
++        "semantic_any_partial_or_supported": gen["semantic_any_partial_or_supported"],
++        "question": gen["question"],
++        "gold_answer": gen["gold_answer"],
++        "model_answer": gen["model_answer"],
++        "judge_label": verdict["label"],
++        "judge_rationale": verdict["rationale"],
++        "model": MODEL,
++        "latency_ms": api_meta.get("latency_ms"),
++        "usage": api_meta.get("usage", {}),
++        "judge_prompt_hash": api_meta.get("judge_prompt_hash"),
++        "created_at": time.strftime("%Y-%m-%dT%H:%M:%S%z"),
++    }
++
++
++def main() -> None:
++    args = parse_args()
++    conditions = [item.strip() for item in args.conditions.split(",") if item.strip()]
++    bad_conditions = [item for item in conditions if item not in CONDITIONS]
++    if bad_conditions:
++        raise ValueError(f"Unknown conditions: {bad_conditions}")
++
++    (OUT_DIR / "verdicts").mkdir(parents=True, exist_ok=True)
++    tasks: list[dict[str, Any]] = []
++    for condition in conditions:
++        rows = load_generation_rows(condition)
++        if args.limit:
++            rows = rows[: args.limit]
++        existing = completed_by_cache(OUT_DIR / "verdicts" / f"{condition}.jsonl")
++        for row in rows:
++            key = judge_cache_key(row)
++            if key not in existing:
++                tasks.append(row)
++
++    print(f"pending judge tasks: {len(tasks)}")
++    client = make_client()
++    lock = Lock()
++
++    def worker(gen: dict[str, Any]) -> dict[str, Any]:
++        try:
++            verdict, api_meta = call_judge(client, gen["question"], gen["gold_answer"], gen["model_answer"])
++            return verdict_record(gen, verdict, api_meta)
++        except Exception as exc:  # noqa: BLE001
++            return {
++                "ok": False,
++                "cache_key": judge_cache_key(gen),
++                "generation_cache_key": gen.get("cache_key"),
++                "case_id": gen.get("case_id"),
++                "condition": gen.get("condition"),
++                "error": repr(exc),
++                "created_at": time.strftime("%Y-%m-%dT%H:%M:%S%z"),
++            }
++
++    done = 0
++    with ThreadPoolExecutor(max_workers=args.workers) as executor:
++        futures = [executor.submit(worker, task) for task in tasks]
++        for future in as_completed(futures):
++            row = future.result()
++            out_path = OUT_DIR / "verdicts" / f"{row['condition']}.jsonl"
++            append_jsonl(out_path, row, lock)
++            done += 1
++            if done % 50 == 0 or done == len(tasks):
++                print(f"judged {done}/{len(tasks)}")
++
++    if args.stability_size > 0:
++        all_verdicts: list[dict[str, Any]] = []
++        for condition in conditions:
++            all_verdicts.extend([row for row in read_jsonl(OUT_DIR / "verdicts" / f"{condition}.jsonl") if row.get("ok")])
++        selected = deterministic_sample(all_verdicts, args.stability_size, seed=SEED)
++        agreements = 0
++        reruns = []
++        for idx, row in enumerate(selected, 1):
++            verdict, api_meta = call_judge(client, row["question"], row["gold_answer"], row["model_answer"])
++            agree = verdict["label"] == row["judge_label"]
++            agreements += int(agree)
++            reruns.append(
++                {
++                    "case_id": row["case_id"],
++                    "condition": row["condition"],
++                    "original_label": row["judge_label"],
++                    "rerun_label": verdict["label"],
++                    "agree": agree,
++                    "usage": api_meta.get("usage", {}),
++                }
++            )
++            if idx % 25 == 0 or idx == len(selected):
++                print(f"stability rerun {idx}/{len(selected)}")
++        result = {
++            "seed": SEED,
++            "requested": args.stability_size,
++            "n": len(selected),
++            "agreements": agreements,
++            "self_agreement": agreements / len(selected) if selected else None,
++            "reruns": reruns,
++        }
++        write_json(OUT_DIR / "judge_self_agreement.json", result)
++        if selected and result["self_agreement"] < 0.90:
++            raise RuntimeError(f"Judge self-agreement below 0.90: {result['self_agreement']:.3f}")
++
++
++if __name__ == "__main__":
++    main()
+
+*** Add File: 脚本\3.0\04_analyze_memos_full.py
++from __future__ import annotations
++
++import argparse
++import csv
++import math
++from collections import Counter, defaultdict
++from typing import Any
++
++from e1_memos_oracle_common import CONDITIONS, OUT_DIR, load_samples, read_jsonl, write_csv, write_json
++
++
++def parse_args() -> argparse.Namespace:
++    parser = argparse.ArgumentParser()
++    parser.add_argument("--require-complete", action="store_true")
++    return parser.parse_args()
++
++
++def load_verdicts() -> dict[str, dict[str, dict[str, Any]]]:
++    verdicts: dict[str, dict[str, dict[str, Any]]] = {}
++    for condition in CONDITIONS:
++        rows = [row for row in read_jsonl(OUT_DIR / "verdicts" / f"{condition}.jsonl") if row.get("ok")]
++        verdicts[condition] = {str(row["case_id"]): row for row in rows}
++    return verdicts
++
++
++def wilson(k: int, n: int, z: float = 1.959963984540054) -> tuple[float, float]:
++    if n == 0:
++        return 0.0, 0.0
++    p = k / n
++    denom = 1 + z * z / n
++    center = (p + z * z / (2 * n)) / denom
++    half = z * math.sqrt((p * (1 - p) / n) + (z * z / (4 * n * n))) / denom
++    return max(0.0, center - half), min(1.0, center + half)
++
++
++def exact_mcnemar_p(b: int, c: int) -> float | None:
++    total = b + c
++    if total == 0:
++        return None
++    try:
++        from scipy.stats import binomtest  # type: ignore
++
++        return float(binomtest(min(b, c), total, 0.5).pvalue)
++    except Exception:  # noqa: BLE001
++        prob = sum(math.comb(total, i) for i in range(0, min(b, c) + 1)) * (0.5**total)
++        return min(1.0, 2 * prob)
++
++
++def label(verdicts: dict[str, dict[str, dict[str, Any]]], condition: str, case_id: str) -> str | None:
++    row = verdicts.get(condition, {}).get(case_id)
++    return str(row.get("judge_label")) if row else None
++
++
++def rate_rows(pool_name: str, case_ids: list[str], verdicts: dict[str, dict[str, dict[str, Any]]]) -> list[dict[str, Any]]:
++    rows = []
++    for condition in ["A1", "A2", "A3", "A4"]:
++        labels = [label(verdicts, condition, case_id) for case_id in case_ids]
++        labels = [item for item in labels if item]
++        correct = sum(1 for item in labels if item == "correct")
++        lo, hi = wilson(correct, len(labels))
++        rows.append(
++            {
++                "pool": pool_name,
++                "condition": condition,
++                "n": len(labels),
++                "correct": correct,
++                "flip_rate": correct / len(labels) if labels else 0.0,
++                "wilson_low": lo,
++                "wilson_high": hi,
++            }
++        )
++    return rows
++
++
++def transitions(
++    pool_name: str,
++    case_ids: list[str],
++    verdicts: dict[str, dict[str, dict[str, Any]]],
++    condition: str,
++) -> list[dict[str, Any]]:
++    counts: Counter[tuple[str, str]] = Counter()
++    for case_id in case_ids:
++        a0 = label(verdicts, "A0", case_id)
++        x = label(verdicts, condition, case_id)
++        if a0 and x:
++            counts[(a0, x)] += 1
++    total_by_from = Counter()
++    for (src, _dst), count in counts.items():
++        total_by_from[src] += count
++    rows = []
++    for src in ["hallucination", "omission", "correct"]:
++        for dst in ["correct", "hallucination", "omission"]:
++            count = counts[(src, dst)]
++            denom = total_by_from[src]
++            rows.append(
++                {
++                    "pool": pool_name,
++                    "condition": condition,
++                    "from_label": src,
++                    "to_label": dst,
++                    "count": count,
++                    "rate_within_from": count / denom if denom else 0.0,
++                }
++            )
++    return rows
++
++
++def paired_rows(pool_name: str, case_ids: list[str], verdicts: dict[str, dict[str, dict[str, Any]]]) -> list[dict[str, Any]]:
++    pairs = [("A3", "A1"), ("A3", "A2"), ("A4", "A0")]
++    rows = []
++    for left, right in pairs:
++        b = 0
++        c = 0
++        both = 0
++        for case_id in case_ids:
++            l = label(verdicts, left, case_id)
++            r = label(verdicts, right, case_id)
++            if not l or not r:
++                continue
++            both += 1
++            l_ok = l == "correct"
++            r_ok = r == "correct"
++            if l_ok and not r_ok:
++                b += 1
++            elif r_ok and not l_ok:
++                c += 1
++        rows.append({"pool": pool_name, "comparison": f"{left}_vs_{right}", "n": both, "b": b, "c": c, "p_value": exact_mcnemar_p(b, c)})
++    return rows
++
++
++def group_rate(samples_by_case: dict[str, dict[str, Any]], case_ids: list[str], verdicts: dict[str, dict[str, dict[str, Any]]], field: str) -> list[dict[str, Any]]:
++    grouped: defaultdict[str, list[str]] = defaultdict(list)
++    for case_id in case_ids:
++        grouped[str(samples_by_case[case_id].get(field))].append(case_id)
++    rows = []
++    for value, ids in sorted(grouped.items()):
++        for condition in ["A1", "A2", "A3", "A4"]:
++            labels = [label(verdicts, condition, case_id) for case_id in ids]
++            labels = [item for item in labels if item]
++            correct = sum(1 for item in labels if item == "correct")
++            rows.append(
++                {
++                    field: value,
++                    "condition": condition,
++                    "n": len(labels),
++                    "correct": correct,
++                    "flip_rate": correct / len(labels) if labels else 0.0,
++                }
++            )
++    return rows
++
++
++def main() -> None:
++    args = parse_args()
++    samples = load_samples()
++    samples_by_case = {str(row["case_id"]): row for row in samples}
++    verdicts = load_verdicts()
++    missing = {
++        condition: len(samples) - len(verdicts.get(condition, {}))
++        for condition in CONDITIONS
++    }
++    if args.require_complete and any(value != 0 for value in missing.values()):
++        raise RuntimeError(f"Missing verdicts: {missing}")
++
++    a0_case_ids = [case_id for case_id in samples_by_case if label(verdicts, "A0", case_id)]
++    stable_wrong = [case_id for case_id in a0_case_ids if label(verdicts, "A0", case_id) != "correct"]
++    retrieved_strict = [
++        case_id
++        for case_id in stable_wrong
++        if samples_by_case[case_id].get("retrieval_stratum") == "strict_supported"
++    ]
++
++    a0_noncorrect_rate = len(stable_wrong) / len(samples) if samples else 0.0
++    unstable = a0_noncorrect_rate < 0.85
++
++    rate_table = rate_rows("full_pool", stable_wrong, verdicts) + rate_rows("retrieved_strict", retrieved_strict, verdicts)
++    write_csv(
++        OUT_DIR / "flip_rates.csv",
++        rate_table,
++        ["pool", "condition", "n", "correct", "flip_rate", "wilson_low", "wilson_high"],
++    )
++
++    transition_rows = []
++    strict_transition_rows = []
++    for condition in ["A1", "A2", "A3", "A4"]:
++        transition_rows.extend(transitions("full_pool", stable_wrong, verdicts, condition))
++        strict_transition_rows.extend(transitions("retrieved_strict", retrieved_strict, verdicts, condition))
++    fields = ["pool", "condition", "from_label", "to_label", "count", "rate_within_from"]
++    write_csv(OUT_DIR / "transitions_full_pool.csv", transition_rows, fields)
++    write_csv(OUT_DIR / "transitions_retrieved_strict.csv", strict_transition_rows, fields)
++
++    mcnemar = paired_rows("full_pool", stable_wrong, verdicts) + paired_rows("retrieved_strict", retrieved_strict, verdicts)
++    write_csv(OUT_DIR / "mcnemar.csv", mcnemar, ["pool", "comparison", "n", "b", "c", "p_value"])
++
++    rates = {(row["pool"], row["condition"]): row["flip_rate"] for row in rate_table}
++    waterfall_rows = []
++    for pool in ["full_pool", "retrieved_strict"]:
++        waterfall_rows.extend(
++            [
++                {"pool": pool, "component": "position_A1", "value": rates.get((pool, "A1"), 0.0)},
++                {"pool": pool, "component": "filter_A2_minus_A1", "value": rates.get((pool, "A2"), 0.0) - rates.get((pool, "A1"), 0.0)},
++                {"pool": pool, "component": "license_A3_minus_A2", "value": rates.get((pool, "A3"), 0.0) - rates.get((pool, "A2"), 0.0)},
++                {"pool": pool, "component": "license_only_A4_minus_A0", "value": rates.get((pool, "A4"), 0.0)},
++            ]
++        )
++    write_csv(OUT_DIR / "waterfall_full_pool.csv", [row for row in waterfall_rows if row["pool"] == "full_pool"], ["pool", "component", "value"])
++    write_csv(OUT_DIR / "waterfall_retrieved_strict.csv", [row for row in waterfall_rows if row["pool"] == "retrieved_strict"], ["pool", "component", "value"])
++
++    write_csv(OUT_DIR / "by_dataset.csv", group_rate(samples_by_case, stable_wrong, verdicts, "dataset"), ["dataset", "condition", "n", "correct", "flip_rate"])
++    write_csv(OUT_DIR / "by_question_type.csv", group_rate(samples_by_case, stable_wrong, verdicts, "question_type"), ["question_type", "condition", "n", "correct", "flip_rate"])
++    write_csv(OUT_DIR / "by_retrieval_stratum.csv", group_rate(samples_by_case, stable_wrong, verdicts, "retrieval_stratum"), ["retrieval_stratum", "condition", "n", "correct", "flip_rate"])
++    write_csv(OUT_DIR / "by_baseline_label.csv", group_rate(samples_by_case, stable_wrong, verdicts, "baseline_label"), ["baseline_label", "condition", "n", "correct", "flip_rate"])
++    write_csv(OUT_DIR / "by_semantic_any_contradicted.csv", group_rate(samples_by_case, stable_wrong, verdicts, "semantic_any_contradicted"), ["semantic_any_contradicted", "condition", "n", "correct", "flip_rate"])
++
++    summary = {
++        "sample_count": len(samples),
++        "missing_verdicts": missing,
++        "a0_judged": len(a0_case_ids),
++        "stable_wrong": len(stable_wrong),
++        "retrieved_strict": len(retrieved_strict),
++        "a0_replay_noncorrect_rate": a0_noncorrect_rate,
++        "replay_unstable": unstable,
++        "flip_rates": rate_table,
++        "mcnemar": mcnemar,
++    }
++    write_json(OUT_DIR / "results_summary.json", summary)
++
++    lines = [
++        "# E1 Memos Full Oracle Results",
++        "",
++        f"- samples: {len(samples)}",
++        f"- A0 judged: {len(a0_case_ids)}",
++        f"- stable_wrong: {len(stable_wrong)}",
++        f"- retrieved_strict stable_wrong: {len(retrieved_strict)}",
++        f"- A0 replay non-correct rate: {a0_noncorrect_rate:.2%}",
++        f"- replay unstable: {unstable}",
++        "",
++        "## Flip Rates",
++        "",
++        "| pool | condition | n | correct | flip_rate | Wilson 95% CI |",
++        "|---|---|---:|---:|---:|---|",
++    ]
++    for row in rate_table:
++        lines.append(
++            f"| {row['pool']} | {row['condition']} | {row['n']} | {row['correct']} | {row['flip_rate']:.2%} | [{row['wilson_low']:.2%}, {row['wilson_high']:.2%}] |"
++        )
++    lines.extend(["", "## McNemar", "", "| pool | comparison | n | b | c | p_value |", "|---|---|---:|---:|---:|---:|"])
++    for row in mcnemar:
++        p = "" if row["p_value"] is None else f"{row['p_value']:.6g}"
++        lines.append(f"| {row['pool']} | {row['comparison']} | {row['n']} | {row['b']} | {row['c']} | {p} |")
++    (OUT_DIR / "results_summary.md").write_text("\n".join(lines) + "\n", encoding="utf-8")
++    print(f"wrote analysis to {OUT_DIR / 'results_summary.md'}")
++
++
++if __name__ == "__main__":
++    main()
+
+*** Add File: 脚本\3.0\05_audit_memos_full.py
++from __future__ import annotations
++
++import argparse
++import json
++from typing import Any
++
++from e1_memos_oracle_common import (
++    OUT_DIR,
++    deterministic_sample,
++    load_samples,
++    memory_text,
++    raw_id_to_index,
++    read_jsonl,
++    write_csv,
++)
++
++
++def parse_args() -> argparse.Namespace:
++    parser = argparse.ArgumentParser()
++    parser.add_argument("--strict-n", type=int, default=60)
++    parser.add_argument("--partial-n", type=int, default=30)
++    parser.add_argument("--none-n", type=int, default=30)
++    return parser.parse_args()
++
++
++def load_condition(condition: str) -> dict[str, dict[str, Any]]:
++    return {str(row["case_id"]): row for row in read_jsonl(OUT_DIR / "verdicts" / f"{condition}.jsonl") if row.get("ok")}
++
++
++def support_texts(sample: dict[str, Any]) -> str:
++    ids = list(sample.get("gold_memory_ids") or []) + list(sample.get("partial_memory_ids") or [])
++    raw = sample.get("raw_memories") or []
++    rows = []
++    for memory_id in ids:
++        index = raw_id_to_index(memory_id)
++        if index is None or index >= len(raw):
++            continue
++        text = memory_text(raw[index])
++        if text:
++            rows.append(f"{memory_id}: {text}")
++    return "\n\n".join(rows)
++
++
++def main() -> None:
++    args = parse_args()
++    samples = load_samples()
++    a0 = load_condition("A0")
++    a3 = load_condition("A3")
++    stable = [row for row in samples if a0.get(row["case_id"], {}).get("judge_label") != "correct"]
++    strict = [row for row in stable if row.get("retrieval_stratum") == "strict_supported"]
++    partial = [row for row in stable if row.get("retrieval_stratum") == "partial_supported"]
++    none = [row for row in stable if row.get("retrieval_stratum") == "no_gold_retrieved"]
++    selected = (
++        deterministic_sample(strict, args.strict_n)
++        + deterministic_sample(partial, args.partial_n)
++        + deterministic_sample(none, args.none_n)
++    )
++    rows = []
++    for sample in selected:
++        case_id = sample["case_id"]
++        rows.append(
++            {
++                "case_id": case_id,
++                "dataset": sample.get("dataset"),
++                "question_type": sample.get("question_type"),
++                "baseline_label": sample.get("baseline_label"),
++                "retrieval_stratum": sample.get("retrieval_stratum"),
++                "question": sample.get("question"),
++                "gold_answer": sample.get("gold_answer"),
++                "gold_evidence": json.dumps(sample.get("gold_evidence") or [], ensure_ascii=False),
++                "support_memory_texts": support_texts(sample),
++                "A0_answer": a0.get(case_id, {}).get("model_answer", ""),
++                "A0_label": a0.get(case_id, {}).get("judge_label", ""),
++                "A3_answer": a3.get(case_id, {}).get("model_answer", ""),
++                "A3_label": a3.get(case_id, {}).get("judge_label", ""),
++                "human_support_valid": "",
++                "human_flip_valid": "",
++                "human_notes": "",
++            }
++        )
++    fields = [
++        "case_id",
++        "dataset",
++        "question_type",
++        "baseline_label",
++        "retrieval_stratum",
++        "question",
++        "gold_answer",
++        "gold_evidence",
++        "support_memory_texts",
++        "A0_answer",
++        "A0_label",
++        "A3_answer",
++        "A3_label",
++        "human_support_valid",
++        "human_flip_valid",
++        "human_notes",
++    ]
++    out = OUT_DIR / "audit" / "audit_samples.csv"
++    write_csv(out, rows, fields)
++    labeled_out = OUT_DIR / "audit" / "audit_with_human_labels.csv"
++    write_csv(labeled_out, rows, fields)
++    agreement = OUT_DIR / "audit" / "human_agreement.md"
++    agreement.write_text(
++        "\n".join(
++            [
++                "# Human Agreement",
++                "",
++                "Status: pending human labels.",
++                "",
++                "`audit_with_human_labels.csv` has been initialized with blank human columns. ",
++                "After manual review, rerun the recovery/agreement step to compute judge-human agreement.",
++            ]
++        )
++        + "\n",
++        encoding="utf-8",
++    )
++    print(f"wrote {len(rows)} audit rows to {out}")
++    print(f"initialized human-label sheet at {labeled_out}")
++
++
++if __name__ == "__main__":
++    main()

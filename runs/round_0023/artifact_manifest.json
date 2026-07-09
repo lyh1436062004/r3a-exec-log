@@ -1,0 +1,186 @@
+﻿[
+    {
+        "FullName":  "D:\\幻觉\\r3a-exec-log\\runs\\round_0023\\artifacts\\outputs\\e1_memos_full_oracle\\by_baseline_label.csv",
+        "Length":  395
+    },
+    {
+        "FullName":  "D:\\幻觉\\r3a-exec-log\\runs\\round_0023\\artifacts\\outputs\\e1_memos_full_oracle\\by_dataset.csv",
+        "Length":  342
+    },
+    {
+        "FullName":  "D:\\幻觉\\r3a-exec-log\\runs\\round_0023\\artifacts\\outputs\\e1_memos_full_oracle\\by_question_type.csv",
+        "Length":  1042
+    },
+    {
+        "FullName":  "D:\\幻觉\\r3a-exec-log\\runs\\round_0023\\artifacts\\outputs\\e1_memos_full_oracle\\by_retrieval_stratum.csv",
+        "Length":  640
+    },
+    {
+        "FullName":  "D:\\幻觉\\r3a-exec-log\\runs\\round_0023\\artifacts\\outputs\\e1_memos_full_oracle\\by_semantic_any_contradicted.csv",
+        "Length":  328
+    },
+    {
+        "FullName":  "D:\\幻觉\\r3a-exec-log\\runs\\round_0023\\artifacts\\outputs\\e1_memos_full_oracle\\flip_rates.csv",
+        "Length":  739
+    },
+    {
+        "FullName":  "D:\\幻觉\\r3a-exec-log\\runs\\round_0023\\artifacts\\outputs\\e1_memos_full_oracle\\generate_full.err.log",
+        "Length":  0
+    },
+    {
+        "FullName":  "D:\\幻觉\\r3a-exec-log\\runs\\round_0023\\artifacts\\outputs\\e1_memos_full_oracle\\generate_full.log",
+        "Length":  4451
+    },
+    {
+        "FullName":  "D:\\幻觉\\r3a-exec-log\\runs\\round_0023\\artifacts\\outputs\\e1_memos_full_oracle\\generate_full.pid",
+        "Length":  7
+    },
+    {
+        "FullName":  "D:\\幻觉\\r3a-exec-log\\runs\\round_0023\\artifacts\\outputs\\e1_memos_full_oracle\\judge_full.err.log",
+        "Length":  0
+    },
+    {
+        "FullName":  "D:\\幻觉\\r3a-exec-log\\runs\\round_0023\\artifacts\\outputs\\e1_memos_full_oracle\\judge_full.log",
+        "Length":  3786
+    },
+    {
+        "FullName":  "D:\\幻觉\\r3a-exec-log\\runs\\round_0023\\artifacts\\outputs\\e1_memos_full_oracle\\judge_full.pid",
+        "Length":  7
+    },
+    {
+        "FullName":  "D:\\幻觉\\r3a-exec-log\\runs\\round_0023\\artifacts\\outputs\\e1_memos_full_oracle\\judge_self_agreement.json",
+        "Length":  107393
+    },
+    {
+        "FullName":  "D:\\幻觉\\r3a-exec-log\\runs\\round_0023\\artifacts\\outputs\\e1_memos_full_oracle\\leakage_failures.jsonl",
+        "Length":  0
+    },
+    {
+        "FullName":  "D:\\幻觉\\r3a-exec-log\\runs\\round_0023\\artifacts\\outputs\\e1_memos_full_oracle\\mcnemar.csv",
+        "Length":  372
+    },
+    {
+        "FullName":  "D:\\幻觉\\r3a-exec-log\\runs\\round_0023\\artifacts\\outputs\\e1_memos_full_oracle\\results_summary.json",
+        "Length":  3237
+    },
+    {
+        "FullName":  "D:\\幻觉\\r3a-exec-log\\runs\\round_0023\\artifacts\\outputs\\e1_memos_full_oracle\\results_summary.md",
+        "Length":  1256
+    },
+    {
+        "FullName":  "D:\\幻觉\\r3a-exec-log\\runs\\round_0023\\artifacts\\outputs\\e1_memos_full_oracle\\run_config.yaml",
+        "Length":  781
+    },
+    {
+        "FullName":  "D:\\幻觉\\r3a-exec-log\\runs\\round_0023\\artifacts\\outputs\\e1_memos_full_oracle\\samples_memos_full.jsonl",
+        "Length":  26462991
+    },
+    {
+        "FullName":  "D:\\幻觉\\r3a-exec-log\\runs\\round_0023\\artifacts\\outputs\\e1_memos_full_oracle\\sample_pool_summary.md",
+        "Length":  510
+    },
+    {
+        "FullName":  "D:\\幻觉\\r3a-exec-log\\runs\\round_0023\\artifacts\\outputs\\e1_memos_full_oracle\\transitions_full_pool.csv",
+        "Length":  1940
+    },
+    {
+        "FullName":  "D:\\幻觉\\r3a-exec-log\\runs\\round_0023\\artifacts\\outputs\\e1_memos_full_oracle\\transitions_retrieved_strict.csv",
+        "Length":  2156
+    },
+    {
+        "FullName":  "D:\\幻觉\\r3a-exec-log\\runs\\round_0023\\artifacts\\outputs\\e1_memos_full_oracle\\waterfall_full_pool.csv",
+        "Length":  225
+    },
+    {
+        "FullName":  "D:\\幻觉\\r3a-exec-log\\runs\\round_0023\\artifacts\\outputs\\e1_memos_full_oracle\\waterfall_retrieved_strict.csv",
+        "Length":  252
+    },
+    {
+        "FullName":  "D:\\幻觉\\r3a-exec-log\\runs\\round_0023\\artifacts\\outputs\\e1_memos_full_oracle\\audit\\audit_samples.csv",
+        "Length":  143162
+    },
+    {
+        "FullName":  "D:\\幻觉\\r3a-exec-log\\runs\\round_0023\\artifacts\\outputs\\e1_memos_full_oracle\\audit\\audit_with_human_labels.csv",
+        "Length":  143162
+    },
+    {
+        "FullName":  "D:\\幻觉\\r3a-exec-log\\runs\\round_0023\\artifacts\\outputs\\e1_memos_full_oracle\\audit\\human_agreement.md",
+        "Length":  223
+    },
+    {
+        "FullName":  "D:\\幻觉\\r3a-exec-log\\runs\\round_0023\\artifacts\\outputs\\e1_memos_full_oracle\\generations\\A0.jsonl",
+        "Length":  31955556
+    },
+    {
+        "FullName":  "D:\\幻觉\\r3a-exec-log\\runs\\round_0023\\artifacts\\outputs\\e1_memos_full_oracle\\generations\\A1.jsonl",
+        "Length":  31955045
+    },
+    {
+        "FullName":  "D:\\幻觉\\r3a-exec-log\\runs\\round_0023\\artifacts\\outputs\\e1_memos_full_oracle\\generations\\A2.jsonl",
+        "Length":  9752374
+    },
+    {
+        "FullName":  "D:\\幻觉\\r3a-exec-log\\runs\\round_0023\\artifacts\\outputs\\e1_memos_full_oracle\\generations\\A3.jsonl",
+        "Length":  9877160
+    },
+    {
+        "FullName":  "D:\\幻觉\\r3a-exec-log\\runs\\round_0023\\artifacts\\outputs\\e1_memos_full_oracle\\generations\\A4.jsonl",
+        "Length":  32081820
+    },
+    {
+        "FullName":  "D:\\幻觉\\r3a-exec-log\\runs\\round_0023\\artifacts\\outputs\\e1_memos_full_oracle\\prompts\\judge_gold_only_prompt_template.txt",
+        "Length":  526
+    },
+    {
+        "FullName":  "D:\\幻觉\\r3a-exec-log\\runs\\round_0023\\artifacts\\outputs\\e1_memos_full_oracle\\prompts\\license_templates.json",
+        "Length":  418
+    },
+    {
+        "FullName":  "D:\\幻觉\\r3a-exec-log\\runs\\round_0023\\artifacts\\outputs\\e1_memos_full_oracle\\prompts\\PROMPT_MEMOS.txt",
+        "Length":  2235
+    },
+    {
+        "FullName":  "D:\\幻觉\\r3a-exec-log\\runs\\round_0023\\artifacts\\outputs\\e1_memos_full_oracle\\verdicts\\A0.jsonl",
+        "Length":  2816758
+    },
+    {
+        "FullName":  "D:\\幻觉\\r3a-exec-log\\runs\\round_0023\\artifacts\\outputs\\e1_memos_full_oracle\\verdicts\\A1.jsonl",
+        "Length":  2820367
+    },
+    {
+        "FullName":  "D:\\幻觉\\r3a-exec-log\\runs\\round_0023\\artifacts\\outputs\\e1_memos_full_oracle\\verdicts\\A2.jsonl",
+        "Length":  2781580
+    },
+    {
+        "FullName":  "D:\\幻觉\\r3a-exec-log\\runs\\round_0023\\artifacts\\outputs\\e1_memos_full_oracle\\verdicts\\A3.jsonl",
+        "Length":  2778948
+    },
+    {
+        "FullName":  "D:\\幻觉\\r3a-exec-log\\runs\\round_0023\\artifacts\\outputs\\e1_memos_full_oracle\\verdicts\\A4.jsonl",
+        "Length":  2819541
+    },
+    {
+        "FullName":  "D:\\幻觉\\r3a-exec-log\\runs\\round_0023\\artifacts\\脚本\\3.0\\01_select_memos_full.py",
+        "Length":  9623
+    },
+    {
+        "FullName":  "D:\\幻觉\\r3a-exec-log\\runs\\round_0023\\artifacts\\脚本\\3.0\\02_generate_memos_full.py",
+        "Length":  6613
+    },
+    {
+        "FullName":  "D:\\幻觉\\r3a-exec-log\\runs\\round_0023\\artifacts\\脚本\\3.0\\03_judge_memos_full.py",
+        "Length":  6047
+    },
+    {
+        "FullName":  "D:\\幻觉\\r3a-exec-log\\runs\\round_0023\\artifacts\\脚本\\3.0\\04_analyze_memos_full.py",
+        "Length":  11062
+    },
+    {
+        "FullName":  "D:\\幻觉\\r3a-exec-log\\runs\\round_0023\\artifacts\\脚本\\3.0\\05_audit_memos_full.py",
+        "Length":  4270
+    },
+    {
+        "FullName":  "D:\\幻觉\\r3a-exec-log\\runs\\round_0023\\artifacts\\脚本\\3.0\\e1_memos_oracle_common.py",
+        "Length":  15562
+    }
+]
