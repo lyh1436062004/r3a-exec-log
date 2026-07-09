@@ -1,0 +1,616 @@
+from __future__ import annotations
+
+import argparse
+import csv
+import json
+import os
+import re
+import time
+from collections import Counter, defaultdict
+from concurrent.futures import ThreadPoolExecutor, as_completed
+from pathlib import Path
+from typing import Any
+
+from dotenv import load_dotenv
+from openai import OpenAI
+
+
+ROOT = Path(__file__).resolve().parents[2]
+ENV_PATH = ROOT / "github" / "HaluMem" / "eval" / ".env"
+OUT_DIR = ROOT / "outputs" / "baseline_wrong_gold_semantic_audit"
+
+INPUTS = [
+    {
+        "run_id": "mem0_medium",
+        "dataset": "medium",
+        "system": "mem0",
+        "path": ROOT / "outputs" / "baseline_sharded_v2" / "mem0_medium" / "merged" / "mem0_medium_qa_merged.jsonl",
+        "retrieval_unit": "top_k=20 raw Mem0 search results",
+    },
+    {
+        "run_id": "supermemory_medium",
+        "dataset": "medium",
+        "system": "supermemory",
+        "path": ROOT / "outputs" / "baseline_sharded_v2_medium_only" / "supermemory" / "merged" / "supermemory_medium_qa_merged.jsonl",
+        "retrieval_unit": "top_k=20 Supermemory search results",
+    },
+    {
+        "run_id": "memobase_medium",
+        "dataset": "medium",
+        "system": "memobase",
+        "path": ROOT / "outputs" / "baseline_full" / "memobase_medium" / "memobase_medium_qa.jsonl",
+        "retrieval_unit": "Memobase context window, max_token_size=500",
+    },
+    {
+        "run_id": "memos_medium",
+        "dataset": "medium",
+        "system": "memos",
+        "path": ROOT / "outputs" / "baseline_full" / "memos_medium" / "memos_medium_qa.jsonl",
+        "retrieval_unit": "Memos search memory_detail_list + preference_detail_list",
+    },
+    {
+        "run_id": "mem0_long",
+        "dataset": "long",
+        "system": "mem0",
+        "path": ROOT / "outputs" / "baseline_full" / "mem0_long" / "mem0_long_qa.jsonl",
+        "retrieval_unit": "historical Mem0 retrieved context parsed from string",
+    },
+    {
+        "run_id": "memobase_long",
+        "dataset": "long",
+        "system": "memobase",
+        "path": ROOT / "outputs" / "baseline_full" / "memobase_long" / "memobase_long_qa.jsonl",
+        "retrieval_unit": "Memobase context window, max_token_size=500",
+    },
+    {
+        "run_id": "memos_long",
+        "dataset": "long",
+        "system": "memos",
+        "path": ROOT / "outputs" / "baseline_full" / "memos_long" / "memos_long_qa.jsonl",
+        "retrieval_unit": "Memos search memory_detail_list + preference_detail_list",
+    },
+]
+
+TOKEN_RE = re.compile(r"[a-z0-9]+")
+STATUS_SET = {"supported", "partially_supported", "not_supported", "contradicted"}
+
+
+def norm_text(value: Any) -> str:
+    value = str(value or "").lower().replace("user's", "users")
+    return " ".join(TOKEN_RE.findall(value))
+
+
+def tokens(value: Any) -> set[str]:
+    return set(TOKEN_RE.findall(str(value or "").lower()))
+
+
+def flatten_strings(value: Any) -> list[str]:
+    if value is None:
+        return []
+    if isinstance(value, str):
+        return [value]
+    if isinstance(value, (int, float, bool)):
+        return [str(value)]
+    if isinstance(value, list):
+        out: list[str] = []
+        for item in value:
+            out.extend(flatten_strings(item))
+        return out
+    if isinstance(value, dict):
+        out: list[str] = []
+        for key in [
+            "memory",
+            "memory_content",
+            "memory_key",
+            "memory_value",
+            "text",
+            "preference",
+            "reasoning",
+            "section",
+            "tags",
+            "reference_memory_content",
+        ]:
+            if key in value:
+                out.extend(flatten_strings(value[key]))
+        if not out:
+            for item in value.values():
+                out.extend(flatten_strings(item))
+        return out
+    return [str(value)]
+
+
+def raw_memory_texts(raw_memories: Any) -> list[dict[str, Any]]:
+    if not isinstance(raw_memories, list):
+        return []
+    rows = []
+    for idx, item in enumerate(raw_memories, 1):
+        text = " | ".join(s for s in flatten_strings(item) if str(s).strip())
+        rows.append({"memory_id": f"m{idx}", "rank": idx, "text": text})
+    return rows
+
+
+def evidence_texts(record: dict[str, Any]) -> list[str]:
+    evidence = record.get("evidence")
+    if not isinstance(evidence, list):
+        return []
+    texts = []
+    for item in evidence:
+        if isinstance(item, dict):
+            text = item.get("memory_content") or item.get("text") or item.get("memory")
+            if text:
+                texts.append(str(text))
+        elif item:
+            texts.append(str(item))
+    return texts
+
+
+def token_hit(evidence: list[str], retrieved: list[dict[str, Any]], threshold: float = 0.60) -> dict[str, Any]:
+    retrieved_norm = [norm_text(row["text"]) for row in retrieved]
+    retrieved_tokens = [tokens(row["text"]) for row in retrieved]
+    per_evidence = []
+    for ev in evidence:
+        ev_norm = norm_text(ev)
+        ev_tokens = tokens(ev)
+        exact = bool(ev_norm) and any(ev_norm in rt or (rt and rt in ev_norm) for rt in retrieved_norm)
+        coverage = max((len(ev_tokens & rt) / len(ev_tokens) for rt in retrieved_tokens), default=0.0) if ev_tokens else 0.0
+        per_evidence.append({"exact": exact, "coverage": round(coverage, 4), "coverage_hit": coverage >= threshold})
+    return {
+        "any_exact_hit": any(x["exact"] for x in per_evidence),
+        "any_token_hit": any(x["coverage_hit"] for x in per_evidence),
+        "all_token_hit": bool(per_evidence) and all(x["coverage_hit"] for x in per_evidence),
+        "max_coverage": max((x["coverage"] for x in per_evidence), default=0.0),
+        "per_evidence": per_evidence,
+    }
+
+
+def clip_middle(text: str, max_chars: int) -> str:
+    text = re.sub(r"\s+", " ", str(text or "")).strip()
+    if len(text) <= max_chars:
+        return text
+    keep = max(100, (max_chars - 32) // 2)
+    return text[:keep].rstrip() + " ... [middle clipped] ... " + text[-keep:].lstrip()
+
+
+def build_case_payload(sample: dict[str, Any], max_memory_chars: int, max_total_memory_chars: int) -> dict[str, Any]:
+    memories = sample["retrieved"]
+    clipped = []
+    total = 0
+    for row in memories:
+        item_max = max_memory_chars
+        remaining = max_total_memory_chars - total
+        if remaining <= 0:
+            break
+        text = clip_middle(row["text"], min(item_max, remaining))
+        total += len(text)
+        clipped.append({"memory_id": row["memory_id"], "rank": row["rank"], "text": text})
+    return {
+        "case_id": sample["case_id"],
+        "question": sample["question"],
+        "gold_answer": sample["gold_answer"],
+        "gold_evidence": [
+            {"evidence_id": f"e{i}", "text": text}
+            for i, text in enumerate(sample["evidence"], 1)
+        ],
+        "retrieved_memories": clipped,
+    }
+
+
+def build_prompt(cases: list[dict[str, Any]]) -> str:
+    return f"""
+You are auditing retrieval, not judging the model answer.
+
+Task: For each case, decide whether the retrieved memories contain the same answer-bearing factual claim(s) as each GOLD_EVIDENCE item.
+
+Definitions:
+- supported: one or more retrieved memories preserve the factual claim needed by this gold evidence. Count paraphrases, summaries, profile updates, or aggregated memories.
+- partially_supported: retrieved memories preserve the key answer value but omit important qualifiers/details, or preserve only part of a multi-fact evidence item.
+- not_supported: retrieved memories are only topically similar, too vague, or do not contain the answer-bearing fact.
+- contradicted: retrieved memories contain a stale/opposite fact instead of the gold evidence fact.
+
+Rules:
+- Do not require exact wording.
+- Do not count topical similarity as support.
+- Do not count a stale or contradictory retrieved memory as support.
+- For Memory Conflict questions, the relevant support is the counterevidence/correction fact, not merely the false premise topic.
+- If multiple retrieved memories together support one evidence item, mark supported and list all useful memory ids.
+
+Return only JSON:
+{{
+  "cases": [
+    {{
+      "case_id": "...",
+      "evidence_results": [
+        {{
+          "evidence_id": "e1",
+          "status": "supported|partially_supported|not_supported|contradicted",
+          "best_memory_ids": ["m1"],
+          "rationale": "short reason"
+        }}
+      ],
+      "case_rationale": "short reason"
+    }}
+  ]
+}}
+
+CASES:
+{json.dumps(cases, ensure_ascii=False)}
+""".strip()
+
+
+def parse_json(content: str) -> dict[str, Any]:
+    content = (content or "").strip()
+    if content.startswith("```"):
+        content = re.sub(r"^```(?:json)?", "", content).strip()
+        content = re.sub(r"```$", "", content).strip()
+    start = content.find("{")
+    end = content.rfind("}")
+    if start >= 0 and end >= start:
+        content = content[start : end + 1]
+    return json.loads(content)
+
+
+def call_judge(
+    client: OpenAI,
+    model: str,
+    cases: list[dict[str, Any]],
+    timeout: int,
+    retries: int,
+) -> list[dict[str, Any]]:
+    prompt = build_prompt(cases)
+    last_error: Exception | None = None
+    for attempt in range(1, retries + 1):
+        try:
+            response = client.chat.completions.create(
+                model=model,
+                messages=[{"role": "user", "content": prompt}],
+                response_format={"type": "json_object"},
+                temperature=0,
+                max_tokens=1800,
+                timeout=timeout,
+            )
+            parsed = parse_json(response.choices[0].message.content or "{}")
+            out = parsed.get("cases")
+            if not isinstance(out, list):
+                raise ValueError(f"bad cases payload: {parsed}")
+            return out
+        except Exception as exc:  # noqa: BLE001
+            last_error = exc
+            time.sleep(min(2 * attempt, 12))
+    raise RuntimeError(f"semantic judge failed after {retries} retries: {last_error}")
+
+
+def normalize_case_result(sample: dict[str, Any], judged: dict[str, Any]) -> dict[str, Any]:
+    by_id = {}
+    for item in judged.get("evidence_results", []) if isinstance(judged, dict) else []:
+        eid = str(item.get("evidence_id", "")).strip()
+        status = str(item.get("status", "")).strip().lower()
+        if status not in STATUS_SET:
+            status = "not_supported"
+        best_ids = item.get("best_memory_ids")
+        if not isinstance(best_ids, list):
+            best_ids = []
+        by_id[eid] = {
+            "evidence_id": eid,
+            "status": status,
+            "best_memory_ids": [str(x) for x in best_ids],
+            "rationale": str(item.get("rationale", "")),
+        }
+
+    evidence_results = []
+    for idx, ev in enumerate(sample["evidence"], 1):
+        eid = f"e{idx}"
+        evidence_results.append(
+            {
+                "evidence_id": eid,
+                "gold_evidence": ev,
+                **by_id.get(
+                    eid,
+                    {
+                        "status": "not_supported",
+                        "best_memory_ids": [],
+                        "rationale": "missing judge result",
+                    },
+                ),
+            }
+        )
+
+    statuses = [r["status"] for r in evidence_results]
+    supported = {"supported"}
+    broad = {"supported", "partially_supported"}
+    return {
+        **{k: sample[k] for k in [
+            "case_id",
+            "run_id",
+            "dataset",
+            "system",
+            "source_file",
+            "line_no",
+            "qa_key",
+            "uuid",
+            "question_type",
+            "question",
+            "gold_answer",
+            "baseline_response",
+            "baseline_label",
+            "retrieved_count",
+        ]},
+        "evidence_count": len(sample["evidence"]),
+        "token_any_exact_hit": sample["token"]["any_exact_hit"],
+        "token_any_hit_0p60": sample["token"]["any_token_hit"],
+        "token_all_hit_0p60": sample["token"]["all_token_hit"],
+        "token_max_coverage": sample["token"]["max_coverage"],
+        "semantic_any_supported": any(s in supported for s in statuses),
+        "semantic_all_supported": bool(statuses) and all(s in supported for s in statuses),
+        "semantic_any_partial_or_supported": any(s in broad for s in statuses),
+        "semantic_all_partial_or_supported": bool(statuses) and all(s in broad for s in statuses),
+        "semantic_any_contradicted": any(s == "contradicted" for s in statuses),
+        "evidence_results": evidence_results,
+        "case_rationale": str(judged.get("case_rationale", "")) if isinstance(judged, dict) else "",
+    }
+
+
+def load_existing(path: Path) -> dict[str, dict[str, Any]]:
+    existing = {}
+    if not path.exists():
+        return existing
+    with path.open("r", encoding="utf-8") as f:
+        for line in f:
+            if not line.strip():
+                continue
+            row = json.loads(line)
+            existing[str(row.get("case_id"))] = row
+    return existing
+
+
+def load_samples(run_filter: set[str] | None = None, question_type: str | None = None, limit: int = 0) -> list[dict[str, Any]]:
+    samples = []
+    for spec in INPUTS:
+        if run_filter and spec["run_id"] not in run_filter:
+            continue
+        path = spec["path"]
+        if not path.exists():
+            continue
+        with path.open("r", encoding="utf-8") as f:
+            for line_no, line in enumerate(f, 1):
+                if not line.strip():
+                    continue
+                record = json.loads(line)
+                if record.get("baseline_label") == "correct":
+                    continue
+                qtype = record.get("question_type") or "UNKNOWN"
+                if question_type and qtype != question_type:
+                    continue
+                evidence = evidence_texts(record)
+                if not evidence:
+                    continue
+                retrieved = raw_memory_texts(record.get("raw_memories"))
+                token = token_hit(evidence, retrieved)
+                samples.append(
+                    {
+                        "case_id": f"{spec['run_id']}:{line_no}",
+                        "run_id": spec["run_id"],
+                        "dataset": spec["dataset"],
+                        "system": spec["system"],
+                        "source_file": str(path.relative_to(ROOT)),
+                        "line_no": line_no,
+                        "qa_key": record.get("qa_key") or "",
+                        "uuid": record.get("uuid") or "",
+                        "question_type": qtype,
+                        "question": record.get("question") or "",
+                        "gold_answer": record.get("gold_answer") or "",
+                        "baseline_response": record.get("baseline_response") or "",
+                        "baseline_label": record.get("baseline_label") or "",
+                        "evidence": evidence,
+                        "retrieved": retrieved,
+                        "retrieved_count": len(retrieved),
+                        "token": token,
+                    }
+                )
+                if limit and len(samples) >= limit:
+                    return samples
+    return samples
+
+
+def chunks(items: list[Any], size: int) -> list[list[Any]]:
+    return [items[i : i + size] for i in range(0, len(items), size)]
+
+
+def write_csv(path: Path, rows: list[dict[str, Any]]) -> None:
+    fields = [
+        "case_id",
+        "run_id",
+        "dataset",
+        "system",
+        "source_file",
+        "line_no",
+        "qa_key",
+        "uuid",
+        "question_type",
+        "question",
+        "gold_answer",
+        "baseline_response",
+        "baseline_label",
+        "evidence_count",
+        "retrieved_count",
+        "token_any_exact_hit",
+        "token_any_hit_0p60",
+        "token_all_hit_0p60",
+        "token_max_coverage",
+        "semantic_any_supported",
+        "semantic_all_supported",
+        "semantic_any_partial_or_supported",
+        "semantic_all_partial_or_supported",
+        "semantic_any_contradicted",
+        "evidence_results_json",
+        "case_rationale",
+    ]
+    path.parent.mkdir(parents=True, exist_ok=True)
+    with path.open("w", encoding="utf-8-sig", newline="") as f:
+        writer = csv.DictWriter(f, fieldnames=fields)
+        writer.writeheader()
+        for row in rows:
+            flat = {k: row.get(k, "") for k in fields}
+            flat["evidence_results_json"] = json.dumps(row.get("evidence_results", []), ensure_ascii=False)
+            writer.writerow(flat)
+
+
+def summarize(rows: list[dict[str, Any]]) -> tuple[list[dict[str, Any]], list[dict[str, Any]]]:
+    groups: dict[tuple[str, str | None], list[dict[str, Any]]] = defaultdict(list)
+    qgroups: dict[tuple[str, str], list[dict[str, Any]]] = defaultdict(list)
+    for row in rows:
+        groups[(row["run_id"], None)].append(row)
+        qgroups[(row["run_id"], row["question_type"])].append(row)
+
+    def make_summary(run_id: str, subset: list[dict[str, Any]], qtype: str | None = None) -> dict[str, Any]:
+        n = len(subset)
+        return {
+            "run_id": run_id,
+            **({"question_type": qtype} if qtype else {}),
+            "wrong_with_evidence_judged": n,
+            "token_any_exact_hit": sum(bool(r["token_any_exact_hit"]) for r in subset),
+            "token_any_hit_0p60": sum(bool(r["token_any_hit_0p60"]) for r in subset),
+            "semantic_any_supported": sum(bool(r["semantic_any_supported"]) for r in subset),
+            "semantic_all_supported": sum(bool(r["semantic_all_supported"]) for r in subset),
+            "semantic_any_partial_or_supported": sum(bool(r["semantic_any_partial_or_supported"]) for r in subset),
+            "semantic_all_partial_or_supported": sum(bool(r["semantic_all_partial_or_supported"]) for r in subset),
+            "semantic_any_contradicted": sum(bool(r["semantic_any_contradicted"]) for r in subset),
+            "semantic_any_supported_rate": round(
+                sum(bool(r["semantic_any_supported"]) for r in subset) / n * 100, 2
+            )
+            if n
+            else 0.0,
+            "semantic_any_partial_or_supported_rate": round(
+                sum(bool(r["semantic_any_partial_or_supported"]) for r in subset) / n * 100, 2
+            )
+            if n
+            else 0.0,
+        }
+
+    overall = [make_summary(run_id, subset) for (run_id, _), subset in sorted(groups.items())]
+    by_qtype = [
+        make_summary(run_id, subset, qtype)
+        for (run_id, qtype), subset in sorted(qgroups.items())
+    ]
+    return overall, by_qtype
+
+
+def write_report(path: Path, overall: list[dict[str, Any]], by_qtype: list[dict[str, Any]], total: int) -> None:
+    lines = [
+        "# Semantic Gold Evidence Retrieval Audit",
+        "",
+        f"Judged wrong samples with non-empty gold evidence: {total}",
+        "",
+        "The semantic judge sees each sample's saved `raw_memories` retrieval/context return and decides whether they support each gold evidence item. It counts paraphrases, summaries, and aggregated memories, while rejecting mere topical similarity or stale contradictory facts.",
+        "",
+        "## Overall",
+        "",
+        "| run_id | wrong+evidence | exact hit | token hit >=0.60 | semantic supported | semantic supported % | semantic partial/support | partial/support % |",
+        "|---|---:|---:|---:|---:|---:|---:|---:|",
+    ]
+    for row in overall:
+        lines.append(
+            f"| {row['run_id']} | {row['wrong_with_evidence_judged']} | {row['token_any_exact_hit']} | "
+            f"{row['token_any_hit_0p60']} | {row['semantic_any_supported']} | "
+            f"{row['semantic_any_supported_rate']:.2f}% | {row['semantic_any_partial_or_supported']} | "
+            f"{row['semantic_any_partial_or_supported_rate']:.2f}% |"
+        )
+    lines.extend(
+        [
+            "",
+            "## Memory Conflict",
+            "",
+            "| run_id | MC wrong+evidence | semantic supported | semantic supported % | semantic partial/support | partial/support % |",
+            "|---|---:|---:|---:|---:|---:|",
+        ]
+    )
+    for row in by_qtype:
+        if row.get("question_type") != "Memory Conflict":
+            continue
+        lines.append(
+            f"| {row['run_id']} | {row['wrong_with_evidence_judged']} | "
+            f"{row['semantic_any_supported']} | {row['semantic_any_supported_rate']:.2f}% | "
+            f"{row['semantic_any_partial_or_supported']} | {row['semantic_any_partial_or_supported_rate']:.2f}% |"
+        )
+    path.write_text("\n".join(lines) + "\n", encoding="utf-8")
+
+
+def main() -> None:
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--model", default="deepseek-chat")
+    parser.add_argument("--batch-size", type=int, default=1)
+    parser.add_argument("--workers", type=int, default=4)
+    parser.add_argument("--timeout", type=int, default=90)
+    parser.add_argument("--retries", type=int, default=3)
+    parser.add_argument("--limit", type=int, default=0)
+    parser.add_argument("--run-id", action="append", default=[])
+    parser.add_argument("--question-type", default="")
+    parser.add_argument("--max-memory-chars", type=int, default=1400)
+    parser.add_argument("--max-total-memory-chars", type=int, default=24000)
+    args = parser.parse_args()
+
+    load_dotenv(ENV_PATH, override=True)
+    client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"), base_url=os.getenv("OPENAI_BASE_URL"))
+    OUT_DIR.mkdir(parents=True, exist_ok=True)
+
+    detail_jsonl = OUT_DIR / "semantic_gold_evidence_detail.jsonl"
+    detail_csv = OUT_DIR / "semantic_gold_evidence_detail.csv"
+    summary_json = OUT_DIR / "semantic_gold_evidence_summary.json"
+    report_md = OUT_DIR / "semantic_gold_evidence_report.md"
+
+    run_filter = set(args.run_id) if args.run_id else None
+    qtype = args.question_type or None
+    samples = load_samples(run_filter=run_filter, question_type=qtype, limit=args.limit)
+    existing = load_existing(detail_jsonl)
+    pending = [s for s in samples if s["case_id"] not in existing]
+
+    print(f"samples={len(samples)} existing={len(existing)} pending={len(pending)}", flush=True)
+    batches = chunks(pending, max(1, args.batch_size))
+
+    def judge_batch(batch: list[dict[str, Any]]) -> list[dict[str, Any]]:
+        case_payloads = [
+            build_case_payload(s, args.max_memory_chars, args.max_total_memory_chars)
+            for s in batch
+        ]
+        judged_cases = call_judge(client, args.model, case_payloads, args.timeout, args.retries)
+        by_case = {str(item.get("case_id", "")): item for item in judged_cases if isinstance(item, dict)}
+        return [normalize_case_result(sample, by_case.get(sample["case_id"], {})) for sample in batch]
+
+    completed = 0
+    with detail_jsonl.open("a", encoding="utf-8") as out:
+        with ThreadPoolExecutor(max_workers=max(1, args.workers)) as pool:
+            futures = [pool.submit(judge_batch, batch) for batch in batches]
+            for future in as_completed(futures):
+                results = future.result()
+                for row in results:
+                    out.write(json.dumps(row, ensure_ascii=False) + "\n")
+                    existing[row["case_id"]] = row
+                out.flush()
+                completed += len(results)
+                if completed % 25 == 0 or completed == len(pending):
+                    print(f"semantic_judged_new={completed}/{len(pending)} total_done={len(existing)}/{len(samples)}", flush=True)
+
+    rows = list(existing.values())
+    if run_filter:
+        rows = [r for r in rows if r.get("run_id") in run_filter]
+    if qtype:
+        rows = [r for r in rows if r.get("question_type") == qtype]
+
+    write_csv(detail_csv, rows)
+    overall, by_qtype = summarize(rows)
+    payload = {
+        "model": args.model,
+        "judge": "semantic entailment over saved raw_memories",
+        "wrong_with_evidence_total": len(rows),
+        "overall": overall,
+        "by_question_type": by_qtype,
+        "detail_jsonl": str(detail_jsonl.relative_to(ROOT)),
+        "detail_csv": str(detail_csv.relative_to(ROOT)),
+        "report": str(report_md.relative_to(ROOT)),
+    }
+    summary_json.write_text(json.dumps(payload, ensure_ascii=False, indent=2), encoding="utf-8")
+    write_report(report_md, overall, by_qtype, len(rows))
+    print(json.dumps(payload, ensure_ascii=False, indent=2), flush=True)
+
+
+if __name__ == "__main__":
+    main()

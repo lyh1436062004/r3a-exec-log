@@ -1,0 +1,849 @@
+samples=12741 existing=20 pending=12721
+semantic_judged_new=50/12721 total_done=70/12741
+semantic_judged_new=100/12721 total_done=120/12741
+semantic_judged_new=150/12721 total_done=170/12741
+semantic_judged_new=200/12721 total_done=220/12741
+semantic_judged_new=250/12721 total_done=270/12741
+semantic_judged_new=300/12721 total_done=320/12741
+semantic_judged_new=350/12721 total_done=370/12741
+semantic_judged_new=400/12721 total_done=420/12741
+semantic_judged_new=450/12721 total_done=470/12741
+semantic_judged_new=500/12721 total_done=520/12741
+semantic_judged_new=550/12721 total_done=570/12741
+semantic_judged_new=600/12721 total_done=620/12741
+semantic_judged_new=650/12721 total_done=670/12741
+semantic_judged_new=700/12721 total_done=720/12741
+semantic_judged_new=750/12721 total_done=770/12741
+semantic_judged_new=800/12721 total_done=820/12741
+semantic_judged_new=850/12721 total_done=870/12741
+semantic_judged_new=900/12721 total_done=920/12741
+semantic_judged_new=950/12721 total_done=970/12741
+semantic_judged_new=1000/12721 total_done=1020/12741
+semantic_judged_new=1050/12721 total_done=1070/12741
+semantic_judged_new=1100/12721 total_done=1120/12741
+semantic_judged_new=1150/12721 total_done=1170/12741
+semantic_judged_new=1200/12721 total_done=1220/12741
+semantic_judged_new=1250/12721 total_done=1270/12741
+semantic_judged_new=1300/12721 total_done=1320/12741
+semantic_judged_new=1350/12721 total_done=1370/12741
+semantic_judged_new=1400/12721 total_done=1420/12741
+semantic_judged_new=1450/12721 total_done=1470/12741
+semantic_judged_new=1500/12721 total_done=1520/12741
+semantic_judged_new=1550/12721 total_done=1570/12741
+semantic_judged_new=1600/12721 total_done=1620/12741
+semantic_judged_new=1650/12721 total_done=1670/12741
+semantic_judged_new=1700/12721 total_done=1720/12741
+semantic_judged_new=1750/12721 total_done=1770/12741
+semantic_judged_new=1800/12721 total_done=1820/12741
+semantic_judged_new=1850/12721 total_done=1870/12741
+semantic_judged_new=1900/12721 total_done=1920/12741
+semantic_judged_new=1950/12721 total_done=1970/12741
+semantic_judged_new=2000/12721 total_done=2020/12741
+semantic_judged_new=2050/12721 total_done=2070/12741
+semantic_judged_new=2100/12721 total_done=2120/12741
+semantic_judged_new=2150/12721 total_done=2170/12741
+semantic_judged_new=2200/12721 total_done=2220/12741
+semantic_judged_new=2250/12721 total_done=2270/12741
+semantic_judged_new=2300/12721 total_done=2320/12741
+semantic_judged_new=2350/12721 total_done=2370/12741
+semantic_judged_new=2400/12721 total_done=2420/12741
+semantic_judged_new=2450/12721 total_done=2470/12741
+semantic_judged_new=2500/12721 total_done=2520/12741
+semantic_judged_new=2550/12721 total_done=2570/12741
+semantic_judged_new=2600/12721 total_done=2620/12741
+semantic_judged_new=2650/12721 total_done=2670/12741
+semantic_judged_new=2700/12721 total_done=2720/12741
+semantic_judged_new=2750/12721 total_done=2770/12741
+semantic_judged_new=2800/12721 total_done=2820/12741
+semantic_judged_new=2850/12721 total_done=2870/12741
+semantic_judged_new=2900/12721 total_done=2920/12741
+semantic_judged_new=2950/12721 total_done=2970/12741
+semantic_judged_new=3000/12721 total_done=3020/12741
+semantic_judged_new=3050/12721 total_done=3070/12741
+semantic_judged_new=3100/12721 total_done=3120/12741
+semantic_judged_new=3150/12721 total_done=3170/12741
+semantic_judged_new=3200/12721 total_done=3220/12741
+semantic_judged_new=3250/12721 total_done=3270/12741
+semantic_judged_new=3300/12721 total_done=3320/12741
+semantic_judged_new=3350/12721 total_done=3370/12741
+semantic_judged_new=3400/12721 total_done=3420/12741
+semantic_judged_new=3450/12721 total_done=3470/12741
+semantic_judged_new=3500/12721 total_done=3520/12741
+semantic_judged_new=3550/12721 total_done=3570/12741
+semantic_judged_new=3600/12721 total_done=3620/12741
+semantic_judged_new=3650/12721 total_done=3670/12741
+semantic_judged_new=3700/12721 total_done=3720/12741
+semantic_judged_new=3750/12721 total_done=3770/12741
+semantic_judged_new=3800/12721 total_done=3820/12741
+semantic_judged_new=3850/12721 total_done=3870/12741
+semantic_judged_new=3900/12721 total_done=3920/12741
+semantic_judged_new=3950/12721 total_done=3970/12741
+semantic_judged_new=4000/12721 total_done=4020/12741
+semantic_judged_new=4050/12721 total_done=4070/12741
+semantic_judged_new=4100/12721 total_done=4120/12741
+semantic_judged_new=4150/12721 total_done=4170/12741
+semantic_judged_new=4200/12721 total_done=4220/12741
+semantic_judged_new=4250/12721 total_done=4270/12741
+semantic_judged_new=4300/12721 total_done=4320/12741
+semantic_judged_new=4350/12721 total_done=4370/12741
+semantic_judged_new=4400/12721 total_done=4420/12741
+semantic_judged_new=4450/12721 total_done=4470/12741
+semantic_judged_new=4500/12721 total_done=4520/12741
+semantic_judged_new=4550/12721 total_done=4570/12741
+semantic_judged_new=4600/12721 total_done=4620/12741
+semantic_judged_new=4650/12721 total_done=4670/12741
+semantic_judged_new=4700/12721 total_done=4720/12741
+semantic_judged_new=4750/12721 total_done=4770/12741
+semantic_judged_new=4800/12721 total_done=4820/12741
+semantic_judged_new=4850/12721 total_done=4870/12741
+semantic_judged_new=4900/12721 total_done=4920/12741
+semantic_judged_new=4950/12721 total_done=4970/12741
+semantic_judged_new=5000/12721 total_done=5020/12741
+semantic_judged_new=5050/12721 total_done=5070/12741
+semantic_judged_new=5100/12721 total_done=5120/12741
+semantic_judged_new=5150/12721 total_done=5170/12741
+semantic_judged_new=5200/12721 total_done=5220/12741
+semantic_judged_new=5250/12721 total_done=5270/12741
+semantic_judged_new=5300/12721 total_done=5320/12741
+semantic_judged_new=5350/12721 total_done=5370/12741
+semantic_judged_new=5400/12721 total_done=5420/12741
+semantic_judged_new=5450/12721 total_done=5470/12741
+semantic_judged_new=5500/12721 total_done=5520/12741
+semantic_judged_new=5550/12721 total_done=5570/12741
+semantic_judged_new=5600/12721 total_done=5620/12741
+semantic_judged_new=5650/12721 total_done=5670/12741
+semantic_judged_new=5700/12721 total_done=5720/12741
+semantic_judged_new=5750/12721 total_done=5770/12741
+semantic_judged_new=5800/12721 total_done=5820/12741
+semantic_judged_new=5850/12721 total_done=5870/12741
+semantic_judged_new=5900/12721 total_done=5920/12741
+semantic_judged_new=5950/12721 total_done=5970/12741
+semantic_judged_new=6000/12721 total_done=6020/12741
+semantic_judged_new=6050/12721 total_done=6070/12741
+semantic_judged_new=6100/12721 total_done=6120/12741
+semantic_judged_new=6150/12721 total_done=6170/12741
+semantic_judged_new=6200/12721 total_done=6220/12741
+semantic_judged_new=6250/12721 total_done=6270/12741
+semantic_judged_new=6300/12721 total_done=6320/12741
+semantic_judged_new=6350/12721 total_done=6370/12741
+semantic_judged_new=6400/12721 total_done=6420/12741
+semantic_judged_new=6450/12721 total_done=6470/12741
+semantic_judged_new=6500/12721 total_done=6520/12741
+semantic_judged_new=6550/12721 total_done=6570/12741
+semantic_judged_new=6600/12721 total_done=6620/12741
+semantic_judged_new=6650/12721 total_done=6670/12741
+semantic_judged_new=6700/12721 total_done=6720/12741
+semantic_judged_new=6750/12721 total_done=6770/12741
+semantic_judged_new=6800/12721 total_done=6820/12741
+semantic_judged_new=6850/12721 total_done=6870/12741
+semantic_judged_new=6900/12721 total_done=6920/12741
+semantic_judged_new=6950/12721 total_done=6970/12741
+semantic_judged_new=7000/12721 total_done=7020/12741
+semantic_judged_new=7050/12721 total_done=7070/12741
+semantic_judged_new=7100/12721 total_done=7120/12741
+semantic_judged_new=7150/12721 total_done=7170/12741
+semantic_judged_new=7200/12721 total_done=7220/12741
+semantic_judged_new=7250/12721 total_done=7270/12741
+semantic_judged_new=7300/12721 total_done=7320/12741
+semantic_judged_new=7350/12721 total_done=7370/12741
+semantic_judged_new=7400/12721 total_done=7420/12741
+semantic_judged_new=7450/12721 total_done=7470/12741
+semantic_judged_new=7500/12721 total_done=7520/12741
+semantic_judged_new=7550/12721 total_done=7570/12741
+semantic_judged_new=7600/12721 total_done=7620/12741
+semantic_judged_new=7650/12721 total_done=7670/12741
+semantic_judged_new=7700/12721 total_done=7720/12741
+semantic_judged_new=7750/12721 total_done=7770/12741
+semantic_judged_new=7800/12721 total_done=7820/12741
+semantic_judged_new=7850/12721 total_done=7870/12741
+semantic_judged_new=7900/12721 total_done=7920/12741
+semantic_judged_new=7950/12721 total_done=7970/12741
+semantic_judged_new=8000/12721 total_done=8020/12741
+semantic_judged_new=8050/12721 total_done=8070/12741
+semantic_judged_new=8100/12721 total_done=8120/12741
+semantic_judged_new=8150/12721 total_done=8170/12741
+semantic_judged_new=8200/12721 total_done=8220/12741
+semantic_judged_new=8250/12721 total_done=8270/12741
+semantic_judged_new=8300/12721 total_done=8320/12741
+semantic_judged_new=8350/12721 total_done=8370/12741
+semantic_judged_new=8400/12721 total_done=8420/12741
+semantic_judged_new=8450/12721 total_done=8470/12741
+semantic_judged_new=8500/12721 total_done=8520/12741
+semantic_judged_new=8550/12721 total_done=8570/12741
+semantic_judged_new=8600/12721 total_done=8620/12741
+semantic_judged_new=8650/12721 total_done=8670/12741
+semantic_judged_new=8700/12721 total_done=8720/12741
+semantic_judged_new=8750/12721 total_done=8770/12741
+semantic_judged_new=8800/12721 total_done=8820/12741
+semantic_judged_new=8850/12721 total_done=8870/12741
+semantic_judged_new=8900/12721 total_done=8920/12741
+semantic_judged_new=8950/12721 total_done=8970/12741
+semantic_judged_new=9000/12721 total_done=9020/12741
+semantic_judged_new=9050/12721 total_done=9070/12741
+semantic_judged_new=9100/12721 total_done=9120/12741
+semantic_judged_new=9150/12721 total_done=9170/12741
+semantic_judged_new=9200/12721 total_done=9220/12741
+semantic_judged_new=9250/12721 total_done=9270/12741
+semantic_judged_new=9300/12721 total_done=9320/12741
+semantic_judged_new=9350/12721 total_done=9370/12741
+semantic_judged_new=9400/12721 total_done=9420/12741
+semantic_judged_new=9450/12721 total_done=9470/12741
+semantic_judged_new=9500/12721 total_done=9520/12741
+semantic_judged_new=9550/12721 total_done=9570/12741
+semantic_judged_new=9600/12721 total_done=9620/12741
+semantic_judged_new=9650/12721 total_done=9670/12741
+semantic_judged_new=9700/12721 total_done=9720/12741
+semantic_judged_new=9750/12721 total_done=9770/12741
+semantic_judged_new=9800/12721 total_done=9820/12741
+semantic_judged_new=9850/12721 total_done=9870/12741
+semantic_judged_new=9900/12721 total_done=9920/12741
+semantic_judged_new=9950/12721 total_done=9970/12741
+semantic_judged_new=10000/12721 total_done=10020/12741
+semantic_judged_new=10050/12721 total_done=10070/12741
+semantic_judged_new=10100/12721 total_done=10120/12741
+semantic_judged_new=10150/12721 total_done=10170/12741
+semantic_judged_new=10200/12721 total_done=10220/12741
+semantic_judged_new=10250/12721 total_done=10270/12741
+semantic_judged_new=10300/12721 total_done=10320/12741
+semantic_judged_new=10350/12721 total_done=10370/12741
+semantic_judged_new=10400/12721 total_done=10420/12741
+semantic_judged_new=10450/12721 total_done=10470/12741
+semantic_judged_new=10500/12721 total_done=10520/12741
+semantic_judged_new=10550/12721 total_done=10570/12741
+semantic_judged_new=10600/12721 total_done=10620/12741
+semantic_judged_new=10650/12721 total_done=10670/12741
+semantic_judged_new=10700/12721 total_done=10720/12741
+semantic_judged_new=10750/12721 total_done=10770/12741
+semantic_judged_new=10800/12721 total_done=10820/12741
+semantic_judged_new=10850/12721 total_done=10870/12741
+semantic_judged_new=10900/12721 total_done=10920/12741
+semantic_judged_new=10950/12721 total_done=10970/12741
+semantic_judged_new=11000/12721 total_done=11020/12741
+semantic_judged_new=11050/12721 total_done=11070/12741
+semantic_judged_new=11100/12721 total_done=11120/12741
+semantic_judged_new=11150/12721 total_done=11170/12741
+semantic_judged_new=11200/12721 total_done=11220/12741
+semantic_judged_new=11250/12721 total_done=11270/12741
+semantic_judged_new=11300/12721 total_done=11320/12741
+semantic_judged_new=11350/12721 total_done=11370/12741
+semantic_judged_new=11400/12721 total_done=11420/12741
+semantic_judged_new=11450/12721 total_done=11470/12741
+semantic_judged_new=11500/12721 total_done=11520/12741
+semantic_judged_new=11550/12721 total_done=11570/12741
+semantic_judged_new=11600/12721 total_done=11620/12741
+semantic_judged_new=11650/12721 total_done=11670/12741
+semantic_judged_new=11700/12721 total_done=11720/12741
+semantic_judged_new=11750/12721 total_done=11770/12741
+semantic_judged_new=11800/12721 total_done=11820/12741
+semantic_judged_new=11850/12721 total_done=11870/12741
+semantic_judged_new=11900/12721 total_done=11920/12741
+semantic_judged_new=11950/12721 total_done=11970/12741
+semantic_judged_new=12000/12721 total_done=12020/12741
+semantic_judged_new=12050/12721 total_done=12070/12741
+semantic_judged_new=12100/12721 total_done=12120/12741
+semantic_judged_new=12150/12721 total_done=12170/12741
+semantic_judged_new=12200/12721 total_done=12220/12741
+semantic_judged_new=12250/12721 total_done=12270/12741
+semantic_judged_new=12300/12721 total_done=12320/12741
+semantic_judged_new=12350/12721 total_done=12370/12741
+semantic_judged_new=12400/12721 total_done=12420/12741
+semantic_judged_new=12450/12721 total_done=12470/12741
+semantic_judged_new=12500/12721 total_done=12520/12741
+semantic_judged_new=12550/12721 total_done=12570/12741
+semantic_judged_new=12600/12721 total_done=12620/12741
+semantic_judged_new=12650/12721 total_done=12670/12741
+semantic_judged_new=12700/12721 total_done=12720/12741
+semantic_judged_new=12721/12721 total_done=12741/12741
+{
+  "model": "deepseek-chat",
+  "judge": "semantic entailment over saved raw_memories",
+  "wrong_with_evidence_total": 12741,
+  "overall": [
+    {
+      "run_id": "mem0_long",
+      "wrong_with_evidence_judged": 2239,
+      "token_any_exact_hit": 0,
+      "token_any_hit_0p60": 13,
+      "semantic_any_supported": 46,
+      "semantic_all_supported": 25,
+      "semantic_any_partial_or_supported": 188,
+      "semantic_all_partial_or_supported": 79,
+      "semantic_any_contradicted": 71,
+      "semantic_any_supported_rate": 2.05,
+      "semantic_any_partial_or_supported_rate": 8.4
+    },
+    {
+      "run_id": "mem0_medium",
+      "wrong_with_evidence_judged": 2091,
+      "token_any_exact_hit": 0,
+      "token_any_hit_0p60": 23,
+      "semantic_any_supported": 239,
+      "semantic_all_supported": 153,
+      "semantic_any_partial_or_supported": 445,
+      "semantic_all_partial_or_supported": 270,
+      "semantic_any_contradicted": 368,
+      "semantic_any_supported_rate": 11.43,
+      "semantic_any_partial_or_supported_rate": 21.28
+    },
+    {
+      "run_id": "memobase_long",
+      "wrong_with_evidence_judged": 2433,
+      "token_any_exact_hit": 5,
+      "token_any_hit_0p60": 3,
+      "semantic_any_supported": 29,
+      "semantic_all_supported": 18,
+      "semantic_any_partial_or_supported": 121,
+      "semantic_all_partial_or_supported": 50,
+      "semantic_any_contradicted": 13,
+      "semantic_any_supported_rate": 1.19,
+      "semantic_any_partial_or_supported_rate": 4.97
+    },
+    {
+      "run_id": "memobase_medium",
+      "wrong_with_evidence_judged": 2324,
+      "token_any_exact_hit": 4,
+      "token_any_hit_0p60": 17,
+      "semantic_any_supported": 84,
+      "semantic_all_supported": 46,
+      "semantic_any_partial_or_supported": 235,
+      "semantic_all_partial_or_supported": 111,
+      "semantic_any_contradicted": 29,
+      "semantic_any_supported_rate": 3.61,
+      "semantic_any_partial_or_supported_rate": 10.11
+    },
+    {
+      "run_id": "memos_long",
+      "wrong_with_evidence_judged": 998,
+      "token_any_exact_hit": 0,
+      "token_any_hit_0p60": 259,
+      "semantic_any_supported": 451,
+      "semantic_all_supported": 348,
+      "semantic_any_partial_or_supported": 564,
+      "semantic_all_partial_or_supported": 442,
+      "semantic_any_contradicted": 67,
+      "semantic_any_supported_rate": 45.19,
+      "semantic_any_partial_or_supported_rate": 56.51
+    },
+    {
+      "run_id": "memos_medium",
+      "wrong_with_evidence_judged": 989,
+      "token_any_exact_hit": 0,
+      "token_any_hit_0p60": 278,
+      "semantic_any_supported": 445,
+      "semantic_all_supported": 333,
+      "semantic_any_partial_or_supported": 565,
+      "semantic_all_partial_or_supported": 440,
+      "semantic_any_contradicted": 65,
+      "semantic_any_supported_rate": 44.99,
+      "semantic_any_partial_or_supported_rate": 57.13
+    },
+    {
+      "run_id": "supermemory_medium",
+      "wrong_with_evidence_judged": 1667,
+      "token_any_exact_hit": 6,
+      "token_any_hit_0p60": 5,
+      "semantic_any_supported": 19,
+      "semantic_all_supported": 12,
+      "semantic_any_partial_or_supported": 44,
+      "semantic_all_partial_or_supported": 32,
+      "semantic_any_contradicted": 20,
+      "semantic_any_supported_rate": 1.14,
+      "semantic_any_partial_or_supported_rate": 2.64
+    }
+  ],
+  "by_question_type": [
+    {
+      "run_id": "mem0_long",
+      "question_type": "Basic Fact Recall",
+      "wrong_with_evidence_judged": 710,
+      "token_any_exact_hit": 0,
+      "token_any_hit_0p60": 0,
+      "semantic_any_supported": 4,
+      "semantic_all_supported": 4,
+      "semantic_any_partial_or_supported": 27,
+      "semantic_all_partial_or_supported": 26,
+      "semantic_any_contradicted": 28,
+      "semantic_any_supported_rate": 0.56,
+      "semantic_any_partial_or_supported_rate": 3.8
+    },
+    {
+      "run_id": "mem0_long",
+      "question_type": "Dynamic Update",
+      "wrong_with_evidence_judged": 170,
+      "token_any_exact_hit": 0,
+      "token_any_hit_0p60": 3,
+      "semantic_any_supported": 3,
+      "semantic_all_supported": 2,
+      "semantic_any_partial_or_supported": 12,
+      "semantic_all_partial_or_supported": 7,
+      "semantic_any_contradicted": 8,
+      "semantic_any_supported_rate": 1.76,
+      "semantic_any_partial_or_supported_rate": 7.06
+    },
+    {
+      "run_id": "mem0_long",
+      "question_type": "Generalization & Application",
+      "wrong_with_evidence_judged": 643,
+      "token_any_exact_hit": 0,
+      "token_any_hit_0p60": 7,
+      "semantic_any_supported": 18,
+      "semantic_all_supported": 9,
+      "semantic_any_partial_or_supported": 89,
+      "semantic_all_partial_or_supported": 21,
+      "semantic_any_contradicted": 18,
+      "semantic_any_supported_rate": 2.8,
+      "semantic_any_partial_or_supported_rate": 13.84
+    },
+    {
+      "run_id": "mem0_long",
+      "question_type": "Memory Conflict",
+      "wrong_with_evidence_judged": 534,
+      "token_any_exact_hit": 0,
+      "token_any_hit_0p60": 2,
+      "semantic_any_supported": 7,
+      "semantic_all_supported": 5,
+      "semantic_any_partial_or_supported": 19,
+      "semantic_all_partial_or_supported": 12,
+      "semantic_any_contradicted": 16,
+      "semantic_any_supported_rate": 1.31,
+      "semantic_any_partial_or_supported_rate": 3.56
+    },
+    {
+      "run_id": "mem0_long",
+      "question_type": "Multi-hop Inference",
+      "wrong_with_evidence_judged": 182,
+      "token_any_exact_hit": 0,
+      "token_any_hit_0p60": 1,
+      "semantic_any_supported": 14,
+      "semantic_all_supported": 5,
+      "semantic_any_partial_or_supported": 41,
+      "semantic_all_partial_or_supported": 13,
+      "semantic_any_contradicted": 1,
+      "semantic_any_supported_rate": 7.69,
+      "semantic_any_partial_or_supported_rate": 22.53
+    },
+    {
+      "run_id": "mem0_medium",
+      "question_type": "Basic Fact Recall",
+      "wrong_with_evidence_judged": 638,
+      "token_any_exact_hit": 0,
+      "token_any_hit_0p60": 6,
+      "semantic_any_supported": 49,
+      "semantic_all_supported": 48,
+      "semantic_any_partial_or_supported": 91,
+      "semantic_all_partial_or_supported": 89,
+      "semantic_any_contradicted": 119,
+      "semantic_any_supported_rate": 7.68,
+      "semantic_any_partial_or_supported_rate": 14.26
+    },
+    {
+      "run_id": "mem0_medium",
+      "question_type": "Dynamic Update",
+      "wrong_with_evidence_judged": 154,
+      "token_any_exact_hit": 0,
+      "token_any_hit_0p60": 2,
+      "semantic_any_supported": 11,
+      "semantic_all_supported": 8,
+      "semantic_any_partial_or_supported": 25,
+      "semantic_all_partial_or_supported": 16,
+      "semantic_any_contradicted": 30,
+      "semantic_any_supported_rate": 7.14,
+      "semantic_any_partial_or_supported_rate": 16.23
+    },
+    {
+      "run_id": "mem0_medium",
+      "question_type": "Generalization & Application",
+      "wrong_with_evidence_judged": 616,
+      "token_any_exact_hit": 0,
+      "token_any_hit_0p60": 6,
+      "semantic_any_supported": 98,
+      "semantic_all_supported": 48,
+      "semantic_any_partial_or_supported": 204,
+      "semantic_all_partial_or_supported": 93,
+      "semantic_any_contradicted": 76,
+      "semantic_any_supported_rate": 15.91,
+      "semantic_any_partial_or_supported_rate": 33.12
+    },
+    {
+      "run_id": "mem0_medium",
+      "question_type": "Memory Conflict",
+      "wrong_with_evidence_judged": 510,
+      "token_any_exact_hit": 0,
+      "token_any_hit_0p60": 4,
+      "semantic_any_supported": 44,
+      "semantic_all_supported": 34,
+      "semantic_any_partial_or_supported": 58,
+      "semantic_all_partial_or_supported": 46,
+      "semantic_any_contradicted": 133,
+      "semantic_any_supported_rate": 8.63,
+      "semantic_any_partial_or_supported_rate": 11.37
+    },
+    {
+      "run_id": "mem0_medium",
+      "question_type": "Multi-hop Inference",
+      "wrong_with_evidence_judged": 173,
+      "token_any_exact_hit": 0,
+      "token_any_hit_0p60": 5,
+      "semantic_any_supported": 37,
+      "semantic_all_supported": 15,
+      "semantic_any_partial_or_supported": 67,
+      "semantic_all_partial_or_supported": 26,
+      "semantic_any_contradicted": 10,
+      "semantic_any_supported_rate": 21.39,
+      "semantic_any_partial_or_supported_rate": 38.73
+    },
+    {
+      "run_id": "memobase_long",
+      "question_type": "Basic Fact Recall",
+      "wrong_with_evidence_judged": 721,
+      "token_any_exact_hit": 0,
+      "token_any_hit_0p60": 0,
+      "semantic_any_supported": 2,
+      "semantic_all_supported": 2,
+      "semantic_any_partial_or_supported": 14,
+      "semantic_all_partial_or_supported": 14,
+      "semantic_any_contradicted": 6,
+      "semantic_any_supported_rate": 0.28,
+      "semantic_any_partial_or_supported_rate": 1.94
+    },
+    {
+      "run_id": "memobase_long",
+      "question_type": "Dynamic Update",
+      "wrong_with_evidence_judged": 174,
+      "token_any_exact_hit": 0,
+      "token_any_hit_0p60": 1,
+      "semantic_any_supported": 2,
+      "semantic_all_supported": 2,
+      "semantic_any_partial_or_supported": 11,
+      "semantic_all_partial_or_supported": 7,
+      "semantic_any_contradicted": 3,
+      "semantic_any_supported_rate": 1.15,
+      "semantic_any_partial_or_supported_rate": 6.32
+    },
+    {
+      "run_id": "memobase_long",
+      "question_type": "Generalization & Application",
+      "wrong_with_evidence_judged": 681,
+      "token_any_exact_hit": 1,
+      "token_any_hit_0p60": 0,
+      "semantic_any_supported": 7,
+      "semantic_all_supported": 3,
+      "semantic_any_partial_or_supported": 53,
+      "semantic_all_partial_or_supported": 10,
+      "semantic_any_contradicted": 2,
+      "semantic_any_supported_rate": 1.03,
+      "semantic_any_partial_or_supported_rate": 7.78
+    },
+    {
+      "run_id": "memobase_long",
+      "question_type": "Memory Conflict",
+      "wrong_with_evidence_judged": 668,
+      "token_any_exact_hit": 2,
+      "token_any_hit_0p60": 2,
+      "semantic_any_supported": 12,
+      "semantic_all_supported": 9,
+      "semantic_any_partial_or_supported": 18,
+      "semantic_all_partial_or_supported": 14,
+      "semantic_any_contradicted": 1,
+      "semantic_any_supported_rate": 1.8,
+      "semantic_any_partial_or_supported_rate": 2.69
+    },
+    {
+      "run_id": "memobase_long",
+      "question_type": "Multi-hop Inference",
+      "wrong_with_evidence_judged": 189,
+      "token_any_exact_hit": 2,
+      "token_any_hit_0p60": 0,
+      "semantic_any_supported": 6,
+      "semantic_all_supported": 2,
+      "semantic_any_partial_or_supported": 25,
+      "semantic_all_partial_or_supported": 5,
+      "semantic_any_contradicted": 1,
+      "semantic_any_supported_rate": 3.17,
+      "semantic_any_partial_or_supported_rate": 13.23
+    },
+    {
+      "run_id": "memobase_medium",
+      "question_type": "Basic Fact Recall",
+      "wrong_with_evidence_judged": 708,
+      "token_any_exact_hit": 0,
+      "token_any_hit_0p60": 5,
+      "semantic_any_supported": 13,
+      "semantic_all_supported": 13,
+      "semantic_any_partial_or_supported": 29,
+      "semantic_all_partial_or_supported": 28,
+      "semantic_any_contradicted": 8,
+      "semantic_any_supported_rate": 1.84,
+      "semantic_any_partial_or_supported_rate": 4.1
+    },
+    {
+      "run_id": "memobase_medium",
+      "question_type": "Dynamic Update",
+      "wrong_with_evidence_judged": 168,
+      "token_any_exact_hit": 0,
+      "token_any_hit_0p60": 2,
+      "semantic_any_supported": 6,
+      "semantic_all_supported": 4,
+      "semantic_any_partial_or_supported": 29,
+      "semantic_all_partial_or_supported": 17,
+      "semantic_any_contradicted": 8,
+      "semantic_any_supported_rate": 3.57,
+      "semantic_any_partial_or_supported_rate": 17.26
+    },
+    {
+      "run_id": "memobase_medium",
+      "question_type": "Generalization & Application",
+      "wrong_with_evidence_judged": 638,
+      "token_any_exact_hit": 1,
+      "token_any_hit_0p60": 4,
+      "semantic_any_supported": 38,
+      "semantic_all_supported": 17,
+      "semantic_any_partial_or_supported": 110,
+      "semantic_all_partial_or_supported": 43,
+      "semantic_any_contradicted": 4,
+      "semantic_any_supported_rate": 5.96,
+      "semantic_any_partial_or_supported_rate": 17.24
+    },
+    {
+      "run_id": "memobase_medium",
+      "question_type": "Memory Conflict",
+      "wrong_with_evidence_judged": 634,
+      "token_any_exact_hit": 1,
+      "token_any_hit_0p60": 4,
+      "semantic_any_supported": 10,
+      "semantic_all_supported": 8,
+      "semantic_any_partial_or_supported": 20,
+      "semantic_all_partial_or_supported": 10,
+      "semantic_any_contradicted": 7,
+      "semantic_any_supported_rate": 1.58,
+      "semantic_any_partial_or_supported_rate": 3.15
+    },
+    {
+      "run_id": "memobase_medium",
+      "question_type": "Multi-hop Inference",
+      "wrong_with_evidence_judged": 176,
+      "token_any_exact_hit": 2,
+      "token_any_hit_0p60": 2,
+      "semantic_any_supported": 17,
+      "semantic_all_supported": 4,
+      "semantic_any_partial_or_supported": 47,
+      "semantic_all_partial_or_supported": 13,
+      "semantic_any_contradicted": 2,
+      "semantic_any_supported_rate": 9.66,
+      "semantic_any_partial_or_supported_rate": 26.7
+    },
+    {
+      "run_id": "memos_long",
+      "question_type": "Basic Fact Recall",
+      "wrong_with_evidence_judged": 364,
+      "token_any_exact_hit": 0,
+      "token_any_hit_0p60": 46,
+      "semantic_any_supported": 94,
+      "semantic_all_supported": 92,
+      "semantic_any_partial_or_supported": 128,
+      "semantic_all_partial_or_supported": 127,
+      "semantic_any_contradicted": 32,
+      "semantic_any_supported_rate": 25.82,
+      "semantic_any_partial_or_supported_rate": 35.16
+    },
+    {
+      "run_id": "memos_long",
+      "question_type": "Dynamic Update",
+      "wrong_with_evidence_judged": 103,
+      "token_any_exact_hit": 0,
+      "token_any_hit_0p60": 18,
+      "semantic_any_supported": 24,
+      "semantic_all_supported": 20,
+      "semantic_any_partial_or_supported": 39,
+      "semantic_all_partial_or_supported": 34,
+      "semantic_any_contradicted": 12,
+      "semantic_any_supported_rate": 23.3,
+      "semantic_any_partial_or_supported_rate": 37.86
+    },
+    {
+      "run_id": "memos_long",
+      "question_type": "Generalization & Application",
+      "wrong_with_evidence_judged": 312,
+      "token_any_exact_hit": 0,
+      "token_any_hit_0p60": 120,
+      "semantic_any_supported": 205,
+      "semantic_all_supported": 144,
+      "semantic_any_partial_or_supported": 250,
+      "semantic_all_partial_or_supported": 176,
+      "semantic_any_contradicted": 3,
+      "semantic_any_supported_rate": 65.71,
+      "semantic_any_partial_or_supported_rate": 80.13
+    },
+    {
+      "run_id": "memos_long",
+      "question_type": "Memory Conflict",
+      "wrong_with_evidence_judged": 119,
+      "token_any_exact_hit": 0,
+      "token_any_hit_0p60": 40,
+      "semantic_any_supported": 72,
+      "semantic_all_supported": 65,
+      "semantic_any_partial_or_supported": 74,
+      "semantic_all_partial_or_supported": 69,
+      "semantic_any_contradicted": 18,
+      "semantic_any_supported_rate": 60.5,
+      "semantic_any_partial_or_supported_rate": 62.18
+    },
+    {
+      "run_id": "memos_long",
+      "question_type": "Multi-hop Inference",
+      "wrong_with_evidence_judged": 100,
+      "token_any_exact_hit": 0,
+      "token_any_hit_0p60": 35,
+      "semantic_any_supported": 56,
+      "semantic_all_supported": 27,
+      "semantic_any_partial_or_supported": 73,
+      "semantic_all_partial_or_supported": 36,
+      "semantic_any_contradicted": 2,
+      "semantic_any_supported_rate": 56.0,
+      "semantic_any_partial_or_supported_rate": 73.0
+    },
+    {
+      "run_id": "memos_medium",
+      "question_type": "Basic Fact Recall",
+      "wrong_with_evidence_judged": 369,
+      "token_any_exact_hit": 0,
+      "token_any_hit_0p60": 54,
+      "semantic_any_supported": 98,
+      "semantic_all_supported": 95,
+      "semantic_any_partial_or_supported": 136,
+      "semantic_all_partial_or_supported": 133,
+      "semantic_any_contradicted": 27,
+      "semantic_any_supported_rate": 26.56,
+      "semantic_any_partial_or_supported_rate": 36.86
+    },
+    {
+      "run_id": "memos_medium",
+      "question_type": "Dynamic Update",
+      "wrong_with_evidence_judged": 102,
+      "token_any_exact_hit": 0,
+      "token_any_hit_0p60": 18,
+      "semantic_any_supported": 27,
+      "semantic_all_supported": 20,
+      "semantic_any_partial_or_supported": 39,
+      "semantic_all_partial_or_supported": 34,
+      "semantic_any_contradicted": 12,
+      "semantic_any_supported_rate": 26.47,
+      "semantic_any_partial_or_supported_rate": 38.24
+    },
+    {
+      "run_id": "memos_medium",
+      "question_type": "Generalization & Application",
+      "wrong_with_evidence_judged": 299,
+      "token_any_exact_hit": 0,
+      "token_any_hit_0p60": 125,
+      "semantic_any_supported": 199,
+      "semantic_all_supported": 130,
+      "semantic_any_partial_or_supported": 245,
+      "semantic_all_partial_or_supported": 169,
+      "semantic_any_contradicted": 4,
+      "semantic_any_supported_rate": 66.56,
+      "semantic_any_partial_or_supported_rate": 81.94
+    },
+    {
+      "run_id": "memos_medium",
+      "question_type": "Memory Conflict",
+      "wrong_with_evidence_judged": 119,
+      "token_any_exact_hit": 0,
+      "token_any_hit_0p60": 46,
+      "semantic_any_supported": 69,
+      "semantic_all_supported": 58,
+      "semantic_any_partial_or_supported": 76,
+      "semantic_all_partial_or_supported": 64,
+      "semantic_any_contradicted": 17,
+      "semantic_any_supported_rate": 57.98,
+      "semantic_any_partial_or_supported_rate": 63.87
+    },
+    {
+      "run_id": "memos_medium",
+      "question_type": "Multi-hop Inference",
+      "wrong_with_evidence_judged": 100,
+      "token_any_exact_hit": 0,
+      "token_any_hit_0p60": 35,
+      "semantic_any_supported": 52,
+      "semantic_all_supported": 30,
+      "semantic_any_partial_or_supported": 69,
+      "semantic_all_partial_or_supported": 40,
+      "semantic_any_contradicted": 5,
+      "semantic_any_supported_rate": 52.0,
+      "semantic_any_partial_or_supported_rate": 69.0
+    },
+    {
+      "run_id": "supermemory_medium",
+      "question_type": "Basic Fact Recall",
+      "wrong_with_evidence_judged": 641,
+      "token_any_exact_hit": 2,
+      "token_any_hit_0p60": 0,
+      "semantic_any_supported": 3,
+      "semantic_all_supported": 2,
+      "semantic_any_partial_or_supported": 8,
+      "semantic_all_partial_or_supported": 8,
+      "semantic_any_contradicted": 7,
+      "semantic_any_supported_rate": 0.47,
+      "semantic_any_partial_or_supported_rate": 1.25
+    },
+    {
+      "run_id": "supermemory_medium",
+      "question_type": "Dynamic Update",
+      "wrong_with_evidence_judged": 163,
+      "token_any_exact_hit": 0,
+      "token_any_hit_0p60": 0,
+      "semantic_any_supported": 2,
+      "semantic_all_supported": 2,
+      "semantic_any_partial_or_supported": 3,
+      "semantic_all_partial_or_supported": 3,
+      "semantic_any_contradicted": 0,
+      "semantic_any_supported_rate": 1.23,
+      "semantic_any_partial_or_supported_rate": 1.84
+    },
+    {
+      "run_id": "supermemory_medium",
+      "question_type": "Generalization & Application",
+      "wrong_with_evidence_judged": 415,
+      "token_any_exact_hit": 3,
+      "token_any_hit_0p60": 1,
+      "semantic_any_supported": 8,
+      "semantic_all_supported": 4,
+      "semantic_any_partial_or_supported": 18,
+      "semantic_all_partial_or_supported": 11,
+      "semantic_any_contradicted": 3,
+      "semantic_any_supported_rate": 1.93,
+      "semantic_any_partial_or_supported_rate": 4.34
+    },
+    {
+      "run_id": "supermemory_medium",
+      "question_type": "Memory Conflict",
+      "wrong_with_evidence_judged": 317,
+      "token_any_exact_hit": 0,
+      "token_any_hit_0p60": 1,
+      "semantic_any_supported": 3,
+      "semantic_all_supported": 3,
+      "semantic_any_partial_or_supported": 6,
+      "semantic_all_partial_or_supported": 6,
+      "semantic_any_contradicted": 9,
+      "semantic_any_supported_rate": 0.95,
+      "semantic_any_partial_or_supported_rate": 1.89
+    },
+    {
+      "run_id": "supermemory_medium",
+      "question_type": "Multi-hop Inference",
+      "wrong_with_evidence_judged": 131,
+      "token_any_exact_hit": 1,
+      "token_any_hit_0p60": 3,
+      "semantic_any_supported": 3,
+      "semantic_all_supported": 1,
+      "semantic_any_partial_or_supported": 9,
+      "semantic_all_partial_or_supported": 4,
+      "semantic_any_contradicted": 1,
+      "semantic_any_supported_rate": 2.29,
+      "semantic_any_partial_or_supported_rate": 6.87
+    }
+  ],
+  "detail_jsonl": "outputs\\baseline_wrong_gold_semantic_audit\\semantic_gold_evidence_detail.jsonl",
+  "detail_csv": "outputs\\baseline_wrong_gold_semantic_audit\\semantic_gold_evidence_detail.csv",
+  "report": "outputs\\baseline_wrong_gold_semantic_audit\\semantic_gold_evidence_report.md"
+}
