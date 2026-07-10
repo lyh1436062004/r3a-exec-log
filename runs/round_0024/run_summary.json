@@ -1,0 +1,33 @@
+{
+  "round": "round_0024",
+  "task": "Audit how E1 Memos A4 oracle authorization is implemented and classify it against the authorization rubric",
+  "date": "2026-07-10",
+  "workspace": "D:/幻觉",
+  "result": "completed",
+  "project_files_modified": false,
+  "findings": {
+    "strict_supported_samples": 896,
+    "samples_with_visible_authorization": 213,
+    "assert_only_without_visible_annotation": 683,
+    "samples_with_refute": 140,
+    "samples_with_select": 51,
+    "samples_with_condition": 27,
+    "a4_contexts_identical_to_a0": 1774,
+    "a4_contexts_changed_from_a0": 213,
+    "classification": "Oracle relationship authorization",
+    "deployable": false
+  },
+  "key_reason": "A4 preserves every raw memory in its original order, but only gold_memory_ids selected by semantic comparison with gold evidence receive relation labels; Memory Conflict and Dynamic Update dataset labels select REFUTE and SELECT respectively.",
+  "source_files_read": [
+    "脚本/3.0/e1_memos_oracle_common.py",
+    "脚本/3.0/01_select_memos_full.py",
+    "脚本/3.0/02_generate_memos_full.py",
+    "指令/重构/oracle_实验协议.md",
+    "outputs/e1_memos_full_oracle/generations/A3.jsonl"
+  ],
+  "artifacts": [
+    "authorization_audit.md",
+    "file_change.txt",
+    "diff.txt"
+  ]
+}
