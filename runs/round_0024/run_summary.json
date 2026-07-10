@@ -14,10 +14,16 @@
     "samples_with_condition": 27,
     "a4_contexts_identical_to_a0": 1774,
     "a4_contexts_changed_from_a0": 213,
+    "a4_changed_context_stable_wrong": 140,
+    "a4_changed_context_flips": 47,
+    "a4_changed_context_flip_rate": 0.3357,
+    "a4_identical_context_stable_wrong": 1433,
+    "a4_identical_context_flips": 13,
+    "a4_identical_context_replay_flip_rate": 0.0091,
     "classification": "Oracle relationship authorization",
     "deployable": false
   },
-  "key_reason": "A4 preserves every raw memory in its original order, but only gold_memory_ids selected by semantic comparison with gold evidence receive relation labels; Memory Conflict and Dynamic Update dataset labels select REFUTE and SELECT respectively.",
+  "key_reason": "A4 preserves every raw memory in its original order, but only gold_memory_ids selected by semantic comparison with gold evidence receive relation labels; 47 of its 60 reported flips occur on changed contexts, while 13 occur on A0-identical contexts and are replay variation.",
   "source_files_read": [
     "脚本/3.0/e1_memos_oracle_common.py",
     "脚本/3.0/01_select_memos_full.py",

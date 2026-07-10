@@ -12,4 +12,5 @@ Conclusion:
 - CONDITION is conditional authorization.
 - ASSERT has no visible annotation template.
 - A4 changes 213 of 1,987 contexts relative to A0; the other 1,774 contexts are identical.
+- In the stable-wrong pool, changed contexts flip 47/140 (33.57%); identical contexts flip 13/1,433 (0.91% replay variation).
 - Relation-bearing labels are attached only to gold_memory_ids derived using gold evidence, so the experiment is oracle relationship authorization rather than a deployable method.
