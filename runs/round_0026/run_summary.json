@@ -1,0 +1,26 @@
+{
+  "round": "round_0026",
+  "task": "Design a unified A4 experiment for explicit authorization after gold evidence retrieval",
+  "date": "2026-07-13",
+  "result": "completed",
+  "project_files_modified": false,
+  "primary_hypothesis": "With retrieved content and order fixed, a uniform usage authorization improves correctness relative to a matched neutral marker on the same oracle-selected gold memories.",
+  "population": {
+    "strict_supported": 896,
+    "primary_analysis": "strict samples wrong in both identical baseline replays"
+  },
+  "conditions": [
+    "B0 baseline replay",
+    "B0R identical replay for noise estimation",
+    "N oracle-selected neutral marker",
+    "U oracle-selected unified authorization"
+  ],
+  "calls": {
+    "generation": 3584,
+    "judge": 3584,
+    "total": 7168,
+    "estimated_total_tokens": 6218743
+  },
+  "primary_comparison": "U versus N using paired McNemar",
+  "artifact": "unified_authorization_experiment.md"
+}

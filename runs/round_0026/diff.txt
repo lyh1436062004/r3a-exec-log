@@ -1,0 +1,8 @@
+No project source, protocol, or experiment output was changed.
+
+Designed replacement A4 experiment:
+- Restrict execution to 896 strict-supported samples.
+- Add an identical baseline replay to measure generation noise.
+- Add a neutral-marker control on the same oracle-selected memory ids.
+- Add one constant authorization template to every oracle-selected memory id.
+- Use U versus N as the primary paired comparison.
