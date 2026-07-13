@@ -1,0 +1,12 @@
+{
+  "round": "round_0034",
+  "task": "Explain what the 06 supplemental license-analysis printout is and whether it is available after A0-only execution",
+  "date": "2026-07-13",
+  "result": "completed",
+  "project_files_modified": false,
+  "06_executed": false,
+  "reason": "A1-A5 generations and verdicts do not exist yet, so running 06 would produce invalid zero-denominator treatment statistics and misclassify all visible stable-wrong cases as assert-only.",
+  "current_valid_input": {
+    "visible_supported_stable_wrong": 737
+  }
+}

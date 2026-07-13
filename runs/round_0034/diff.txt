@@ -1,0 +1,3 @@
+No project file was changed and 06_supp_license_analysis.py was not executed.
+
+The script requires A4 generation metadata and A1-A5 verdicts. At the current A0-only checkpoint, its treatment rates and McNemar outputs would be undefined or zero-denominator placeholders.
