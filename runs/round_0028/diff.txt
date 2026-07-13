@@ -1,0 +1,6 @@
+No project file was changed. This was a read-only cross-condition analysis using A0, A2, A3, and A4 verdicts plus semantic evidence coverage.
+
+Of 93 actually authorized A4 cases that remained wrong:
+- 43 are correct under A2 or A3.
+- 50 remain wrong under both A2 and A3.
+- Of those 50, 35 have all gold-evidence items supported and 15 have only partial gold-evidence coverage.

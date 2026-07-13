@@ -1,0 +1,17 @@
+{
+  "round": "round_0028",
+  "task": "Determine whether A4-unrecovered cases are model failures or remaining post-retrieval opportunities",
+  "date": "2026-07-13",
+  "result": "completed",
+  "project_files_modified": false,
+  "counts": {
+    "actually_authorized_a0_wrong": 140,
+    "a4_recovered": 47,
+    "a4_still_wrong": 93,
+    "a4_still_wrong_recovered_by_a2_or_a3": 43,
+    "a4_still_wrong_not_recovered_by_a2_or_a3": 50,
+    "residual_all_gold_evidence_supported": 35,
+    "residual_only_subset_gold_evidence_supported": 15
+  },
+  "conclusion": "The residual cannot be labeled an immutable model limitation. Forty-three A4 failures are corrected by other post-retrieval interventions; fifteen of the remaining fifty lack complete gold-evidence coverage; only thirty-five are candidates for model-side residual analysis after human validation."
+}

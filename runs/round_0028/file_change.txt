@@ -1,0 +1,9 @@
+Project workspace changes made by this task: none.
+
+Execution-log files added:
+- runs/round_0028/run_summary.json
+- runs/round_0028/file_change.txt
+- runs/round_0028/diff.txt
+- runs/round_0028/a4_residual_attribution.md
+
+Existing dirty workspace files were preserved.
