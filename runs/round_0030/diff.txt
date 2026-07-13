@@ -1,0 +1,7 @@
+No project file was changed. This was a read-only source and data audit.
+
+Findings:
+- Memos baseline stores both memory_detail_list and preference_detail_list in raw_memories.
+- context_str_full contains only entries recognized by baseline memory_text plus preference_note.
+- preference/reasoning-only objects are omitted from the answer-model context.
+- Of 896 raw-level strict samples, 763 have at least one supporting memory visible in context_str_full and 133 have none visible.

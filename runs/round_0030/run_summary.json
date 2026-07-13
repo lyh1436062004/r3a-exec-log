@@ -1,0 +1,21 @@
+{
+  "round": "round_0030",
+  "task": "Explain and quantify the difference between context_str_full and raw_memories in Memos baseline",
+  "date": "2026-07-13",
+  "result": "completed",
+  "project_files_modified": false,
+  "definitions": {
+    "raw_memories": "Structured retrieval payload formed by concatenating memory_detail_list and preference_detail_list.",
+    "context_str_full": "Rendered text actually inserted into PROMPT_MEMOS for answer generation."
+  },
+  "strict_visibility": {
+    "raw_strict_supported": 896,
+    "all_gold_memory_ids_visible": 536,
+    "some_visible_some_hidden": 227,
+    "no_gold_memory_id_visible": 133,
+    "at_least_one_visible_gold_memory": 763,
+    "at_least_one_hidden_gold_memory": 360
+  },
+  "root_cause": "The baseline serializer recognizes memory, memory_value, memory_key, content, and text, but not preference/reasoning fields. Preference objects remain in raw_memories while being omitted from context_str_full.",
+  "conclusion": "Use raw_memories for retriever-level recall and context_str_full for generator-visible evidence. The prior 896 count is not equivalent to evidence visible to the answer model."
+}
