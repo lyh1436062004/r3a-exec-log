@@ -1,0 +1,61 @@
+{
+  "round": "round_0040",
+  "task": "Implement and execute unified post-retrieval admission and authorization experiment",
+  "date": "2026-07-13",
+  "result": "completed",
+  "project_source_modified": true,
+  "conditions": {
+    "A6": "Normalize and admit every raw memory without authorization",
+    "A7": "Use the identical admitted memory sequence and add one constant authorization to every oracle gold memory id"
+  },
+  "admission": {
+    "samples": 1987,
+    "raw_memories": 22385,
+    "admitted_memories": 22385,
+    "dropped_memories": 0,
+    "raw_admission_rate": 1.0,
+    "strict_samples": 896,
+    "strict_gold_memory_ids": 1908,
+    "strict_gold_admitted_ids": 1908,
+    "strict_gold_admission_rate": 1.0
+  },
+  "outcomes": {
+    "strict_a0_stable_wrong": 867,
+    "A6_correct": 271,
+    "A6_rate": 0.3126,
+    "A7_correct": 290,
+    "A7_rate": 0.3345,
+    "A7_minus_A6_count": 19,
+    "A7_minus_A6_rate": 0.0219,
+    "mcnemar_b": 76,
+    "mcnemar_c": 57,
+    "mcnemar_exact_p": 0.11824011046976109,
+    "authorization_significant_at_0_05": false
+  },
+  "serialization_loss_stratum": {
+    "n": 130,
+    "A6_correct": 69,
+    "A6_rate": 0.5308,
+    "A7_correct": 71,
+    "A7_rate": 0.5462
+  },
+  "verification": {
+    "A6_generation_unique": 867,
+    "A7_generation_unique": 867,
+    "A6_verdict_unique": 867,
+    "A7_verdict_unique": 867,
+    "same_admitted_ids_and_order": 867,
+    "zero_drop_both": 867,
+    "authorization_count_matches_gold_ids": 867,
+    "judge_stability_n": 200,
+    "judge_stability_agreements": 200
+  },
+  "valid_recorded_tokens": 3155924,
+  "large_artifacts_omitted": [
+    "generations/A6.jsonl",
+    "generations/A7.jsonl",
+    "verdicts/A6.jsonl",
+    "verdicts/A7.jsonl",
+    "unified_admission.jsonl"
+  ]
+}

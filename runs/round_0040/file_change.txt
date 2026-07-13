@@ -1,0 +1,25 @@
+Project files changed by this task:
+- 脚本/3.0/e1_memos_oracle_common.py
+- 脚本/3.0/02_generate_memos_full.py
+- 脚本/3.0/03_judge_memos_full.py
+- 脚本/3.0/07_verify_unified_admission.py
+- 脚本/3.0/08_analyze_unified_admission.py
+
+Key project outputs created:
+- outputs/e1_memos_full_oracle_v2/unified_admission.jsonl
+- outputs/e1_memos_full_oracle_v2/unified_admission_summary.json
+- outputs/e1_memos_full_oracle_v2/unified_admission_report.md
+- outputs/e1_memos_full_oracle_v2/unified_admission_effect.json
+- outputs/e1_memos_full_oracle_v2/unified_admission_effect.md
+- outputs/e1_memos_full_oracle_v2/unified_admission_effect_by_stratum.csv
+- outputs/e1_memos_full_oracle_v2/unified_admission_mcnemar.csv
+- outputs/e1_memos_full_oracle_v2/unified_admission_run_config.yaml
+- outputs/e1_memos_full_oracle_v2/unified_admission_run_summary.md
+- outputs/e1_memos_full_oracle_v2/judge_self_agreement_A6_A7.json
+- outputs/e1_memos_full_oracle_v2/generations/A6.jsonl
+- outputs/e1_memos_full_oracle_v2/generations/A7.jsonl
+- outputs/e1_memos_full_oracle_v2/verdicts/A6.jsonl
+- outputs/e1_memos_full_oracle_v2/verdicts/A7.jsonl
+
+Large per-case JSONL generation/verdict files were not copied to the execution-log repository.
+Existing unrelated dirty workspace files were preserved.

@@ -1,0 +1,20 @@
+Implemented A6/A7 unified post-retrieval experiment.
+
+Code changes:
+- Extended condition registry with A6 and A7.
+- Added canonical support for preference/reasoning and reasoning-only raw objects.
+- A6 serializes every raw memory in original retrieval order without authorization.
+- A7 uses the same admitted ids/order and applies one constant authorization to oracle gold ids.
+- Added generation filtering by retrieval stratum.
+- Added robust judge JSON retry with a larger cap only after parse failure.
+- Made judge stability artifacts condition-specific.
+- Added full offline admission verifier and paired effect analyzer.
+
+Verified results:
+- 22,385/22,385 raw objects admitted; 0 dropped.
+- 1,908/1,908 strict oracle gold ids admitted.
+- A6 and A7 use identical memory ids/order on all 867 evaluated cases.
+- A6 correct: 271/867 (31.26%).
+- A7 correct: 290/867 (33.45%).
+- A7-A6: +19, +2.19 percentage points; exact McNemar p=0.11824.
+- Judge self-agreement: 200/200.

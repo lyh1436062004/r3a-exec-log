@@ -1,0 +1,22 @@
+experiment: e1_prime_unified_post_retrieval_admission
+date: 2026-07-13
+model: deepseek-chat
+temperature: 0
+population:
+  retrieval_stratum: strict_supported
+  a0_label: non_correct
+  samples: 867
+conditions:
+  A6: normalize_and_admit_all_raw_memories_without_authorization
+  A7: same_as_A6_plus_one_constant_authorization_on_oracle_gold_ids
+unified_authorization: "[使用授权] 该记忆可以用于回答当前问题。"
+invariants:
+  same_memory_ids_and_order_A6_A7: true
+  modify_memory_store: false
+  rerun_retriever: false
+  use_distractor_labels: false
+calls:
+  generation: 1734
+  main_judge: 1734
+  stability_judge: 200
+valid_recorded_tokens: 3155924

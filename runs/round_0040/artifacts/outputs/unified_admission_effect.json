@@ -1,0 +1,70 @@
+{
+  "admission": {
+    "samples": 1987,
+    "raw_memories": 22385,
+    "admitted_memories": 22385,
+    "dropped_memories": 0,
+    "gold_memory_ids": 1908,
+    "gold_admitted_ids": 1908,
+    "strict_samples": 896,
+    "strict_gold_memory_ids": 1908,
+    "strict_gold_admitted_ids": 1908,
+    "raw_admission_rate": 1.0,
+    "strict_gold_admission_rate": 1.0
+  },
+  "effects": [
+    {
+      "pool": "strict_stable_wrong",
+      "n": 867,
+      "a6_correct": 271,
+      "a6_rate": 0.31257208765859285,
+      "a7_correct": 290,
+      "a7_rate": 0.3344867358708189,
+      "a7_minus_a6": 0.02191464821222607
+    },
+    {
+      "pool": "visible_supported",
+      "n": 737,
+      "a6_correct": 202,
+      "a6_rate": 0.27408412483039346,
+      "a7_correct": 219,
+      "a7_rate": 0.2971506105834464,
+      "a7_minus_a6": 0.023066485753052916
+    },
+    {
+      "pool": "serialization_loss",
+      "n": 130,
+      "a6_correct": 69,
+      "a6_rate": 0.5307692307692308,
+      "a7_correct": 71,
+      "a7_rate": 0.5461538461538461,
+      "a7_minus_a6": 0.015384615384615385
+    }
+  ],
+  "mcnemar": [
+    {
+      "pool": "strict_stable_wrong",
+      "comparison": "A7_vs_A6",
+      "n": 867,
+      "b": 76,
+      "c": 57,
+      "p_value": 0.11824011046976109
+    },
+    {
+      "pool": "visible_supported",
+      "comparison": "A7_vs_A6",
+      "n": 737,
+      "b": 65,
+      "c": 48,
+      "p_value": 0.13192429082426047
+    },
+    {
+      "pool": "serialization_loss",
+      "comparison": "A7_vs_A6",
+      "n": 130,
+      "b": 11,
+      "c": 9,
+      "p_value": 0.8238029479980469
+    }
+  ]
+}

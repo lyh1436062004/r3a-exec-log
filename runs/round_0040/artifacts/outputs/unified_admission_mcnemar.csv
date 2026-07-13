@@ -1,0 +1,4 @@
+﻿pool,comparison,n,b,c,p_value
+strict_stable_wrong,A7_vs_A6,867,76,57,0.11824011046976109
+visible_supported,A7_vs_A6,737,65,48,0.13192429082426047
+serialization_loss,A7_vs_A6,130,11,9,0.8238029479980469

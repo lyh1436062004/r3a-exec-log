@@ -1,0 +1,13 @@
+{
+  "samples": 1987,
+  "raw_memories": 22385,
+  "admitted_memories": 22385,
+  "dropped_memories": 0,
+  "gold_memory_ids": 1908,
+  "gold_admitted_ids": 1908,
+  "strict_samples": 896,
+  "strict_gold_memory_ids": 1908,
+  "strict_gold_admitted_ids": 1908,
+  "raw_admission_rate": 1.0,
+  "strict_gold_admission_rate": 1.0
+}
