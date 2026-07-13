@@ -4,4 +4,4 @@ Execution-log files added:
 - runs/round_0036/run_summary.json
 - runs/round_0036/file_change.txt
 - runs/round_0036/diff.txt
-- runs/round_0036/authorization_and_serialization.md
+- runs/round_0036/06_expected_output.md
