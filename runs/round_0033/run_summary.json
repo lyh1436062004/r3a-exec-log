@@ -1,0 +1,44 @@
+{
+  "round": "round_0033",
+  "task": "Execute E1-prime offline serializer gate, A0-exact generation, A0 judge, stability rerun, and checkpoint analysis",
+  "date": "2026-07-13",
+  "result": "completed",
+  "checkpoint_decision": "pass",
+  "project_source_modified": false,
+  "project_outputs_added": "outputs/e1_memos_full_oracle_v2/",
+  "serializer": {
+    "samples": 1987,
+    "byte_exact": 1987,
+    "visible_supported": 763,
+    "serialization_loss": 133,
+    "partial_supported": 233,
+    "no_gold_retrieved": 858
+  },
+  "a0": {
+    "generation_success": 1987,
+    "judge_success_unique": 1987,
+    "noncorrect": 1951,
+    "correct": 36,
+    "noncorrect_rate": 0.9818822345244087,
+    "visible_supported_noncorrect": 737,
+    "serialization_loss_noncorrect": 130
+  },
+  "judge_stability": {
+    "n": 200,
+    "agreements": 200,
+    "rate": 1.0
+  },
+  "usage_tokens": {
+    "generation": 1548001,
+    "main_judge": 410476,
+    "stability": 41349,
+    "total": 1999826
+  },
+  "known_anomaly": "memos_long:3466 has judge_label=hallucination while its rationale concludes correct; raw record retained without manual override",
+  "treatments_executed": [],
+  "large_artifacts_omitted": [
+    "generations/A0.jsonl (13.9 MB)",
+    "verdicts/A0.jsonl (2.8 MB)",
+    "visibility.jsonl (1.0 MB)"
+  ]
+}

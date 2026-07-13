@@ -1,0 +1,19 @@
+Project source changes made by this task: none.
+
+Project output directory created and populated:
+- outputs/e1_memos_full_oracle_v2/
+
+Key project outputs:
+- a0_checkpoint_report.md
+- a0_checkpoint.json
+- results_summary.md
+- results_summary.json
+- samples_memos_full.jsonl
+- visibility.jsonl
+- generations/A0.jsonl
+- verdicts/A0.jsonl
+- judge_self_agreement.json
+- judge_A0.stdout.log
+- judge_A0.stderr.log
+
+Execution-log artifacts include compact reports, stability output, run config, and snapshots of the scripts actually executed. Large per-sample JSONL files were intentionally omitted.

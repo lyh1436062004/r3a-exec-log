@@ -1,0 +1,16 @@
+experiment: e1_memos_full_oracle
+root: D:\幻觉
+model: deepseek-chat
+temperature: 0
+generation_max_tokens: 128
+judge_max_tokens: 256
+seed: 20260709
+conditions: A0, A1, A2, A3, A4, A5
+medium_qa: D:\幻觉\outputs\baseline_full\memos_medium\memos_medium_qa.jsonl
+long_qa: D:\幻觉\outputs\baseline_full\memos_long\memos_long_qa.jsonl
+semantic_detail: D:\幻觉\outputs\baseline_wrong_gold_semantic_audit\semantic_gold_evidence_detail.jsonl
+sample_count: 1987
+answer_prompt_hash: ccead3a9f4a65ab035337889827a0052c01fa9484930e91bed96fe345624b6f9
+judge_prompt_template_hash: f996f2bb13537b0dc348af64161e7c92036801674ada02c740bfaa078a6855c6
+license_templates_hash: f1aea1c168000165dcc3ed6eda9f04b72a951e6ddead037930470914d6841de8
+no_retriever_or_memory_store_changes: true

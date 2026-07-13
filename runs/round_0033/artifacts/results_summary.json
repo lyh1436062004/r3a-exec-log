@@ -1,0 +1,346 @@
+{
+  "sample_count": 1987,
+  "missing_verdicts": {
+    "A0": 0,
+    "A1": 1987,
+    "A2": 1987,
+    "A3": 1987,
+    "A4": 1987,
+    "A5": 1987
+  },
+  "a0_judged": 1987,
+  "stable_wrong": 1951,
+  "retrieved_strict": 867,
+  "visible_supported": 737,
+  "serialization_loss": 130,
+  "a0_replay_noncorrect_rate": 0.9818822345244087,
+  "replay_unstable": false,
+  "flip_rates": [
+    {
+      "pool": "full_pool",
+      "condition": "A1",
+      "n": 0,
+      "correct": 0,
+      "flip_rate": 0.0,
+      "wilson_low": 0.0,
+      "wilson_high": 0.0
+    },
+    {
+      "pool": "full_pool",
+      "condition": "A2",
+      "n": 0,
+      "correct": 0,
+      "flip_rate": 0.0,
+      "wilson_low": 0.0,
+      "wilson_high": 0.0
+    },
+    {
+      "pool": "full_pool",
+      "condition": "A3",
+      "n": 0,
+      "correct": 0,
+      "flip_rate": 0.0,
+      "wilson_low": 0.0,
+      "wilson_high": 0.0
+    },
+    {
+      "pool": "full_pool",
+      "condition": "A4",
+      "n": 0,
+      "correct": 0,
+      "flip_rate": 0.0,
+      "wilson_low": 0.0,
+      "wilson_high": 0.0
+    },
+    {
+      "pool": "full_pool",
+      "condition": "A5",
+      "n": 0,
+      "correct": 0,
+      "flip_rate": 0.0,
+      "wilson_low": 0.0,
+      "wilson_high": 0.0
+    },
+    {
+      "pool": "retrieved_strict",
+      "condition": "A1",
+      "n": 0,
+      "correct": 0,
+      "flip_rate": 0.0,
+      "wilson_low": 0.0,
+      "wilson_high": 0.0
+    },
+    {
+      "pool": "retrieved_strict",
+      "condition": "A2",
+      "n": 0,
+      "correct": 0,
+      "flip_rate": 0.0,
+      "wilson_low": 0.0,
+      "wilson_high": 0.0
+    },
+    {
+      "pool": "retrieved_strict",
+      "condition": "A3",
+      "n": 0,
+      "correct": 0,
+      "flip_rate": 0.0,
+      "wilson_low": 0.0,
+      "wilson_high": 0.0
+    },
+    {
+      "pool": "retrieved_strict",
+      "condition": "A4",
+      "n": 0,
+      "correct": 0,
+      "flip_rate": 0.0,
+      "wilson_low": 0.0,
+      "wilson_high": 0.0
+    },
+    {
+      "pool": "retrieved_strict",
+      "condition": "A5",
+      "n": 0,
+      "correct": 0,
+      "flip_rate": 0.0,
+      "wilson_low": 0.0,
+      "wilson_high": 0.0
+    },
+    {
+      "pool": "visible_supported",
+      "condition": "A1",
+      "n": 0,
+      "correct": 0,
+      "flip_rate": 0.0,
+      "wilson_low": 0.0,
+      "wilson_high": 0.0
+    },
+    {
+      "pool": "visible_supported",
+      "condition": "A2",
+      "n": 0,
+      "correct": 0,
+      "flip_rate": 0.0,
+      "wilson_low": 0.0,
+      "wilson_high": 0.0
+    },
+    {
+      "pool": "visible_supported",
+      "condition": "A3",
+      "n": 0,
+      "correct": 0,
+      "flip_rate": 0.0,
+      "wilson_low": 0.0,
+      "wilson_high": 0.0
+    },
+    {
+      "pool": "visible_supported",
+      "condition": "A4",
+      "n": 0,
+      "correct": 0,
+      "flip_rate": 0.0,
+      "wilson_low": 0.0,
+      "wilson_high": 0.0
+    },
+    {
+      "pool": "visible_supported",
+      "condition": "A5",
+      "n": 0,
+      "correct": 0,
+      "flip_rate": 0.0,
+      "wilson_low": 0.0,
+      "wilson_high": 0.0
+    },
+    {
+      "pool": "serialization_loss",
+      "condition": "A1",
+      "n": 0,
+      "correct": 0,
+      "flip_rate": 0.0,
+      "wilson_low": 0.0,
+      "wilson_high": 0.0
+    },
+    {
+      "pool": "serialization_loss",
+      "condition": "A2",
+      "n": 0,
+      "correct": 0,
+      "flip_rate": 0.0,
+      "wilson_low": 0.0,
+      "wilson_high": 0.0
+    },
+    {
+      "pool": "serialization_loss",
+      "condition": "A3",
+      "n": 0,
+      "correct": 0,
+      "flip_rate": 0.0,
+      "wilson_low": 0.0,
+      "wilson_high": 0.0
+    },
+    {
+      "pool": "serialization_loss",
+      "condition": "A4",
+      "n": 0,
+      "correct": 0,
+      "flip_rate": 0.0,
+      "wilson_low": 0.0,
+      "wilson_high": 0.0
+    },
+    {
+      "pool": "serialization_loss",
+      "condition": "A5",
+      "n": 0,
+      "correct": 0,
+      "flip_rate": 0.0,
+      "wilson_low": 0.0,
+      "wilson_high": 0.0
+    }
+  ],
+  "mcnemar": [
+    {
+      "pool": "full_pool",
+      "comparison": "A3_vs_A1",
+      "n": 0,
+      "b": 0,
+      "c": 0,
+      "p_value": null
+    },
+    {
+      "pool": "full_pool",
+      "comparison": "A3_vs_A2",
+      "n": 0,
+      "b": 0,
+      "c": 0,
+      "p_value": null
+    },
+    {
+      "pool": "full_pool",
+      "comparison": "A4_vs_A0",
+      "n": 0,
+      "b": 0,
+      "c": 0,
+      "p_value": null
+    },
+    {
+      "pool": "full_pool",
+      "comparison": "A5_vs_A0",
+      "n": 0,
+      "b": 0,
+      "c": 0,
+      "p_value": null
+    },
+    {
+      "pool": "full_pool",
+      "comparison": "A5_vs_A4",
+      "n": 0,
+      "b": 0,
+      "c": 0,
+      "p_value": null
+    },
+    {
+      "pool": "full_pool",
+      "comparison": "A5_vs_A2",
+      "n": 0,
+      "b": 0,
+      "c": 0,
+      "p_value": null
+    },
+    {
+      "pool": "retrieved_strict",
+      "comparison": "A3_vs_A1",
+      "n": 0,
+      "b": 0,
+      "c": 0,
+      "p_value": null
+    },
+    {
+      "pool": "retrieved_strict",
+      "comparison": "A3_vs_A2",
+      "n": 0,
+      "b": 0,
+      "c": 0,
+      "p_value": null
+    },
+    {
+      "pool": "retrieved_strict",
+      "comparison": "A4_vs_A0",
+      "n": 0,
+      "b": 0,
+      "c": 0,
+      "p_value": null
+    },
+    {
+      "pool": "retrieved_strict",
+      "comparison": "A5_vs_A0",
+      "n": 0,
+      "b": 0,
+      "c": 0,
+      "p_value": null
+    },
+    {
+      "pool": "retrieved_strict",
+      "comparison": "A5_vs_A4",
+      "n": 0,
+      "b": 0,
+      "c": 0,
+      "p_value": null
+    },
+    {
+      "pool": "retrieved_strict",
+      "comparison": "A5_vs_A2",
+      "n": 0,
+      "b": 0,
+      "c": 0,
+      "p_value": null
+    },
+    {
+      "pool": "visible_supported",
+      "comparison": "A3_vs_A1",
+      "n": 0,
+      "b": 0,
+      "c": 0,
+      "p_value": null
+    },
+    {
+      "pool": "visible_supported",
+      "comparison": "A3_vs_A2",
+      "n": 0,
+      "b": 0,
+      "c": 0,
+      "p_value": null
+    },
+    {
+      "pool": "visible_supported",
+      "comparison": "A4_vs_A0",
+      "n": 0,
+      "b": 0,
+      "c": 0,
+      "p_value": null
+    },
+    {
+      "pool": "visible_supported",
+      "comparison": "A5_vs_A0",
+      "n": 0,
+      "b": 0,
+      "c": 0,
+      "p_value": null
+    },
+    {
+      "pool": "visible_supported",
+      "comparison": "A5_vs_A4",
+      "n": 0,
+      "b": 0,
+      "c": 0,
+      "p_value": null
+    },
+    {
+      "pool": "visible_supported",
+      "comparison": "A5_vs_A2",
+      "n": 0,
+      "b": 0,
+      "c": 0,
+      "p_value": null
+    }
+  ]
+}
