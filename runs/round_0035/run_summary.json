@@ -1,0 +1,16 @@
+{
+  "round": "round_0035",
+  "task": "Explain the current E1-prime A0 through A5 conditions",
+  "date": "2026-07-13",
+  "result": "completed",
+  "project_files_modified": false,
+  "conditions": {
+    "A0": "Byte-exact baseline context replay",
+    "A1": "Move oracle gold-visible memories to the front; retain all visible memories",
+    "A2": "Keep only oracle gold-visible memories",
+    "A3": "A2 filtering plus relation-specific license labels",
+    "A4": "Keep all visible memories in original order and add relation-specific labels to gold-visible memories",
+    "A5": "A4 plus VOUCH labels for gold-visible memories that would otherwise be ASSERT/no-op"
+  },
+  "artifact": "a0_to_a5_explanation.md"
+}
