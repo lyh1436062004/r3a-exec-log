@@ -1,0 +1,13 @@
+{
+  "round": "round_0037",
+  "task": "Evaluate the A0-exact replay rate against the 90 and 93 percent checkpoint thresholds",
+  "date": "2026-07-13",
+  "result": "completed",
+  "project_files_modified": false,
+  "a0_noncorrect": 1951,
+  "a0_total": 1987,
+  "a0_noncorrect_rate": 0.9818822345244087,
+  "replay_correct": 36,
+  "observed_noise_floor": 0.0181177654755913,
+  "checkpoint": "pass"
+}
