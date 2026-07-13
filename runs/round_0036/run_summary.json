@@ -1,0 +1,9 @@
+{
+  "round": "round_0036",
+  "task": "Explain why post-retrieval serialization omitted Memos preference memories and whether raw-memory authorization prevents omission",
+  "date": "2026-07-13",
+  "result": "completed",
+  "project_files_modified": false,
+  "root_cause": "Schema mismatch: preference objects use preference/reasoning while the baseline serializer recognizes only memory, memory_value, memory_key, content, and text.",
+  "conclusion": "Adding authorization as ignored raw metadata does not prevent omission. A2 must normalize each selected raw object into canonical text and serialize the authorization together with that text into the final context."
+}
