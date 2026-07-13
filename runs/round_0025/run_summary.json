@@ -1,0 +1,18 @@
+{
+  "round": "round_0025",
+  "task": "Explain why only 213 A4 samples received visible authorization",
+  "date": "2026-07-13",
+  "result": "completed",
+  "project_files_modified": false,
+  "counts": {
+    "total_a4_samples": 1987,
+    "without_strict_gold_memory": 1091,
+    "strict_supported": 896,
+    "strict_with_visible_authorization": 213,
+    "strict_assert_only_without_text": 683,
+    "has_refute": 140,
+    "has_select": 51,
+    "has_condition": 27
+  },
+  "conclusion": "A4 only annotates oracle-selected gold_memory_ids, and ASSERT has no text template. Therefore only samples containing REFUTE, SELECT, or CONDITION differ visibly from A0."
+}

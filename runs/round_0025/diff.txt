@@ -1,0 +1,8 @@
+No project file was changed. This was a read-only explanation and count verification.
+
+A4 count chain:
+1987 total
+- 1091 without strict gold memory
+= 896 strict-supported
+- 683 ASSERT-only samples with no visible template
+= 213 samples with visible REFUTE, SELECT, or CONDITION authorization
