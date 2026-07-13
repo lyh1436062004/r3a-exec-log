@@ -1,0 +1,19 @@
+{
+  "round": "round_0038",
+  "task": "Clarify whether a new E1-prime A3 flip rate exists after the A0-only checkpoint",
+  "date": "2026-07-13",
+  "result": "completed",
+  "project_files_modified": false,
+  "old_pilot_a3": {
+    "correct": 268,
+    "denominator": 598,
+    "rate": 0.4482,
+    "valid_for_e1_prime": false
+  },
+  "e1_prime": {
+    "visible_supported_stable_wrong_denominator": 737,
+    "a3_executed": false,
+    "a3_correct": null,
+    "a3_flip_rate": null
+  }
+}
