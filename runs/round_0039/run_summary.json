@@ -1,0 +1,35 @@
+{
+  "round": "round_0039",
+  "task": "Run E1-prime A1-A5 treatments on the 737 visible-supported A0-stable-wrong MemOS cases",
+  "status": "completed",
+  "analysis_population": {
+    "memos_total": 1987,
+    "a0_noncorrect": 1951,
+    "visible_supported": 763,
+    "e1_prime_eligible": 737
+  },
+  "coverage": {
+    "A1": 737,
+    "A2": 737,
+    "A3": 737,
+    "A4": 737,
+    "A5": 737,
+    "case_sets_equal": true
+  },
+  "flip_rates": {
+    "A1": {"correct": 86, "n": 737, "rate": 0.11668928086838534},
+    "A2": {"correct": 301, "n": 737, "rate": 0.4084124830393487},
+    "A3": {"correct": 340, "n": 737, "rate": 0.46132971506105835},
+    "A4": {"correct": 69, "n": 737, "rate": 0.09362279511533243},
+    "A5": {"correct": 176, "n": 737, "rate": 0.23880597014925373}
+  },
+  "primary_result": "A3 flips 340/737 = 46.13%, in the preregistered 40-60% viable range",
+  "judge_stability": {"agreements": 198, "n": 200, "rate": 0.99},
+  "verification": [
+    "A1-A5 each have 737 successful generations over identical case IDs",
+    "Eight transient judge failures were retried; A1-A5 each have 737 unique successful verdicts",
+    "04_analyze_memos_full.py --require-complete passed",
+    "Python compilation passed",
+    "Treatment dry-run reported zero pending generations"
+  ]
+}

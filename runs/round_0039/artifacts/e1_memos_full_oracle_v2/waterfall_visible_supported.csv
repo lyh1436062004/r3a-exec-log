@@ -1,0 +1,7 @@
+﻿pool,component,value
+visible_supported,position_A1,0.11668928086838534
+visible_supported,filter_A2_minus_A1,0.29172320217096337
+visible_supported,license_A3_minus_A2,0.05291723202170967
+visible_supported,license_only_A4_minus_A0,0.09362279511533243
+visible_supported,vouch_all_A5_minus_A0,0.23880597014925373
+visible_supported,vouch_increment_A5_minus_A4,0.1451831750339213

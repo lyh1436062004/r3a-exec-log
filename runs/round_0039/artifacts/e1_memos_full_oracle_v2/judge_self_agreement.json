@@ -1,0 +1,3809 @@
+{
+  "seed": 20260709,
+  "requested": 200,
+  "n": 200,
+  "agreements": 198,
+  "self_agreement": 0.99,
+  "reruns": [
+    {
+      "case_id": "memos_long:1094",
+      "condition": "A5",
+      "original_label": "correct",
+      "rerun_label": "correct",
+      "agree": true,
+      "usage": {
+        "completion_tokens": 29,
+        "prompt_tokens": 157,
+        "total_tokens": 186,
+        "completion_tokens_details": null,
+        "prompt_tokens_details": {
+          "audio_tokens": null,
+          "cached_tokens": 128
+        },
+        "prompt_cache_hit_tokens": 128,
+        "prompt_cache_miss_tokens": 29
+      }
+    },
+    {
+      "case_id": "memos_medium:2128",
+      "condition": "A4",
+      "original_label": "hallucination",
+      "rerun_label": "hallucination",
+      "agree": true,
+      "usage": {
+        "completion_tokens": 55,
+        "prompt_tokens": 153,
+        "total_tokens": 208,
+        "completion_tokens_details": null,
+        "prompt_tokens_details": {
+          "audio_tokens": null,
+          "cached_tokens": 128
+        },
+        "prompt_cache_hit_tokens": 128,
+        "prompt_cache_miss_tokens": 25
+      }
+    },
+    {
+      "case_id": "memos_long:483",
+      "condition": "A5",
+      "original_label": "omission",
+      "rerun_label": "omission",
+      "agree": true,
+      "usage": {
+        "completion_tokens": 67,
+        "prompt_tokens": 156,
+        "total_tokens": 223,
+        "completion_tokens_details": null,
+        "prompt_tokens_details": {
+          "audio_tokens": null,
+          "cached_tokens": 128
+        },
+        "prompt_cache_hit_tokens": 128,
+        "prompt_cache_miss_tokens": 28
+      }
+    },
+    {
+      "case_id": "memos_medium:1447",
+      "condition": "A3",
+      "original_label": "hallucination",
+      "rerun_label": "hallucination",
+      "agree": true,
+      "usage": {
+        "completion_tokens": 62,
+        "prompt_tokens": 150,
+        "total_tokens": 212,
+        "completion_tokens_details": null,
+        "prompt_tokens_details": {
+          "audio_tokens": null,
+          "cached_tokens": 128
+        },
+        "prompt_cache_hit_tokens": 128,
+        "prompt_cache_miss_tokens": 22
+      }
+    },
+    {
+      "case_id": "memos_medium:3162",
+      "condition": "A1",
+      "original_label": "hallucination",
+      "rerun_label": "hallucination",
+      "agree": true,
+      "usage": {
+        "completion_tokens": 55,
+        "prompt_tokens": 156,
+        "total_tokens": 211,
+        "completion_tokens_details": null,
+        "prompt_tokens_details": {
+          "audio_tokens": null,
+          "cached_tokens": 128
+        },
+        "prompt_cache_hit_tokens": 128,
+        "prompt_cache_miss_tokens": 28
+      }
+    },
+    {
+      "case_id": "memos_medium:3256",
+      "condition": "A3",
+      "original_label": "hallucination",
+      "rerun_label": "hallucination",
+      "agree": true,
+      "usage": {
+        "completion_tokens": 42,
+        "prompt_tokens": 158,
+        "total_tokens": 200,
+        "completion_tokens_details": null,
+        "prompt_tokens_details": {
+          "audio_tokens": null,
+          "cached_tokens": 128
+        },
+        "prompt_cache_hit_tokens": 128,
+        "prompt_cache_miss_tokens": 30
+      }
+    },
+    {
+      "case_id": "memos_long:958",
+      "condition": "A1",
+      "original_label": "hallucination",
+      "rerun_label": "hallucination",
+      "agree": true,
+      "usage": {
+        "completion_tokens": 54,
+        "prompt_tokens": 145,
+        "total_tokens": 199,
+        "completion_tokens_details": null,
+        "prompt_tokens_details": {
+          "audio_tokens": null,
+          "cached_tokens": 128
+        },
+        "prompt_cache_hit_tokens": 128,
+        "prompt_cache_miss_tokens": 17
+      }
+    },
+    {
+      "case_id": "memos_medium:2374",
+      "condition": "A5",
+      "original_label": "hallucination",
+      "rerun_label": "hallucination",
+      "agree": true,
+      "usage": {
+        "completion_tokens": 49,
+        "prompt_tokens": 149,
+        "total_tokens": 198,
+        "completion_tokens_details": null,
+        "prompt_tokens_details": {
+          "audio_tokens": null,
+          "cached_tokens": 128
+        },
+        "prompt_cache_hit_tokens": 128,
+        "prompt_cache_miss_tokens": 21
+      }
+    },
+    {
+      "case_id": "memos_medium:922",
+      "condition": "A1",
+      "original_label": "correct",
+      "rerun_label": "correct",
+      "agree": true,
+      "usage": {
+        "completion_tokens": 62,
+        "prompt_tokens": 154,
+        "total_tokens": 216,
+        "completion_tokens_details": null,
+        "prompt_tokens_details": {
+          "audio_tokens": null,
+          "cached_tokens": 128
+        },
+        "prompt_cache_hit_tokens": 128,
+        "prompt_cache_miss_tokens": 26
+      }
+    },
+    {
+      "case_id": "memos_long:2054",
+      "condition": "A1",
+      "original_label": "hallucination",
+      "rerun_label": "hallucination",
+      "agree": true,
+      "usage": {
+        "completion_tokens": 53,
+        "prompt_tokens": 154,
+        "total_tokens": 207,
+        "completion_tokens_details": null,
+        "prompt_tokens_details": {
+          "audio_tokens": null,
+          "cached_tokens": 128
+        },
+        "prompt_cache_hit_tokens": 128,
+        "prompt_cache_miss_tokens": 26
+      }
+    },
+    {
+      "case_id": "memos_long:2167",
+      "condition": "A3",
+      "original_label": "hallucination",
+      "rerun_label": "hallucination",
+      "agree": true,
+      "usage": {
+        "completion_tokens": 73,
+        "prompt_tokens": 149,
+        "total_tokens": 222,
+        "completion_tokens_details": null,
+        "prompt_tokens_details": {
+          "audio_tokens": null,
+          "cached_tokens": 128
+        },
+        "prompt_cache_hit_tokens": 128,
+        "prompt_cache_miss_tokens": 21
+      }
+    },
+    {
+      "case_id": "memos_long:870",
+      "condition": "A3",
+      "original_label": "correct",
+      "rerun_label": "correct",
+      "agree": true,
+      "usage": {
+        "completion_tokens": 47,
+        "prompt_tokens": 157,
+        "total_tokens": 204,
+        "completion_tokens_details": null,
+        "prompt_tokens_details": {
+          "audio_tokens": null,
+          "cached_tokens": 128
+        },
+        "prompt_cache_hit_tokens": 128,
+        "prompt_cache_miss_tokens": 29
+      }
+    },
+    {
+      "case_id": "memos_medium:1480",
+      "condition": "A2",
+      "original_label": "hallucination",
+      "rerun_label": "hallucination",
+      "agree": true,
+      "usage": {
+        "completion_tokens": 43,
+        "prompt_tokens": 155,
+        "total_tokens": 198,
+        "completion_tokens_details": null,
+        "prompt_tokens_details": {
+          "audio_tokens": null,
+          "cached_tokens": 128
+        },
+        "prompt_cache_hit_tokens": 128,
+        "prompt_cache_miss_tokens": 27
+      }
+    },
+    {
+      "case_id": "memos_medium:2119",
+      "condition": "A5",
+      "original_label": "hallucination",
+      "rerun_label": "hallucination",
+      "agree": true,
+      "usage": {
+        "completion_tokens": 56,
+        "prompt_tokens": 159,
+        "total_tokens": 215,
+        "completion_tokens_details": null,
+        "prompt_tokens_details": {
+          "audio_tokens": null,
+          "cached_tokens": 128
+        },
+        "prompt_cache_hit_tokens": 128,
+        "prompt_cache_miss_tokens": 31
+      }
+    },
+    {
+      "case_id": "memos_long:3013",
+      "condition": "A5",
+      "original_label": "omission",
+      "rerun_label": "omission",
+      "agree": true,
+      "usage": {
+        "completion_tokens": 49,
+        "prompt_tokens": 155,
+        "total_tokens": 204,
+        "completion_tokens_details": null,
+        "prompt_tokens_details": {
+          "audio_tokens": null,
+          "cached_tokens": 128
+        },
+        "prompt_cache_hit_tokens": 128,
+        "prompt_cache_miss_tokens": 27
+      }
+    },
+    {
+      "case_id": "memos_long:3439",
+      "condition": "A5",
+      "original_label": "hallucination",
+      "rerun_label": "hallucination",
+      "agree": true,
+      "usage": {
+        "completion_tokens": 72,
+        "prompt_tokens": 154,
+        "total_tokens": 226,
+        "completion_tokens_details": null,
+        "prompt_tokens_details": {
+          "audio_tokens": null,
+          "cached_tokens": 128
+        },
+        "prompt_cache_hit_tokens": 128,
+        "prompt_cache_miss_tokens": 26
+      }
+    },
+    {
+      "case_id": "memos_long:1730",
+      "condition": "A5",
+      "original_label": "hallucination",
+      "rerun_label": "hallucination",
+      "agree": true,
+      "usage": {
+        "completion_tokens": 48,
+        "prompt_tokens": 148,
+        "total_tokens": 196,
+        "completion_tokens_details": null,
+        "prompt_tokens_details": {
+          "audio_tokens": null,
+          "cached_tokens": 128
+        },
+        "prompt_cache_hit_tokens": 128,
+        "prompt_cache_miss_tokens": 20
+      }
+    },
+    {
+      "case_id": "memos_long:1905",
+      "condition": "A4",
+      "original_label": "hallucination",
+      "rerun_label": "hallucination",
+      "agree": true,
+      "usage": {
+        "completion_tokens": 47,
+        "prompt_tokens": 144,
+        "total_tokens": 191,
+        "completion_tokens_details": null,
+        "prompt_tokens_details": {
+          "audio_tokens": null,
+          "cached_tokens": 128
+        },
+        "prompt_cache_hit_tokens": 128,
+        "prompt_cache_miss_tokens": 16
+      }
+    },
+    {
+      "case_id": "memos_medium:808",
+      "condition": "A2",
+      "original_label": "hallucination",
+      "rerun_label": "hallucination",
+      "agree": true,
+      "usage": {
+        "completion_tokens": 61,
+        "prompt_tokens": 157,
+        "total_tokens": 218,
+        "completion_tokens_details": null,
+        "prompt_tokens_details": {
+          "audio_tokens": null,
+          "cached_tokens": 128
+        },
+        "prompt_cache_hit_tokens": 128,
+        "prompt_cache_miss_tokens": 29
+      }
+    },
+    {
+      "case_id": "memos_medium:916",
+      "condition": "A5",
+      "original_label": "hallucination",
+      "rerun_label": "hallucination",
+      "agree": true,
+      "usage": {
+        "completion_tokens": 68,
+        "prompt_tokens": 153,
+        "total_tokens": 221,
+        "completion_tokens_details": null,
+        "prompt_tokens_details": {
+          "audio_tokens": null,
+          "cached_tokens": 128
+        },
+        "prompt_cache_hit_tokens": 128,
+        "prompt_cache_miss_tokens": 25
+      }
+    },
+    {
+      "case_id": "memos_long:2762",
+      "condition": "A4",
+      "original_label": "hallucination",
+      "rerun_label": "hallucination",
+      "agree": true,
+      "usage": {
+        "completion_tokens": 54,
+        "prompt_tokens": 182,
+        "total_tokens": 236,
+        "completion_tokens_details": null,
+        "prompt_tokens_details": {
+          "audio_tokens": null,
+          "cached_tokens": 128
+        },
+        "prompt_cache_hit_tokens": 128,
+        "prompt_cache_miss_tokens": 54
+      }
+    },
+    {
+      "case_id": "memos_long:922",
+      "condition": "A3",
+      "original_label": "hallucination",
+      "rerun_label": "hallucination",
+      "agree": true,
+      "usage": {
+        "completion_tokens": 52,
+        "prompt_tokens": 155,
+        "total_tokens": 207,
+        "completion_tokens_details": null,
+        "prompt_tokens_details": {
+          "audio_tokens": null,
+          "cached_tokens": 128
+        },
+        "prompt_cache_hit_tokens": 128,
+        "prompt_cache_miss_tokens": 27
+      }
+    },
+    {
+      "case_id": "memos_medium:3118",
+      "condition": "A4",
+      "original_label": "hallucination",
+      "rerun_label": "hallucination",
+      "agree": true,
+      "usage": {
+        "completion_tokens": 49,
+        "prompt_tokens": 153,
+        "total_tokens": 202,
+        "completion_tokens_details": null,
+        "prompt_tokens_details": {
+          "audio_tokens": null,
+          "cached_tokens": 128
+        },
+        "prompt_cache_hit_tokens": 128,
+        "prompt_cache_miss_tokens": 25
+      }
+    },
+    {
+      "case_id": "memos_long:2549",
+      "condition": "A5",
+      "original_label": "correct",
+      "rerun_label": "correct",
+      "agree": true,
+      "usage": {
+        "completion_tokens": 50,
+        "prompt_tokens": 153,
+        "total_tokens": 203,
+        "completion_tokens_details": null,
+        "prompt_tokens_details": {
+          "audio_tokens": null,
+          "cached_tokens": 128
+        },
+        "prompt_cache_hit_tokens": 128,
+        "prompt_cache_miss_tokens": 25
+      }
+    },
+    {
+      "case_id": "memos_long:2993",
+      "condition": "A1",
+      "original_label": "hallucination",
+      "rerun_label": "hallucination",
+      "agree": true,
+      "usage": {
+        "completion_tokens": 42,
+        "prompt_tokens": 154,
+        "total_tokens": 196,
+        "completion_tokens_details": null,
+        "prompt_tokens_details": {
+          "audio_tokens": null,
+          "cached_tokens": 128
+        },
+        "prompt_cache_hit_tokens": 128,
+        "prompt_cache_miss_tokens": 26
+      }
+    },
+    {
+      "case_id": "memos_long:240",
+      "condition": "A3",
+      "original_label": "hallucination",
+      "rerun_label": "hallucination",
+      "agree": true,
+      "usage": {
+        "completion_tokens": 61,
+        "prompt_tokens": 154,
+        "total_tokens": 215,
+        "completion_tokens_details": null,
+        "prompt_tokens_details": {
+          "audio_tokens": null,
+          "cached_tokens": 128
+        },
+        "prompt_cache_hit_tokens": 128,
+        "prompt_cache_miss_tokens": 26
+      }
+    },
+    {
+      "case_id": "memos_medium:342",
+      "condition": "A4",
+      "original_label": "correct",
+      "rerun_label": "correct",
+      "agree": true,
+      "usage": {
+        "completion_tokens": 44,
+        "prompt_tokens": 154,
+        "total_tokens": 198,
+        "completion_tokens_details": null,
+        "prompt_tokens_details": {
+          "audio_tokens": null,
+          "cached_tokens": 128
+        },
+        "prompt_cache_hit_tokens": 128,
+        "prompt_cache_miss_tokens": 26
+      }
+    },
+    {
+      "case_id": "memos_long:2655",
+      "condition": "A3",
+      "original_label": "omission",
+      "rerun_label": "omission",
+      "agree": true,
+      "usage": {
+        "completion_tokens": 46,
+        "prompt_tokens": 166,
+        "total_tokens": 212,
+        "completion_tokens_details": null,
+        "prompt_tokens_details": {
+          "audio_tokens": null,
+          "cached_tokens": 128
+        },
+        "prompt_cache_hit_tokens": 128,
+        "prompt_cache_miss_tokens": 38
+      }
+    },
+    {
+      "case_id": "memos_medium:670",
+      "condition": "A4",
+      "original_label": "hallucination",
+      "rerun_label": "hallucination",
+      "agree": true,
+      "usage": {
+        "completion_tokens": 41,
+        "prompt_tokens": 157,
+        "total_tokens": 198,
+        "completion_tokens_details": null,
+        "prompt_tokens_details": {
+          "audio_tokens": null,
+          "cached_tokens": 128
+        },
+        "prompt_cache_hit_tokens": 128,
+        "prompt_cache_miss_tokens": 29
+      }
+    },
+    {
+      "case_id": "memos_medium:916",
+      "condition": "A2",
+      "original_label": "hallucination",
+      "rerun_label": "hallucination",
+      "agree": true,
+      "usage": {
+        "completion_tokens": 59,
+        "prompt_tokens": 153,
+        "total_tokens": 212,
+        "completion_tokens_details": null,
+        "prompt_tokens_details": {
+          "audio_tokens": null,
+          "cached_tokens": 128
+        },
+        "prompt_cache_hit_tokens": 128,
+        "prompt_cache_miss_tokens": 25
+      }
+    },
+    {
+      "case_id": "memos_medium:2656",
+      "condition": "A4",
+      "original_label": "hallucination",
+      "rerun_label": "hallucination",
+      "agree": true,
+      "usage": {
+        "completion_tokens": 67,
+        "prompt_tokens": 165,
+        "total_tokens": 232,
+        "completion_tokens_details": null,
+        "prompt_tokens_details": {
+          "audio_tokens": null,
+          "cached_tokens": 128
+        },
+        "prompt_cache_hit_tokens": 128,
+        "prompt_cache_miss_tokens": 37
+      }
+    },
+    {
+      "case_id": "memos_long:2126",
+      "condition": "A2",
+      "original_label": "correct",
+      "rerun_label": "correct",
+      "agree": true,
+      "usage": {
+        "completion_tokens": 24,
+        "prompt_tokens": 148,
+        "total_tokens": 172,
+        "completion_tokens_details": null,
+        "prompt_tokens_details": {
+          "audio_tokens": null,
+          "cached_tokens": 128
+        },
+        "prompt_cache_hit_tokens": 128,
+        "prompt_cache_miss_tokens": 20
+      }
+    },
+    {
+      "case_id": "memos_long:3213",
+      "condition": "A2",
+      "original_label": "hallucination",
+      "rerun_label": "hallucination",
+      "agree": true,
+      "usage": {
+        "completion_tokens": 50,
+        "prompt_tokens": 166,
+        "total_tokens": 216,
+        "completion_tokens_details": null,
+        "prompt_tokens_details": {
+          "audio_tokens": null,
+          "cached_tokens": 128
+        },
+        "prompt_cache_hit_tokens": 128,
+        "prompt_cache_miss_tokens": 38
+      }
+    },
+    {
+      "case_id": "memos_medium:835",
+      "condition": "A5",
+      "original_label": "hallucination",
+      "rerun_label": "hallucination",
+      "agree": true,
+      "usage": {
+        "completion_tokens": 51,
+        "prompt_tokens": 147,
+        "total_tokens": 198,
+        "completion_tokens_details": null,
+        "prompt_tokens_details": {
+          "audio_tokens": null,
+          "cached_tokens": 128
+        },
+        "prompt_cache_hit_tokens": 128,
+        "prompt_cache_miss_tokens": 19
+      }
+    },
+    {
+      "case_id": "memos_medium:3359",
+      "condition": "A2",
+      "original_label": "correct",
+      "rerun_label": "correct",
+      "agree": true,
+      "usage": {
+        "completion_tokens": 24,
+        "prompt_tokens": 149,
+        "total_tokens": 173,
+        "completion_tokens_details": null,
+        "prompt_tokens_details": {
+          "audio_tokens": null,
+          "cached_tokens": 128
+        },
+        "prompt_cache_hit_tokens": 128,
+        "prompt_cache_miss_tokens": 21
+      }
+    },
+    {
+      "case_id": "memos_medium:431",
+      "condition": "A2",
+      "original_label": "correct",
+      "rerun_label": "correct",
+      "agree": true,
+      "usage": {
+        "completion_tokens": 32,
+        "prompt_tokens": 148,
+        "total_tokens": 180,
+        "completion_tokens_details": null,
+        "prompt_tokens_details": {
+          "audio_tokens": null,
+          "cached_tokens": 128
+        },
+        "prompt_cache_hit_tokens": 128,
+        "prompt_cache_miss_tokens": 20
+      }
+    },
+    {
+      "case_id": "memos_long:1232",
+      "condition": "A4",
+      "original_label": "hallucination",
+      "rerun_label": "hallucination",
+      "agree": true,
+      "usage": {
+        "completion_tokens": 64,
+        "prompt_tokens": 150,
+        "total_tokens": 214,
+        "completion_tokens_details": null,
+        "prompt_tokens_details": {
+          "audio_tokens": null,
+          "cached_tokens": 128
+        },
+        "prompt_cache_hit_tokens": 128,
+        "prompt_cache_miss_tokens": 22
+      }
+    },
+    {
+      "case_id": "memos_long:2113",
+      "condition": "A5",
+      "original_label": "hallucination",
+      "rerun_label": "hallucination",
+      "agree": true,
+      "usage": {
+        "completion_tokens": 52,
+        "prompt_tokens": 157,
+        "total_tokens": 209,
+        "completion_tokens_details": null,
+        "prompt_tokens_details": {
+          "audio_tokens": null,
+          "cached_tokens": 128
+        },
+        "prompt_cache_hit_tokens": 128,
+        "prompt_cache_miss_tokens": 29
+      }
+    },
+    {
+      "case_id": "memos_long:535",
+      "condition": "A4",
+      "original_label": "hallucination",
+      "rerun_label": "hallucination",
+      "agree": true,
+      "usage": {
+        "completion_tokens": 51,
+        "prompt_tokens": 163,
+        "total_tokens": 214,
+        "completion_tokens_details": null,
+        "prompt_tokens_details": {
+          "audio_tokens": null,
+          "cached_tokens": 128
+        },
+        "prompt_cache_hit_tokens": 128,
+        "prompt_cache_miss_tokens": 35
+      }
+    },
+    {
+      "case_id": "memos_long:3263",
+      "condition": "A2",
+      "original_label": "correct",
+      "rerun_label": "correct",
+      "agree": true,
+      "usage": {
+        "completion_tokens": 54,
+        "prompt_tokens": 151,
+        "total_tokens": 205,
+        "completion_tokens_details": null,
+        "prompt_tokens_details": {
+          "audio_tokens": null,
+          "cached_tokens": 128
+        },
+        "prompt_cache_hit_tokens": 128,
+        "prompt_cache_miss_tokens": 23
+      }
+    },
+    {
+      "case_id": "memos_long:2335",
+      "condition": "A3",
+      "original_label": "correct",
+      "rerun_label": "correct",
+      "agree": true,
+      "usage": {
+        "completion_tokens": 48,
+        "prompt_tokens": 148,
+        "total_tokens": 196,
+        "completion_tokens_details": null,
+        "prompt_tokens_details": {
+          "audio_tokens": null,
+          "cached_tokens": 128
+        },
+        "prompt_cache_hit_tokens": 128,
+        "prompt_cache_miss_tokens": 20
+      }
+    },
+    {
+      "case_id": "memos_medium:2557",
+      "condition": "A3",
+      "original_label": "correct",
+      "rerun_label": "correct",
+      "agree": true,
+      "usage": {
+        "completion_tokens": 43,
+        "prompt_tokens": 151,
+        "total_tokens": 194,
+        "completion_tokens_details": null,
+        "prompt_tokens_details": {
+          "audio_tokens": null,
+          "cached_tokens": 128
+        },
+        "prompt_cache_hit_tokens": 128,
+        "prompt_cache_miss_tokens": 23
+      }
+    },
+    {
+      "case_id": "memos_long:2094",
+      "condition": "A1",
+      "original_label": "hallucination",
+      "rerun_label": "hallucination",
+      "agree": true,
+      "usage": {
+        "completion_tokens": 56,
+        "prompt_tokens": 154,
+        "total_tokens": 210,
+        "completion_tokens_details": null,
+        "prompt_tokens_details": {
+          "audio_tokens": null,
+          "cached_tokens": 128
+        },
+        "prompt_cache_hit_tokens": 128,
+        "prompt_cache_miss_tokens": 26
+      }
+    },
+    {
+      "case_id": "memos_long:1878",
+      "condition": "A2",
+      "original_label": "correct",
+      "rerun_label": "correct",
+      "agree": true,
+      "usage": {
+        "completion_tokens": 56,
+        "prompt_tokens": 150,
+        "total_tokens": 206,
+        "completion_tokens_details": null,
+        "prompt_tokens_details": {
+          "audio_tokens": null,
+          "cached_tokens": 128
+        },
+        "prompt_cache_hit_tokens": 128,
+        "prompt_cache_miss_tokens": 22
+      }
+    },
+    {
+      "case_id": "memos_medium:185",
+      "condition": "A1",
+      "original_label": "hallucination",
+      "rerun_label": "hallucination",
+      "agree": true,
+      "usage": {
+        "completion_tokens": 48,
+        "prompt_tokens": 168,
+        "total_tokens": 216,
+        "completion_tokens_details": null,
+        "prompt_tokens_details": {
+          "audio_tokens": null,
+          "cached_tokens": 128
+        },
+        "prompt_cache_hit_tokens": 128,
+        "prompt_cache_miss_tokens": 40
+      }
+    },
+    {
+      "case_id": "memos_long:1622",
+      "condition": "A5",
+      "original_label": "hallucination",
+      "rerun_label": "hallucination",
+      "agree": true,
+      "usage": {
+        "completion_tokens": 73,
+        "prompt_tokens": 151,
+        "total_tokens": 224,
+        "completion_tokens_details": null,
+        "prompt_tokens_details": {
+          "audio_tokens": null,
+          "cached_tokens": 128
+        },
+        "prompt_cache_hit_tokens": 128,
+        "prompt_cache_miss_tokens": 23
+      }
+    },
+    {
+      "case_id": "memos_medium:1173",
+      "condition": "A5",
+      "original_label": "hallucination",
+      "rerun_label": "hallucination",
+      "agree": true,
+      "usage": {
+        "completion_tokens": 47,
+        "prompt_tokens": 152,
+        "total_tokens": 199,
+        "completion_tokens_details": null,
+        "prompt_tokens_details": {
+          "audio_tokens": null,
+          "cached_tokens": 128
+        },
+        "prompt_cache_hit_tokens": 128,
+        "prompt_cache_miss_tokens": 24
+      }
+    },
+    {
+      "case_id": "memos_long:2665",
+      "condition": "A1",
+      "original_label": "hallucination",
+      "rerun_label": "hallucination",
+      "agree": true,
+      "usage": {
+        "completion_tokens": 73,
+        "prompt_tokens": 158,
+        "total_tokens": 231,
+        "completion_tokens_details": null,
+        "prompt_tokens_details": {
+          "audio_tokens": null,
+          "cached_tokens": 128
+        },
+        "prompt_cache_hit_tokens": 128,
+        "prompt_cache_miss_tokens": 30
+      }
+    },
+    {
+      "case_id": "memos_medium:70",
+      "condition": "A3",
+      "original_label": "correct",
+      "rerun_label": "correct",
+      "agree": true,
+      "usage": {
+        "completion_tokens": 50,
+        "prompt_tokens": 160,
+        "total_tokens": 210,
+        "completion_tokens_details": null,
+        "prompt_tokens_details": {
+          "audio_tokens": null,
+          "cached_tokens": 128
+        },
+        "prompt_cache_hit_tokens": 128,
+        "prompt_cache_miss_tokens": 32
+      }
+    },
+    {
+      "case_id": "memos_long:913",
+      "condition": "A3",
+      "original_label": "hallucination",
+      "rerun_label": "hallucination",
+      "agree": true,
+      "usage": {
+        "completion_tokens": 57,
+        "prompt_tokens": 155,
+        "total_tokens": 212,
+        "completion_tokens_details": null,
+        "prompt_tokens_details": {
+          "audio_tokens": null,
+          "cached_tokens": 128
+        },
+        "prompt_cache_hit_tokens": 128,
+        "prompt_cache_miss_tokens": 27
+      }
+    },
+    {
+      "case_id": "memos_medium:1227",
+      "condition": "A1",
+      "original_label": "hallucination",
+      "rerun_label": "hallucination",
+      "agree": true,
+      "usage": {
+        "completion_tokens": 90,
+        "prompt_tokens": 150,
+        "total_tokens": 240,
+        "completion_tokens_details": null,
+        "prompt_tokens_details": {
+          "audio_tokens": null,
+          "cached_tokens": 128
+        },
+        "prompt_cache_hit_tokens": 128,
+        "prompt_cache_miss_tokens": 22
+      }
+    },
+    {
+      "case_id": "memos_medium:401",
+      "condition": "A1",
+      "original_label": "correct",
+      "rerun_label": "correct",
+      "agree": true,
+      "usage": {
+        "completion_tokens": 45,
+        "prompt_tokens": 155,
+        "total_tokens": 200,
+        "completion_tokens_details": null,
+        "prompt_tokens_details": {
+          "audio_tokens": null,
+          "cached_tokens": 128
+        },
+        "prompt_cache_hit_tokens": 128,
+        "prompt_cache_miss_tokens": 27
+      }
+    },
+    {
+      "case_id": "memos_long:577",
+      "condition": "A3",
+      "original_label": "omission",
+      "rerun_label": "omission",
+      "agree": true,
+      "usage": {
+        "completion_tokens": 41,
+        "prompt_tokens": 158,
+        "total_tokens": 199,
+        "completion_tokens_details": null,
+        "prompt_tokens_details": {
+          "audio_tokens": null,
+          "cached_tokens": 128
+        },
+        "prompt_cache_hit_tokens": 128,
+        "prompt_cache_miss_tokens": 30
+      }
+    },
+    {
+      "case_id": "memos_medium:1853",
+      "condition": "A4",
+      "original_label": "hallucination",
+      "rerun_label": "hallucination",
+      "agree": true,
+      "usage": {
+        "completion_tokens": 61,
+        "prompt_tokens": 163,
+        "total_tokens": 224,
+        "completion_tokens_details": null,
+        "prompt_tokens_details": {
+          "audio_tokens": null,
+          "cached_tokens": 128
+        },
+        "prompt_cache_hit_tokens": 128,
+        "prompt_cache_miss_tokens": 35
+      }
+    },
+    {
+      "case_id": "memos_medium:539",
+      "condition": "A1",
+      "original_label": "omission",
+      "rerun_label": "omission",
+      "agree": true,
+      "usage": {
+        "completion_tokens": 52,
+        "prompt_tokens": 154,
+        "total_tokens": 206,
+        "completion_tokens_details": null,
+        "prompt_tokens_details": {
+          "audio_tokens": null,
+          "cached_tokens": 128
+        },
+        "prompt_cache_hit_tokens": 128,
+        "prompt_cache_miss_tokens": 26
+      }
+    },
+    {
+      "case_id": "memos_medium:2670",
+      "condition": "A1",
+      "original_label": "hallucination",
+      "rerun_label": "hallucination",
+      "agree": true,
+      "usage": {
+        "completion_tokens": 56,
+        "prompt_tokens": 168,
+        "total_tokens": 224,
+        "completion_tokens_details": null,
+        "prompt_tokens_details": {
+          "audio_tokens": null,
+          "cached_tokens": 128
+        },
+        "prompt_cache_hit_tokens": 128,
+        "prompt_cache_miss_tokens": 40
+      }
+    },
+    {
+      "case_id": "memos_long:3434",
+      "condition": "A2",
+      "original_label": "correct",
+      "rerun_label": "correct",
+      "agree": true,
+      "usage": {
+        "completion_tokens": 54,
+        "prompt_tokens": 159,
+        "total_tokens": 213,
+        "completion_tokens_details": null,
+        "prompt_tokens_details": {
+          "audio_tokens": null,
+          "cached_tokens": 128
+        },
+        "prompt_cache_hit_tokens": 128,
+        "prompt_cache_miss_tokens": 31
+      }
+    },
+    {
+      "case_id": "memos_long:3263",
+      "condition": "A5",
+      "original_label": "hallucination",
+      "rerun_label": "hallucination",
+      "agree": true,
+      "usage": {
+        "completion_tokens": 73,
+        "prompt_tokens": 151,
+        "total_tokens": 224,
+        "completion_tokens_details": null,
+        "prompt_tokens_details": {
+          "audio_tokens": null,
+          "cached_tokens": 128
+        },
+        "prompt_cache_hit_tokens": 128,
+        "prompt_cache_miss_tokens": 23
+      }
+    },
+    {
+      "case_id": "memos_medium:835",
+      "condition": "A2",
+      "original_label": "correct",
+      "rerun_label": "correct",
+      "agree": true,
+      "usage": {
+        "completion_tokens": 24,
+        "prompt_tokens": 143,
+        "total_tokens": 167,
+        "completion_tokens_details": null,
+        "prompt_tokens_details": {
+          "audio_tokens": null,
+          "cached_tokens": 128
+        },
+        "prompt_cache_hit_tokens": 128,
+        "prompt_cache_miss_tokens": 15
+      }
+    },
+    {
+      "case_id": "memos_long:3259",
+      "condition": "A3",
+      "original_label": "hallucination",
+      "rerun_label": "hallucination",
+      "agree": true,
+      "usage": {
+        "completion_tokens": 64,
+        "prompt_tokens": 153,
+        "total_tokens": 217,
+        "completion_tokens_details": null,
+        "prompt_tokens_details": {
+          "audio_tokens": null,
+          "cached_tokens": 128
+        },
+        "prompt_cache_hit_tokens": 128,
+        "prompt_cache_miss_tokens": 25
+      }
+    },
+    {
+      "case_id": "memos_medium:603",
+      "condition": "A2",
+      "original_label": "hallucination",
+      "rerun_label": "hallucination",
+      "agree": true,
+      "usage": {
+        "completion_tokens": 53,
+        "prompt_tokens": 157,
+        "total_tokens": 210,
+        "completion_tokens_details": null,
+        "prompt_tokens_details": {
+          "audio_tokens": null,
+          "cached_tokens": 128
+        },
+        "prompt_cache_hit_tokens": 128,
+        "prompt_cache_miss_tokens": 29
+      }
+    },
+    {
+      "case_id": "memos_long:462",
+      "condition": "A2",
+      "original_label": "correct",
+      "rerun_label": "correct",
+      "agree": true,
+      "usage": {
+        "completion_tokens": 39,
+        "prompt_tokens": 156,
+        "total_tokens": 195,
+        "completion_tokens_details": null,
+        "prompt_tokens_details": {
+          "audio_tokens": null,
+          "cached_tokens": 128
+        },
+        "prompt_cache_hit_tokens": 128,
+        "prompt_cache_miss_tokens": 28
+      }
+    },
+    {
+      "case_id": "memos_long:842",
+      "condition": "A2",
+      "original_label": "hallucination",
+      "rerun_label": "hallucination",
+      "agree": true,
+      "usage": {
+        "completion_tokens": 48,
+        "prompt_tokens": 170,
+        "total_tokens": 218,
+        "completion_tokens_details": null,
+        "prompt_tokens_details": {
+          "audio_tokens": null,
+          "cached_tokens": 128
+        },
+        "prompt_cache_hit_tokens": 128,
+        "prompt_cache_miss_tokens": 42
+      }
+    },
+    {
+      "case_id": "memos_medium:912",
+      "condition": "A5",
+      "original_label": "omission",
+      "rerun_label": "omission",
+      "agree": true,
+      "usage": {
+        "completion_tokens": 53,
+        "prompt_tokens": 155,
+        "total_tokens": 208,
+        "completion_tokens_details": null,
+        "prompt_tokens_details": {
+          "audio_tokens": null,
+          "cached_tokens": 128
+        },
+        "prompt_cache_hit_tokens": 128,
+        "prompt_cache_miss_tokens": 27
+      }
+    },
+    {
+      "case_id": "memos_long:2846",
+      "condition": "A5",
+      "original_label": "hallucination",
+      "rerun_label": "hallucination",
+      "agree": true,
+      "usage": {
+        "completion_tokens": 45,
+        "prompt_tokens": 148,
+        "total_tokens": 193,
+        "completion_tokens_details": null,
+        "prompt_tokens_details": {
+          "audio_tokens": null,
+          "cached_tokens": 128
+        },
+        "prompt_cache_hit_tokens": 128,
+        "prompt_cache_miss_tokens": 20
+      }
+    },
+    {
+      "case_id": "memos_medium:2315",
+      "condition": "A3",
+      "original_label": "hallucination",
+      "rerun_label": "hallucination",
+      "agree": true,
+      "usage": {
+        "completion_tokens": 77,
+        "prompt_tokens": 157,
+        "total_tokens": 234,
+        "completion_tokens_details": null,
+        "prompt_tokens_details": {
+          "audio_tokens": null,
+          "cached_tokens": 128
+        },
+        "prompt_cache_hit_tokens": 128,
+        "prompt_cache_miss_tokens": 29
+      }
+    },
+    {
+      "case_id": "memos_medium:2420",
+      "condition": "A1",
+      "original_label": "hallucination",
+      "rerun_label": "hallucination",
+      "agree": true,
+      "usage": {
+        "completion_tokens": 43,
+        "prompt_tokens": 159,
+        "total_tokens": 202,
+        "completion_tokens_details": null,
+        "prompt_tokens_details": {
+          "audio_tokens": null,
+          "cached_tokens": 128
+        },
+        "prompt_cache_hit_tokens": 128,
+        "prompt_cache_miss_tokens": 31
+      }
+    },
+    {
+      "case_id": "memos_medium:38",
+      "condition": "A3",
+      "original_label": "hallucination",
+      "rerun_label": "hallucination",
+      "agree": true,
+      "usage": {
+        "completion_tokens": 70,
+        "prompt_tokens": 153,
+        "total_tokens": 223,
+        "completion_tokens_details": null,
+        "prompt_tokens_details": {
+          "audio_tokens": null,
+          "cached_tokens": 128
+        },
+        "prompt_cache_hit_tokens": 128,
+        "prompt_cache_miss_tokens": 25
+      }
+    },
+    {
+      "case_id": "memos_medium:1548",
+      "condition": "A1",
+      "original_label": "correct",
+      "rerun_label": "correct",
+      "agree": true,
+      "usage": {
+        "completion_tokens": 50,
+        "prompt_tokens": 151,
+        "total_tokens": 201,
+        "completion_tokens_details": null,
+        "prompt_tokens_details": {
+          "audio_tokens": null,
+          "cached_tokens": 128
+        },
+        "prompt_cache_hit_tokens": 128,
+        "prompt_cache_miss_tokens": 23
+      }
+    },
+    {
+      "case_id": "memos_medium:115",
+      "condition": "A2",
+      "original_label": "hallucination",
+      "rerun_label": "hallucination",
+      "agree": true,
+      "usage": {
+        "completion_tokens": 42,
+        "prompt_tokens": 154,
+        "total_tokens": 196,
+        "completion_tokens_details": null,
+        "prompt_tokens_details": {
+          "audio_tokens": null,
+          "cached_tokens": 128
+        },
+        "prompt_cache_hit_tokens": 128,
+        "prompt_cache_miss_tokens": 26
+      }
+    },
+    {
+      "case_id": "memos_medium:640",
+      "condition": "A2",
+      "original_label": "correct",
+      "rerun_label": "correct",
+      "agree": true,
+      "usage": {
+        "completion_tokens": 32,
+        "prompt_tokens": 158,
+        "total_tokens": 190,
+        "completion_tokens_details": null,
+        "prompt_tokens_details": {
+          "audio_tokens": null,
+          "cached_tokens": 128
+        },
+        "prompt_cache_hit_tokens": 128,
+        "prompt_cache_miss_tokens": 30
+      }
+    },
+    {
+      "case_id": "memos_long:765",
+      "condition": "A2",
+      "original_label": "hallucination",
+      "rerun_label": "hallucination",
+      "agree": true,
+      "usage": {
+        "completion_tokens": 55,
+        "prompt_tokens": 152,
+        "total_tokens": 207,
+        "completion_tokens_details": null,
+        "prompt_tokens_details": {
+          "audio_tokens": null,
+          "cached_tokens": 128
+        },
+        "prompt_cache_hit_tokens": 128,
+        "prompt_cache_miss_tokens": 24
+      }
+    },
+    {
+      "case_id": "memos_long:3114",
+      "condition": "A4",
+      "original_label": "correct",
+      "rerun_label": "correct",
+      "agree": true,
+      "usage": {
+        "completion_tokens": 61,
+        "prompt_tokens": 175,
+        "total_tokens": 236,
+        "completion_tokens_details": null,
+        "prompt_tokens_details": {
+          "audio_tokens": null,
+          "cached_tokens": 128
+        },
+        "prompt_cache_hit_tokens": 128,
+        "prompt_cache_miss_tokens": 47
+      }
+    },
+    {
+      "case_id": "memos_medium:1238",
+      "condition": "A5",
+      "original_label": "correct",
+      "rerun_label": "correct",
+      "agree": true,
+      "usage": {
+        "completion_tokens": 41,
+        "prompt_tokens": 154,
+        "total_tokens": 195,
+        "completion_tokens_details": null,
+        "prompt_tokens_details": {
+          "audio_tokens": null,
+          "cached_tokens": 128
+        },
+        "prompt_cache_hit_tokens": 128,
+        "prompt_cache_miss_tokens": 26
+      }
+    },
+    {
+      "case_id": "memos_long:1237",
+      "condition": "A1",
+      "original_label": "hallucination",
+      "rerun_label": "hallucination",
+      "agree": true,
+      "usage": {
+        "completion_tokens": 49,
+        "prompt_tokens": 152,
+        "total_tokens": 201,
+        "completion_tokens_details": null,
+        "prompt_tokens_details": {
+          "audio_tokens": null,
+          "cached_tokens": 128
+        },
+        "prompt_cache_hit_tokens": 128,
+        "prompt_cache_miss_tokens": 24
+      }
+    },
+    {
+      "case_id": "memos_long:567",
+      "condition": "A5",
+      "original_label": "hallucination",
+      "rerun_label": "hallucination",
+      "agree": true,
+      "usage": {
+        "completion_tokens": 63,
+        "prompt_tokens": 158,
+        "total_tokens": 221,
+        "completion_tokens_details": null,
+        "prompt_tokens_details": {
+          "audio_tokens": null,
+          "cached_tokens": 128
+        },
+        "prompt_cache_hit_tokens": 128,
+        "prompt_cache_miss_tokens": 30
+      }
+    },
+    {
+      "case_id": "memos_medium:2486",
+      "condition": "A4",
+      "original_label": "hallucination",
+      "rerun_label": "correct",
+      "agree": false,
+      "usage": {
+        "completion_tokens": 58,
+        "prompt_tokens": 164,
+        "total_tokens": 222,
+        "completion_tokens_details": null,
+        "prompt_tokens_details": {
+          "audio_tokens": null,
+          "cached_tokens": 128
+        },
+        "prompt_cache_hit_tokens": 128,
+        "prompt_cache_miss_tokens": 36
+      }
+    },
+    {
+      "case_id": "memos_medium:550",
+      "condition": "A2",
+      "original_label": "correct",
+      "rerun_label": "correct",
+      "agree": true,
+      "usage": {
+        "completion_tokens": 40,
+        "prompt_tokens": 153,
+        "total_tokens": 193,
+        "completion_tokens_details": null,
+        "prompt_tokens_details": {
+          "audio_tokens": null,
+          "cached_tokens": 128
+        },
+        "prompt_cache_hit_tokens": 128,
+        "prompt_cache_miss_tokens": 25
+      }
+    },
+    {
+      "case_id": "memos_long:2254",
+      "condition": "A1",
+      "original_label": "hallucination",
+      "rerun_label": "hallucination",
+      "agree": true,
+      "usage": {
+        "completion_tokens": 49,
+        "prompt_tokens": 154,
+        "total_tokens": 203,
+        "completion_tokens_details": null,
+        "prompt_tokens_details": {
+          "audio_tokens": null,
+          "cached_tokens": 128
+        },
+        "prompt_cache_hit_tokens": 128,
+        "prompt_cache_miss_tokens": 26
+      }
+    },
+    {
+      "case_id": "memos_medium:1532",
+      "condition": "A1",
+      "original_label": "correct",
+      "rerun_label": "correct",
+      "agree": true,
+      "usage": {
+        "completion_tokens": 51,
+        "prompt_tokens": 157,
+        "total_tokens": 208,
+        "completion_tokens_details": null,
+        "prompt_tokens_details": {
+          "audio_tokens": null,
+          "cached_tokens": 128
+        },
+        "prompt_cache_hit_tokens": 128,
+        "prompt_cache_miss_tokens": 29
+      }
+    },
+    {
+      "case_id": "memos_medium:3000",
+      "condition": "A4",
+      "original_label": "correct",
+      "rerun_label": "correct",
+      "agree": true,
+      "usage": {
+        "completion_tokens": 48,
+        "prompt_tokens": 157,
+        "total_tokens": 205,
+        "completion_tokens_details": null,
+        "prompt_tokens_details": {
+          "audio_tokens": null,
+          "cached_tokens": 128
+        },
+        "prompt_cache_hit_tokens": 128,
+        "prompt_cache_miss_tokens": 29
+      }
+    },
+    {
+      "case_id": "memos_medium:3383",
+      "condition": "A1",
+      "original_label": "hallucination",
+      "rerun_label": "hallucination",
+      "agree": true,
+      "usage": {
+        "completion_tokens": 53,
+        "prompt_tokens": 149,
+        "total_tokens": 202,
+        "completion_tokens_details": null,
+        "prompt_tokens_details": {
+          "audio_tokens": null,
+          "cached_tokens": 128
+        },
+        "prompt_cache_hit_tokens": 128,
+        "prompt_cache_miss_tokens": 21
+      }
+    },
+    {
+      "case_id": "memos_long:2156",
+      "condition": "A3",
+      "original_label": "hallucination",
+      "rerun_label": "hallucination",
+      "agree": true,
+      "usage": {
+        "completion_tokens": 37,
+        "prompt_tokens": 147,
+        "total_tokens": 184,
+        "completion_tokens_details": null,
+        "prompt_tokens_details": {
+          "audio_tokens": null,
+          "cached_tokens": 128
+        },
+        "prompt_cache_hit_tokens": 128,
+        "prompt_cache_miss_tokens": 19
+      }
+    },
+    {
+      "case_id": "memos_medium:1717",
+      "condition": "A5",
+      "original_label": "hallucination",
+      "rerun_label": "hallucination",
+      "agree": true,
+      "usage": {
+        "completion_tokens": 66,
+        "prompt_tokens": 153,
+        "total_tokens": 219,
+        "completion_tokens_details": null,
+        "prompt_tokens_details": {
+          "audio_tokens": null,
+          "cached_tokens": 128
+        },
+        "prompt_cache_hit_tokens": 128,
+        "prompt_cache_miss_tokens": 25
+      }
+    },
+    {
+      "case_id": "memos_long:2598",
+      "condition": "A4",
+      "original_label": "hallucination",
+      "rerun_label": "hallucination",
+      "agree": true,
+      "usage": {
+        "completion_tokens": 42,
+        "prompt_tokens": 165,
+        "total_tokens": 207,
+        "completion_tokens_details": null,
+        "prompt_tokens_details": {
+          "audio_tokens": null,
+          "cached_tokens": 128
+        },
+        "prompt_cache_hit_tokens": 128,
+        "prompt_cache_miss_tokens": 37
+      }
+    },
+    {
+      "case_id": "memos_medium:775",
+      "condition": "A3",
+      "original_label": "hallucination",
+      "rerun_label": "hallucination",
+      "agree": true,
+      "usage": {
+        "completion_tokens": 60,
+        "prompt_tokens": 156,
+        "total_tokens": 216,
+        "completion_tokens_details": null,
+        "prompt_tokens_details": {
+          "audio_tokens": null,
+          "cached_tokens": 128
+        },
+        "prompt_cache_hit_tokens": 128,
+        "prompt_cache_miss_tokens": 28
+      }
+    },
+    {
+      "case_id": "memos_long:2357",
+      "condition": "A5",
+      "original_label": "hallucination",
+      "rerun_label": "hallucination",
+      "agree": true,
+      "usage": {
+        "completion_tokens": 52,
+        "prompt_tokens": 163,
+        "total_tokens": 215,
+        "completion_tokens_details": null,
+        "prompt_tokens_details": {
+          "audio_tokens": null,
+          "cached_tokens": 128
+        },
+        "prompt_cache_hit_tokens": 128,
+        "prompt_cache_miss_tokens": 35
+      }
+    },
+    {
+      "case_id": "memos_long:1674",
+      "condition": "A2",
+      "original_label": "hallucination",
+      "rerun_label": "hallucination",
+      "agree": true,
+      "usage": {
+        "completion_tokens": 48,
+        "prompt_tokens": 152,
+        "total_tokens": 200,
+        "completion_tokens_details": null,
+        "prompt_tokens_details": {
+          "audio_tokens": null,
+          "cached_tokens": 128
+        },
+        "prompt_cache_hit_tokens": 128,
+        "prompt_cache_miss_tokens": 24
+      }
+    },
+    {
+      "case_id": "memos_medium:942",
+      "condition": "A5",
+      "original_label": "hallucination",
+      "rerun_label": "hallucination",
+      "agree": true,
+      "usage": {
+        "completion_tokens": 51,
+        "prompt_tokens": 158,
+        "total_tokens": 209,
+        "completion_tokens_details": null,
+        "prompt_tokens_details": {
+          "audio_tokens": null,
+          "cached_tokens": 128
+        },
+        "prompt_cache_hit_tokens": 128,
+        "prompt_cache_miss_tokens": 30
+      }
+    },
+    {
+      "case_id": "memos_long:1730",
+      "condition": "A4",
+      "original_label": "hallucination",
+      "rerun_label": "hallucination",
+      "agree": true,
+      "usage": {
+        "completion_tokens": 48,
+        "prompt_tokens": 148,
+        "total_tokens": 196,
+        "completion_tokens_details": null,
+        "prompt_tokens_details": {
+          "audio_tokens": null,
+          "cached_tokens": 128
+        },
+        "prompt_cache_hit_tokens": 128,
+        "prompt_cache_miss_tokens": 20
+      }
+    },
+    {
+      "case_id": "memos_medium:799",
+      "condition": "A4",
+      "original_label": "hallucination",
+      "rerun_label": "hallucination",
+      "agree": true,
+      "usage": {
+        "completion_tokens": 67,
+        "prompt_tokens": 154,
+        "total_tokens": 221,
+        "completion_tokens_details": null,
+        "prompt_tokens_details": {
+          "audio_tokens": null,
+          "cached_tokens": 128
+        },
+        "prompt_cache_hit_tokens": 128,
+        "prompt_cache_miss_tokens": 26
+      }
+    },
+    {
+      "case_id": "memos_medium:1160",
+      "condition": "A5",
+      "original_label": "hallucination",
+      "rerun_label": "hallucination",
+      "agree": true,
+      "usage": {
+        "completion_tokens": 39,
+        "prompt_tokens": 161,
+        "total_tokens": 200,
+        "completion_tokens_details": null,
+        "prompt_tokens_details": {
+          "audio_tokens": null,
+          "cached_tokens": 128
+        },
+        "prompt_cache_hit_tokens": 128,
+        "prompt_cache_miss_tokens": 33
+      }
+    },
+    {
+      "case_id": "memos_medium:1288",
+      "condition": "A5",
+      "original_label": "hallucination",
+      "rerun_label": "hallucination",
+      "agree": true,
+      "usage": {
+        "completion_tokens": 45,
+        "prompt_tokens": 156,
+        "total_tokens": 201,
+        "completion_tokens_details": null,
+        "prompt_tokens_details": {
+          "audio_tokens": null,
+          "cached_tokens": 128
+        },
+        "prompt_cache_hit_tokens": 128,
+        "prompt_cache_miss_tokens": 28
+      }
+    },
+    {
+      "case_id": "memos_long:765",
+      "condition": "A1",
+      "original_label": "hallucination",
+      "rerun_label": "hallucination",
+      "agree": true,
+      "usage": {
+        "completion_tokens": 59,
+        "prompt_tokens": 151,
+        "total_tokens": 210,
+        "completion_tokens_details": null,
+        "prompt_tokens_details": {
+          "audio_tokens": null,
+          "cached_tokens": 128
+        },
+        "prompt_cache_hit_tokens": 128,
+        "prompt_cache_miss_tokens": 23
+      }
+    },
+    {
+      "case_id": "memos_medium:9",
+      "condition": "A1",
+      "original_label": "hallucination",
+      "rerun_label": "hallucination",
+      "agree": true,
+      "usage": {
+        "completion_tokens": 46,
+        "prompt_tokens": 144,
+        "total_tokens": 190,
+        "completion_tokens_details": null,
+        "prompt_tokens_details": {
+          "audio_tokens": null,
+          "cached_tokens": 128
+        },
+        "prompt_cache_hit_tokens": 128,
+        "prompt_cache_miss_tokens": 16
+      }
+    },
+    {
+      "case_id": "memos_long:210",
+      "condition": "A4",
+      "original_label": "hallucination",
+      "rerun_label": "hallucination",
+      "agree": true,
+      "usage": {
+        "completion_tokens": 48,
+        "prompt_tokens": 155,
+        "total_tokens": 203,
+        "completion_tokens_details": null,
+        "prompt_tokens_details": {
+          "audio_tokens": null,
+          "cached_tokens": 128
+        },
+        "prompt_cache_hit_tokens": 128,
+        "prompt_cache_miss_tokens": 27
+      }
+    },
+    {
+      "case_id": "memos_medium:3401",
+      "condition": "A2",
+      "original_label": "correct",
+      "rerun_label": "correct",
+      "agree": true,
+      "usage": {
+        "completion_tokens": 67,
+        "prompt_tokens": 152,
+        "total_tokens": 219,
+        "completion_tokens_details": null,
+        "prompt_tokens_details": {
+          "audio_tokens": null,
+          "cached_tokens": 128
+        },
+        "prompt_cache_hit_tokens": 128,
+        "prompt_cache_miss_tokens": 24
+      }
+    },
+    {
+      "case_id": "memos_medium:2134",
+      "condition": "A4",
+      "original_label": "hallucination",
+      "rerun_label": "hallucination",
+      "agree": true,
+      "usage": {
+        "completion_tokens": 64,
+        "prompt_tokens": 156,
+        "total_tokens": 220,
+        "completion_tokens_details": null,
+        "prompt_tokens_details": {
+          "audio_tokens": null,
+          "cached_tokens": 128
+        },
+        "prompt_cache_hit_tokens": 128,
+        "prompt_cache_miss_tokens": 28
+      }
+    },
+    {
+      "case_id": "memos_medium:1388",
+      "condition": "A1",
+      "original_label": "correct",
+      "rerun_label": "correct",
+      "agree": true,
+      "usage": {
+        "completion_tokens": 51,
+        "prompt_tokens": 159,
+        "total_tokens": 210,
+        "completion_tokens_details": null,
+        "prompt_tokens_details": {
+          "audio_tokens": null,
+          "cached_tokens": 128
+        },
+        "prompt_cache_hit_tokens": 128,
+        "prompt_cache_miss_tokens": 31
+      }
+    },
+    {
+      "case_id": "memos_medium:373",
+      "condition": "A5",
+      "original_label": "correct",
+      "rerun_label": "correct",
+      "agree": true,
+      "usage": {
+        "completion_tokens": 37,
+        "prompt_tokens": 148,
+        "total_tokens": 185,
+        "completion_tokens_details": null,
+        "prompt_tokens_details": {
+          "audio_tokens": null,
+          "cached_tokens": 128
+        },
+        "prompt_cache_hit_tokens": 128,
+        "prompt_cache_miss_tokens": 20
+      }
+    },
+    {
+      "case_id": "memos_long:2054",
+      "condition": "A5",
+      "original_label": "hallucination",
+      "rerun_label": "hallucination",
+      "agree": true,
+      "usage": {
+        "completion_tokens": 49,
+        "prompt_tokens": 154,
+        "total_tokens": 203,
+        "completion_tokens_details": null,
+        "prompt_tokens_details": {
+          "audio_tokens": null,
+          "cached_tokens": 128
+        },
+        "prompt_cache_hit_tokens": 128,
+        "prompt_cache_miss_tokens": 26
+      }
+    },
+    {
+      "case_id": "memos_long:2942",
+      "condition": "A2",
+      "original_label": "hallucination",
+      "rerun_label": "hallucination",
+      "agree": true,
+      "usage": {
+        "completion_tokens": 50,
+        "prompt_tokens": 162,
+        "total_tokens": 212,
+        "completion_tokens_details": null,
+        "prompt_tokens_details": {
+          "audio_tokens": null,
+          "cached_tokens": 128
+        },
+        "prompt_cache_hit_tokens": 128,
+        "prompt_cache_miss_tokens": 34
+      }
+    },
+    {
+      "case_id": "memos_long:2209",
+      "condition": "A1",
+      "original_label": "hallucination",
+      "rerun_label": "hallucination",
+      "agree": true,
+      "usage": {
+        "completion_tokens": 47,
+        "prompt_tokens": 143,
+        "total_tokens": 190,
+        "completion_tokens_details": null,
+        "prompt_tokens_details": {
+          "audio_tokens": null,
+          "cached_tokens": 128
+        },
+        "prompt_cache_hit_tokens": 128,
+        "prompt_cache_miss_tokens": 15
+      }
+    },
+    {
+      "case_id": "memos_medium:694",
+      "condition": "A4",
+      "original_label": "omission",
+      "rerun_label": "omission",
+      "agree": true,
+      "usage": {
+        "completion_tokens": 47,
+        "prompt_tokens": 150,
+        "total_tokens": 197,
+        "completion_tokens_details": null,
+        "prompt_tokens_details": {
+          "audio_tokens": null,
+          "cached_tokens": 128
+        },
+        "prompt_cache_hit_tokens": 128,
+        "prompt_cache_miss_tokens": 22
+      }
+    },
+    {
+      "case_id": "memos_long:2217",
+      "condition": "A4",
+      "original_label": "hallucination",
+      "rerun_label": "hallucination",
+      "agree": true,
+      "usage": {
+        "completion_tokens": 41,
+        "prompt_tokens": 152,
+        "total_tokens": 193,
+        "completion_tokens_details": null,
+        "prompt_tokens_details": {
+          "audio_tokens": null,
+          "cached_tokens": 128
+        },
+        "prompt_cache_hit_tokens": 128,
+        "prompt_cache_miss_tokens": 24
+      }
+    },
+    {
+      "case_id": "memos_medium:969",
+      "condition": "A3",
+      "original_label": "correct",
+      "rerun_label": "correct",
+      "agree": true,
+      "usage": {
+        "completion_tokens": 40,
+        "prompt_tokens": 162,
+        "total_tokens": 202,
+        "completion_tokens_details": null,
+        "prompt_tokens_details": {
+          "audio_tokens": null,
+          "cached_tokens": 128
+        },
+        "prompt_cache_hit_tokens": 128,
+        "prompt_cache_miss_tokens": 34
+      }
+    },
+    {
+      "case_id": "memos_long:1500",
+      "condition": "A1",
+      "original_label": "hallucination",
+      "rerun_label": "hallucination",
+      "agree": true,
+      "usage": {
+        "completion_tokens": 44,
+        "prompt_tokens": 158,
+        "total_tokens": 202,
+        "completion_tokens_details": null,
+        "prompt_tokens_details": {
+          "audio_tokens": null,
+          "cached_tokens": 128
+        },
+        "prompt_cache_hit_tokens": 128,
+        "prompt_cache_miss_tokens": 30
+      }
+    },
+    {
+      "case_id": "memos_medium:1417",
+      "condition": "A5",
+      "original_label": "hallucination",
+      "rerun_label": "hallucination",
+      "agree": true,
+      "usage": {
+        "completion_tokens": 35,
+        "prompt_tokens": 145,
+        "total_tokens": 180,
+        "completion_tokens_details": null,
+        "prompt_tokens_details": {
+          "audio_tokens": null,
+          "cached_tokens": 128
+        },
+        "prompt_cache_hit_tokens": 128,
+        "prompt_cache_miss_tokens": 17
+      }
+    },
+    {
+      "case_id": "memos_long:252",
+      "condition": "A1",
+      "original_label": "hallucination",
+      "rerun_label": "hallucination",
+      "agree": true,
+      "usage": {
+        "completion_tokens": 53,
+        "prompt_tokens": 160,
+        "total_tokens": 213,
+        "completion_tokens_details": null,
+        "prompt_tokens_details": {
+          "audio_tokens": null,
+          "cached_tokens": 128
+        },
+        "prompt_cache_hit_tokens": 128,
+        "prompt_cache_miss_tokens": 32
+      }
+    },
+    {
+      "case_id": "memos_long:2665",
+      "condition": "A2",
+      "original_label": "correct",
+      "rerun_label": "correct",
+      "agree": true,
+      "usage": {
+        "completion_tokens": 56,
+        "prompt_tokens": 157,
+        "total_tokens": 213,
+        "completion_tokens_details": null,
+        "prompt_tokens_details": {
+          "audio_tokens": null,
+          "cached_tokens": 128
+        },
+        "prompt_cache_hit_tokens": 128,
+        "prompt_cache_miss_tokens": 29
+      }
+    },
+    {
+      "case_id": "memos_medium:1447",
+      "condition": "A5",
+      "original_label": "hallucination",
+      "rerun_label": "hallucination",
+      "agree": true,
+      "usage": {
+        "completion_tokens": 62,
+        "prompt_tokens": 150,
+        "total_tokens": 212,
+        "completion_tokens_details": null,
+        "prompt_tokens_details": {
+          "audio_tokens": null,
+          "cached_tokens": 128
+        },
+        "prompt_cache_hit_tokens": 128,
+        "prompt_cache_miss_tokens": 22
+      }
+    },
+    {
+      "case_id": "memos_medium:2487",
+      "condition": "A5",
+      "original_label": "hallucination",
+      "rerun_label": "hallucination",
+      "agree": true,
+      "usage": {
+        "completion_tokens": 42,
+        "prompt_tokens": 152,
+        "total_tokens": 194,
+        "completion_tokens_details": null,
+        "prompt_tokens_details": {
+          "audio_tokens": null,
+          "cached_tokens": 128
+        },
+        "prompt_cache_hit_tokens": 128,
+        "prompt_cache_miss_tokens": 24
+      }
+    },
+    {
+      "case_id": "memos_medium:3328",
+      "condition": "A4",
+      "original_label": "hallucination",
+      "rerun_label": "hallucination",
+      "agree": true,
+      "usage": {
+        "completion_tokens": 35,
+        "prompt_tokens": 148,
+        "total_tokens": 183,
+        "completion_tokens_details": null,
+        "prompt_tokens_details": {
+          "audio_tokens": null,
+          "cached_tokens": 128
+        },
+        "prompt_cache_hit_tokens": 128,
+        "prompt_cache_miss_tokens": 20
+      }
+    },
+    {
+      "case_id": "memos_medium:560",
+      "condition": "A2",
+      "original_label": "correct",
+      "rerun_label": "correct",
+      "agree": true,
+      "usage": {
+        "completion_tokens": 48,
+        "prompt_tokens": 154,
+        "total_tokens": 202,
+        "completion_tokens_details": null,
+        "prompt_tokens_details": {
+          "audio_tokens": null,
+          "cached_tokens": 128
+        },
+        "prompt_cache_hit_tokens": 128,
+        "prompt_cache_miss_tokens": 26
+      }
+    },
+    {
+      "case_id": "memos_medium:472",
+      "condition": "A1",
+      "original_label": "hallucination",
+      "rerun_label": "hallucination",
+      "agree": true,
+      "usage": {
+        "completion_tokens": 48,
+        "prompt_tokens": 154,
+        "total_tokens": 202,
+        "completion_tokens_details": null,
+        "prompt_tokens_details": {
+          "audio_tokens": null,
+          "cached_tokens": 128
+        },
+        "prompt_cache_hit_tokens": 128,
+        "prompt_cache_miss_tokens": 26
+      }
+    },
+    {
+      "case_id": "memos_medium:2826",
+      "condition": "A3",
+      "original_label": "correct",
+      "rerun_label": "correct",
+      "agree": true,
+      "usage": {
+        "completion_tokens": 42,
+        "prompt_tokens": 155,
+        "total_tokens": 197,
+        "completion_tokens_details": null,
+        "prompt_tokens_details": {
+          "audio_tokens": null,
+          "cached_tokens": 128
+        },
+        "prompt_cache_hit_tokens": 128,
+        "prompt_cache_miss_tokens": 27
+      }
+    },
+    {
+      "case_id": "memos_long:1802",
+      "condition": "A2",
+      "original_label": "hallucination",
+      "rerun_label": "hallucination",
+      "agree": true,
+      "usage": {
+        "completion_tokens": 49,
+        "prompt_tokens": 146,
+        "total_tokens": 195,
+        "completion_tokens_details": null,
+        "prompt_tokens_details": {
+          "audio_tokens": null,
+          "cached_tokens": 128
+        },
+        "prompt_cache_hit_tokens": 128,
+        "prompt_cache_miss_tokens": 18
+      }
+    },
+    {
+      "case_id": "memos_medium:2016",
+      "condition": "A3",
+      "original_label": "hallucination",
+      "rerun_label": "hallucination",
+      "agree": true,
+      "usage": {
+        "completion_tokens": 66,
+        "prompt_tokens": 161,
+        "total_tokens": 227,
+        "completion_tokens_details": null,
+        "prompt_tokens_details": {
+          "audio_tokens": null,
+          "cached_tokens": 128
+        },
+        "prompt_cache_hit_tokens": 128,
+        "prompt_cache_miss_tokens": 33
+      }
+    },
+    {
+      "case_id": "memos_long:2534",
+      "condition": "A3",
+      "original_label": "correct",
+      "rerun_label": "correct",
+      "agree": true,
+      "usage": {
+        "completion_tokens": 24,
+        "prompt_tokens": 147,
+        "total_tokens": 171,
+        "completion_tokens_details": null,
+        "prompt_tokens_details": {
+          "audio_tokens": null,
+          "cached_tokens": 128
+        },
+        "prompt_cache_hit_tokens": 128,
+        "prompt_cache_miss_tokens": 19
+      }
+    },
+    {
+      "case_id": "memos_long:3088",
+      "condition": "A5",
+      "original_label": "hallucination",
+      "rerun_label": "hallucination",
+      "agree": true,
+      "usage": {
+        "completion_tokens": 44,
+        "prompt_tokens": 152,
+        "total_tokens": 196,
+        "completion_tokens_details": null,
+        "prompt_tokens_details": {
+          "audio_tokens": null,
+          "cached_tokens": 128
+        },
+        "prompt_cache_hit_tokens": 128,
+        "prompt_cache_miss_tokens": 24
+      }
+    },
+    {
+      "case_id": "memos_long:81",
+      "condition": "A3",
+      "original_label": "hallucination",
+      "rerun_label": "hallucination",
+      "agree": true,
+      "usage": {
+        "completion_tokens": 39,
+        "prompt_tokens": 147,
+        "total_tokens": 186,
+        "completion_tokens_details": null,
+        "prompt_tokens_details": {
+          "audio_tokens": null,
+          "cached_tokens": 128
+        },
+        "prompt_cache_hit_tokens": 128,
+        "prompt_cache_miss_tokens": 19
+      }
+    },
+    {
+      "case_id": "memos_long:1723",
+      "condition": "A3",
+      "original_label": "correct",
+      "rerun_label": "correct",
+      "agree": true,
+      "usage": {
+        "completion_tokens": 47,
+        "prompt_tokens": 163,
+        "total_tokens": 210,
+        "completion_tokens_details": null,
+        "prompt_tokens_details": {
+          "audio_tokens": null,
+          "cached_tokens": 128
+        },
+        "prompt_cache_hit_tokens": 128,
+        "prompt_cache_miss_tokens": 35
+      }
+    },
+    {
+      "case_id": "memos_long:3279",
+      "condition": "A3",
+      "original_label": "hallucination",
+      "rerun_label": "hallucination",
+      "agree": true,
+      "usage": {
+        "completion_tokens": 53,
+        "prompt_tokens": 159,
+        "total_tokens": 212,
+        "completion_tokens_details": null,
+        "prompt_tokens_details": {
+          "audio_tokens": null,
+          "cached_tokens": 128
+        },
+        "prompt_cache_hit_tokens": 128,
+        "prompt_cache_miss_tokens": 31
+      }
+    },
+    {
+      "case_id": "memos_medium:2315",
+      "condition": "A1",
+      "original_label": "hallucination",
+      "rerun_label": "hallucination",
+      "agree": true,
+      "usage": {
+        "completion_tokens": 62,
+        "prompt_tokens": 157,
+        "total_tokens": 219,
+        "completion_tokens_details": null,
+        "prompt_tokens_details": {
+          "audio_tokens": null,
+          "cached_tokens": 128
+        },
+        "prompt_cache_hit_tokens": 128,
+        "prompt_cache_miss_tokens": 29
+      }
+    },
+    {
+      "case_id": "memos_long:1882",
+      "condition": "A5",
+      "original_label": "hallucination",
+      "rerun_label": "hallucination",
+      "agree": true,
+      "usage": {
+        "completion_tokens": 56,
+        "prompt_tokens": 168,
+        "total_tokens": 224,
+        "completion_tokens_details": null,
+        "prompt_tokens_details": {
+          "audio_tokens": null,
+          "cached_tokens": 128
+        },
+        "prompt_cache_hit_tokens": 128,
+        "prompt_cache_miss_tokens": 40
+      }
+    },
+    {
+      "case_id": "memos_long:2725",
+      "condition": "A3",
+      "original_label": "omission",
+      "rerun_label": "omission",
+      "agree": true,
+      "usage": {
+        "completion_tokens": 46,
+        "prompt_tokens": 160,
+        "total_tokens": 206,
+        "completion_tokens_details": null,
+        "prompt_tokens_details": {
+          "audio_tokens": null,
+          "cached_tokens": 128
+        },
+        "prompt_cache_hit_tokens": 128,
+        "prompt_cache_miss_tokens": 32
+      }
+    },
+    {
+      "case_id": "memos_long:3097",
+      "condition": "A1",
+      "original_label": "correct",
+      "rerun_label": "correct",
+      "agree": true,
+      "usage": {
+        "completion_tokens": 30,
+        "prompt_tokens": 147,
+        "total_tokens": 177,
+        "completion_tokens_details": null,
+        "prompt_tokens_details": {
+          "audio_tokens": null,
+          "cached_tokens": 128
+        },
+        "prompt_cache_hit_tokens": 128,
+        "prompt_cache_miss_tokens": 19
+      }
+    },
+    {
+      "case_id": "memos_medium:1634",
+      "condition": "A2",
+      "original_label": "correct",
+      "rerun_label": "hallucination",
+      "agree": false,
+      "usage": {
+        "completion_tokens": 41,
+        "prompt_tokens": 153,
+        "total_tokens": 194,
+        "completion_tokens_details": null,
+        "prompt_tokens_details": {
+          "audio_tokens": null,
+          "cached_tokens": 128
+        },
+        "prompt_cache_hit_tokens": 128,
+        "prompt_cache_miss_tokens": 25
+      }
+    },
+    {
+      "case_id": "memos_long:268",
+      "condition": "A4",
+      "original_label": "hallucination",
+      "rerun_label": "hallucination",
+      "agree": true,
+      "usage": {
+        "completion_tokens": 58,
+        "prompt_tokens": 158,
+        "total_tokens": 216,
+        "completion_tokens_details": null,
+        "prompt_tokens_details": {
+          "audio_tokens": null,
+          "cached_tokens": 128
+        },
+        "prompt_cache_hit_tokens": 128,
+        "prompt_cache_miss_tokens": 30
+      }
+    },
+    {
+      "case_id": "memos_medium:166",
+      "condition": "A4",
+      "original_label": "correct",
+      "rerun_label": "correct",
+      "agree": true,
+      "usage": {
+        "completion_tokens": 49,
+        "prompt_tokens": 167,
+        "total_tokens": 216,
+        "completion_tokens_details": null,
+        "prompt_tokens_details": {
+          "audio_tokens": null,
+          "cached_tokens": 128
+        },
+        "prompt_cache_hit_tokens": 128,
+        "prompt_cache_miss_tokens": 39
+      }
+    },
+    {
+      "case_id": "memos_medium:2826",
+      "condition": "A2",
+      "original_label": "correct",
+      "rerun_label": "correct",
+      "agree": true,
+      "usage": {
+        "completion_tokens": 42,
+        "prompt_tokens": 155,
+        "total_tokens": 197,
+        "completion_tokens_details": null,
+        "prompt_tokens_details": {
+          "audio_tokens": null,
+          "cached_tokens": 128
+        },
+        "prompt_cache_hit_tokens": 128,
+        "prompt_cache_miss_tokens": 27
+      }
+    },
+    {
+      "case_id": "memos_medium:682",
+      "condition": "A4",
+      "original_label": "hallucination",
+      "rerun_label": "hallucination",
+      "agree": true,
+      "usage": {
+        "completion_tokens": 42,
+        "prompt_tokens": 146,
+        "total_tokens": 188,
+        "completion_tokens_details": null,
+        "prompt_tokens_details": {
+          "audio_tokens": null,
+          "cached_tokens": 128
+        },
+        "prompt_cache_hit_tokens": 128,
+        "prompt_cache_miss_tokens": 18
+      }
+    },
+    {
+      "case_id": "memos_medium:77",
+      "condition": "A1",
+      "original_label": "hallucination",
+      "rerun_label": "hallucination",
+      "agree": true,
+      "usage": {
+        "completion_tokens": 51,
+        "prompt_tokens": 165,
+        "total_tokens": 216,
+        "completion_tokens_details": null,
+        "prompt_tokens_details": {
+          "audio_tokens": null,
+          "cached_tokens": 128
+        },
+        "prompt_cache_hit_tokens": 128,
+        "prompt_cache_miss_tokens": 37
+      }
+    },
+    {
+      "case_id": "memos_medium:912",
+      "condition": "A2",
+      "original_label": "omission",
+      "rerun_label": "omission",
+      "agree": true,
+      "usage": {
+        "completion_tokens": 48,
+        "prompt_tokens": 154,
+        "total_tokens": 202,
+        "completion_tokens_details": null,
+        "prompt_tokens_details": {
+          "audio_tokens": null,
+          "cached_tokens": 128
+        },
+        "prompt_cache_hit_tokens": 128,
+        "prompt_cache_miss_tokens": 26
+      }
+    },
+    {
+      "case_id": "memos_long:2840",
+      "condition": "A5",
+      "original_label": "correct",
+      "rerun_label": "correct",
+      "agree": true,
+      "usage": {
+        "completion_tokens": 32,
+        "prompt_tokens": 156,
+        "total_tokens": 188,
+        "completion_tokens_details": null,
+        "prompt_tokens_details": {
+          "audio_tokens": null,
+          "cached_tokens": 128
+        },
+        "prompt_cache_hit_tokens": 128,
+        "prompt_cache_miss_tokens": 28
+      }
+    },
+    {
+      "case_id": "memos_long:972",
+      "condition": "A5",
+      "original_label": "hallucination",
+      "rerun_label": "hallucination",
+      "agree": true,
+      "usage": {
+        "completion_tokens": 61,
+        "prompt_tokens": 147,
+        "total_tokens": 208,
+        "completion_tokens_details": null,
+        "prompt_tokens_details": {
+          "audio_tokens": null,
+          "cached_tokens": 128
+        },
+        "prompt_cache_hit_tokens": 128,
+        "prompt_cache_miss_tokens": 19
+      }
+    },
+    {
+      "case_id": "memos_medium:2973",
+      "condition": "A4",
+      "original_label": "hallucination",
+      "rerun_label": "hallucination",
+      "agree": true,
+      "usage": {
+        "completion_tokens": 62,
+        "prompt_tokens": 153,
+        "total_tokens": 215,
+        "completion_tokens_details": null,
+        "prompt_tokens_details": {
+          "audio_tokens": null,
+          "cached_tokens": 128
+        },
+        "prompt_cache_hit_tokens": 128,
+        "prompt_cache_miss_tokens": 25
+      }
+    },
+    {
+      "case_id": "memos_long:2563",
+      "condition": "A1",
+      "original_label": "hallucination",
+      "rerun_label": "hallucination",
+      "agree": true,
+      "usage": {
+        "completion_tokens": 102,
+        "prompt_tokens": 165,
+        "total_tokens": 267,
+        "completion_tokens_details": null,
+        "prompt_tokens_details": {
+          "audio_tokens": null,
+          "cached_tokens": 128
+        },
+        "prompt_cache_hit_tokens": 128,
+        "prompt_cache_miss_tokens": 37
+      }
+    },
+    {
+      "case_id": "memos_medium:3042",
+      "condition": "A3",
+      "original_label": "correct",
+      "rerun_label": "correct",
+      "agree": true,
+      "usage": {
+        "completion_tokens": 35,
+        "prompt_tokens": 152,
+        "total_tokens": 187,
+        "completion_tokens_details": null,
+        "prompt_tokens_details": {
+          "audio_tokens": null,
+          "cached_tokens": 128
+        },
+        "prompt_cache_hit_tokens": 128,
+        "prompt_cache_miss_tokens": 24
+      }
+    },
+    {
+      "case_id": "memos_long:79",
+      "condition": "A3",
+      "original_label": "correct",
+      "rerun_label": "correct",
+      "agree": true,
+      "usage": {
+        "completion_tokens": 24,
+        "prompt_tokens": 150,
+        "total_tokens": 174,
+        "completion_tokens_details": null,
+        "prompt_tokens_details": {
+          "audio_tokens": null,
+          "cached_tokens": 128
+        },
+        "prompt_cache_hit_tokens": 128,
+        "prompt_cache_miss_tokens": 22
+      }
+    },
+    {
+      "case_id": "memos_long:1324",
+      "condition": "A4",
+      "original_label": "hallucination",
+      "rerun_label": "hallucination",
+      "agree": true,
+      "usage": {
+        "completion_tokens": 38,
+        "prompt_tokens": 148,
+        "total_tokens": 186,
+        "completion_tokens_details": null,
+        "prompt_tokens_details": {
+          "audio_tokens": null,
+          "cached_tokens": 128
+        },
+        "prompt_cache_hit_tokens": 128,
+        "prompt_cache_miss_tokens": 20
+      }
+    },
+    {
+      "case_id": "memos_medium:2918",
+      "condition": "A1",
+      "original_label": "correct",
+      "rerun_label": "correct",
+      "agree": true,
+      "usage": {
+        "completion_tokens": 51,
+        "prompt_tokens": 152,
+        "total_tokens": 203,
+        "completion_tokens_details": null,
+        "prompt_tokens_details": {
+          "audio_tokens": null,
+          "cached_tokens": 128
+        },
+        "prompt_cache_hit_tokens": 128,
+        "prompt_cache_miss_tokens": 24
+      }
+    },
+    {
+      "case_id": "memos_long:1723",
+      "condition": "A4",
+      "original_label": "hallucination",
+      "rerun_label": "hallucination",
+      "agree": true,
+      "usage": {
+        "completion_tokens": 56,
+        "prompt_tokens": 162,
+        "total_tokens": 218,
+        "completion_tokens_details": null,
+        "prompt_tokens_details": {
+          "audio_tokens": null,
+          "cached_tokens": 128
+        },
+        "prompt_cache_hit_tokens": 128,
+        "prompt_cache_miss_tokens": 34
+      }
+    },
+    {
+      "case_id": "memos_medium:264",
+      "condition": "A1",
+      "original_label": "correct",
+      "rerun_label": "correct",
+      "agree": true,
+      "usage": {
+        "completion_tokens": 45,
+        "prompt_tokens": 156,
+        "total_tokens": 201,
+        "completion_tokens_details": null,
+        "prompt_tokens_details": {
+          "audio_tokens": null,
+          "cached_tokens": 128
+        },
+        "prompt_cache_hit_tokens": 128,
+        "prompt_cache_miss_tokens": 28
+      }
+    },
+    {
+      "case_id": "memos_long:3097",
+      "condition": "A3",
+      "original_label": "correct",
+      "rerun_label": "correct",
+      "agree": true,
+      "usage": {
+        "completion_tokens": 30,
+        "prompt_tokens": 147,
+        "total_tokens": 177,
+        "completion_tokens_details": null,
+        "prompt_tokens_details": {
+          "audio_tokens": null,
+          "cached_tokens": 128
+        },
+        "prompt_cache_hit_tokens": 128,
+        "prompt_cache_miss_tokens": 19
+      }
+    },
+    {
+      "case_id": "memos_long:2023",
+      "condition": "A4",
+      "original_label": "hallucination",
+      "rerun_label": "hallucination",
+      "agree": true,
+      "usage": {
+        "completion_tokens": 64,
+        "prompt_tokens": 159,
+        "total_tokens": 223,
+        "completion_tokens_details": null,
+        "prompt_tokens_details": {
+          "audio_tokens": null,
+          "cached_tokens": 128
+        },
+        "prompt_cache_hit_tokens": 128,
+        "prompt_cache_miss_tokens": 31
+      }
+    },
+    {
+      "case_id": "memos_long:2373",
+      "condition": "A4",
+      "original_label": "hallucination",
+      "rerun_label": "hallucination",
+      "agree": true,
+      "usage": {
+        "completion_tokens": 39,
+        "prompt_tokens": 148,
+        "total_tokens": 187,
+        "completion_tokens_details": null,
+        "prompt_tokens_details": {
+          "audio_tokens": null,
+          "cached_tokens": 128
+        },
+        "prompt_cache_hit_tokens": 128,
+        "prompt_cache_miss_tokens": 20
+      }
+    },
+    {
+      "case_id": "memos_long:231",
+      "condition": "A1",
+      "original_label": "hallucination",
+      "rerun_label": "hallucination",
+      "agree": true,
+      "usage": {
+        "completion_tokens": 58,
+        "prompt_tokens": 161,
+        "total_tokens": 219,
+        "completion_tokens_details": null,
+        "prompt_tokens_details": {
+          "audio_tokens": null,
+          "cached_tokens": 128
+        },
+        "prompt_cache_hit_tokens": 128,
+        "prompt_cache_miss_tokens": 33
+      }
+    },
+    {
+      "case_id": "memos_medium:2429",
+      "condition": "A5",
+      "original_label": "hallucination",
+      "rerun_label": "hallucination",
+      "agree": true,
+      "usage": {
+        "completion_tokens": 160,
+        "prompt_tokens": 143,
+        "total_tokens": 303,
+        "completion_tokens_details": null,
+        "prompt_tokens_details": {
+          "audio_tokens": null,
+          "cached_tokens": 128
+        },
+        "prompt_cache_hit_tokens": 128,
+        "prompt_cache_miss_tokens": 15
+      }
+    },
+    {
+      "case_id": "memos_long:79",
+      "condition": "A2",
+      "original_label": "correct",
+      "rerun_label": "correct",
+      "agree": true,
+      "usage": {
+        "completion_tokens": 24,
+        "prompt_tokens": 150,
+        "total_tokens": 174,
+        "completion_tokens_details": null,
+        "prompt_tokens_details": {
+          "audio_tokens": null,
+          "cached_tokens": 128
+        },
+        "prompt_cache_hit_tokens": 128,
+        "prompt_cache_miss_tokens": 22
+      }
+    },
+    {
+      "case_id": "memos_long:58",
+      "condition": "A3",
+      "original_label": "correct",
+      "rerun_label": "correct",
+      "agree": true,
+      "usage": {
+        "completion_tokens": 45,
+        "prompt_tokens": 138,
+        "total_tokens": 183,
+        "completion_tokens_details": null,
+        "prompt_tokens_details": {
+          "audio_tokens": null,
+          "cached_tokens": 128
+        },
+        "prompt_cache_hit_tokens": 128,
+        "prompt_cache_miss_tokens": 10
+      }
+    },
+    {
+      "case_id": "memos_long:1370",
+      "condition": "A1",
+      "original_label": "hallucination",
+      "rerun_label": "hallucination",
+      "agree": true,
+      "usage": {
+        "completion_tokens": 56,
+        "prompt_tokens": 158,
+        "total_tokens": 214,
+        "completion_tokens_details": null,
+        "prompt_tokens_details": {
+          "audio_tokens": null,
+          "cached_tokens": 128
+        },
+        "prompt_cache_hit_tokens": 128,
+        "prompt_cache_miss_tokens": 30
+      }
+    },
+    {
+      "case_id": "memos_medium:2546",
+      "condition": "A4",
+      "original_label": "hallucination",
+      "rerun_label": "hallucination",
+      "agree": true,
+      "usage": {
+        "completion_tokens": 59,
+        "prompt_tokens": 162,
+        "total_tokens": 221,
+        "completion_tokens_details": null,
+        "prompt_tokens_details": {
+          "audio_tokens": null,
+          "cached_tokens": 128
+        },
+        "prompt_cache_hit_tokens": 128,
+        "prompt_cache_miss_tokens": 34
+      }
+    },
+    {
+      "case_id": "memos_long:3195",
+      "condition": "A1",
+      "original_label": "hallucination",
+      "rerun_label": "hallucination",
+      "agree": true,
+      "usage": {
+        "completion_tokens": 62,
+        "prompt_tokens": 156,
+        "total_tokens": 218,
+        "completion_tokens_details": null,
+        "prompt_tokens_details": {
+          "audio_tokens": null,
+          "cached_tokens": 128
+        },
+        "prompt_cache_hit_tokens": 128,
+        "prompt_cache_miss_tokens": 28
+      }
+    },
+    {
+      "case_id": "memos_long:2118",
+      "condition": "A4",
+      "original_label": "hallucination",
+      "rerun_label": "hallucination",
+      "agree": true,
+      "usage": {
+        "completion_tokens": 49,
+        "prompt_tokens": 159,
+        "total_tokens": 208,
+        "completion_tokens_details": null,
+        "prompt_tokens_details": {
+          "audio_tokens": null,
+          "cached_tokens": 128
+        },
+        "prompt_cache_hit_tokens": 128,
+        "prompt_cache_miss_tokens": 31
+      }
+    },
+    {
+      "case_id": "memos_medium:2306",
+      "condition": "A4",
+      "original_label": "hallucination",
+      "rerun_label": "hallucination",
+      "agree": true,
+      "usage": {
+        "completion_tokens": 53,
+        "prompt_tokens": 148,
+        "total_tokens": 201,
+        "completion_tokens_details": null,
+        "prompt_tokens_details": {
+          "audio_tokens": null,
+          "cached_tokens": 128
+        },
+        "prompt_cache_hit_tokens": 128,
+        "prompt_cache_miss_tokens": 20
+      }
+    },
+    {
+      "case_id": "memos_long:1932",
+      "condition": "A5",
+      "original_label": "correct",
+      "rerun_label": "correct",
+      "agree": true,
+      "usage": {
+        "completion_tokens": 37,
+        "prompt_tokens": 162,
+        "total_tokens": 199,
+        "completion_tokens_details": null,
+        "prompt_tokens_details": {
+          "audio_tokens": null,
+          "cached_tokens": 128
+        },
+        "prompt_cache_hit_tokens": 128,
+        "prompt_cache_miss_tokens": 34
+      }
+    },
+    {
+      "case_id": "memos_long:2050",
+      "condition": "A3",
+      "original_label": "correct",
+      "rerun_label": "correct",
+      "agree": true,
+      "usage": {
+        "completion_tokens": 58,
+        "prompt_tokens": 159,
+        "total_tokens": 217,
+        "completion_tokens_details": null,
+        "prompt_tokens_details": {
+          "audio_tokens": null,
+          "cached_tokens": 128
+        },
+        "prompt_cache_hit_tokens": 128,
+        "prompt_cache_miss_tokens": 31
+      }
+    },
+    {
+      "case_id": "memos_medium:2982",
+      "condition": "A2",
+      "original_label": "correct",
+      "rerun_label": "correct",
+      "agree": true,
+      "usage": {
+        "completion_tokens": 63,
+        "prompt_tokens": 158,
+        "total_tokens": 221,
+        "completion_tokens_details": null,
+        "prompt_tokens_details": {
+          "audio_tokens": null,
+          "cached_tokens": 128
+        },
+        "prompt_cache_hit_tokens": 128,
+        "prompt_cache_miss_tokens": 30
+      }
+    },
+    {
+      "case_id": "memos_long:120",
+      "condition": "A2",
+      "original_label": "hallucination",
+      "rerun_label": "hallucination",
+      "agree": true,
+      "usage": {
+        "completion_tokens": 58,
+        "prompt_tokens": 162,
+        "total_tokens": 220,
+        "completion_tokens_details": null,
+        "prompt_tokens_details": {
+          "audio_tokens": null,
+          "cached_tokens": 128
+        },
+        "prompt_cache_hit_tokens": 128,
+        "prompt_cache_miss_tokens": 34
+      }
+    },
+    {
+      "case_id": "memos_long:3201",
+      "condition": "A1",
+      "original_label": "correct",
+      "rerun_label": "correct",
+      "agree": true,
+      "usage": {
+        "completion_tokens": 57,
+        "prompt_tokens": 159,
+        "total_tokens": 216,
+        "completion_tokens_details": null,
+        "prompt_tokens_details": {
+          "audio_tokens": null,
+          "cached_tokens": 128
+        },
+        "prompt_cache_hit_tokens": 128,
+        "prompt_cache_miss_tokens": 31
+      }
+    },
+    {
+      "case_id": "memos_long:1374",
+      "condition": "A4",
+      "original_label": "hallucination",
+      "rerun_label": "hallucination",
+      "agree": true,
+      "usage": {
+        "completion_tokens": 39,
+        "prompt_tokens": 155,
+        "total_tokens": 194,
+        "completion_tokens_details": null,
+        "prompt_tokens_details": {
+          "audio_tokens": null,
+          "cached_tokens": 128
+        },
+        "prompt_cache_hit_tokens": 128,
+        "prompt_cache_miss_tokens": 27
+      }
+    },
+    {
+      "case_id": "memos_medium:572",
+      "condition": "A1",
+      "original_label": "hallucination",
+      "rerun_label": "hallucination",
+      "agree": true,
+      "usage": {
+        "completion_tokens": 53,
+        "prompt_tokens": 157,
+        "total_tokens": 210,
+        "completion_tokens_details": null,
+        "prompt_tokens_details": {
+          "audio_tokens": null,
+          "cached_tokens": 128
+        },
+        "prompt_cache_hit_tokens": 128,
+        "prompt_cache_miss_tokens": 29
+      }
+    },
+    {
+      "case_id": "memos_medium:2411",
+      "condition": "A3",
+      "original_label": "hallucination",
+      "rerun_label": "hallucination",
+      "agree": true,
+      "usage": {
+        "completion_tokens": 56,
+        "prompt_tokens": 151,
+        "total_tokens": 207,
+        "completion_tokens_details": null,
+        "prompt_tokens_details": {
+          "audio_tokens": null,
+          "cached_tokens": 128
+        },
+        "prompt_cache_hit_tokens": 128,
+        "prompt_cache_miss_tokens": 23
+      }
+    },
+    {
+      "case_id": "memos_long:2805",
+      "condition": "A1",
+      "original_label": "hallucination",
+      "rerun_label": "hallucination",
+      "agree": true,
+      "usage": {
+        "completion_tokens": 74,
+        "prompt_tokens": 155,
+        "total_tokens": 229,
+        "completion_tokens_details": null,
+        "prompt_tokens_details": {
+          "audio_tokens": null,
+          "cached_tokens": 128
+        },
+        "prompt_cache_hit_tokens": 128,
+        "prompt_cache_miss_tokens": 27
+      }
+    },
+    {
+      "case_id": "memos_long:2622",
+      "condition": "A4",
+      "original_label": "hallucination",
+      "rerun_label": "hallucination",
+      "agree": true,
+      "usage": {
+        "completion_tokens": 43,
+        "prompt_tokens": 153,
+        "total_tokens": 196,
+        "completion_tokens_details": null,
+        "prompt_tokens_details": {
+          "audio_tokens": null,
+          "cached_tokens": 128
+        },
+        "prompt_cache_hit_tokens": 128,
+        "prompt_cache_miss_tokens": 25
+      }
+    },
+    {
+      "case_id": "memos_medium:2005",
+      "condition": "A5",
+      "original_label": "correct",
+      "rerun_label": "correct",
+      "agree": true,
+      "usage": {
+        "completion_tokens": 51,
+        "prompt_tokens": 147,
+        "total_tokens": 198,
+        "completion_tokens_details": null,
+        "prompt_tokens_details": {
+          "audio_tokens": null,
+          "cached_tokens": 128
+        },
+        "prompt_cache_hit_tokens": 128,
+        "prompt_cache_miss_tokens": 19
+      }
+    },
+    {
+      "case_id": "memos_medium:455",
+      "condition": "A1",
+      "original_label": "hallucination",
+      "rerun_label": "hallucination",
+      "agree": true,
+      "usage": {
+        "completion_tokens": 79,
+        "prompt_tokens": 166,
+        "total_tokens": 245,
+        "completion_tokens_details": null,
+        "prompt_tokens_details": {
+          "audio_tokens": null,
+          "cached_tokens": 128
+        },
+        "prompt_cache_hit_tokens": 128,
+        "prompt_cache_miss_tokens": 38
+      }
+    },
+    {
+      "case_id": "memos_medium:1238",
+      "condition": "A2",
+      "original_label": "omission",
+      "rerun_label": "omission",
+      "agree": true,
+      "usage": {
+        "completion_tokens": 45,
+        "prompt_tokens": 152,
+        "total_tokens": 197,
+        "completion_tokens_details": null,
+        "prompt_tokens_details": {
+          "audio_tokens": null,
+          "cached_tokens": 128
+        },
+        "prompt_cache_hit_tokens": 128,
+        "prompt_cache_miss_tokens": 24
+      }
+    },
+    {
+      "case_id": "memos_medium:3000",
+      "condition": "A1",
+      "original_label": "correct",
+      "rerun_label": "correct",
+      "agree": true,
+      "usage": {
+        "completion_tokens": 48,
+        "prompt_tokens": 157,
+        "total_tokens": 205,
+        "completion_tokens_details": null,
+        "prompt_tokens_details": {
+          "audio_tokens": null,
+          "cached_tokens": 128
+        },
+        "prompt_cache_hit_tokens": 128,
+        "prompt_cache_miss_tokens": 29
+      }
+    },
+    {
+      "case_id": "memos_medium:1046",
+      "condition": "A5",
+      "original_label": "correct",
+      "rerun_label": "correct",
+      "agree": true,
+      "usage": {
+        "completion_tokens": 36,
+        "prompt_tokens": 158,
+        "total_tokens": 194,
+        "completion_tokens_details": null,
+        "prompt_tokens_details": {
+          "audio_tokens": null,
+          "cached_tokens": 128
+        },
+        "prompt_cache_hit_tokens": 128,
+        "prompt_cache_miss_tokens": 30
+      }
+    },
+    {
+      "case_id": "memos_medium:2563",
+      "condition": "A3",
+      "original_label": "hallucination",
+      "rerun_label": "hallucination",
+      "agree": true,
+      "usage": {
+        "completion_tokens": 54,
+        "prompt_tokens": 153,
+        "total_tokens": 207,
+        "completion_tokens_details": null,
+        "prompt_tokens_details": {
+          "audio_tokens": null,
+          "cached_tokens": 128
+        },
+        "prompt_cache_hit_tokens": 128,
+        "prompt_cache_miss_tokens": 25
+      }
+    },
+    {
+      "case_id": "memos_medium:3152",
+      "condition": "A3",
+      "original_label": "correct",
+      "rerun_label": "correct",
+      "agree": true,
+      "usage": {
+        "completion_tokens": 46,
+        "prompt_tokens": 151,
+        "total_tokens": 197,
+        "completion_tokens_details": null,
+        "prompt_tokens_details": {
+          "audio_tokens": null,
+          "cached_tokens": 128
+        },
+        "prompt_cache_hit_tokens": 128,
+        "prompt_cache_miss_tokens": 23
+      }
+    },
+    {
+      "case_id": "memos_long:661",
+      "condition": "A1",
+      "original_label": "hallucination",
+      "rerun_label": "hallucination",
+      "agree": true,
+      "usage": {
+        "completion_tokens": 65,
+        "prompt_tokens": 168,
+        "total_tokens": 233,
+        "completion_tokens_details": null,
+        "prompt_tokens_details": {
+          "audio_tokens": null,
+          "cached_tokens": 128
+        },
+        "prompt_cache_hit_tokens": 128,
+        "prompt_cache_miss_tokens": 40
+      }
+    },
+    {
+      "case_id": "memos_medium:3321",
+      "condition": "A5",
+      "original_label": "hallucination",
+      "rerun_label": "hallucination",
+      "agree": true,
+      "usage": {
+        "completion_tokens": 41,
+        "prompt_tokens": 139,
+        "total_tokens": 180,
+        "completion_tokens_details": null,
+        "prompt_tokens_details": {
+          "audio_tokens": null,
+          "cached_tokens": 128
+        },
+        "prompt_cache_hit_tokens": 128,
+        "prompt_cache_miss_tokens": 11
+      }
+    },
+    {
+      "case_id": "memos_long:2189",
+      "condition": "A3",
+      "original_label": "correct",
+      "rerun_label": "correct",
+      "agree": true,
+      "usage": {
+        "completion_tokens": 63,
+        "prompt_tokens": 153,
+        "total_tokens": 216,
+        "completion_tokens_details": null,
+        "prompt_tokens_details": {
+          "audio_tokens": null,
+          "cached_tokens": 128
+        },
+        "prompt_cache_hit_tokens": 128,
+        "prompt_cache_miss_tokens": 25
+      }
+    },
+    {
+      "case_id": "memos_long:1030",
+      "condition": "A4",
+      "original_label": "hallucination",
+      "rerun_label": "hallucination",
+      "agree": true,
+      "usage": {
+        "completion_tokens": 40,
+        "prompt_tokens": 151,
+        "total_tokens": 191,
+        "completion_tokens_details": null,
+        "prompt_tokens_details": {
+          "audio_tokens": null,
+          "cached_tokens": 128
+        },
+        "prompt_cache_hit_tokens": 128,
+        "prompt_cache_miss_tokens": 23
+      }
+    },
+    {
+      "case_id": "memos_long:2479",
+      "condition": "A2",
+      "original_label": "hallucination",
+      "rerun_label": "hallucination",
+      "agree": true,
+      "usage": {
+        "completion_tokens": 67,
+        "prompt_tokens": 157,
+        "total_tokens": 224,
+        "completion_tokens_details": null,
+        "prompt_tokens_details": {
+          "audio_tokens": null,
+          "cached_tokens": 128
+        },
+        "prompt_cache_hit_tokens": 128,
+        "prompt_cache_miss_tokens": 29
+      }
+    },
+    {
+      "case_id": "memos_medium:1475",
+      "condition": "A1",
+      "original_label": "hallucination",
+      "rerun_label": "hallucination",
+      "agree": true,
+      "usage": {
+        "completion_tokens": 81,
+        "prompt_tokens": 151,
+        "total_tokens": 232,
+        "completion_tokens_details": null,
+        "prompt_tokens_details": {
+          "audio_tokens": null,
+          "cached_tokens": 128
+        },
+        "prompt_cache_hit_tokens": 128,
+        "prompt_cache_miss_tokens": 23
+      }
+    },
+    {
+      "case_id": "memos_medium:2637",
+      "condition": "A2",
+      "original_label": "correct",
+      "rerun_label": "correct",
+      "agree": true,
+      "usage": {
+        "completion_tokens": 47,
+        "prompt_tokens": 151,
+        "total_tokens": 198,
+        "completion_tokens_details": null,
+        "prompt_tokens_details": {
+          "audio_tokens": null,
+          "cached_tokens": 128
+        },
+        "prompt_cache_hit_tokens": 128,
+        "prompt_cache_miss_tokens": 23
+      }
+    },
+    {
+      "case_id": "memos_medium:2469",
+      "condition": "A4",
+      "original_label": "hallucination",
+      "rerun_label": "hallucination",
+      "agree": true,
+      "usage": {
+        "completion_tokens": 53,
+        "prompt_tokens": 150,
+        "total_tokens": 203,
+        "completion_tokens_details": null,
+        "prompt_tokens_details": {
+          "audio_tokens": null,
+          "cached_tokens": 128
+        },
+        "prompt_cache_hit_tokens": 128,
+        "prompt_cache_miss_tokens": 22
+      }
+    },
+    {
+      "case_id": "memos_medium:895",
+      "condition": "A2",
+      "original_label": "omission",
+      "rerun_label": "omission",
+      "agree": true,
+      "usage": {
+        "completion_tokens": 51,
+        "prompt_tokens": 147,
+        "total_tokens": 198,
+        "completion_tokens_details": null,
+        "prompt_tokens_details": {
+          "audio_tokens": null,
+          "cached_tokens": 128
+        },
+        "prompt_cache_hit_tokens": 128,
+        "prompt_cache_miss_tokens": 19
+      }
+    },
+    {
+      "case_id": "memos_long:2416",
+      "condition": "A1",
+      "original_label": "hallucination",
+      "rerun_label": "hallucination",
+      "agree": true,
+      "usage": {
+        "completion_tokens": 44,
+        "prompt_tokens": 154,
+        "total_tokens": 198,
+        "completion_tokens_details": null,
+        "prompt_tokens_details": {
+          "audio_tokens": null,
+          "cached_tokens": 128
+        },
+        "prompt_cache_hit_tokens": 128,
+        "prompt_cache_miss_tokens": 26
+      }
+    },
+    {
+      "case_id": "memos_medium:557",
+      "condition": "A4",
+      "original_label": "omission",
+      "rerun_label": "omission",
+      "agree": true,
+      "usage": {
+        "completion_tokens": 50,
+        "prompt_tokens": 202,
+        "total_tokens": 252,
+        "completion_tokens_details": null,
+        "prompt_tokens_details": {
+          "audio_tokens": null,
+          "cached_tokens": 128
+        },
+        "prompt_cache_hit_tokens": 128,
+        "prompt_cache_miss_tokens": 74
+      }
+    },
+    {
+      "case_id": "memos_medium:2407",
+      "condition": "A3",
+      "original_label": "correct",
+      "rerun_label": "correct",
+      "agree": true,
+      "usage": {
+        "completion_tokens": 58,
+        "prompt_tokens": 154,
+        "total_tokens": 212,
+        "completion_tokens_details": null,
+        "prompt_tokens_details": {
+          "audio_tokens": null,
+          "cached_tokens": 128
+        },
+        "prompt_cache_hit_tokens": 128,
+        "prompt_cache_miss_tokens": 26
+      }
+    },
+    {
+      "case_id": "memos_medium:2863",
+      "condition": "A3",
+      "original_label": "correct",
+      "rerun_label": "correct",
+      "agree": true,
+      "usage": {
+        "completion_tokens": 60,
+        "prompt_tokens": 156,
+        "total_tokens": 216,
+        "completion_tokens_details": null,
+        "prompt_tokens_details": {
+          "audio_tokens": null,
+          "cached_tokens": 128
+        },
+        "prompt_cache_hit_tokens": 128,
+        "prompt_cache_miss_tokens": 28
+      }
+    },
+    {
+      "case_id": "memos_medium:1423",
+      "condition": "A1",
+      "original_label": "hallucination",
+      "rerun_label": "hallucination",
+      "agree": true,
+      "usage": {
+        "completion_tokens": 56,
+        "prompt_tokens": 192,
+        "total_tokens": 248,
+        "completion_tokens_details": null,
+        "prompt_tokens_details": {
+          "audio_tokens": null,
+          "cached_tokens": 128
+        },
+        "prompt_cache_hit_tokens": 128,
+        "prompt_cache_miss_tokens": 64
+      }
+    },
+    {
+      "case_id": "memos_long:2126",
+      "condition": "A1",
+      "original_label": "hallucination",
+      "rerun_label": "hallucination",
+      "agree": true,
+      "usage": {
+        "completion_tokens": 45,
+        "prompt_tokens": 150,
+        "total_tokens": 195,
+        "completion_tokens_details": null,
+        "prompt_tokens_details": {
+          "audio_tokens": null,
+          "cached_tokens": 128
+        },
+        "prompt_cache_hit_tokens": 128,
+        "prompt_cache_miss_tokens": 22
+      }
+    },
+    {
+      "case_id": "memos_long:2277",
+      "condition": "A1",
+      "original_label": "hallucination",
+      "rerun_label": "hallucination",
+      "agree": true,
+      "usage": {
+        "completion_tokens": 49,
+        "prompt_tokens": 150,
+        "total_tokens": 199,
+        "completion_tokens_details": null,
+        "prompt_tokens_details": {
+          "audio_tokens": null,
+          "cached_tokens": 128
+        },
+        "prompt_cache_hit_tokens": 128,
+        "prompt_cache_miss_tokens": 22
+      }
+    },
+    {
+      "case_id": "memos_long:789",
+      "condition": "A4",
+      "original_label": "hallucination",
+      "rerun_label": "hallucination",
+      "agree": true,
+      "usage": {
+        "completion_tokens": 62,
+        "prompt_tokens": 160,
+        "total_tokens": 222,
+        "completion_tokens_details": null,
+        "prompt_tokens_details": {
+          "audio_tokens": null,
+          "cached_tokens": 128
+        },
+        "prompt_cache_hit_tokens": 128,
+        "prompt_cache_miss_tokens": 32
+      }
+    },
+    {
+      "case_id": "memos_medium:775",
+      "condition": "A2",
+      "original_label": "hallucination",
+      "rerun_label": "hallucination",
+      "agree": true,
+      "usage": {
+        "completion_tokens": 60,
+        "prompt_tokens": 156,
+        "total_tokens": 216,
+        "completion_tokens_details": null,
+        "prompt_tokens_details": {
+          "audio_tokens": null,
+          "cached_tokens": 128
+        },
+        "prompt_cache_hit_tokens": 128,
+        "prompt_cache_miss_tokens": 28
+      }
+    },
+    {
+      "case_id": "memos_long:1296",
+      "condition": "A4",
+      "original_label": "hallucination",
+      "rerun_label": "hallucination",
+      "agree": true,
+      "usage": {
+        "completion_tokens": 45,
+        "prompt_tokens": 156,
+        "total_tokens": 201,
+        "completion_tokens_details": null,
+        "prompt_tokens_details": {
+          "audio_tokens": null,
+          "cached_tokens": 128
+        },
+        "prompt_cache_hit_tokens": 128,
+        "prompt_cache_miss_tokens": 28
+      }
+    },
+    {
+      "case_id": "memos_medium:2008",
+      "condition": "A3",
+      "original_label": "hallucination",
+      "rerun_label": "hallucination",
+      "agree": true,
+      "usage": {
+        "completion_tokens": 68,
+        "prompt_tokens": 147,
+        "total_tokens": 215,
+        "completion_tokens_details": null,
+        "prompt_tokens_details": {
+          "audio_tokens": null,
+          "cached_tokens": 128
+        },
+        "prompt_cache_hit_tokens": 128,
+        "prompt_cache_miss_tokens": 19
+      }
+    },
+    {
+      "case_id": "memos_long:3316",
+      "condition": "A5",
+      "original_label": "hallucination",
+      "rerun_label": "hallucination",
+      "agree": true,
+      "usage": {
+        "completion_tokens": 60,
+        "prompt_tokens": 163,
+        "total_tokens": 223,
+        "completion_tokens_details": null,
+        "prompt_tokens_details": {
+          "audio_tokens": null,
+          "cached_tokens": 128
+        },
+        "prompt_cache_hit_tokens": 128,
+        "prompt_cache_miss_tokens": 35
+      }
+    },
+    {
+      "case_id": "memos_long:1416",
+      "condition": "A1",
+      "original_label": "hallucination",
+      "rerun_label": "hallucination",
+      "agree": true,
+      "usage": {
+        "completion_tokens": 35,
+        "prompt_tokens": 145,
+        "total_tokens": 180,
+        "completion_tokens_details": null,
+        "prompt_tokens_details": {
+          "audio_tokens": null,
+          "cached_tokens": 128
+        },
+        "prompt_cache_hit_tokens": 128,
+        "prompt_cache_miss_tokens": 17
+      }
+    },
+    {
+      "case_id": "memos_long:1675",
+      "condition": "A4",
+      "original_label": "hallucination",
+      "rerun_label": "hallucination",
+      "agree": true,
+      "usage": {
+        "completion_tokens": 59,
+        "prompt_tokens": 155,
+        "total_tokens": 214,
+        "completion_tokens_details": null,
+        "prompt_tokens_details": {
+          "audio_tokens": null,
+          "cached_tokens": 128
+        },
+        "prompt_cache_hit_tokens": 128,
+        "prompt_cache_miss_tokens": 27
+      }
+    },
+    {
+      "case_id": "memos_long:2126",
+      "condition": "A4",
+      "original_label": "hallucination",
+      "rerun_label": "hallucination",
+      "agree": true,
+      "usage": {
+        "completion_tokens": 63,
+        "prompt_tokens": 153,
+        "total_tokens": 216,
+        "completion_tokens_details": null,
+        "prompt_tokens_details": {
+          "audio_tokens": null,
+          "cached_tokens": 128
+        },
+        "prompt_cache_hit_tokens": 128,
+        "prompt_cache_miss_tokens": 25
+      }
+    },
+    {
+      "case_id": "memos_medium:975",
+      "condition": "A3",
+      "original_label": "hallucination",
+      "rerun_label": "hallucination",
+      "agree": true,
+      "usage": {
+        "completion_tokens": 42,
+        "prompt_tokens": 158,
+        "total_tokens": 200,
+        "completion_tokens_details": null,
+        "prompt_tokens_details": {
+          "audio_tokens": null,
+          "cached_tokens": 128
+        },
+        "prompt_cache_hit_tokens": 128,
+        "prompt_cache_miss_tokens": 30
+      }
+    },
+    {
+      "case_id": "memos_medium:3394",
+      "condition": "A2",
+      "original_label": "correct",
+      "rerun_label": "correct",
+      "agree": true,
+      "usage": {
+        "completion_tokens": 69,
+        "prompt_tokens": 164,
+        "total_tokens": 233,
+        "completion_tokens_details": null,
+        "prompt_tokens_details": {
+          "audio_tokens": null,
+          "cached_tokens": 128
+        },
+        "prompt_cache_hit_tokens": 128,
+        "prompt_cache_miss_tokens": 36
+      }
+    },
+    {
+      "case_id": "memos_long:1883",
+      "condition": "A1",
+      "original_label": "hallucination",
+      "rerun_label": "hallucination",
+      "agree": true,
+      "usage": {
+        "completion_tokens": 44,
+        "prompt_tokens": 152,
+        "total_tokens": 196,
+        "completion_tokens_details": null,
+        "prompt_tokens_details": {
+          "audio_tokens": null,
+          "cached_tokens": 128
+        },
+        "prompt_cache_hit_tokens": 128,
+        "prompt_cache_miss_tokens": 24
+      }
+    }
+  ]
+}

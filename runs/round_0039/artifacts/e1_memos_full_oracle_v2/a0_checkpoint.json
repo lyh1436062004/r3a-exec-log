@@ -1,0 +1,35 @@
+{
+  "decision": "pass",
+  "serializer": {
+    "samples": 1987,
+    "byte_exact": 1987,
+    "visible_supported": 763,
+    "serialization_loss": 133,
+    "partial_supported": 233,
+    "no_gold_retrieved": 858
+  },
+  "a0": {
+    "generation_success": 1987,
+    "judge_success_unique": 1987,
+    "noncorrect": 1951,
+    "correct": 36,
+    "noncorrect_rate": 0.9818822345244087,
+    "visible_supported_noncorrect": 737,
+    "serialization_loss_noncorrect": 130
+  },
+  "judge_stability": {
+    "n": 200,
+    "agreements": 200,
+    "rate": 1.0
+  },
+  "usage": {
+    "generation_tokens": 1548001,
+    "main_judge_tokens": 410476,
+    "stability_tokens": 41349,
+    "total_tokens": 1999826
+  },
+  "known_anomalies": [
+    "memos_long:3466 has a judge label/rationale contradiction"
+  ],
+  "treatments_executed": []
+}

@@ -1,0 +1,9 @@
+Experiment behavior diff:
+
+1. Treatment selection changed from the broad `--skip-a0-correct` behavior to an explicit E1-prime gate:
+   `visible_stratum == visible_supported AND A0 judge_label != correct`.
+2. The gate hard-fails unless it selects exactly 737 cases.
+3. A1-A5 were generated and judged only on those 737 paired cases.
+4. Completeness now expects 1,987 A0 verdicts and 737 verdicts for each of A1-A5; later A6/A7 workspace additions are outside this analysis.
+5. The new primary A3 result is 340/737 = 46.13%, replacing the invalid pilot headline 268/598 = 44.82%.
+6. A3 versus A2 has 47 A3-only successes and 8 A2-only successes (exact McNemar p = 8.07e-8).

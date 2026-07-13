@@ -1,0 +1,21 @@
+Modified project scripts:
+- 脚本/3.0/02_generate_memos_full.py
+  - Added an explicit E1-prime eligibility gate.
+  - Asserted the treatment population is exactly 737 cases.
+  - Corrected budget reporting for the selected population.
+- 脚本/3.0/04_analyze_memos_full.py
+  - Made strict completeness checks use A0-A5 only.
+  - Expected A0 on 1,987 cases and treatment verdicts on the 737 eligible cases.
+
+Generated primary outputs:
+- outputs/e1_memos_full_oracle_v2/e1_prime_treatment_report.md
+- outputs/e1_memos_full_oracle_v2/results_summary.md
+- outputs/e1_memos_full_oracle_v2/results_summary.json
+- outputs/e1_memos_full_oracle_v2/flip_rates.csv
+- outputs/e1_memos_full_oracle_v2/mcnemar.csv
+- outputs/e1_memos_full_oracle_v2/supp_flip_by_license.csv
+- outputs/e1_memos_full_oracle_v2/supp_mcnemar_by_license.csv
+- outputs/e1_memos_full_oracle_v2/judge_self_agreement.json
+- outputs/e1_memos_full_oracle_v2/verdicts/A1.jsonl through A5.jsonl
+
+Unrelated pre-existing and concurrent workspace changes were left untouched.

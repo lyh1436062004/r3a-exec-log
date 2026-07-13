@@ -1,0 +1,26 @@
+﻿question_type,condition,n,correct,flip_rate
+Basic Fact Recall,A1,143,17,0.11888111888111888
+Basic Fact Recall,A2,143,64,0.44755244755244755
+Basic Fact Recall,A3,143,65,0.45454545454545453
+Basic Fact Recall,A4,143,0,0.0
+Basic Fact Recall,A5,143,20,0.13986013986013987
+Dynamic Update,A1,50,6,0.12
+Dynamic Update,A2,50,24,0.48
+Dynamic Update,A3,50,21,0.42
+Dynamic Update,A4,50,10,0.2
+Dynamic Update,A5,50,10,0.2
+Generalization & Application,A1,340,46,0.13529411764705881
+Generalization & Application,A2,340,142,0.4176470588235294
+Generalization & Application,A3,340,140,0.4117647058823529
+Generalization & Application,A4,340,2,0.0058823529411764705
+Generalization & Application,A5,340,70,0.20588235294117646
+Memory Conflict,A1,117,8,0.06837606837606838
+Memory Conflict,A2,117,40,0.3418803418803419
+Memory Conflict,A3,117,83,0.7094017094017094
+Memory Conflict,A4,117,57,0.48717948717948717
+Memory Conflict,A5,117,58,0.49572649572649574
+Multi-hop Inference,A1,87,9,0.10344827586206896
+Multi-hop Inference,A2,87,31,0.3563218390804598
+Multi-hop Inference,A3,87,31,0.3563218390804598
+Multi-hop Inference,A4,87,0,0.0
+Multi-hop Inference,A5,87,18,0.20689655172413793
