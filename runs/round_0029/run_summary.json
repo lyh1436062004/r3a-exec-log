@@ -1,0 +1,17 @@
+{
+  "round": "round_0029",
+  "task": "Explain A0 replay and diagnose why 298 strict samples changed from wrong to correct",
+  "date": "2026-07-13",
+  "result": "completed",
+  "project_files_modified": false,
+  "counts": {
+    "strict_supported": 896,
+    "strict_a0_correct": 298,
+    "strict_a0_context_exactly_equal_to_baseline": 0,
+    "strict_a0_context_equal_after_trim": 4,
+    "a0_correct_with_changed_answer": 294,
+    "a0_correct_with_exactly_same_answer": 4
+  },
+  "root_cause": "A0 rebuilt context from all raw_memories instead of replaying the saved baseline context_str_full. This added memories, especially preference memories omitted from the original displayed context. Generation and judge nondeterminism are secondary contributors.",
+  "conclusion": "The current A0 is not a valid exact baseline replay, so stable_wrong and downstream flip claims are confounded and should be rerun using the byte-identical saved baseline context."
+}

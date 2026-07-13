@@ -1,0 +1,7 @@
+No project file was changed. This was a read-only comparison of saved baseline contexts/answers against A0 generation records.
+
+Key diagnosis:
+- 0/896 strict A0 contexts are byte-identical to the saved baseline context.
+- Only 4/896 are equal after trimming outer whitespace.
+- A0 reconstructed context from raw_memories and included additional preference memories.
+- Of 298 strict cases judged correct in A0, 294 produced a different answer and 4 retained the same answer but received a different judge outcome.
