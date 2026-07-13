@@ -1,7 +1,1 @@
-No project file was changed. This task inspected the implemented E1-prime scripts and selected the next execution checkpoint.
-
-Decision:
-- Do not launch A1-A5 yet.
-- Rebuild the v2 sample pool and pass the byte-exact serializer gate.
-- Run A0-exact generation and judging only.
-- Review replay stability before spending on treatment arms.
+No project file was changed. Added a scope clarification distinguishing post-retrieval visibility recovery from post-visibility authorization.

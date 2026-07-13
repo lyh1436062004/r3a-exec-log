@@ -1,25 +1,15 @@
 {
   "round": "round_0032",
-  "task": "Choose the next E1-prime execution steps after diagnosing serializer loss and invalid A0 replay",
+  "task": "Clarify whether raw-to-context evidence omissions fall within the post-retrieval pre-use controller scope",
   "date": "2026-07-13",
   "result": "completed",
   "project_files_modified": false,
-  "immediate_steps": [
-    "Run 01_select_memos_full.py",
-    "Run 00_verify_serializer.py and require 1987/1987 byte-exact plus 763/133 strata",
-    "Run and judge A0-exact only",
-    "Stop if A0 replay remains materially unstable"
-  ],
-  "deferred": [
-    "A1-A5 treatment generation",
-    "A6 serialization-loss injection",
-    "full API rerun"
-  ],
-  "resource_estimate": {
-    "offline_gate_api_calls": 0,
-    "a0_generation_calls": 1987,
-    "a0_judge_calls": 1987,
-    "a0_estimated_tokens": 3434798
+  "counts": {
+    "raw_strict_supported": 896,
+    "all_gold_memory_ids_visible": 536,
+    "some_visible_some_hidden": 227,
+    "no_gold_memory_id_visible": 133,
+    "at_least_one_hidden_gold_memory": 360
   },
-  "artifact": "next_run_decision.md"
+  "conclusion": "All 896 raw-strict samples are within the post-retrieval controller boundary, but the 133 zero-visible cases measure serialization/admission recovery rather than evidence-use authorization."
 }
