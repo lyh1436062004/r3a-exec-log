@@ -1,0 +1,4 @@
+﻿pool,comparison,n,b,c,p_value
+strict_licensed,A4_vs_A0,140,47,0,1.4210854715202004e-14
+strict_licensed,A3_vs_A2,140,34,7,2.532080361561384e-05
+strict_assert_only,A4_vs_A0,458,8,0,0.0078125

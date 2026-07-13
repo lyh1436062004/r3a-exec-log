@@ -1,0 +1,11 @@
+The requested operation executed an existing analysis script and refreshed three CSV outputs.
+No source code was modified during this task.
+
+Key observed results:
+- strict stable-wrong total: 598
+- licensed: 140
+- assert-only: 458
+- license kinds (overlapping): REFUTE=84, SELECT=41, CONDITION=18
+- strict_licensed A4 flip rate: 33.57% (47/140), McNemar vs A0 p=1.4210854715202004e-14
+- strict_assert_only A4 flip rate: 1.75% (8/458), McNemar vs A0 p=0.0078125
+- assert-only A4 decisions differing from A0: 8/458

@@ -1,0 +1,20 @@
+{
+  "round": "round_0027",
+  "task": "Run 06_supp_license_analysis.py",
+  "date": "2026-07-13",
+  "workspace": "D:\\幻觉",
+  "command": "D:\\conda_envs\\o1\\python.exe 06_supp_license_analysis.py",
+  "working_directory": "D:\\幻觉\\脚本\\3.0",
+  "exit_code": 0,
+  "result": {
+    "strict_stable_wrong_total": 598,
+    "licensed": 140,
+    "assert_only": 458,
+    "assert_only_a4_diff_a0": "8/458"
+  },
+  "output_files": [
+    "outputs/e1_memos_full_oracle/supp_flip_by_license.csv",
+    "outputs/e1_memos_full_oracle/supp_mcnemar_by_license.csv",
+    "outputs/e1_memos_full_oracle/supp_transitions_licensed.csv"
+  ]
+}
