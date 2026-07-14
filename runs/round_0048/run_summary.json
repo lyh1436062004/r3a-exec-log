@@ -1,0 +1,34 @@
+{
+  "round": "round_0048",
+  "task": "Smoke-test the unity2.ai GPT-5.6 Responses API connection",
+  "date": "2026-07-15",
+  "result": "invalid_api_key",
+  "project_source_modified": false,
+  "connection": {
+    "base_url_variants": [
+      "https://api.unity2.ai",
+      "https://api.unity2.ai/v1"
+    ],
+    "wire_api": "responses",
+    "requested_model": "gpt-5.6",
+    "reasoning_effort": "xhigh",
+    "response_storage": false,
+    "credential_persisted": false
+  },
+  "tests": [
+    {
+      "request": "model listing from root base URL",
+      "result": "blocked; no usable model list returned"
+    },
+    {
+      "request": "POST /responses",
+      "result": "HTTP 401 INVALID_API_KEY"
+    },
+    {
+      "request": "POST /v1/responses",
+      "result": "HTTP 401 INVALID_API_KEY"
+    }
+  ],
+  "conclusion": "The service parsed the Responses request but rejected the credential before model routing.",
+  "formal_experiment_started": false
+}

@@ -1,0 +1,11 @@
+Tested the supplied unity2.ai connection with the Responses wire API and requested model gpt-5.6.
+
+Observed:
+- The root base URL model-list request did not return a usable model list.
+- POST /responses returned HTTP 401 INVALID_API_KEY.
+- POST /v1/responses returned the same HTTP 401 INVALID_API_KEY.
+
+Conclusion:
+- Both plausible base URL forms reached a service that parsed the request but rejected the credential.
+- The server-returned model identifier could not be verified.
+- No formal experiment calls were started and no fallback model was selected.
