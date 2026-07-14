@@ -1,0 +1,14 @@
+Project source files changed by this task: none.
+
+Output created:
+- outputs/e1_memos_full_oracle_v2/generation_failure_plausibility.md
+
+Configuration and result artifacts inspected:
+- 脚本/3.0/e1_memos_oracle_common.py
+- outputs/e1_memos_full_oracle_v2/prompts/PROMPT_MEMOS.txt
+- outputs/e1_memos_full_oracle_v2/generations/UA3.jsonl
+- outputs/e1_memos_full_oracle_v2/verdicts/UA3.jsonl
+
+External sources consulted:
+- DeepSeek official Models & Pricing documentation
+- DeepSeek official API change log

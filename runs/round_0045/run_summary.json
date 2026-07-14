@@ -1,0 +1,29 @@
+{
+  "round": "round_0045",
+  "task": "Assess whether the observed DeepSeek generation-failure rate is plausible",
+  "date": "2026-07-14",
+  "result": "completed",
+  "project_source_modified": false,
+  "headline": "The observed rate is possible but likely overestimates pure generation failure",
+  "counts": {
+    "all_baseline_errors": 1987,
+    "mutually_exclusive_generation_failures": 381,
+    "share_of_all_errors": 0.1917,
+    "baseline_visible_strict_cases": 763,
+    "conditional_failure_rate": 0.4993
+  },
+  "model": {
+    "requested_alias": "deepseek-chat",
+    "official_mapping_on_run_date": "deepseek-v4-flash non-thinking mode",
+    "server_response_model_saved": false
+  },
+  "main_confounds": [
+    "strict support does not prove complete answer sufficiency",
+    "semantic memory matches may omit answer-critical details",
+    "generator and judge use the same model",
+    "single generation per condition",
+    "answer length restriction",
+    "rolling unpinned model alias"
+  ],
+  "recommended_next_test": "verbatim gold-evidence-only context, pinned model, three generations, independent judge, and human audit"
+}

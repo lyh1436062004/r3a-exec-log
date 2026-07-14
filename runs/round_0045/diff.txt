@@ -1,0 +1,10 @@
+No project source code was changed.
+
+Analysis:
+- 381/1,987 (19.17%) is numerically possible but hides the relevant conditional rate.
+- Among 763 baseline-visible strict cases, 381 remain wrong under UA3 (49.93%).
+- Such a high conditional rate is suspicious if UA3 is assumed to provide complete sufficient oracle evidence.
+- Basic Fact Recall alone has 75/148 failures (50.68%), supporting the presence of residual experimental confounds.
+- The requested model alias was deepseek-chat; official documentation maps it to deepseek-v4-flash non-thinking mode on the run date.
+- The saved generation records do not preserve the server-returned model identifier.
+- A verbatim-gold-evidence, repeated-generation, independently judged oracle test is needed before making a strong intrinsic generation-failure claim.
