@@ -1,0 +1,22 @@
+{
+  "round": "round_0043",
+  "task": "Count generation failures in the 1,987 MEMOS baseline-error cases",
+  "date": "2026-07-14",
+  "result": "completed",
+  "project_source_modified": false,
+  "operational_definition": "strict-supported and still non-correct under UA3 canonical parsing, oracle gold-only admission, and relation-specific licensing",
+  "counts": {
+    "baseline_error_cases": 1987,
+    "oracle_eligible_strict": 896,
+    "UA3_correct": 480,
+    "generation_failure_full_strict": 416,
+    "generation_failure_hallucination": 332,
+    "generation_failure_omission": 84,
+    "share_of_1987": 0.2094,
+    "share_of_oracle_eligible": 0.4643,
+    "mutually_exclusive_visible_only_generation_failure": 381,
+    "serialization_loss_still_failed_under_UA3": 35,
+    "stable_wrong_sensitivity_count": 405
+  },
+  "interpretation": "416 is an observed single-run oracle non-rescue count, not proof of intrinsic impossibility"
+}

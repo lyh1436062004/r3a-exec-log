@@ -1,0 +1,9 @@
+No project source code was changed.
+
+Analysis result:
+- 896/1,987 baseline-error cases are strict-supported and oracle-eligible.
+- UA3 answers 480 correctly and leaves 416 non-correct.
+- The 416 observed generation failures contain 332 hallucinations and 84 omissions.
+- They are 20.94% of all 1,987 cases and 46.43% of the 896 oracle-eligible cases.
+- If serialization loss is assigned first in a mutually exclusive taxonomy, generation failure among the originally visible cases is 381; another 35 serialization-loss cases also remain wrong under UA3.
+- In the earlier 867 stable-wrong analysis pool, the corresponding sensitivity count is 405.

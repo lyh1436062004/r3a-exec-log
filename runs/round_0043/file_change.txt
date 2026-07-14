@@ -1,0 +1,11 @@
+Project source files changed by this task: none.
+
+Output created:
+- outputs/e1_memos_full_oracle_v2/generation_failure_count.md
+
+Source data read:
+- outputs/e1_memos_full_oracle_v2/samples_memos_full.jsonl
+- outputs/e1_memos_full_oracle_v2/verdicts/A0.jsonl
+- outputs/e1_memos_full_oracle_v2/verdicts/UA3.jsonl
+
+Existing unrelated dirty workspace files were preserved.
