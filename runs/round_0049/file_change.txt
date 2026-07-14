@@ -1,0 +1,11 @@
+Project output created:
+- outputs/e1_memos_generation_failure_oracle_v1/aliyun_maas_model_smoke_report.md
+- outputs/e1_memos_generation_failure_oracle_v1/aliyun_maas_available_models_227.json
+
+Project source code changed: none.
+
+Execution-log artifacts copied:
+- artifacts/aliyun_maas_model_smoke_report.md
+- artifacts/aliyun_maas_available_models_227.json
+
+No API key, authorization header, environment-variable value, or raw benchmark content was persisted.

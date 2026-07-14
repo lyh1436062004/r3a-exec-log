@@ -1,0 +1,14 @@
+Discovered and tested the correct Alibaba Cloud Model Studio workspace path:
+https://{WorkspaceId}.cn-beijing.maas.aliyuncs.com/compatible-mode/v1
+
+Results:
+- GET /models authenticated successfully and returned 227 model IDs.
+- No GPT-family model was present in the returned list.
+- qwen3.7-max, glm-5.2, and deepseek-v4-flash all passed Chat Completions smoke tests.
+- Every successful call returned an exact matching response.model.
+- qwen3.7-max also passed the Responses API and JSON-object judge protocol smoke tests.
+- glm-5.2 and deepseek-v4-flash were not supported by the Responses wire API but remained usable through Chat Completions.
+
+Recommendation:
+- qwen3.7-max is technically suitable as an independent judge for the DeepSeek generator.
+- Replacing the originally specified gpt-5.5 judge remains an explicit protocol change, so the formal experiment was not started automatically.

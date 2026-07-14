@@ -1,0 +1,43 @@
+{
+  "round": "round_0049",
+  "task": "Test an Alibaba Cloud Model Studio workspace key and inventory available models",
+  "date": "2026-07-15",
+  "result": "completed",
+  "project_source_modified": false,
+  "connection": {
+    "base_url": "https://ws-jwstivtbj2cmr65l.cn-beijing.maas.aliyuncs.com/compatible-mode/v1",
+    "credential_persisted": false,
+    "model_list_status": 200,
+    "model_count": 227,
+    "gpt_family_count": 0
+  },
+  "chat_completion_smoke": [
+    {
+      "requested_model": "qwen3.7-max",
+      "result": "success",
+      "response_model": "qwen3.7-max"
+    },
+    {
+      "requested_model": "glm-5.2",
+      "result": "success",
+      "response_model": "glm-5.2"
+    },
+    {
+      "requested_model": "deepseek-v4-flash",
+      "result": "success",
+      "response_model": "deepseek-v4-flash"
+    }
+  ],
+  "responses_api_smoke": {
+    "qwen3.7-max": "success",
+    "glm-5.2": "unsupported by this wire protocol",
+    "deepseek-v4-flash": "unsupported by this wire protocol"
+  },
+  "judge_compatibility": {
+    "model": "qwen3.7-max",
+    "json_object_response_format": "passed",
+    "temperature_zero": "passed",
+    "recommendation": "Suitable independent judge if the protocol explicitly replaces gpt-5.5 with qwen3.7-max"
+  },
+  "formal_experiment_started": false
+}
