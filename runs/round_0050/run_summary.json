@@ -1,0 +1,52 @@
+{
+  "round": "round_0050",
+  "task": "Run the gold-evidence generation-failure experiment with qwen3.7-max as independent judge",
+  "date": "2026-07-15",
+  "result": "blocked_external_quota",
+  "project_source_modified": true,
+  "protocol": {
+    "generator": "deepseek-v4-flash",
+    "generator_thinking": "disabled",
+    "generator_temperature": 0,
+    "generator_max_tokens": 128,
+    "judge": "qwen3.7-max",
+    "judge_temperature": 0,
+    "candidate_cases": 381,
+    "gold_evidence_items": 793
+  },
+  "valid_coverage": {
+    "generations": "1143/1143",
+    "empty_generation_answers": 0,
+    "generation_records_with_positive_reasoning_tokens": 0,
+    "evidence_sufficiency": "381/381",
+    "answer_judgments": "501/1143",
+    "missing_answer_judgments": 642
+  },
+  "blocker": {
+    "status": 403,
+    "code": "insufficient_quota",
+    "message": "Free quota exhausted; payment information or disabling free-tier-only mode is required",
+    "failed_rows_recorded_before_stop": 108
+  },
+  "invalidated_run": {
+    "robust_failure_count_not_reportable": 205,
+    "empty_visible_answers": 655,
+    "empty_answers_exhausting_128_reasoning_tokens": 649,
+    "reason": "deepseek-v4-flash defaults to thinking mode unless explicitly disabled"
+  },
+  "verification": {
+    "corrected_smoke": "passed with exact generator and judge response.model values",
+    "python_compile": "passed",
+    "javascript_syntax": "passed",
+    "secret_scan": "passed"
+  },
+  "deliverables": {
+    "final_classification": "not produced until all corrected answer judgments complete",
+    "final_human_audit_workbook": "not produced until all corrected answer judgments complete",
+    "resume_behavior": "cache-aware; rerun judge phase after quota restoration to request only missing records"
+  },
+  "security": {
+    "api_key_persisted": false,
+    "raw_benchmark_records_uploaded": false
+  }
+}

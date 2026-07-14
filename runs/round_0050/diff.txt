@@ -1,0 +1,24 @@
+Protocol amendment:
+- Replaced the unavailable gpt-5.5 judge with the user-authorized qwen3.7-max judge.
+- Preserved the 381-case candidate pool, 793 gold-evidence items, prompts, 5-6 word answer constraint,
+  temperature=0, max_tokens=128, and three independent generations.
+
+Generator correction:
+- Discovered that deepseek-v4-flash defaults to thinking mode.
+- The first run produced 655 empty visible answers; 649 exhausted all 128 tokens as reasoning.
+- Archived and explicitly invalidated that run and its 205 robust-failure count.
+- Added thinking.type=disabled to smoke and formal generation requests.
+- Added thinking mode to cache keys/config/records and verifies no reasoning_content is returned.
+- The corrected 1,143 generations contain zero empty answers and zero positive reasoning-token records.
+
+Judge execution:
+- qwen3.7-max completed all 381 evidence-sufficiency judgments.
+- It completed 501 of 1,143 corrected answer judgments before returning HTTP 403 insufficient_quota.
+- The run was stopped; 642 answer judgments remain and can be resumed without repeating completed work.
+- Retry logic now retries 429/5xx/network failures but immediately surfaces nonretryable 4xx errors.
+
+Workbook:
+- Updated machine-judge wording from GPT-5.5 to Qwen3.7-Max.
+- Added a portable bundled-module fallback for @oai/artifact-tool.
+- An intermediate workbook exposed the thinking-budget issue and was archived as invalid.
+- No final workbook is released until corrected judgment coverage reaches 1,143/1,143.

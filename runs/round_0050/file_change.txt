@@ -1,0 +1,27 @@
+Project source files modified:
+- 脚本/3.0/11_run_generation_failure_oracle.py
+- 脚本/3.0/13_build_generation_failure_audit_workbook.mjs
+
+Project output files created or updated:
+- outputs/e1_memos_generation_failure_oracle_v1/run_config.json
+- outputs/e1_memos_generation_failure_oracle_v1/smoke_test.json
+- outputs/e1_memos_generation_failure_oracle_v1/quota_blocked_status.md
+- outputs/e1_memos_generation_failure_oracle_v1/thinking_default_invalidated_20260715/INVALIDATED.md
+- corrected generation, sufficiency, and partial answer-judgment JSONL caches
+
+Execution-log artifacts copied:
+- artifacts/11_run_generation_failure_oracle.py
+- artifacts/12_analyze_generation_failure_oracle.py
+- artifacts/13_build_generation_failure_audit_workbook.mjs
+- artifacts/run_config.json
+- artifacts/smoke_test.json
+- artifacts/quota_blocked_status.md
+- artifacts/INVALIDATED.md
+
+Intentionally omitted:
+- API credentials
+- candidate_pool.jsonl and other raw benchmark records
+- large generation/judgment JSONL caches
+- invalidated workbook and rendered previews
+
+The requested final workbook was not produced because 642 corrected answer judgments remain blocked by qwen3.7-max quota exhaustion.

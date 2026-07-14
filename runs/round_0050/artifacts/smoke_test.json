@@ -1,0 +1,12 @@
+{
+  "ok": true,
+  "deepseek_requested_model": "deepseek-v4-flash",
+  "deepseek_response_model": "deepseek-v4-flash",
+  "deepseek_thinking": "disabled",
+  "judge_requested_model": "qwen3.7-max",
+  "judge_response_model": "qwen3.7-max",
+  "judge_base_url": "https://ws-jwstivtbj2cmr65l.cn-beijing.maas.aliyuncs.com/compatible-mode/v1",
+  "judge_token_parameter": "max_tokens",
+  "latency_ms": 5160.15,
+  "created_at": "2026-07-15T01:33:49+0800"
+}

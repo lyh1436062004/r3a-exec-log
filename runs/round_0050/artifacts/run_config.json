@@ -1,0 +1,39 @@
+{
+  "experiment_id": "e1_memos_generation_failure_oracle_v1",
+  "created_at": "2026-07-15T01:33:49+0800",
+  "candidate_definition": {
+    "retrieval_stratum": "strict_supported",
+    "visible_stratum": "visible_supported",
+    "UA3_label": "non-correct"
+  },
+  "candidate_count": 381,
+  "gold_evidence_count": 793,
+  "generation": {
+    "model": "deepseek-v4-flash",
+    "thinking": "disabled",
+    "temperature": 0,
+    "max_tokens": 128,
+    "replicates": 3,
+    "prompt": "PROMPT_MEMOS with authoritative benchmark gold evidence as the only context"
+  },
+  "independent_judge": {
+    "model": "qwen3.7-max",
+    "base_url": "https://ws-jwstivtbj2cmr65l.cn-beijing.maas.aliyuncs.com/compatible-mode/v1",
+    "temperature": 0,
+    "key_source": "process environment GF_JUDGE_API_KEY",
+    "protocol_amendment": "User authorized replacing the unavailable gpt-5.5 judge with qwen3.7-max on 2026-07-15; generator and all other experiment conditions remain unchanged."
+  },
+  "smoke_test": {
+    "ok": true,
+    "deepseek_requested_model": "deepseek-v4-flash",
+    "deepseek_response_model": "deepseek-v4-flash",
+    "deepseek_thinking": "disabled",
+    "judge_requested_model": "qwen3.7-max",
+    "judge_response_model": "qwen3.7-max",
+    "judge_base_url": "https://ws-jwstivtbj2cmr65l.cn-beijing.maas.aliyuncs.com/compatible-mode/v1",
+    "judge_token_parameter": "max_tokens",
+    "latency_ms": 5160.15,
+    "created_at": "2026-07-15T01:33:49+0800"
+  },
+  "secrets_persisted": false
+}
