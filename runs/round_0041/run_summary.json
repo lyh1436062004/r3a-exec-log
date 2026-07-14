@@ -1,0 +1,23 @@
+{
+  "round": "round_0041",
+  "task": "Clarify what A6 changes relative to A0 and which E1-prime conditions provide valid comparisons",
+  "date": "2026-07-14",
+  "result": "completed",
+  "project_files_modified": false,
+  "A6_definition": "Replace the baseline raw-to-context serializer with a canonical normalizer that admits every raw memory in retrieval order; retain the note; add no filtering, reordering, or authorization.",
+  "clean_comparisons": [
+    "A6 versus A0: total unified conversion/admission effect",
+    "A7 versus A6: incremental unified authorization effect"
+  ],
+  "same_denominator_visible_supported_rates": {
+    "n": 737,
+    "A1": 0.1167,
+    "A2": 0.4084,
+    "A3": 0.4613,
+    "A4": 0.0936,
+    "A5": 0.2388,
+    "A6": 0.2741,
+    "A7": 0.2972
+  },
+  "conclusion": "The 31.26% A6 rate uses 867 strict stable-wrong samples and should not be directly compared with A1-A5 rates over 737 visible-supported cases. Use A6=27.41% and A7=29.72% for same-pool descriptive comparisons."
+}

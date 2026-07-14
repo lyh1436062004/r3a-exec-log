@@ -1,0 +1,1 @@
+No project file was changed. Added a comparison-scope explanation for A6 versus A0-A7.
