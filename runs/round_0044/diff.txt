@@ -1,0 +1,7 @@
+No project files changed.
+
+Confirmed configuration:
+- Answer generation model: deepseek-chat
+- Gold-only judge model: deepseek-chat
+- Client protocol: OpenAI-compatible API
+- Default endpoint: https://api.deepseek.com

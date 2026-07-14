@@ -1,0 +1,12 @@
+{
+  "round": "round_0044",
+  "task": "Confirm the backend LLM used by the unified MEMOS experiment",
+  "date": "2026-07-14",
+  "result": "completed",
+  "project_source_modified": false,
+  "answer_generation_model": "deepseek-chat",
+  "judge_model": "deepseek-chat",
+  "client": "OpenAI-compatible Python client",
+  "default_base_url": "https://api.deepseek.com",
+  "source": "脚本/3.0/e1_memos_oracle_common.py"
+}
