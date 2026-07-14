@@ -1,0 +1,11 @@
+Tested the replacement GPT-5.5 relay at https://www.cun.ai/v1 using the user-provided credential only through the process environment.
+
+Observed:
+- The authenticated model-list request was blocked with HTTP 403 by Cloudflare.
+- A minimal gpt-5.5 Chat Completions request was blocked with the same response.
+- The unauthenticated site root was also blocked with HTTP 403.
+
+Conclusion:
+- Blocking occurs at the site/Cloudflare edge before API authentication and model routing can be evaluated.
+- Credential validity and server response.model remain unverified.
+- The formal experiment was not started, and no fallback model was selected.

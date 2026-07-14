@@ -1,0 +1,28 @@
+{
+  "round": "round_0047",
+  "task": "Smoke-test the replacement cun.ai GPT-5.5 relay connection",
+  "date": "2026-07-15",
+  "result": "blocked_at_cloudflare_edge",
+  "project_source_modified": false,
+  "connection": {
+    "base_url": "https://www.cun.ai/v1",
+    "requested_model": "gpt-5.5",
+    "credential_persisted": false
+  },
+  "tests": [
+    {
+      "request": "GET /v1/models with bearer authentication",
+      "result": "HTTP 403; Cloudflare; Your request was blocked."
+    },
+    {
+      "request": "minimal Chat Completions inference",
+      "result": "HTTP 403; PermissionDeniedError; Your request was blocked."
+    },
+    {
+      "request": "unauthenticated GET /",
+      "result": "HTTP 403; Cloudflare; Your request was blocked."
+    }
+  ],
+  "conclusion": "The site edge blocked the client before API-key validity or model routing could be verified.",
+  "formal_experiment_started": false
+}
