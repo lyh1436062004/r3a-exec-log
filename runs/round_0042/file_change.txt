@@ -1,0 +1,30 @@
+Project files changed by this task:
+- 脚本/3.0/e1_memos_oracle_common.py
+- 脚本/3.0/02_generate_memos_full.py
+- 脚本/3.0/03_judge_memos_full.py
+- 脚本/3.0/09_verify_unified_a1_a5.py
+- 脚本/3.0/10_analyze_unified_a1_a5.py
+
+Key project outputs created:
+- outputs/e1_memos_full_oracle_v2/unified_a1_a5_preflight.json
+- outputs/e1_memos_full_oracle_v2/unified_a1_a5_preflight.md
+- outputs/e1_memos_full_oracle_v2/unified_a1_a5_rates.csv
+- outputs/e1_memos_full_oracle_v2/unified_a1_a5_mcnemar.csv
+- outputs/e1_memos_full_oracle_v2/unified_a1_a5_old_vs_new.csv
+- outputs/e1_memos_full_oracle_v2/unified_a1_a5_by_dataset.csv
+- outputs/e1_memos_full_oracle_v2/unified_a1_a5_full_strict.csv
+- outputs/e1_memos_full_oracle_v2/unified_a1_a5_full_strict_vs_a0.csv
+- outputs/e1_memos_full_oracle_v2/unified_a1_a5_results.json
+- outputs/e1_memos_full_oracle_v2/unified_a1_a5_results.md
+- outputs/e1_memos_full_oracle_v2/unified_a1_a5_run_config.yaml
+- outputs/e1_memos_full_oracle_v2/unified_a1_a5_run_summary_zh.md
+- outputs/e1_memos_full_oracle_v2/judge_self_agreement_UA1_UA2_UA3_UA4_UA5.json
+- outputs/e1_memos_full_oracle_v2/generate_UA1_UA5.log
+- outputs/e1_memos_full_oracle_v2/judge_UA1_UA5.log
+- outputs/e1_memos_full_oracle_v2/generate_UA1_UA5_full_strict_supp.log
+- outputs/e1_memos_full_oracle_v2/judge_UA1_UA5_full_strict_supp.log
+- outputs/e1_memos_full_oracle_v2/generations/UA1.jsonl through UA5.jsonl
+- outputs/e1_memos_full_oracle_v2/verdicts/UA1.jsonl through UA5.jsonl
+
+Large per-case generation and verdict JSONL files remain local and were not copied to the execution-log repository.
+Existing unrelated dirty workspace files were preserved.

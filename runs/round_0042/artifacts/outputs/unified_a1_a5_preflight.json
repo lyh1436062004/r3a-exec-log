@@ -1,0 +1,37 @@
+{
+  "scope": "all strict_supported samples before A0-correct exclusion",
+  "totals": {
+    "samples": 896,
+    "raw_memories": 10358,
+    "gold_memories": 1908
+  },
+  "conditions": {
+    "UA1": {
+      "samples": 896,
+      "admitted": 10358,
+      "gold_admitted": 1908
+    },
+    "UA2": {
+      "samples": 896,
+      "admitted": 1908,
+      "gold_admitted": 1908
+    },
+    "UA3": {
+      "samples": 896,
+      "admitted": 1908,
+      "gold_admitted": 1908
+    },
+    "UA4": {
+      "samples": 896,
+      "admitted": 10358,
+      "gold_admitted": 1908
+    },
+    "UA5": {
+      "samples": 896,
+      "admitted": 10358,
+      "gold_admitted": 1908
+    }
+  },
+  "failure_count": 0,
+  "failures": []
+}

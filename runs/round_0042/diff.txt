@@ -1,0 +1,25 @@
+Implemented and executed canonical-parser variants UA1-UA5.
+
+Code changes:
+- Added UA1-UA5 without changing the default A0-A7 condition list.
+- Reused A6 canonical extraction and complete raw-memory universe for every UA arm.
+- UA1 applies gold-first ordering; UA2 keeps gold only; UA3 adds relation licenses; UA4 labels gold in the full context; UA5 adds VOUCH to ASSERT gold.
+- Added a full strict-pool preflight verifier and paired outcome analyzer.
+- Added complete-pool supplementary analysis to expose regressions on 29 A0-replay-correct cases.
+
+Verification:
+- Original serializer remains byte-exact on 1987/1987 samples.
+- Preflight passed all 896 strict samples, 10,358 raw memories, and 1,908 strict gold ids.
+- Every UA condition has 896 unique successful generations and verdicts.
+- Rebuilt context hashes match all saved A1-A7 and UA1-UA5 generations.
+- Judge self-agreement is 194/200 (97.0%).
+
+Main stable-wrong outcomes (n=867):
+- A6 31.26%; UA1 32.06%; UA2 49.02%; UA3 53.29%; UA4 34.60%; UA5 39.10%.
+- UA1 vs A6 is not significant (+0.81 pp, p=0.641).
+- UA2 vs UA1 adds +16.96 pp; UA3 vs UA2 adds +4.27 pp.
+- UA4 vs A6 adds +3.34 pp; UA5 vs UA4 adds +4.50 pp.
+
+Full strict supplement (n=896):
+- UA3 reaches 480/896 (53.57%).
+- Relative to A0, UA3 flips 462 wrong cases to correct and regresses 11 correct cases, net +451.

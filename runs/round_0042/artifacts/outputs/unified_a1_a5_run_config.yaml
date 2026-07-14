@@ -1,0 +1,30 @@
+experiment_id: e1_memos_unified_a1_a5
+run_date: 2026-07-14
+model: deepseek-chat
+temperature: 0
+generation_max_tokens: 128
+judge_max_tokens: 256
+seed: 20260709
+scope:
+  datasets:
+    - memos_medium
+    - memos_long
+  strict_supported_before_replay_filter: 896
+  a0_stable_wrong: 867
+  visible_supported: 737
+  serialization_loss: 130
+  supplementary_full_strict: 896
+conditions:
+  A6: canonicalize all raw memories in retrieval order; no labels
+  UA1: canonicalize all raw memories; oracle gold first
+  UA2: canonicalize and retain oracle gold memories only
+  UA3: UA2 plus relation-specific evidence licenses
+  UA4: canonicalize all raw memories; relation-specific licenses on oracle gold
+  UA5: UA4 plus VOUCH on oracle gold otherwise labeled ASSERT
+commands:
+  preflight: '& "D:\conda_envs\o1\python.exe" "D:\幻觉\脚本\3.0\09_verify_unified_a1_a5.py"'
+  generate: '& "D:\conda_envs\o1\python.exe" "D:\幻觉\脚本\3.0\02_generate_memos_full.py" --conditions UA1,UA2,UA3,UA4,UA5 --retrieval-strata strict_supported --skip-a0-correct --workers 12 --yes'
+  judge: '& "D:\conda_envs\o1\python.exe" "D:\幻觉\脚本\3.0\03_judge_memos_full.py" --conditions UA1,UA2,UA3,UA4,UA5 --workers 12 --stability-size 200'
+  analyze: '& "D:\conda_envs\o1\python.exe" "D:\幻觉\脚本\3.0\10_analyze_unified_a1_a5.py"'
+  supplementary_generate_a0_correct: '& "D:\conda_envs\o1\python.exe" "D:\幻觉\脚本\3.0\02_generate_memos_full.py" --conditions A6,UA1,UA2,UA3,UA4,UA5 --retrieval-strata strict_supported --workers 12 --yes'
+  supplementary_judge_a0_correct: '& "D:\conda_envs\o1\python.exe" "D:\幻觉\脚本\3.0\03_judge_memos_full.py" --conditions A6,UA1,UA2,UA3,UA4,UA5 --workers 12 --stability-size 0'

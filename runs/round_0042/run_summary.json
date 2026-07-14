@@ -1,0 +1,67 @@
+{
+  "round": "round_0042",
+  "task": "Run A1-A5 again after canonical parsing and full raw-memory admission",
+  "date": "2026-07-14",
+  "result": "completed",
+  "project_source_modified": true,
+  "conditions": {
+    "A6": "Canonicalize and admit all raw memories in retrieval order without labels",
+    "UA1": "A6 plus oracle gold-first ordering",
+    "UA2": "Canonicalize and retain oracle gold memories only",
+    "UA3": "UA2 plus relation-specific evidence licenses",
+    "UA4": "A6 plus relation-specific licenses on oracle gold memories",
+    "UA5": "UA4 plus VOUCH on oracle gold memories otherwise labeled ASSERT"
+  },
+  "scope": {
+    "strict_supported": 896,
+    "strict_a0_stable_wrong": 867,
+    "visible_supported_stable_wrong": 737,
+    "serialization_loss_stable_wrong": 130,
+    "raw_memories_in_strict_pool": 10358,
+    "strict_gold_memory_ids": 1908
+  },
+  "main_recovery": {
+    "A6": {"correct": 271, "n": 867, "rate": 0.3126},
+    "UA1": {"correct": 278, "n": 867, "rate": 0.3206},
+    "UA2": {"correct": 425, "n": 867, "rate": 0.4902},
+    "UA3": {"correct": 462, "n": 867, "rate": 0.5329},
+    "UA4": {"correct": 300, "n": 867, "rate": 0.3460},
+    "UA5": {"correct": 339, "n": 867, "rate": 0.3910}
+  },
+  "primary_paired_effects": {
+    "UA1_vs_A6": {"b": 86, "c": 79, "delta": 0.0081, "p": 0.6405622342031339},
+    "UA2_vs_UA1": {"b": 221, "c": 74, "delta": 0.1696, "p": 3.6603331486035425e-18},
+    "UA3_vs_UA2": {"b": 51, "c": 14, "delta": 0.0427, "p": 4.475224849487538e-06},
+    "UA4_vs_A6": {"b": 72, "c": 43, "delta": 0.0334, "p": 0.008735108684333146},
+    "UA5_vs_A6": {"b": 120, "c": 52, "delta": 0.0784, "p": 2.2849587651185294e-07},
+    "UA5_vs_UA4": {"b": 78, "c": 39, "delta": 0.0450, "p": 0.0003961778187923077}
+  },
+  "full_strict_supplement": {
+    "A0_correct": 29,
+    "UA3_correct": 480,
+    "n": 896,
+    "UA3_accuracy": 0.5357,
+    "UA3_vs_A0_b": 462,
+    "UA3_vs_A0_c": 11,
+    "UA3_vs_A0_net": 451
+  },
+  "verification": {
+    "baseline_serializer_byte_exact": "1987/1987",
+    "preflight_failures": 0,
+    "generation_unique_per_UA_condition": 896,
+    "verdict_unique_per_UA_condition": 896,
+    "context_hash_mismatches_A1_A7_and_UA1_UA5": 0,
+    "judge_stability_n": 200,
+    "judge_stability_agreements": 194,
+    "judge_self_agreement": 0.97
+  },
+  "api_calls_this_round": {
+    "generation": 4509,
+    "judge_main": 4509,
+    "judge_stability": 200
+  },
+  "large_artifacts_omitted": [
+    "generations/UA1.jsonl through generations/UA5.jsonl (55.4 MB total)",
+    "verdicts/UA1.jsonl through verdicts/UA5.jsonl (6.4 MB total)"
+  ]
+}
