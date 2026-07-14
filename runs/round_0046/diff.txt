@@ -1,0 +1,32 @@
+Implemented an isolated gold-evidence-only experiment pipeline without modifying memory stores, retrievers, or prior A0-UA5 results.
+
+Runner:
+- Reconstructs the exact 381-case candidate pool from strict-supported, visible-supported, UA3-incorrect cases.
+- Enforces Medium=190, Long=191, 793 parsed evidence items, and zero parse failures.
+- Parses benchmark evidence with ast.literal_eval and serializes unchanged memory_content.
+- Uses the existing MEMOS prompt, 5-6 word answer limit, temperature=0, and max_tokens=128.
+- Runs three independently cached deepseek-v4-flash generations per case.
+- Persists requested/returned models, hashes, token usage, latency, responses, and failures.
+- Adds independent gpt-5.5 sufficiency and per-answer judges with strict model validation.
+- Retries 429/5xx failures and supports cache-key resume.
+
+Analyzer:
+- Validates record coverage and classifies robust generation failure, generation instability,
+  UA3 representation/admission failure, evidence-definition failure, and unresolved cases.
+- Computes proportions using 381, 763, and 1,987 denominators with Wilson 95% confidence intervals.
+- Produces dataset and five-question-type stratifications plus JSONL, CSV, and Markdown outputs.
+
+Workbook builder:
+- Uses @oai/artifact-tool to build the five required sheets.
+- Keeps machine labels separate from the blind human-review sheet.
+- Adds deterministic random order, data validation, frozen panes, filters, formulas,
+  conditional formatting, and summary stratifications.
+- Passed a synthetic 381-case/1,143-call export, formula scan, and five-sheet render review.
+
+External blocker:
+- DeepSeek smoke call returned response.model=deepseek-v4-flash.
+- The relay authenticated and listed gpt-5.5 at /v1/models.
+- Minimal Chat Completions and Responses API inference calls returned HTTP 403
+  bad_response_status_code across compatible parameter variants.
+- Per protocol, the formal batch was not started and no fallback judge model was used.
+- No final results or human-audit workbook were fabricated.

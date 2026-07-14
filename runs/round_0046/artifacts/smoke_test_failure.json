@@ -1,0 +1,10 @@
+{
+  "ok": false,
+  "deepseek_requested_model": "deepseek-v4-flash",
+  "deepseek_response_model": "deepseek-v4-flash",
+  "judge_requested_model": "gpt-5.5",
+  "judge_base_url": "https://www.xiavier.com/v1",
+  "error_type": "RuntimeError",
+  "error": "judge smoke failed after 3 attempts: Error code: 403 - {'error': {'message': 'openai_error', 'type': 'bad_response_status_code', 'param': '', 'code': 'bad_response_status_code'}}",
+  "created_at": "2026-07-15T00:19:36+0800"
+}

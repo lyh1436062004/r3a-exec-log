@@ -1,0 +1,50 @@
+{
+  "round": "round_0046",
+  "task": "Implement the gold-evidence-only generation-failure review experiment",
+  "date": "2026-07-15",
+  "result": "blocked_external_api",
+  "project_source_modified": true,
+  "candidate_pool": {
+    "total": 381,
+    "medium": 190,
+    "long": 191,
+    "gold_evidence_items": 793,
+    "parse_failures": 0
+  },
+  "implementation": {
+    "deepseek_replicates_per_case": 3,
+    "generator_model": "deepseek-v4-flash",
+    "judge_model": "gpt-5.5",
+    "judge_base_url": "https://www.xiavier.com/v1",
+    "cache_resume": true,
+    "independent_sufficiency_and_answer_judging": true,
+    "artifact_tool_workbook_builder": true
+  },
+  "verification": {
+    "python_compile": "passed",
+    "javascript_syntax": "passed",
+    "offline_classification_tests": "passed",
+    "synthetic_381_case_workbook_export": "passed",
+    "formula_error_scan": "passed",
+    "five_sheet_render_review": "passed",
+    "secret_scan": "passed"
+  },
+  "smoke_test": {
+    "deepseek": "passed; response.model was deepseek-v4-flash",
+    "judge_model_listing": "passed; gpt-5.5 was listed",
+    "judge_inference": "blocked; HTTP 403 bad_response_status_code",
+    "formal_batch_started": false
+  },
+  "deliverable_status": {
+    "final_experiment_results": "not produced because the required judge smoke test failed",
+    "final_human_audit_workbook": "not produced because no formal results exist",
+    "blocked_run_report": "produced",
+    "smoke_failure_record": "produced"
+  },
+  "security": {
+    "api_key_persisted": false,
+    "raw_candidate_pool_uploaded": false,
+    "reason_raw_pool_omitted": "contains large benchmark case content and was not needed for execution-log review"
+  },
+  "next_action": "Restore inference authorization/routing for gpt-5.5 on the specified relay, then resume the cache-aware runner."
+}

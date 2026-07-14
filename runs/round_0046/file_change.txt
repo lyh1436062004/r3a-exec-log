@@ -1,0 +1,23 @@
+Project source files added:
+- 脚本/3.0/11_run_generation_failure_oracle.py
+- 脚本/3.0/12_analyze_generation_failure_oracle.py
+- 脚本/3.0/13_build_generation_failure_audit_workbook.mjs
+
+Project output files created:
+- outputs/e1_memos_generation_failure_oracle_v1/candidate_pool.jsonl
+- outputs/e1_memos_generation_failure_oracle_v1/smoke_test_failure.json
+- outputs/e1_memos_generation_failure_oracle_v1/blocked_run_summary.md
+
+Execution-log artifacts copied:
+- artifacts/11_run_generation_failure_oracle.py
+- artifacts/12_analyze_generation_failure_oracle.py
+- artifacts/13_build_generation_failure_audit_workbook.mjs
+- artifacts/smoke_test_failure.json
+- artifacts/blocked_run_summary.md
+
+Intentionally omitted from GitHub:
+- candidate_pool.jsonl (large benchmark case content)
+- synthetic QA workbook and rendered previews (temporary validation artifacts)
+- all API credentials and environment-variable values
+
+Final requested workbook was not created because the mandatory gpt-5.5 inference smoke test returned HTTP 403.
