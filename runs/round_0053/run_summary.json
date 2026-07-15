@@ -1,0 +1,64 @@
+{
+  "round": "round_0053",
+  "date": "2026-07-15",
+  "task": "Generation-failure 381 人工审核（代审），写回 审核-多轮回答评估-G.xlsx",
+  "reviewer": "Kiro-AI代审",
+  "dataset": "outputs/e1_memos_generation_failure_oracle_v1/case_summary.jsonl",
+  "n_cases": 381,
+  "n_written_rows": 380,
+  "preserved_rows": [
+    "row2 memos_medium:2634 (用户原始示例)"
+  ],
+  "distributions": {
+    "final_classification_my_380plus_user_row2": {
+      "robust_generation_failure": 145,
+      "ua3_representation_or_admission_failure": 162,
+      "evidence_definition_failure": 74,
+      "generation_instability": 0
+    },
+    "sufficiency_my_381_labels": {
+      "充分": 308,
+      "部分": 50,
+      "不充分": 23
+    },
+    "confidence_my_381_labels": {
+      "中": 129,
+      "低": 24,
+      "高": 228
+    },
+    "final_my_381_labels": {
+      "ua3_representation_or_admission_failure": 163,
+      "evidence_definition_failure": 73,
+      "robust_generation_failure": 145
+    }
+  },
+  "machine_vs_human_agreement": "343/381 = 90.0%",
+  "notes": "写入前工作簿被另一较宽松Kiro-AI pass填充(204/381不同)，已用严格审核覆盖，覆盖前已备份*_prewrite_*.xlsx。未push（用户指示仅本地准备）。",
+  "artifacts": [
+    "runs/round_0053/artifacts/审核-多轮回答评估-G_filled.xlsx",
+    "runs/round_0053/artifacts/audit_results_merged.json",
+    "runs/round_0053/artifacts/batch_manifest.json",
+    "runs/round_0053/artifacts/generation_failure_381_audit_report.md",
+    "runs/round_0053/artifacts/batch_01_out.json",
+    "runs/round_0053/artifacts/batch_02_out.json",
+    "runs/round_0053/artifacts/batch_03_out.json",
+    "runs/round_0053/artifacts/batch_04_out.json",
+    "runs/round_0053/artifacts/batch_05_out.json",
+    "runs/round_0053/artifacts/batch_06_out.json",
+    "runs/round_0053/artifacts/batch_07_out.json",
+    "runs/round_0053/artifacts/batch_08_out.json",
+    "runs/round_0053/artifacts/batch_09_out.json",
+    "runs/round_0053/artifacts/batch_10_out.json",
+    "runs/round_0053/artifacts/batch_11_out.json",
+    "runs/round_0053/artifacts/batch_12_out.json",
+    "runs/round_0053/artifacts/batch_13_out.json",
+    "runs/round_0053/artifacts/_audit_make_batches.py",
+    "runs/round_0053/artifacts/_audit_merge_and_write.py",
+    "runs/round_0053/artifacts/_audit_force_write.py",
+    "runs/round_0053/artifacts/_fix_pv_formulas.py",
+    "runs/round_0053/artifacts/_verify_workbook.py",
+    "runs/round_0053/artifacts/_verify_integrity.py"
+  ],
+  "pushed": false,
+  "github_actions_triggered": false
+}

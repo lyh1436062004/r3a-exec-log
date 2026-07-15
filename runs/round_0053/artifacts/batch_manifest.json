@@ -1,0 +1,93 @@
+[
+  {
+    "batch": 1,
+    "file": "D:\\幻觉\\临时\\人工审查\\审查生成错误率\\audit_work\\batch_01_in.json",
+    "n": 30,
+    "first": "memos_long:1010",
+    "last": "memos_long:1404"
+  },
+  {
+    "batch": 2,
+    "file": "D:\\幻觉\\临时\\人工审查\\审查生成错误率\\audit_work\\batch_02_in.json",
+    "n": 30,
+    "first": "memos_long:1405",
+    "last": "memos_long:190"
+  },
+  {
+    "batch": 3,
+    "file": "D:\\幻觉\\临时\\人工审查\\审查生成错误率\\audit_work\\batch_03_in.json",
+    "n": 30,
+    "first": "memos_long:1905",
+    "last": "memos_long:2537"
+  },
+  {
+    "batch": 4,
+    "file": "D:\\幻觉\\临时\\人工审查\\审查生成错误率\\audit_work\\batch_04_in.json",
+    "n": 30,
+    "first": "memos_long:2540",
+    "last": "memos_long:3071"
+  },
+  {
+    "batch": 5,
+    "file": "D:\\幻觉\\临时\\人工审查\\审查生成错误率\\audit_work\\batch_05_in.json",
+    "n": 30,
+    "first": "memos_long:3075",
+    "last": "memos_long:3459"
+  },
+  {
+    "batch": 6,
+    "file": "D:\\幻觉\\临时\\人工审查\\审查生成错误率\\audit_work\\batch_06_in.json",
+    "n": 30,
+    "first": "memos_long:36",
+    "last": "memos_long:862"
+  },
+  {
+    "batch": 7,
+    "file": "D:\\幻觉\\临时\\人工审查\\审查生成错误率\\audit_work\\batch_07_in.json",
+    "n": 30,
+    "first": "memos_long:88",
+    "last": "memos_medium:1265"
+  },
+  {
+    "batch": 8,
+    "file": "D:\\幻觉\\临时\\人工审查\\审查生成错误率\\audit_work\\batch_08_in.json",
+    "n": 30,
+    "first": "memos_medium:1276",
+    "last": "memos_medium:1735"
+  },
+  {
+    "batch": 9,
+    "file": "D:\\幻觉\\临时\\人工审查\\审查生成错误率\\audit_work\\batch_09_in.json",
+    "n": 30,
+    "first": "memos_medium:1754",
+    "last": "memos_medium:2218"
+  },
+  {
+    "batch": 10,
+    "file": "D:\\幻觉\\临时\\人工审查\\审查生成错误率\\audit_work\\batch_10_in.json",
+    "n": 30,
+    "first": "memos_medium:2227",
+    "last": "memos_medium:2634"
+  },
+  {
+    "batch": 11,
+    "file": "D:\\幻觉\\临时\\人工审查\\审查生成错误率\\audit_work\\batch_11_in.json",
+    "n": 30,
+    "first": "memos_medium:2636",
+    "last": "memos_medium:331"
+  },
+  {
+    "batch": 12,
+    "file": "D:\\幻觉\\临时\\人工审查\\审查生成错误率\\audit_work\\batch_12_in.json",
+    "n": 30,
+    "first": "memos_medium:3315",
+    "last": "memos_medium:670"
+  },
+  {
+    "batch": 13,
+    "file": "D:\\幻觉\\临时\\人工审查\\审查生成错误率\\audit_work\\batch_13_in.json",
+    "n": 21,
+    "first": "memos_medium:694",
+    "last": "memos_medium:975"
+  }
+]

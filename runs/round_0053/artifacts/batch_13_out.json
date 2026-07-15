@@ -1,0 +1,23 @@
+[
+ {"case_id":"memos_medium:694","sufficiency":"充分","run1":"C","run2":"C","run3":"C","confidence":"高","note":"证据直接指明去除速溶咖啡，答案正确"},
+ {"case_id":"memos_medium:697","sufficiency":"充分","run1":"O","run2":"O","run3":"O","confidence":"高","note":"仅答挑战缺克服方法，属遗漏"},
+ {"case_id":"memos_medium:721","sufficiency":"充分","run1":"C","run2":"C","run3":"C","confidence":"高","note":"证据直接支持确诊慢性病"},
+ {"case_id":"memos_medium:77","sufficiency":"部分","run1":"O","run2":"O","run3":"O","confidence":"中","note":"证据缺时间；答Yes缺理由记遗漏"},
+ {"case_id":"memos_medium:772","sufficiency":"充分","run1":"C","run2":"C","run3":"C","confidence":"高","note":"晋升提供资源投入音乐学院，正确"},
+ {"case_id":"memos_medium:775","sufficiency":"充分","run1":"O","run2":"O","run3":"O","confidence":"中","note":"三答相同须同标；缺培养目的记遗漏"},
+ {"case_id":"memos_medium:797","sufficiency":"充分","run1":"C","run2":"C","run3":"C","confidence":"高","note":"证据直接支持不再讨厌"},
+ {"case_id":"memos_medium:808","sufficiency":"充分","run1":"O","run2":"O","run3":"O","confidence":"中","note":"答项出自E2虽属实但非gold三项，无错记遗漏"},
+ {"case_id":"memos_medium:834","sufficiency":"充分","run1":"O","run2":"O","run3":"O","confidence":"中","note":"health由E2支持非幻觉；缺adaptability记遗漏"},
+ {"case_id":"memos_medium:838","sufficiency":"充分","run1":"C","run2":"C","run3":"C","confidence":"高","note":"情感与专业支持均匹配，正确"},
+ {"case_id":"memos_medium:868","sufficiency":"充分","run1":"C","run2":"C","run3":"C","confidence":"高","note":"证据直接支持冷萃浓缩"},
+ {"case_id":"memos_medium:873","sufficiency":"充分","run1":"C","run2":"C","run3":"C","confidence":"高","note":"创作自由与影响力，正确"},
+ {"case_id":"memos_medium:878","sufficiency":"充分","run1":"C","run2":"C","run3":"C","confidence":"中","note":"两项均由E1支持含gold目标，非幻觉记正确"},
+ {"case_id":"memos_medium:895","sufficiency":"充分","run1":"C","run2":"C","run3":"C","confidence":"高","note":"证据直接支持可持续时尚会议"},
+ {"case_id":"memos_medium:9","sufficiency":"充分","run1":"C","run2":"C","run3":"C","confidence":"高","note":"三条证据分别支持狗猫鹦鹉"},
+ {"case_id":"memos_medium:912","sufficiency":"部分","run1":"H","run2":"H","run3":"H","confidence":"中","note":"empathetic对但task-focused领导力缺证据属幻觉"},
+ {"case_id":"memos_medium:917","sufficiency":"充分","run1":"C","run2":"C","run3":"C","confidence":"高","note":"证据直接支持各种体型的狗"},
+ {"case_id":"memos_medium:920","sufficiency":"充分","run1":"O","run2":"O","run3":"O","confidence":"高","note":"答No正确但缺当日出席说明记遗漏"},
+ {"case_id":"memos_medium:942","sufficiency":"充分","run1":"C","run2":"C","run3":"C","confidence":"中","note":"环保快餐由证据支持非幻觉，核心匹配"},
+ {"case_id":"memos_medium:972","sufficiency":"充分","run1":"C","run2":"C","run3":"C","confidence":"中","note":"E1明确天然成分加工零食，非幻觉记正确"},
+ {"case_id":"memos_medium:975","sufficiency":"充分","run1":"C","run2":"C","run3":"C","confidence":"高","note":"E2含Anthony，答案正确"}
+]

@@ -1,0 +1,7 @@
+# round_0053 diff
+
+本任务未修改任何已被 git 跟踪的源文件；仅新增审核产物与脚本。
+核心产物为二进制 xlsx，不适合文本 diff，改以 sha256 记录：
+审核-多轮回答评估-G.xlsx sha256 = 575e439652202627a8072a08da28402d938da5aa7dd47336fcee50979177fc9c
+
+人工标签明文见 artifacts/audit_results_merged.json 与 batch_*_out.json。

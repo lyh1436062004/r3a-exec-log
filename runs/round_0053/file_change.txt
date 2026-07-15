@@ -1,0 +1,38 @@
+# round_0053 file changes
+
+## 新建/修改 (本工作区)
+M  临时/人工审查/审查生成错误率/审核-多轮回答评估-G.xlsx  (填入380行人工审核, 保留第2行)
+A  临时/人工审查/审查生成错误率/audit_work/*.json  (13批 in/out + merged + manifest)
+A  临时/人工审查/审查生成错误率/audit_work/generation_failure_381_audit_report.md
+A  脚本/3.0/_audit_make_batches.py
+A  脚本/3.0/_audit_merge_and_write.py
+A  脚本/3.0/_audit_force_write.py
+A  脚本/3.0/_fix_pv_formulas.py
+A  脚本/3.0/_verify_workbook.py
+A  脚本/3.0/_verify_integrity.py
+A  脚本/3.0/_inspect_G_mechanics.py / _inspect_audit_workbooks.py / _inspect_now.py
+
+## round artifacts
+A  runs/round_0053/artifacts/审核-多轮回答评估-G_filled.xlsx
+A  runs/round_0053/artifacts/audit_results_merged.json
+A  runs/round_0053/artifacts/batch_manifest.json
+A  runs/round_0053/artifacts/generation_failure_381_audit_report.md
+A  runs/round_0053/artifacts/batch_01_out.json
+A  runs/round_0053/artifacts/batch_02_out.json
+A  runs/round_0053/artifacts/batch_03_out.json
+A  runs/round_0053/artifacts/batch_04_out.json
+A  runs/round_0053/artifacts/batch_05_out.json
+A  runs/round_0053/artifacts/batch_06_out.json
+A  runs/round_0053/artifacts/batch_07_out.json
+A  runs/round_0053/artifacts/batch_08_out.json
+A  runs/round_0053/artifacts/batch_09_out.json
+A  runs/round_0053/artifacts/batch_10_out.json
+A  runs/round_0053/artifacts/batch_11_out.json
+A  runs/round_0053/artifacts/batch_12_out.json
+A  runs/round_0053/artifacts/batch_13_out.json
+A  runs/round_0053/artifacts/_audit_make_batches.py
+A  runs/round_0053/artifacts/_audit_merge_and_write.py
+A  runs/round_0053/artifacts/_audit_force_write.py
+A  runs/round_0053/artifacts/_fix_pv_formulas.py
+A  runs/round_0053/artifacts/_verify_workbook.py
+A  runs/round_0053/artifacts/_verify_integrity.py
