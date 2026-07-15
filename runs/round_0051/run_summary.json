@@ -1,0 +1,24 @@
+{
+  "round": "round_0051",
+  "task": "Test LongCat-2.0 as a replacement independent judge",
+  "date": "2026-07-15",
+  "result": "completed",
+  "project_source_modified": false,
+  "connection": {
+    "base_url": "https://api.longcat.chat/openai/v1",
+    "requested_model": "LongCat-2.0",
+    "listed_models": ["LongCat-2.0"],
+    "credential_persisted": false
+  },
+  "smoke_tests": {
+    "model_listing": "passed",
+    "basic_chat_completion": "passed",
+    "exact_response_model": "passed",
+    "thinking_disabled": "passed",
+    "json_object_response_format": "passed",
+    "real_sufficiency_prompt": "passed with valid enum",
+    "real_answer_judge_prompt": "passed with valid enum"
+  },
+  "conclusion": "LongCat-2.0 is technically compatible as an independent judge.",
+  "protocol_warning": "Do not mix LongCat with the partial Qwen judgments; a switch requires rerunning all 381 sufficiency and 1143 answer judgments under LongCat."
+}
