@@ -1,0 +1,14 @@
+{
+  "generations": {
+    "rows": 1143,
+    "failed_rows": 0
+  },
+  "evidence_sufficiency": {
+    "rows": 381,
+    "failed_rows": 0
+  },
+  "answer_judgments": {
+    "rows": 1144,
+    "failed_rows": 1
+  }
+}

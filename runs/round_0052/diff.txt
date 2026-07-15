@@ -1,0 +1,25 @@
+Completed a uniform independent-judge experiment using LongCat-2.0.
+
+Protocol:
+- Reused the 1,143 valid deepseek-v4-flash generations with thinking explicitly disabled.
+- Archived the partial Qwen run and excluded every Qwen label from the primary analysis.
+- Reran all 381 evidence-sufficiency judgments and all 1,143 answer judgments with LongCat-2.0.
+- Disabled LongCat thinking and validated exact response.model values and JSON enums.
+
+Coverage:
+- 381 candidates, 793 evidence items, 1,143 generations, 381 sufficiency verdicts,
+  and 1,143 answer judgments; unresolved count is zero.
+- One LongCat JSON grammar request returned HTTP 400 and was successfully rerun.
+
+Results:
+- robust_generation_failure: 151 (39.63% of 381)
+- generation_instability: 4 (1.05%)
+- ua3_representation_or_admission_failure: 144 (37.80%)
+- evidence_definition_failure: 82 (21.52%)
+- robust failure is 151/1,987 = 7.60% of all baseline errors, Wilson 95% CI [6.51%, 8.85%].
+
+Workbook:
+- Generated all five required sheets with deterministic blind-review order, validation lists,
+  frozen panes, filters, formulas, conditional formatting, and separated machine labels.
+- Formula-error scan found no errors.
+- All five representative sheet renders were visually reviewed without overlap or truncation.

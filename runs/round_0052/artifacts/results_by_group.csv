@@ -1,0 +1,8 @@
+﻿field,value,n,robust_generation_failure,generation_instability,ua3_representation_or_admission_failure,evidence_definition_failure,unresolved
+dataset,long,191,76,2,70,43,0
+dataset,medium,190,75,2,74,39,0
+question_type,Basic Fact Recall,75,16,3,53,3,0
+question_type,Dynamic Update,29,14,0,14,1,0
+question_type,Generalization & Application,183,74,1,49,59,0
+question_type,Memory Conflict,40,25,0,4,11,0
+question_type,Multi-hop Inference,54,22,0,24,8,0

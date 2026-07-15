@@ -1,0 +1,70 @@
+{
+  "round": "round_0052",
+  "task": "Complete the uniform LongCat gold-evidence generation-failure experiment and human-audit workbook",
+  "date": "2026-07-15",
+  "result": "completed",
+  "project_source_modified": true,
+  "protocol": {
+    "candidate_cases": 381,
+    "medium_cases": 190,
+    "long_cases": 191,
+    "gold_evidence_items": 793,
+    "generator": "deepseek-v4-flash",
+    "generator_thinking": "disabled",
+    "generator_temperature": 0,
+    "generator_max_tokens": 128,
+    "generator_replicates": 3,
+    "judge": "LongCat-2.0",
+    "judge_thinking": "disabled",
+    "judge_temperature": 0
+  },
+  "coverage": {
+    "candidates": "381/381",
+    "generations": "1143/1143",
+    "evidence_sufficiency": "381/381",
+    "answer_judgments": "1143/1143",
+    "unresolved": 0
+  },
+  "classification": {
+    "robust_generation_failure": 151,
+    "generation_instability": 4,
+    "ua3_representation_or_admission_failure": 144,
+    "evidence_definition_failure": 82
+  },
+  "robust_failure_rates": {
+    "candidate_pool_381": {
+      "rate": 0.3963,
+      "wilson_95_ci": [0.3485, 0.4462]
+    },
+    "visible_strict_763": {
+      "rate": 0.1979,
+      "wilson_95_ci": [0.1712, 0.2277]
+    },
+    "all_baseline_errors_1987": {
+      "rate": 0.0760,
+      "wilson_95_ci": [0.0651, 0.0885]
+    }
+  },
+  "dataset_split": {
+    "medium_robust_failure": 75,
+    "long_robust_failure": 76
+  },
+  "quality_checks": {
+    "empty_generation_answers": 0,
+    "positive_reasoning_token_generation_records": 0,
+    "exact_response_models": true,
+    "formula_error_scan": "passed",
+    "five_sheet_render_review": "passed",
+    "secret_scan": "passed",
+    "historical_longcat_failure": "one JSON grammar HTTP 400, successfully rerun and resolved"
+  },
+  "provenance": {
+    "default_thinking_run": "archived and invalidated",
+    "partial_qwen_run": "archived and excluded",
+    "mixed_judge_results_used": false
+  },
+  "security": {
+    "api_keys_persisted": false,
+    "raw_benchmark_records_uploaded": false
+  }
+}

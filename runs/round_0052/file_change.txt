@@ -1,0 +1,38 @@
+Project source files modified:
+- 脚本/3.0/11_run_generation_failure_oracle.py
+- 脚本/3.0/13_build_generation_failure_audit_workbook.mjs
+
+Project result files created or updated:
+- outputs/e1_memos_generation_failure_oracle_v1/final_experiment_report.md
+- outputs/e1_memos_generation_failure_oracle_v1/results.md
+- outputs/e1_memos_generation_failure_oracle_v1/results.json
+- outputs/e1_memos_generation_failure_oracle_v1/results_by_group.csv
+- outputs/e1_memos_generation_failure_oracle_v1/robust_failure_rates.csv
+- outputs/e1_memos_generation_failure_oracle_v1/run_config.json
+- outputs/e1_memos_generation_failure_oracle_v1/smoke_test.json
+- outputs/e1_memos_generation_failure_oracle_v1/run_counts.json
+- outputs/e1_memos_generation_failure_oracle_v1/failures.jsonl
+- outputs/e1_memos_generation_failure_oracle_v1/case_summary.jsonl and CSV
+- outputs/e1_memos_generation_failure_oracle_v1/call_details.jsonl and CSV
+- 临时/人工审查/审查生成错误率/generation_failure_381人工审核.xlsx
+
+Execution-log artifacts copied:
+- artifacts/11_run_generation_failure_oracle.py
+- artifacts/12_analyze_generation_failure_oracle.py
+- artifacts/13_build_generation_failure_audit_workbook.mjs
+- artifacts/final_experiment_report.md
+- artifacts/results.md
+- artifacts/results.json
+- artifacts/results_by_group.csv
+- artifacts/robust_failure_rates.csv
+- artifacts/run_config.json
+- artifacts/smoke_test.json
+- artifacts/run_counts.json
+- artifacts/failures.jsonl
+- artifacts/longcat20_judge_smoke_report.md
+- artifacts/generation_failure_381人工审核.xlsx
+
+Intentionally omitted from GitHub:
+- API credentials and environment-variable values
+- raw candidate, generation, judgment, case-summary, and call-detail records containing benchmark content
+- invalidated workbook and preview images

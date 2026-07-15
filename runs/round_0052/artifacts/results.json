@@ -1,0 +1,112 @@
+{
+  "coverage": {
+    "candidates": 381,
+    "generations": 1143,
+    "sufficiency_verdicts": 381,
+    "answer_judgments": 1143
+  },
+  "classification_counts": {
+    "robust_generation_failure": 151,
+    "ua3_representation_or_admission_failure": 144,
+    "generation_instability": 4,
+    "evidence_definition_failure": 82
+  },
+  "rates": [
+    {
+      "denominator": "candidate_pool",
+      "robust_generation_failures": 151,
+      "n": 381,
+      "rate": 0.3963254593175853,
+      "wilson_low": 0.34848024767720154,
+      "wilson_high": 0.4462404140672811
+    },
+    {
+      "denominator": "visible_strict",
+      "robust_generation_failures": 151,
+      "n": 763,
+      "rate": 0.19790301441677588,
+      "wilson_low": 0.1711766971401478,
+      "wilson_high": 0.22765601502311975
+    },
+    {
+      "denominator": "all_baseline_errors",
+      "robust_generation_failures": 151,
+      "n": 1987,
+      "rate": 0.07599396074484147,
+      "wilson_low": 0.06514329136578031,
+      "wilson_high": 0.08848092489997098
+    }
+  ],
+  "by_group": [
+    {
+      "field": "dataset",
+      "value": "long",
+      "n": 191,
+      "robust_generation_failure": 76,
+      "generation_instability": 2,
+      "ua3_representation_or_admission_failure": 70,
+      "evidence_definition_failure": 43,
+      "unresolved": 0
+    },
+    {
+      "field": "dataset",
+      "value": "medium",
+      "n": 190,
+      "robust_generation_failure": 75,
+      "generation_instability": 2,
+      "ua3_representation_or_admission_failure": 74,
+      "evidence_definition_failure": 39,
+      "unresolved": 0
+    },
+    {
+      "field": "question_type",
+      "value": "Basic Fact Recall",
+      "n": 75,
+      "robust_generation_failure": 16,
+      "generation_instability": 3,
+      "ua3_representation_or_admission_failure": 53,
+      "evidence_definition_failure": 3,
+      "unresolved": 0
+    },
+    {
+      "field": "question_type",
+      "value": "Dynamic Update",
+      "n": 29,
+      "robust_generation_failure": 14,
+      "generation_instability": 0,
+      "ua3_representation_or_admission_failure": 14,
+      "evidence_definition_failure": 1,
+      "unresolved": 0
+    },
+    {
+      "field": "question_type",
+      "value": "Generalization & Application",
+      "n": 183,
+      "robust_generation_failure": 74,
+      "generation_instability": 1,
+      "ua3_representation_or_admission_failure": 49,
+      "evidence_definition_failure": 59,
+      "unresolved": 0
+    },
+    {
+      "field": "question_type",
+      "value": "Memory Conflict",
+      "n": 40,
+      "robust_generation_failure": 25,
+      "generation_instability": 0,
+      "ua3_representation_or_admission_failure": 4,
+      "evidence_definition_failure": 11,
+      "unresolved": 0
+    },
+    {
+      "field": "question_type",
+      "value": "Multi-hop Inference",
+      "n": 54,
+      "robust_generation_failure": 22,
+      "generation_instability": 0,
+      "ua3_representation_or_admission_failure": 24,
+      "evidence_definition_failure": 8,
+      "unresolved": 0
+    }
+  ]
+}
