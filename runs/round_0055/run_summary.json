@@ -1,0 +1,74 @@
+{
+  "round": "round_0055",
+  "task": "Strictly re-audit the 90 evidence_definition_failure cases and correct the integrated workbook",
+  "date": "2026-07-16",
+  "status": "completed",
+  "source": {
+    "workbook": "D:/幻觉/临时/人工审查/审查生成错误率/最终汇总表-人工机器复核整合.xlsx",
+    "sheet": "最终汇总表",
+    "rows": 381,
+    "rechecked_cases": 90
+  },
+  "key_results": {
+    "rechecked_sufficiency": {
+      "sufficient": 23,
+      "partial": 44,
+      "insufficient": 23
+    },
+    "rechecked_classification": {
+      "evidence_definition_failure": 67,
+      "robust_generation_failure": 15,
+      "ua3_representation_or_admission_failure": 8,
+      "generation_instability": 0
+    },
+    "changed_cases": 30,
+    "sufficiency_changed_cases": 16,
+    "run_label_changed_cases": 15,
+    "final_classification_changed_cases": 19,
+    "overall_381": {
+      "evidence_definition_failure": 67,
+      "robust_generation_failure": 148,
+      "ua3_representation_or_admission_failure": 166,
+      "generation_instability": 0,
+      "sufficient": 314,
+      "partial": 44,
+      "insufficient": 23,
+      "C_labels": 510,
+      "H_labels": 87,
+      "O_labels": 546
+    }
+  },
+  "verification": {
+    "status": "passed",
+    "checks_passed": 312,
+    "checks_total": 312,
+    "all_381_case_ids_complete_and_unique": true,
+    "all_90_audit_case_ids_complete_and_unique": true,
+    "classification_rule_consistent": true,
+    "formula_count": 32,
+    "formula_error_scan_passed": true,
+    "original_tables_and_validations_preserved": true,
+    "audit_sheet_data_validation_groups": 6,
+    "final_workbook_sha256": "D5D899F89AF317C280C7B075C05C848981E725AE64EF68CA468420B80FB5296C",
+    "change_audit_sha256": "AF450B1DFA54D253057DD15966B0EE64B52236DF4ADD058DA6441ACC043B6E04",
+    "report_sha256": "73793A17B60503DA5DBF5CEA883B29EBFD7FCBF5BA6A8CFD777152860CB0967C",
+    "verification_json_sha256": "66BA0754FDE2A120A40331CA4980CF42E567C80760C4EA78FACE77363781CB02"
+  },
+  "backup": {
+    "path": "D:/幻觉/临时/人工审查/审查生成错误率/最终汇总表-人工机器复核整合_backup_20260716_174340.xlsx",
+    "sha256": "8A000177A0B8D71891244F13FA962FA726D406FD016C6DD2464276DD0A995399"
+  },
+  "artifacts": [
+    "artifacts/最终汇总表-人工机器复核整合.xlsx",
+    "artifacts/evidence90_change_audit.json",
+    "artifacts/evidence90_recheck_report.md",
+    "artifacts/verification_report.json"
+  ],
+  "constraints": {
+    "retriever_modified": false,
+    "memory_store_modified": false,
+    "raw_generation_results_modified": false,
+    "api_keys_included": false,
+    "credentials_included": false
+  }
+}

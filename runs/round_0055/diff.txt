@@ -1,0 +1,9 @@
+Task-level diff summary:
+
+1. Resumed from the existing workbook and retained the prior 381-row human/machine audit and the first 90-row recheck rather than overwriting them.
+2. Re-audited all 90 cases against Question, Gold answer, full Gold evidence, source UA3 answer, three regenerated answers, machine verdicts/rationales, human labels/notes, and the prior recheck.
+3. Corrected 30 cases with at least one changed field: 16 evidence-sufficiency changes, 15 cases with at least one Run label change, and 19 final-classification changes.
+4. Recomputed the 381-row totals: evidence_definition_failure 67, robust_generation_failure 148, ua3_representation_or_admission_failure 166, generation_instability 0.
+5. Added a 90-row detailed before/after audit worksheet and a formula-driven latest-summary worksheet.
+6. Verified 381 unique case IDs, 90 unique recheck IDs, classification-rule consistency, 32 summary formulas, no formula errors, preserved original table/validation counts, and visual rendering of all eight sheets.
+7. No retriever, memory store, or experiment raw generation result was changed.

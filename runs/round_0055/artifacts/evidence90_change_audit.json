@@ -1,0 +1,2091 @@
+[
+  {
+    "case_id": "memos_medium:2634",
+    "fields": [
+      "证据充分性",
+      "最终分类"
+    ],
+    "before": {
+      "suff": "充分",
+      "labels": [
+        "O",
+        "O",
+        "O"
+      ],
+      "classification": "robust_generation_failure"
+    },
+    "after": {
+      "suff": "部分",
+      "labels": [
+        "O",
+        "O",
+        "O"
+      ],
+      "classification": "evidence_definition_failure"
+    }
+  },
+  {
+    "case_id": "memos_medium:472",
+    "fields": [],
+    "before": {
+      "suff": "部分",
+      "labels": [
+        "O",
+        "O",
+        "O"
+      ],
+      "classification": "evidence_definition_failure"
+    },
+    "after": {
+      "suff": "部分",
+      "labels": [
+        "O",
+        "O",
+        "O"
+      ],
+      "classification": "evidence_definition_failure"
+    }
+  },
+  {
+    "case_id": "memos_long:77",
+    "fields": [],
+    "before": {
+      "suff": "部分",
+      "labels": [
+        "O",
+        "O",
+        "O"
+      ],
+      "classification": "evidence_definition_failure"
+    },
+    "after": {
+      "suff": "部分",
+      "labels": [
+        "O",
+        "O",
+        "O"
+      ],
+      "classification": "evidence_definition_failure"
+    }
+  },
+  {
+    "case_id": "memos_medium:2508",
+    "fields": [],
+    "before": {
+      "suff": "充分",
+      "labels": [
+        "H",
+        "H",
+        "H"
+      ],
+      "classification": "robust_generation_failure"
+    },
+    "after": {
+      "suff": "充分",
+      "labels": [
+        "H",
+        "H",
+        "H"
+      ],
+      "classification": "robust_generation_failure"
+    }
+  },
+  {
+    "case_id": "memos_medium:2490",
+    "fields": [],
+    "before": {
+      "suff": "不充分",
+      "labels": [
+        "H",
+        "H",
+        "H"
+      ],
+      "classification": "evidence_definition_failure"
+    },
+    "after": {
+      "suff": "不充分",
+      "labels": [
+        "H",
+        "H",
+        "H"
+      ],
+      "classification": "evidence_definition_failure"
+    }
+  },
+  {
+    "case_id": "memos_long:38",
+    "fields": [],
+    "before": {
+      "suff": "部分",
+      "labels": [
+        "O",
+        "O",
+        "O"
+      ],
+      "classification": "evidence_definition_failure"
+    },
+    "after": {
+      "suff": "部分",
+      "labels": [
+        "O",
+        "O",
+        "O"
+      ],
+      "classification": "evidence_definition_failure"
+    }
+  },
+  {
+    "case_id": "memos_long:3403",
+    "fields": [
+      "证据充分性",
+      "最终分类"
+    ],
+    "before": {
+      "suff": "充分",
+      "labels": [
+        "O",
+        "O",
+        "O"
+      ],
+      "classification": "robust_generation_failure"
+    },
+    "after": {
+      "suff": "部分",
+      "labels": [
+        "O",
+        "O",
+        "O"
+      ],
+      "classification": "evidence_definition_failure"
+    }
+  },
+  {
+    "case_id": "memos_long:3007",
+    "fields": [],
+    "before": {
+      "suff": "不充分",
+      "labels": [
+        "H",
+        "H",
+        "H"
+      ],
+      "classification": "evidence_definition_failure"
+    },
+    "after": {
+      "suff": "不充分",
+      "labels": [
+        "H",
+        "H",
+        "H"
+      ],
+      "classification": "evidence_definition_failure"
+    }
+  },
+  {
+    "case_id": "memos_long:1370",
+    "fields": [
+      "Run1",
+      "Run2",
+      "Run3"
+    ],
+    "before": {
+      "suff": "不充分",
+      "labels": [
+        "O",
+        "O",
+        "O"
+      ],
+      "classification": "evidence_definition_failure"
+    },
+    "after": {
+      "suff": "不充分",
+      "labels": [
+        "H",
+        "H",
+        "H"
+      ],
+      "classification": "evidence_definition_failure"
+    }
+  },
+  {
+    "case_id": "memos_long:1350",
+    "fields": [],
+    "before": {
+      "suff": "充分",
+      "labels": [
+        "C",
+        "C",
+        "C"
+      ],
+      "classification": "ua3_representation_or_admission_failure"
+    },
+    "after": {
+      "suff": "充分",
+      "labels": [
+        "C",
+        "C",
+        "C"
+      ],
+      "classification": "ua3_representation_or_admission_failure"
+    }
+  },
+  {
+    "case_id": "memos_medium:2781",
+    "fields": [],
+    "before": {
+      "suff": "充分",
+      "labels": [
+        "O",
+        "O",
+        "O"
+      ],
+      "classification": "robust_generation_failure"
+    },
+    "after": {
+      "suff": "充分",
+      "labels": [
+        "O",
+        "O",
+        "O"
+      ],
+      "classification": "robust_generation_failure"
+    }
+  },
+  {
+    "case_id": "memos_medium:2670",
+    "fields": [],
+    "before": {
+      "suff": "部分",
+      "labels": [
+        "O",
+        "O",
+        "O"
+      ],
+      "classification": "evidence_definition_failure"
+    },
+    "after": {
+      "suff": "部分",
+      "labels": [
+        "O",
+        "O",
+        "O"
+      ],
+      "classification": "evidence_definition_failure"
+    }
+  },
+  {
+    "case_id": "memos_long:910",
+    "fields": [
+      "Run1",
+      "Run2",
+      "Run3",
+      "最终分类"
+    ],
+    "before": {
+      "suff": "充分",
+      "labels": [
+        "H",
+        "H",
+        "H"
+      ],
+      "classification": "robust_generation_failure"
+    },
+    "after": {
+      "suff": "充分",
+      "labels": [
+        "C",
+        "C",
+        "C"
+      ],
+      "classification": "ua3_representation_or_admission_failure"
+    }
+  },
+  {
+    "case_id": "memos_medium:455",
+    "fields": [],
+    "before": {
+      "suff": "充分",
+      "labels": [
+        "O",
+        "O",
+        "O"
+      ],
+      "classification": "robust_generation_failure"
+    },
+    "after": {
+      "suff": "充分",
+      "labels": [
+        "O",
+        "O",
+        "O"
+      ],
+      "classification": "robust_generation_failure"
+    }
+  },
+  {
+    "case_id": "memos_medium:2758",
+    "fields": [
+      "证据充分性",
+      "最终分类"
+    ],
+    "before": {
+      "suff": "部分",
+      "labels": [
+        "O",
+        "O",
+        "O"
+      ],
+      "classification": "evidence_definition_failure"
+    },
+    "after": {
+      "suff": "充分",
+      "labels": [
+        "O",
+        "O",
+        "O"
+      ],
+      "classification": "robust_generation_failure"
+    }
+  },
+  {
+    "case_id": "memos_long:688",
+    "fields": [],
+    "before": {
+      "suff": "部分",
+      "labels": [
+        "H",
+        "H",
+        "H"
+      ],
+      "classification": "evidence_definition_failure"
+    },
+    "after": {
+      "suff": "部分",
+      "labels": [
+        "H",
+        "H",
+        "H"
+      ],
+      "classification": "evidence_definition_failure"
+    }
+  },
+  {
+    "case_id": "memos_long:157",
+    "fields": [
+      "证据充分性",
+      "最终分类"
+    ],
+    "before": {
+      "suff": "充分",
+      "labels": [
+        "O",
+        "O",
+        "O"
+      ],
+      "classification": "robust_generation_failure"
+    },
+    "after": {
+      "suff": "部分",
+      "labels": [
+        "O",
+        "O",
+        "O"
+      ],
+      "classification": "evidence_definition_failure"
+    }
+  },
+  {
+    "case_id": "memos_medium:1998",
+    "fields": [],
+    "before": {
+      "suff": "部分",
+      "labels": [
+        "O",
+        "O",
+        "O"
+      ],
+      "classification": "evidence_definition_failure"
+    },
+    "after": {
+      "suff": "部分",
+      "labels": [
+        "O",
+        "O",
+        "O"
+      ],
+      "classification": "evidence_definition_failure"
+    }
+  },
+  {
+    "case_id": "memos_long:1401",
+    "fields": [],
+    "before": {
+      "suff": "部分",
+      "labels": [
+        "O",
+        "O",
+        "O"
+      ],
+      "classification": "evidence_definition_failure"
+    },
+    "after": {
+      "suff": "部分",
+      "labels": [
+        "O",
+        "O",
+        "O"
+      ],
+      "classification": "evidence_definition_failure"
+    }
+  },
+  {
+    "case_id": "memos_medium:77",
+    "fields": [],
+    "before": {
+      "suff": "部分",
+      "labels": [
+        "O",
+        "O",
+        "O"
+      ],
+      "classification": "evidence_definition_failure"
+    },
+    "after": {
+      "suff": "部分",
+      "labels": [
+        "O",
+        "O",
+        "O"
+      ],
+      "classification": "evidence_definition_failure"
+    }
+  },
+  {
+    "case_id": "memos_medium:1694",
+    "fields": [],
+    "before": {
+      "suff": "部分",
+      "labels": [
+        "O",
+        "O",
+        "O"
+      ],
+      "classification": "evidence_definition_failure"
+    },
+    "after": {
+      "suff": "部分",
+      "labels": [
+        "O",
+        "O",
+        "O"
+      ],
+      "classification": "evidence_definition_failure"
+    }
+  },
+  {
+    "case_id": "memos_long:3087",
+    "fields": [
+      "证据充分性",
+      "最终分类"
+    ],
+    "before": {
+      "suff": "部分",
+      "labels": [
+        "O",
+        "O",
+        "O"
+      ],
+      "classification": "evidence_definition_failure"
+    },
+    "after": {
+      "suff": "充分",
+      "labels": [
+        "O",
+        "O",
+        "O"
+      ],
+      "classification": "robust_generation_failure"
+    }
+  },
+  {
+    "case_id": "memos_medium:1265",
+    "fields": [],
+    "before": {
+      "suff": "部分",
+      "labels": [
+        "O",
+        "O",
+        "O"
+      ],
+      "classification": "evidence_definition_failure"
+    },
+    "after": {
+      "suff": "部分",
+      "labels": [
+        "O",
+        "O",
+        "O"
+      ],
+      "classification": "evidence_definition_failure"
+    }
+  },
+  {
+    "case_id": "memos_long:3026",
+    "fields": [],
+    "before": {
+      "suff": "部分",
+      "labels": [
+        "O",
+        "O",
+        "O"
+      ],
+      "classification": "evidence_definition_failure"
+    },
+    "after": {
+      "suff": "部分",
+      "labels": [
+        "O",
+        "O",
+        "O"
+      ],
+      "classification": "evidence_definition_failure"
+    }
+  },
+  {
+    "case_id": "memos_long:3306",
+    "fields": [],
+    "before": {
+      "suff": "充分",
+      "labels": [
+        "C",
+        "C",
+        "C"
+      ],
+      "classification": "ua3_representation_or_admission_failure"
+    },
+    "after": {
+      "suff": "充分",
+      "labels": [
+        "C",
+        "C",
+        "C"
+      ],
+      "classification": "ua3_representation_or_admission_failure"
+    }
+  },
+  {
+    "case_id": "memos_medium:527",
+    "fields": [],
+    "before": {
+      "suff": "充分",
+      "labels": [
+        "C",
+        "C",
+        "C"
+      ],
+      "classification": "ua3_representation_or_admission_failure"
+    },
+    "after": {
+      "suff": "充分",
+      "labels": [
+        "C",
+        "C",
+        "C"
+      ],
+      "classification": "ua3_representation_or_admission_failure"
+    }
+  },
+  {
+    "case_id": "memos_long:3038",
+    "fields": [],
+    "before": {
+      "suff": "充分",
+      "labels": [
+        "O",
+        "O",
+        "O"
+      ],
+      "classification": "robust_generation_failure"
+    },
+    "after": {
+      "suff": "充分",
+      "labels": [
+        "O",
+        "O",
+        "O"
+      ],
+      "classification": "robust_generation_failure"
+    }
+  },
+  {
+    "case_id": "memos_medium:2134",
+    "fields": [
+      "Run1",
+      "Run2",
+      "Run3"
+    ],
+    "before": {
+      "suff": "充分",
+      "labels": [
+        "H",
+        "H",
+        "H"
+      ],
+      "classification": "robust_generation_failure"
+    },
+    "after": {
+      "suff": "充分",
+      "labels": [
+        "O",
+        "O",
+        "O"
+      ],
+      "classification": "robust_generation_failure"
+    }
+  },
+  {
+    "case_id": "memos_long:1833",
+    "fields": [],
+    "before": {
+      "suff": "不充分",
+      "labels": [
+        "H",
+        "H",
+        "H"
+      ],
+      "classification": "evidence_definition_failure"
+    },
+    "after": {
+      "suff": "不充分",
+      "labels": [
+        "H",
+        "H",
+        "H"
+      ],
+      "classification": "evidence_definition_failure"
+    }
+  },
+  {
+    "case_id": "memos_medium:3008",
+    "fields": [],
+    "before": {
+      "suff": "不充分",
+      "labels": [
+        "H",
+        "H",
+        "H"
+      ],
+      "classification": "evidence_definition_failure"
+    },
+    "after": {
+      "suff": "不充分",
+      "labels": [
+        "H",
+        "H",
+        "H"
+      ],
+      "classification": "evidence_definition_failure"
+    }
+  },
+  {
+    "case_id": "memos_medium:2507",
+    "fields": [],
+    "before": {
+      "suff": "部分",
+      "labels": [
+        "O",
+        "O",
+        "O"
+      ],
+      "classification": "evidence_definition_failure"
+    },
+    "after": {
+      "suff": "部分",
+      "labels": [
+        "O",
+        "O",
+        "O"
+      ],
+      "classification": "evidence_definition_failure"
+    }
+  },
+  {
+    "case_id": "memos_medium:3039",
+    "fields": [],
+    "before": {
+      "suff": "充分",
+      "labels": [
+        "O",
+        "O",
+        "O"
+      ],
+      "classification": "robust_generation_failure"
+    },
+    "after": {
+      "suff": "充分",
+      "labels": [
+        "O",
+        "O",
+        "O"
+      ],
+      "classification": "robust_generation_failure"
+    }
+  },
+  {
+    "case_id": "memos_long:88",
+    "fields": [
+      "Run1",
+      "Run2",
+      "Run3"
+    ],
+    "before": {
+      "suff": "充分",
+      "labels": [
+        "H",
+        "H",
+        "H"
+      ],
+      "classification": "robust_generation_failure"
+    },
+    "after": {
+      "suff": "充分",
+      "labels": [
+        "O",
+        "O",
+        "O"
+      ],
+      "classification": "robust_generation_failure"
+    }
+  },
+  {
+    "case_id": "memos_medium:1206",
+    "fields": [
+      "Run1",
+      "Run2",
+      "Run3"
+    ],
+    "before": {
+      "suff": "不充分",
+      "labels": [
+        "O",
+        "O",
+        "O"
+      ],
+      "classification": "evidence_definition_failure"
+    },
+    "after": {
+      "suff": "不充分",
+      "labels": [
+        "H",
+        "H",
+        "H"
+      ],
+      "classification": "evidence_definition_failure"
+    }
+  },
+  {
+    "case_id": "memos_long:1882",
+    "fields": [],
+    "before": {
+      "suff": "部分",
+      "labels": [
+        "O",
+        "O",
+        "O"
+      ],
+      "classification": "evidence_definition_failure"
+    },
+    "after": {
+      "suff": "部分",
+      "labels": [
+        "O",
+        "O",
+        "O"
+      ],
+      "classification": "evidence_definition_failure"
+    }
+  },
+  {
+    "case_id": "memos_medium:2315",
+    "fields": [],
+    "before": {
+      "suff": "不充分",
+      "labels": [
+        "O",
+        "O",
+        "O"
+      ],
+      "classification": "evidence_definition_failure"
+    },
+    "after": {
+      "suff": "不充分",
+      "labels": [
+        "O",
+        "O",
+        "O"
+      ],
+      "classification": "evidence_definition_failure"
+    }
+  },
+  {
+    "case_id": "memos_long:618",
+    "fields": [],
+    "before": {
+      "suff": "不充分",
+      "labels": [
+        "O",
+        "O",
+        "O"
+      ],
+      "classification": "evidence_definition_failure"
+    },
+    "after": {
+      "suff": "不充分",
+      "labels": [
+        "O",
+        "O",
+        "O"
+      ],
+      "classification": "evidence_definition_failure"
+    }
+  },
+  {
+    "case_id": "memos_long:527",
+    "fields": [
+      "Run1",
+      "Run2",
+      "Run3",
+      "最终分类"
+    ],
+    "before": {
+      "suff": "充分",
+      "labels": [
+        "H",
+        "H",
+        "H"
+      ],
+      "classification": "robust_generation_failure"
+    },
+    "after": {
+      "suff": "充分",
+      "labels": [
+        "C",
+        "C",
+        "C"
+      ],
+      "classification": "ua3_representation_or_admission_failure"
+    }
+  },
+  {
+    "case_id": "memos_long:2346",
+    "fields": [],
+    "before": {
+      "suff": "充分",
+      "labels": [
+        "O",
+        "O",
+        "O"
+      ],
+      "classification": "robust_generation_failure"
+    },
+    "after": {
+      "suff": "充分",
+      "labels": [
+        "O",
+        "O",
+        "O"
+      ],
+      "classification": "robust_generation_failure"
+    }
+  },
+  {
+    "case_id": "memos_long:1324",
+    "fields": [
+      "证据充分性",
+      "最终分类"
+    ],
+    "before": {
+      "suff": "充分",
+      "labels": [
+        "C",
+        "C",
+        "C"
+      ],
+      "classification": "ua3_representation_or_admission_failure"
+    },
+    "after": {
+      "suff": "部分",
+      "labels": [
+        "C",
+        "C",
+        "C"
+      ],
+      "classification": "evidence_definition_failure"
+    }
+  },
+  {
+    "case_id": "memos_long:2655",
+    "fields": [
+      "Run1",
+      "Run2",
+      "Run3"
+    ],
+    "before": {
+      "suff": "不充分",
+      "labels": [
+        "O",
+        "O",
+        "O"
+      ],
+      "classification": "evidence_definition_failure"
+    },
+    "after": {
+      "suff": "不充分",
+      "labels": [
+        "H",
+        "H",
+        "H"
+      ],
+      "classification": "evidence_definition_failure"
+    }
+  },
+  {
+    "case_id": "memos_medium:2485",
+    "fields": [],
+    "before": {
+      "suff": "部分",
+      "labels": [
+        "O",
+        "O",
+        "O"
+      ],
+      "classification": "evidence_definition_failure"
+    },
+    "after": {
+      "suff": "部分",
+      "labels": [
+        "O",
+        "O",
+        "O"
+      ],
+      "classification": "evidence_definition_failure"
+    }
+  },
+  {
+    "case_id": "memos_medium:38",
+    "fields": [],
+    "before": {
+      "suff": "部分",
+      "labels": [
+        "O",
+        "O",
+        "O"
+      ],
+      "classification": "evidence_definition_failure"
+    },
+    "after": {
+      "suff": "部分",
+      "labels": [
+        "O",
+        "O",
+        "O"
+      ],
+      "classification": "evidence_definition_failure"
+    }
+  },
+  {
+    "case_id": "memos_long:2622",
+    "fields": [],
+    "before": {
+      "suff": "不充分",
+      "labels": [
+        "H",
+        "H",
+        "H"
+      ],
+      "classification": "evidence_definition_failure"
+    },
+    "after": {
+      "suff": "不充分",
+      "labels": [
+        "H",
+        "H",
+        "H"
+      ],
+      "classification": "evidence_definition_failure"
+    }
+  },
+  {
+    "case_id": "memos_medium:2170",
+    "fields": [],
+    "before": {
+      "suff": "部分",
+      "labels": [
+        "O",
+        "O",
+        "O"
+      ],
+      "classification": "evidence_definition_failure"
+    },
+    "after": {
+      "suff": "部分",
+      "labels": [
+        "O",
+        "O",
+        "O"
+      ],
+      "classification": "evidence_definition_failure"
+    }
+  },
+  {
+    "case_id": "memos_medium:1986",
+    "fields": [],
+    "before": {
+      "suff": "部分",
+      "labels": [
+        "O",
+        "O",
+        "O"
+      ],
+      "classification": "evidence_definition_failure"
+    },
+    "after": {
+      "suff": "部分",
+      "labels": [
+        "O",
+        "O",
+        "O"
+      ],
+      "classification": "evidence_definition_failure"
+    }
+  },
+  {
+    "case_id": "memos_medium:670",
+    "fields": [
+      "Run1",
+      "Run2",
+      "Run3"
+    ],
+    "before": {
+      "suff": "不充分",
+      "labels": [
+        "O",
+        "O",
+        "O"
+      ],
+      "classification": "evidence_definition_failure"
+    },
+    "after": {
+      "suff": "不充分",
+      "labels": [
+        "H",
+        "H",
+        "H"
+      ],
+      "classification": "evidence_definition_failure"
+    }
+  },
+  {
+    "case_id": "memos_medium:1370",
+    "fields": [],
+    "before": {
+      "suff": "不充分",
+      "labels": [
+        "H",
+        "H",
+        "H"
+      ],
+      "classification": "evidence_definition_failure"
+    },
+    "after": {
+      "suff": "不充分",
+      "labels": [
+        "H",
+        "H",
+        "H"
+      ],
+      "classification": "evidence_definition_failure"
+    }
+  },
+  {
+    "case_id": "memos_medium:2480",
+    "fields": [
+      "证据充分性",
+      "最终分类"
+    ],
+    "before": {
+      "suff": "充分",
+      "labels": [
+        "H",
+        "H",
+        "H"
+      ],
+      "classification": "robust_generation_failure"
+    },
+    "after": {
+      "suff": "部分",
+      "labels": [
+        "H",
+        "H",
+        "H"
+      ],
+      "classification": "evidence_definition_failure"
+    }
+  },
+  {
+    "case_id": "memos_long:190",
+    "fields": [],
+    "before": {
+      "suff": "部分",
+      "labels": [
+        "O",
+        "O",
+        "O"
+      ],
+      "classification": "evidence_definition_failure"
+    },
+    "after": {
+      "suff": "部分",
+      "labels": [
+        "O",
+        "O",
+        "O"
+      ],
+      "classification": "evidence_definition_failure"
+    }
+  },
+  {
+    "case_id": "memos_medium:912",
+    "fields": [
+      "Run1",
+      "Run2",
+      "Run3",
+      "最终分类"
+    ],
+    "before": {
+      "suff": "充分",
+      "labels": [
+        "H",
+        "H",
+        "H"
+      ],
+      "classification": "robust_generation_failure"
+    },
+    "after": {
+      "suff": "充分",
+      "labels": [
+        "C",
+        "C",
+        "C"
+      ],
+      "classification": "ua3_representation_or_admission_failure"
+    }
+  },
+  {
+    "case_id": "memos_medium:1283",
+    "fields": [],
+    "before": {
+      "suff": "不充分",
+      "labels": [
+        "H",
+        "H",
+        "H"
+      ],
+      "classification": "evidence_definition_failure"
+    },
+    "after": {
+      "suff": "不充分",
+      "labels": [
+        "H",
+        "H",
+        "H"
+      ],
+      "classification": "evidence_definition_failure"
+    }
+  },
+  {
+    "case_id": "memos_long:120",
+    "fields": [],
+    "before": {
+      "suff": "部分",
+      "labels": [
+        "O",
+        "O",
+        "O"
+      ],
+      "classification": "evidence_definition_failure"
+    },
+    "after": {
+      "suff": "部分",
+      "labels": [
+        "O",
+        "O",
+        "O"
+      ],
+      "classification": "evidence_definition_failure"
+    }
+  },
+  {
+    "case_id": "memos_long:2169",
+    "fields": [
+      "Run1",
+      "Run2",
+      "Run3"
+    ],
+    "before": {
+      "suff": "部分",
+      "labels": [
+        "C",
+        "C",
+        "C"
+      ],
+      "classification": "evidence_definition_failure"
+    },
+    "after": {
+      "suff": "部分",
+      "labels": [
+        "O",
+        "O",
+        "O"
+      ],
+      "classification": "evidence_definition_failure"
+    }
+  },
+  {
+    "case_id": "memos_medium:2623",
+    "fields": [],
+    "before": {
+      "suff": "部分",
+      "labels": [
+        "H",
+        "H",
+        "H"
+      ],
+      "classification": "evidence_definition_failure"
+    },
+    "after": {
+      "suff": "部分",
+      "labels": [
+        "H",
+        "H",
+        "H"
+      ],
+      "classification": "evidence_definition_failure"
+    }
+  },
+  {
+    "case_id": "memos_medium:120",
+    "fields": [],
+    "before": {
+      "suff": "部分",
+      "labels": [
+        "O",
+        "O",
+        "O"
+      ],
+      "classification": "evidence_definition_failure"
+    },
+    "after": {
+      "suff": "部分",
+      "labels": [
+        "O",
+        "O",
+        "O"
+      ],
+      "classification": "evidence_definition_failure"
+    }
+  },
+  {
+    "case_id": "memos_medium:3255",
+    "fields": [],
+    "before": {
+      "suff": "充分",
+      "labels": [
+        "O",
+        "O",
+        "O"
+      ],
+      "classification": "robust_generation_failure"
+    },
+    "after": {
+      "suff": "充分",
+      "labels": [
+        "O",
+        "O",
+        "O"
+      ],
+      "classification": "robust_generation_failure"
+    }
+  },
+  {
+    "case_id": "memos_medium:1360",
+    "fields": [],
+    "before": {
+      "suff": "不充分",
+      "labels": [
+        "H",
+        "H",
+        "H"
+      ],
+      "classification": "evidence_definition_failure"
+    },
+    "after": {
+      "suff": "不充分",
+      "labels": [
+        "H",
+        "H",
+        "H"
+      ],
+      "classification": "evidence_definition_failure"
+    }
+  },
+  {
+    "case_id": "memos_medium:2227",
+    "fields": [],
+    "before": {
+      "suff": "部分",
+      "labels": [
+        "H",
+        "H",
+        "H"
+      ],
+      "classification": "evidence_definition_failure"
+    },
+    "after": {
+      "suff": "部分",
+      "labels": [
+        "H",
+        "H",
+        "H"
+      ],
+      "classification": "evidence_definition_failure"
+    }
+  },
+  {
+    "case_id": "memos_long:1883",
+    "fields": [],
+    "before": {
+      "suff": "不充分",
+      "labels": [
+        "H",
+        "H",
+        "H"
+      ],
+      "classification": "evidence_definition_failure"
+    },
+    "after": {
+      "suff": "不充分",
+      "labels": [
+        "H",
+        "H",
+        "H"
+      ],
+      "classification": "evidence_definition_failure"
+    }
+  },
+  {
+    "case_id": "memos_long:2133",
+    "fields": [],
+    "before": {
+      "suff": "充分",
+      "labels": [
+        "O",
+        "O",
+        "O"
+      ],
+      "classification": "robust_generation_failure"
+    },
+    "after": {
+      "suff": "充分",
+      "labels": [
+        "O",
+        "O",
+        "O"
+      ],
+      "classification": "robust_generation_failure"
+    }
+  },
+  {
+    "case_id": "memos_medium:2656",
+    "fields": [
+      "Run1",
+      "Run2",
+      "Run3"
+    ],
+    "before": {
+      "suff": "不充分",
+      "labels": [
+        "O",
+        "O",
+        "O"
+      ],
+      "classification": "evidence_definition_failure"
+    },
+    "after": {
+      "suff": "不充分",
+      "labels": [
+        "H",
+        "H",
+        "H"
+      ],
+      "classification": "evidence_definition_failure"
+    }
+  },
+  {
+    "case_id": "memos_long:2153",
+    "fields": [
+      "证据充分性",
+      "最终分类"
+    ],
+    "before": {
+      "suff": "充分",
+      "labels": [
+        "O",
+        "O",
+        "O"
+      ],
+      "classification": "robust_generation_failure"
+    },
+    "after": {
+      "suff": "部分",
+      "labels": [
+        "O",
+        "O",
+        "O"
+      ],
+      "classification": "evidence_definition_failure"
+    }
+  },
+  {
+    "case_id": "memos_medium:2155",
+    "fields": [
+      "证据充分性",
+      "最终分类"
+    ],
+    "before": {
+      "suff": "充分",
+      "labels": [
+        "H",
+        "H",
+        "H"
+      ],
+      "classification": "robust_generation_failure"
+    },
+    "after": {
+      "suff": "部分",
+      "labels": [
+        "H",
+        "H",
+        "H"
+      ],
+      "classification": "evidence_definition_failure"
+    }
+  },
+  {
+    "case_id": "memos_long:3048",
+    "fields": [],
+    "before": {
+      "suff": "不充分",
+      "labels": [
+        "O",
+        "O",
+        "O"
+      ],
+      "classification": "evidence_definition_failure"
+    },
+    "after": {
+      "suff": "不充分",
+      "labels": [
+        "O",
+        "O",
+        "O"
+      ],
+      "classification": "evidence_definition_failure"
+    }
+  },
+  {
+    "case_id": "memos_long:127",
+    "fields": [],
+    "before": {
+      "suff": "部分",
+      "labels": [
+        "O",
+        "O",
+        "O"
+      ],
+      "classification": "evidence_definition_failure"
+    },
+    "after": {
+      "suff": "部分",
+      "labels": [
+        "O",
+        "O",
+        "O"
+      ],
+      "classification": "evidence_definition_failure"
+    }
+  },
+  {
+    "case_id": "memos_long:2183",
+    "fields": [],
+    "before": {
+      "suff": "不充分",
+      "labels": [
+        "O",
+        "O",
+        "O"
+      ],
+      "classification": "evidence_definition_failure"
+    },
+    "after": {
+      "suff": "不充分",
+      "labels": [
+        "O",
+        "O",
+        "O"
+      ],
+      "classification": "evidence_definition_failure"
+    }
+  },
+  {
+    "case_id": "memos_long:491",
+    "fields": [
+      "证据充分性",
+      "最终分类"
+    ],
+    "before": {
+      "suff": "充分",
+      "labels": [
+        "O",
+        "O",
+        "O"
+      ],
+      "classification": "robust_generation_failure"
+    },
+    "after": {
+      "suff": "部分",
+      "labels": [
+        "O",
+        "O",
+        "O"
+      ],
+      "classification": "evidence_definition_failure"
+    }
+  },
+  {
+    "case_id": "memos_medium:775",
+    "fields": [],
+    "before": {
+      "suff": "充分",
+      "labels": [
+        "C",
+        "C",
+        "C"
+      ],
+      "classification": "ua3_representation_or_admission_failure"
+    },
+    "after": {
+      "suff": "充分",
+      "labels": [
+        "C",
+        "C",
+        "C"
+      ],
+      "classification": "ua3_representation_or_admission_failure"
+    }
+  },
+  {
+    "case_id": "memos_medium:1923",
+    "fields": [
+      "证据充分性",
+      "Run1",
+      "Run2",
+      "Run3",
+      "最终分类"
+    ],
+    "before": {
+      "suff": "充分",
+      "labels": [
+        "C",
+        "C",
+        "C"
+      ],
+      "classification": "ua3_representation_or_admission_failure"
+    },
+    "after": {
+      "suff": "部分",
+      "labels": [
+        "O",
+        "O",
+        "O"
+      ],
+      "classification": "evidence_definition_failure"
+    }
+  },
+  {
+    "case_id": "memos_long:1360",
+    "fields": [],
+    "before": {
+      "suff": "不充分",
+      "labels": [
+        "O",
+        "O",
+        "O"
+      ],
+      "classification": "evidence_definition_failure"
+    },
+    "after": {
+      "suff": "不充分",
+      "labels": [
+        "O",
+        "O",
+        "O"
+      ],
+      "classification": "evidence_definition_failure"
+    }
+  },
+  {
+    "case_id": "memos_long:2537",
+    "fields": [],
+    "before": {
+      "suff": "充分",
+      "labels": [
+        "C",
+        "C",
+        "C"
+      ],
+      "classification": "ua3_representation_or_admission_failure"
+    },
+    "after": {
+      "suff": "充分",
+      "labels": [
+        "C",
+        "C",
+        "C"
+      ],
+      "classification": "ua3_representation_or_admission_failure"
+    }
+  },
+  {
+    "case_id": "memos_medium:2755",
+    "fields": [
+      "Run1",
+      "Run3"
+    ],
+    "before": {
+      "suff": "部分",
+      "labels": [
+        "C",
+        "O",
+        "C"
+      ],
+      "classification": "evidence_definition_failure"
+    },
+    "after": {
+      "suff": "部分",
+      "labels": [
+        "O",
+        "O",
+        "O"
+      ],
+      "classification": "evidence_definition_failure"
+    }
+  },
+  {
+    "case_id": "memos_long:484",
+    "fields": [
+      "证据充分性",
+      "最终分类"
+    ],
+    "before": {
+      "suff": "充分",
+      "labels": [
+        "C",
+        "C",
+        "C"
+      ],
+      "classification": "ua3_representation_or_admission_failure"
+    },
+    "after": {
+      "suff": "部分",
+      "labels": [
+        "C",
+        "C",
+        "C"
+      ],
+      "classification": "evidence_definition_failure"
+    }
+  },
+  {
+    "case_id": "memos_long:1405",
+    "fields": [
+      "证据充分性",
+      "最终分类"
+    ],
+    "before": {
+      "suff": "充分",
+      "labels": [
+        "O",
+        "O",
+        "O"
+      ],
+      "classification": "robust_generation_failure"
+    },
+    "after": {
+      "suff": "部分",
+      "labels": [
+        "O",
+        "O",
+        "O"
+      ],
+      "classification": "evidence_definition_failure"
+    }
+  },
+  {
+    "case_id": "memos_medium:2358",
+    "fields": [
+      "Run1",
+      "Run2",
+      "Run3"
+    ],
+    "before": {
+      "suff": "部分",
+      "labels": [
+        "O",
+        "O",
+        "O"
+      ],
+      "classification": "evidence_definition_failure"
+    },
+    "after": {
+      "suff": "部分",
+      "labels": [
+        "C",
+        "C",
+        "C"
+      ],
+      "classification": "evidence_definition_failure"
+    }
+  },
+  {
+    "case_id": "memos_long:390",
+    "fields": [],
+    "before": {
+      "suff": "部分",
+      "labels": [
+        "O",
+        "O",
+        "O"
+      ],
+      "classification": "evidence_definition_failure"
+    },
+    "after": {
+      "suff": "部分",
+      "labels": [
+        "O",
+        "O",
+        "O"
+      ],
+      "classification": "evidence_definition_failure"
+    }
+  },
+  {
+    "case_id": "memos_long:1997",
+    "fields": [
+      "证据充分性",
+      "最终分类"
+    ],
+    "before": {
+      "suff": "充分",
+      "labels": [
+        "O",
+        "O",
+        "O"
+      ],
+      "classification": "robust_generation_failure"
+    },
+    "after": {
+      "suff": "部分",
+      "labels": [
+        "O",
+        "O",
+        "O"
+      ],
+      "classification": "evidence_definition_failure"
+    }
+  },
+  {
+    "case_id": "memos_medium:3049",
+    "fields": [],
+    "before": {
+      "suff": "不充分",
+      "labels": [
+        "O",
+        "O",
+        "O"
+      ],
+      "classification": "evidence_definition_failure"
+    },
+    "after": {
+      "suff": "不充分",
+      "labels": [
+        "O",
+        "O",
+        "O"
+      ],
+      "classification": "evidence_definition_failure"
+    }
+  },
+  {
+    "case_id": "memos_long:455",
+    "fields": [],
+    "before": {
+      "suff": "充分",
+      "labels": [
+        "O",
+        "O",
+        "O"
+      ],
+      "classification": "robust_generation_failure"
+    },
+    "after": {
+      "suff": "充分",
+      "labels": [
+        "O",
+        "O",
+        "O"
+      ],
+      "classification": "robust_generation_failure"
+    }
+  },
+  {
+    "case_id": "memos_medium:1444",
+    "fields": [],
+    "before": {
+      "suff": "充分",
+      "labels": [
+        "O",
+        "O",
+        "O"
+      ],
+      "classification": "robust_generation_failure"
+    },
+    "after": {
+      "suff": "充分",
+      "labels": [
+        "O",
+        "O",
+        "O"
+      ],
+      "classification": "robust_generation_failure"
+    }
+  },
+  {
+    "case_id": "memos_long:3213",
+    "fields": [],
+    "before": {
+      "suff": "不充分",
+      "labels": [
+        "H",
+        "H",
+        "H"
+      ],
+      "classification": "evidence_definition_failure"
+    },
+    "after": {
+      "suff": "不充分",
+      "labels": [
+        "H",
+        "H",
+        "H"
+      ],
+      "classification": "evidence_definition_failure"
+    }
+  },
+  {
+    "case_id": "memos_medium:1361",
+    "fields": [],
+    "before": {
+      "suff": "部分",
+      "labels": [
+        "O",
+        "O",
+        "O"
+      ],
+      "classification": "evidence_definition_failure"
+    },
+    "after": {
+      "suff": "部分",
+      "labels": [
+        "O",
+        "O",
+        "O"
+      ],
+      "classification": "evidence_definition_failure"
+    }
+  },
+  {
+    "case_id": "memos_medium:1470",
+    "fields": [
+      "证据充分性",
+      "最终分类"
+    ],
+    "before": {
+      "suff": "充分",
+      "labels": [
+        "C",
+        "C",
+        "C"
+      ],
+      "classification": "ua3_representation_or_admission_failure"
+    },
+    "after": {
+      "suff": "部分",
+      "labels": [
+        "C",
+        "C",
+        "C"
+      ],
+      "classification": "evidence_definition_failure"
+    }
+  },
+  {
+    "case_id": "memos_long:2506",
+    "fields": [],
+    "before": {
+      "suff": "部分",
+      "labels": [
+        "O",
+        "O",
+        "O"
+      ],
+      "classification": "evidence_definition_failure"
+    },
+    "after": {
+      "suff": "部分",
+      "labels": [
+        "O",
+        "O",
+        "O"
+      ],
+      "classification": "evidence_definition_failure"
+    }
+  },
+  {
+    "case_id": "memos_long:1852",
+    "fields": [],
+    "before": {
+      "suff": "不充分",
+      "labels": [
+        "H",
+        "H",
+        "H"
+      ],
+      "classification": "evidence_definition_failure"
+    },
+    "after": {
+      "suff": "不充分",
+      "labels": [
+        "H",
+        "H",
+        "H"
+      ],
+      "classification": "evidence_definition_failure"
+    }
+  },
+  {
+    "case_id": "memos_long:2410",
+    "fields": [],
+    "before": {
+      "suff": "充分",
+      "labels": [
+        "O",
+        "O",
+        "O"
+      ],
+      "classification": "robust_generation_failure"
+    },
+    "after": {
+      "suff": "充分",
+      "labels": [
+        "O",
+        "O",
+        "O"
+      ],
+      "classification": "robust_generation_failure"
+    }
+  },
+  {
+    "case_id": "memos_medium:157",
+    "fields": [
+      "证据充分性",
+      "最终分类"
+    ],
+    "before": {
+      "suff": "充分",
+      "labels": [
+        "O",
+        "O",
+        "O"
+      ],
+      "classification": "robust_generation_failure"
+    },
+    "after": {
+      "suff": "部分",
+      "labels": [
+        "O",
+        "O",
+        "O"
+      ],
+      "classification": "evidence_definition_failure"
+    }
+  },
+  {
+    "case_id": "memos_long:3197",
+    "fields": [],
+    "before": {
+      "suff": "部分",
+      "labels": [
+        "O",
+        "O",
+        "O"
+      ],
+      "classification": "evidence_definition_failure"
+    },
+    "after": {
+      "suff": "部分",
+      "labels": [
+        "O",
+        "O",
+        "O"
+      ],
+      "classification": "evidence_definition_failure"
+    }
+  },
+  {
+    "case_id": "memos_medium:1853",
+    "fields": [
+      "Run1",
+      "Run2",
+      "Run3"
+    ],
+    "before": {
+      "suff": "不充分",
+      "labels": [
+        "O",
+        "O",
+        "O"
+      ],
+      "classification": "evidence_definition_failure"
+    },
+    "after": {
+      "suff": "不充分",
+      "labels": [
+        "H",
+        "H",
+        "H"
+      ],
+      "classification": "evidence_definition_failure"
+    }
+  }
+]

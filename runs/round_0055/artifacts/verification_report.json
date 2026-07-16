@@ -1,0 +1,141 @@
+{
+  "status": "passed",
+  "errors": [],
+  "checksPassed": 312,
+  "checksTotal": 312,
+  "originalMeta": [
+    {
+      "name": "人工审核",
+      "rows": 382,
+      "cols": 22,
+      "tables": 1,
+      "dataValidations": 4
+    },
+    {
+      "name": "机器判定原表",
+      "rows": 382,
+      "cols": 15,
+      "tables": 1,
+      "dataValidations": 0
+    },
+    {
+      "name": "最终分类差异复核",
+      "rows": 39,
+      "cols": 30,
+      "tables": 1,
+      "dataValidations": 0
+    },
+    {
+      "name": "全部标签差异",
+      "rows": 95,
+      "cols": 17,
+      "tables": 1,
+      "dataValidations": 0
+    },
+    {
+      "name": "最终汇总表",
+      "rows": 382,
+      "cols": 21,
+      "tables": 0,
+      "dataValidations": 0
+    },
+    {
+      "name": "原始数据回查",
+      "rows": 91,
+      "cols": 17,
+      "tables": 1,
+      "dataValidations": 0
+    }
+  ],
+  "finalMeta": [
+    {
+      "name": "人工审核",
+      "rows": 382,
+      "cols": 22,
+      "tables": 1,
+      "dataValidations": 4
+    },
+    {
+      "name": "机器判定原表",
+      "rows": 382,
+      "cols": 15,
+      "tables": 1,
+      "dataValidations": 0
+    },
+    {
+      "name": "最终分类差异复核",
+      "rows": 39,
+      "cols": 30,
+      "tables": 1,
+      "dataValidations": 0
+    },
+    {
+      "name": "全部标签差异",
+      "rows": 95,
+      "cols": 17,
+      "tables": 1,
+      "dataValidations": 0
+    },
+    {
+      "name": "最终汇总表",
+      "rows": 382,
+      "cols": 21,
+      "tables": 0,
+      "dataValidations": 0
+    },
+    {
+      "name": "原始数据回查",
+      "rows": 91,
+      "cols": 17,
+      "tables": 1,
+      "dataValidations": 0
+    },
+    {
+      "name": "90条二次复核审计",
+      "rows": 91,
+      "cols": 41,
+      "tables": 1,
+      "dataValidations": 6
+    },
+    {
+      "name": "最新汇总统计",
+      "rows": 16,
+      "cols": 8,
+      "tables": 0,
+      "dataValidations": 0
+    }
+  ],
+  "counts": {
+    "overallSufficiency": {
+      "部分": 44,
+      "充分": 314,
+      "不充分": 23
+    },
+    "overallClassification": {
+      "evidence_definition_failure": 67,
+      "robust_generation_failure": 148,
+      "ua3_representation_or_admission_failure": 166
+    },
+    "overallLabels": {
+      "O": 546,
+      "C": 510,
+      "H": 87
+    },
+    "auditSufficiency": {
+      "部分": 44,
+      "充分": 23,
+      "不充分": 23
+    },
+    "auditClassification": {
+      "evidence_definition_failure": 67,
+      "robust_generation_failure": 15,
+      "ua3_representation_or_admission_failure": 8
+    },
+    "changedCases": 30,
+    "suffChanges": 16,
+    "runChanges": 15,
+    "classChanges": 19,
+    "summaryFormulaCount": 32
+  },
+  "formulaErrorScan": "{\"kind\":\"notice\",\"message\":\"Cell search matched 0 entries.\"}"
+}
