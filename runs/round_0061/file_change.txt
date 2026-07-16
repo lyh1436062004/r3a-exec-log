@@ -1,0 +1,8 @@
+Project workspace files added:
+- outputs/unified_parsing_task_conversation_full.md
+
+Execution-log files added:
+- runs/round_0061/run_summary.json
+- runs/round_0061/file_change.txt
+- runs/round_0061/diff.txt
+- runs/round_0061/artifacts/unified_parsing_task_conversation_full.md
