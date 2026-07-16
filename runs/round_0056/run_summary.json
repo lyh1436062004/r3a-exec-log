@@ -1,0 +1,26 @@
+{
+  "round": "round_0056",
+  "date": "2026-07-16",
+  "task": "Explain the unified canonical conversion/admission path from code",
+  "task_type": "read-only code interpretation",
+  "status": "completed",
+  "source_files_reviewed": [
+    "脚本/3.0/00_verify_serializer.py",
+    "脚本/3.0/01_select_memos_full.py",
+    "脚本/3.0/02_generate_memos_full.py",
+    "脚本/3.0/e1_memos_oracle_common.py",
+    "脚本/3.0/07_verify_unified_admission.py",
+    "脚本/3.0/09_verify_unified_a1_a5.py",
+    "脚本/3.0/10_analyze_unified_a1_a5.py"
+  ],
+  "key_findings": {
+    "scope": "Post-retrieval context canonicalization; no retriever or memory-store mutation",
+    "raw_memories": 22385,
+    "canonically_admitted_memories": 22385,
+    "dropped_memories": 0,
+    "strict_gold_memories": 1908,
+    "strict_gold_admitted": 1908
+  },
+  "source_changes": [],
+  "tests_run": []
+}
