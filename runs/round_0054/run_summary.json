@@ -1,0 +1,39 @@
+{
+  "round": "round_0054",
+  "task": "Summarize the final human-audited Generation Failure workbook",
+  "date": "2026-07-16",
+  "status": "completed",
+  "source": {
+    "workbook": "D:/幻觉/临时/人工审查/审查生成错误率/最终汇总表-人工机器复核整合.xlsx",
+    "sheet": "最终汇总表",
+    "rows": 381
+  },
+  "key_results": {
+    "robust_generation_failure": 133,
+    "robust_rate_candidate_pool_percent": 34.91,
+    "robust_rate_visible_strict_763_percent": 17.43,
+    "robust_rate_all_baseline_errors_1987_percent": 6.69,
+    "ua3_representation_or_admission_failure": 158,
+    "evidence_definition_failure": 90,
+    "generation_instability": 0,
+    "unresolved": 0,
+    "machine_to_final_class_changes": 25,
+    "pending_source_markers": 7
+  },
+  "verification": {
+    "all_cases_complete": true,
+    "json_valid": true,
+    "source_workbook_sha256": "DB428CC47875BB808F7B6C0CE394D095E3D9470032D0FF78A6DB2E4D1A4B796D",
+    "report_sha256": "2BAF6CC12D67D37DADE1B97E358B9E7F0A48E134181085780DC621F436A62BE9",
+    "statistics_json_sha256": "3FA83FAEF831AF86F6B7884E67E949E7699ED359FBC07313C91C1C1FE61AD0B0"
+  },
+  "artifacts": [
+    "artifacts/最终汇总表-人工机器复核整合.xlsx",
+    "artifacts/final_human_audit_statistics.md",
+    "artifacts/final_human_audit_statistics.json"
+  ],
+  "security": {
+    "api_keys_included": false,
+    "credentials_included": false
+  }
+}

@@ -1,0 +1,7 @@
+Task-level diff summary:
+
+1. Read all 381 rows from the final integrated audit workbook.
+2. Recomputed final category counts, rates, Wilson confidence intervals, evidence sufficiency, run-level labels, dataset and question-type strata, and machine-to-final transitions.
+3. Added a human-readable Markdown report and structured JSON summary.
+4. Archived the user-provided final workbook with SHA-256 provenance.
+5. No experiment code, retriever, memory store, or prior result file was changed.

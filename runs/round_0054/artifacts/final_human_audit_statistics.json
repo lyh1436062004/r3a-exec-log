@@ -1,0 +1,66 @@
+{
+  "source_workbook": "D:\\幻觉\\临时\\人工审查\\审查生成错误率\\最终汇总表-人工机器复核整合.xlsx",
+  "source_sheet": "最终汇总表",
+  "candidate_count": 381,
+  "complete_case_count": 381,
+  "final_classification": {
+    "robust_generation_failure": 133,
+    "generation_instability": 0,
+    "ua3_representation_or_admission_failure": 158,
+    "evidence_definition_failure": 90,
+    "unresolved": 0
+  },
+  "robust_failure_rates": {
+    "candidate_pool_381": {
+      "numerator": 133,
+      "denominator": 381,
+      "rate_percent": 34.91,
+      "wilson_95ci_percent": [30.29, 39.82]
+    },
+    "visible_strict_763": {
+      "numerator": 133,
+      "denominator": 763,
+      "rate_percent": 17.43,
+      "wilson_95ci_percent": [14.90, 20.28]
+    },
+    "baseline_errors_1987": {
+      "numerator": 133,
+      "denominator": 1987,
+      "rate_percent": 6.69,
+      "wilson_95ci_percent": [5.68, 7.88]
+    },
+    "sufficient_evidence_291": {
+      "numerator": 133,
+      "denominator": 291,
+      "rate_percent": 45.70
+    }
+  },
+  "final_evidence_sufficiency": {
+    "充分": 291,
+    "部分": 66,
+    "不充分": 24,
+    "不确定": 0
+  },
+  "answer_labels_all_runs": {
+    "C": 506,
+    "O": 553,
+    "H": 84,
+    "total": 1143
+  },
+  "dataset_breakdown": {
+    "medium": {"n": 190, "robust_generation_failure": 65, "rate_percent": 34.21},
+    "long": {"n": 191, "robust_generation_failure": 68, "rate_percent": 35.60}
+  },
+  "machine_final_class_agreement": {
+    "agree": 356,
+    "total": 381,
+    "rate_percent": 93.44,
+    "changed": 25
+  },
+  "pending_source_marker": {
+    "count": 7,
+    "current_final_classification": "evidence_definition_failure",
+    "suggested_robust_count": 4,
+    "robust_count_sensitivity_range": [133, 137]
+  }
+}
