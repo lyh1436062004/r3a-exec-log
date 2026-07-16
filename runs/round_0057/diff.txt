@@ -1,0 +1,14 @@
+Task diff summary
+=================
+
+Added a reusable CodeTour with eight verified anchors covering:
+1. MemoryItem target schema.
+2. MemOS Cloud response pre-normalization.
+3. Generic raw-memory to MemoryItem conversion.
+4. Batch conversion and controller handoff.
+5. The current MemOS text-only field-loss point.
+6. The 3.0 canonical text extractor.
+7. Full raw-payload sequence construction.
+8. Canonical extraction, fixed authorization, leakage check, and context serialization.
+
+No source implementation code was changed.

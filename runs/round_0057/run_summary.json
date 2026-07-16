@@ -1,0 +1,29 @@
+{
+  "round": "round_0057",
+  "task": "Explain the concrete unified memory transformation directly from code",
+  "project": "A2 post-retrieval memory use-eligibility controller",
+  "status": "completed",
+  "date": "2026-07-16",
+  "outcome": [
+    "Traced the backend response to MemoryItem normalization path",
+    "Separated the legacy MemoryItem normalization from the 3.0 canonical text parser",
+    "Verified with an offline MemOS Cloud example that id, text, rank, score, timestamp, and metadata map as documented",
+    "Identified that the current MemOS smoke wiring passes text-only strings onward and therefore drops id, score, and timestamp before A2"
+  ],
+  "source_files_inspected": [
+    "脚本/2.0-修复版/a2/schemas.py",
+    "脚本/2.0-修复版/a2/halumem_adapter.py",
+    "脚本/2.0-修复版/a2/memos_cloud_adapter.py",
+    "脚本/2.0-修复版/smoke_common.py",
+    "脚本/2.0-修复版/smoke_memos.py",
+    "脚本/3.0/e1_memos_oracle_common.py"
+  ],
+  "modified_project_files": [
+    ".tours/feature-explainer-unified-memory-normalization.tour"
+  ],
+  "tests": [
+    "Python import and two-stage normalization example passed",
+    "CodeTour JSON validation passed"
+  ],
+  "sensitive_files_copied": false
+}

@@ -1,0 +1,80 @@
+{
+  "$schema": "https://aka.ms/codetour-schema",
+  "title": "A2 统一记忆转化",
+  "description": "从后端原始返回、统一字段抽取、MemoryItem 构造，到 3.0 canonical 文本序列化的实际代码路径。",
+  "ref": "main",
+  "steps": [
+    {
+      "file": "脚本/2.0-修复版/a2/schemas.py",
+      "selection": {
+        "start": { "line": 16, "character": 0 },
+        "end": { "line": 23, "character": 68 }
+      },
+      "title": "统一目标结构",
+      "description": "所有后端最终应对齐到 MemoryItem：id、text、rank、retriever_score、timestamp 和 metadata。它是准入控制器消费的稳定接口。"
+    },
+    {
+      "file": "脚本/2.0-修复版/a2/memos_cloud_adapter.py",
+      "selection": {
+        "start": { "line": 73, "character": 0 },
+        "end": { "line": 98, "character": 5 }
+      },
+      "title": "MemOS 原生响应预归一化",
+      "description": "MemOS Cloud 的 memory_value、relativity、create_time 等后端字段先映射成 memory、score、timestamp 等通用键，并保留原对象到 metadata。"
+    },
+    {
+      "file": "脚本/2.0-修复版/a2/halumem_adapter.py",
+      "selection": {
+        "start": { "line": 9, "character": 0 },
+        "end": { "line": 37, "character": 5 }
+      },
+      "title": "通用 MemoryItem 构造",
+      "description": "字符串、非字典和字典走三条分支；字典按固定候选键优先级提取正文、分数和时间，再补 id 与 rank。这里不改写记忆语义。"
+    },
+    {
+      "file": "脚本/2.0-修复版/smoke_common.py",
+      "selection": {
+        "start": { "line": 114, "character": 0 },
+        "end": { "line": 133, "character": 5 }
+      },
+      "title": "批量转化并送入控制器",
+      "description": "enumerate 产生稳定 rank，逐条构造 MemoryItem；随后 controller.admit 只面对统一结构，输出可审计的准入 bundle。"
+    },
+    {
+      "file": "脚本/2.0-修复版/smoke_memos.py",
+      "selection": {
+        "start": { "line": 84, "character": 0 },
+        "end": { "line": 100, "character": 46 }
+      },
+      "title": "MemOS 当前字段损失点",
+      "description": "当前 smoke 接线从预归一化对象中只取 memory 文本并返回字符串列表，因此原生 id、score、timestamp 没有继续传给 A2；这是理解“理论统一结构”和“实际运行数据”差异的关键。"
+    },
+    {
+      "file": "脚本/3.0/e1_memos_oracle_common.py",
+      "selection": {
+        "start": { "line": 144, "character": 0 },
+        "end": { "line": 175, "character": 13 }
+      },
+      "title": "3.0 canonical 文本抽取",
+      "description": "近期实验的“统一 parser”不是构造 MemoryItem，而是从完整 raw payload 中统一恢复正文；它额外支持 preference/reasoning 和嵌套 metadata。"
+    },
+    {
+      "file": "脚本/3.0/e1_memos_oracle_common.py",
+      "selection": {
+        "start": { "line": 283, "character": 0 },
+        "end": { "line": 340, "character": 15 }
+      },
+      "title": "确定完整 raw 记忆序列",
+      "description": "A6/A7/UA1-UA5 以 all_ids 覆盖完整 retriever payload，按条件决定顺序和固定授权类型；这里选择的是候选序列，还未拼上下文。"
+    },
+    {
+      "file": "脚本/3.0/e1_memos_oracle_common.py",
+      "selection": {
+        "start": { "line": 358, "character": 0 },
+        "end": { "line": 410, "character": 27 }
+      },
+      "title": "抽取、授权、序列化",
+      "description": "统一条件调用 memory_text，跳过空正文，注入固定授权模板，检查 gold 泄漏，最后按 baseline 格式拼回 context 并记录 admitted/dropped 审计字段。"
+    }
+  ]
+}
