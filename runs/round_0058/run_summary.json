@@ -1,0 +1,26 @@
+{
+  "round": "round_0058",
+  "task": "Explain the UA3 experimental arm as an eight-step code path",
+  "status": "completed",
+  "date": "2026-07-16",
+  "outcome": [
+    "Reconstructed UA3 from sample selection through generation and gold-only judging",
+    "Confirmed UA3 maps to base condition A3",
+    "Confirmed UA3 admits oracle gold_memory_ids only from the complete raw retriever payload",
+    "Confirmed relation licenses are assigned by condition cue and question_type rather than a per-memory learned relation classifier",
+    "Executed an offline UA3 example for memos_medium:77: 12 raw memories, 3 gold memories admitted, 9 dropped, 3 REFUTE licenses"
+  ],
+  "source_files_inspected": [
+    "脚本/3.0/01_select_memos_full.py",
+    "脚本/3.0/e1_memos_oracle_common.py",
+    "脚本/3.0/02_generate_memos_full.py",
+    "脚本/3.0/03_judge_memos_full.py",
+    "脚本/3.0/09_verify_unified_a1_a5.py",
+    "outputs/e1_memos_full_oracle_v2/unified_a1_a5_run_summary_zh.md"
+  ],
+  "modified_project_files": [],
+  "tests": [
+    "Offline build_memory_sequence(sample, 'UA3') and build_context(sample, 'UA3') execution passed"
+  ],
+  "sensitive_files_copied": false
+}
