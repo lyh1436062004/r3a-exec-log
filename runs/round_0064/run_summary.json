@@ -1,0 +1,22 @@
+{
+  "round": "round_0064",
+  "timestamp": "2026-07-20T12:53:33+08:00",
+  "task": "Explain how to fill the 43-row Experiment 7 human validation workbook",
+  "status": "completed",
+  "workspace": "D:\\幻觉",
+  "source_workbook": "outputs/e7_memos_containment_audit_v1/human_validation_sample.xlsx",
+  "verified_structure": {
+    "review_rows": 43,
+    "sheets": ["Containment人工复核", "标签说明"],
+    "editable_columns": [
+      "human_raw_coverage",
+      "human_rendered_coverage",
+      "human_final_label",
+      "human_confidence",
+      "human_notes"
+    ]
+  },
+  "guidance": "Use a blinded, deterministic D-then-raw-then-rendered decision order and preserve the original workbook.",
+  "project_changes_by_this_task": [],
+  "artifacts": ["audit_filling_guide.md", "run_summary.json", "file_change.txt", "diff.txt"]
+}

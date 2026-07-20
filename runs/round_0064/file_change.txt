@@ -1,0 +1,4 @@
+Task-scoped project file changes: none.
+
+The Experiment 7 workbook was read only. No cells or project outputs were modified.
+The filling instructions were recorded only in the execution-log round.

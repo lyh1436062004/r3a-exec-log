@@ -1,0 +1,5 @@
+No task-scoped project diff exists.
+
+This was a read-only guidance task. The execution log adds a human-audit filling guide
+covering editable columns, blinding, coverage definitions, deterministic A/B/C/D mapping,
+temporal evidence rules, confidence levels, and preservation of the blank workbook.
