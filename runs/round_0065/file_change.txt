@@ -1,0 +1,14 @@
+Task-scoped project additions:
+- 脚本/3.0/16_integrate_containment_human_validation.py
+- tests/test_experiment7_human_validation_integration.py
+- 实验结果/实验7--证据审查/实验7最终人工验证报告.md
+- outputs/e7_memos_containment_audit_v1/human_validation_sample_final_confidence_adjusted.xlsx
+- outputs/e7_memos_containment_audit_v1/human_validation_results.json
+- outputs/e7_memos_containment_audit_v1/human_validation_results.md
+- outputs/e7_memos_containment_audit_v1/human_validation_adjudication.json
+- outputs/e7_memos_containment_audit_v1/human_validation_disagreements.csv
+- outputs/e7_memos_containment_audit_v1/integrated_case_summary.csv
+- outputs/e7_memos_containment_audit_v1/integrated_case_summary.jsonl
+
+The user-supplied workbook in Downloads was read and copied without modification.
+Pre-existing workspace changes outside the listed paths were preserved.

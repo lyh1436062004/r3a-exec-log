@@ -1,0 +1,9 @@
+[
+  {
+    "case_id": "memos_long:2093",
+    "field": "human_rendered_coverage",
+    "submitted_value": "partial",
+    "adjudicated_value": "contained",
+    "reason": "The exact UA3 context explicitly contains 'organizing charity sports events'; the submitted note also states that both activities were retained and no key fact was lost."
+  }
+]

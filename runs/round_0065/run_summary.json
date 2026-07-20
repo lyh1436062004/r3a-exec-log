@@ -1,0 +1,85 @@
+{
+  "round": "round_0065",
+  "timestamp": "2026-07-20T13:28:49+08:00",
+  "task": "Validate and integrate the completed Experiment 7 human-review workbook",
+  "status": "completed_with_two_explicit_uncertain_cases",
+  "workspace": "D:\\幻觉",
+  "experiment_id": "e7_memos_containment_audit_v1",
+  "input": {
+    "workbook": "C:/Users/78443/Downloads/human_validation_sample_final_confidence_adjusted.xlsx",
+    "sha256": "b62a470532d7ee4b9832b33805b8a5d818f2651e78de8909607b933dbe03cf74",
+    "rows": 43,
+    "unique_case_ids": 43,
+    "immutable_A_to_P_cell_changes": 0,
+    "blank_required_fields": 0
+  },
+  "adjudication": {
+    "count": 1,
+    "case_id": "memos_long:2093",
+    "field": "human_rendered_coverage",
+    "submitted": "partial",
+    "derived": "contained",
+    "reason": "Exact context and submitted note both show that the gold activity was retained",
+    "submitted_workbook_modified": false
+  },
+  "agreement": {
+    "raw_coverage": "43/43",
+    "rendered_coverage_after_adjudication": "42/43",
+    "final_label": "41/43",
+    "concrete_label_excluding_uncertain": "41/41"
+  },
+  "results": {
+    "machine_census": {
+      "A": 12,
+      "B": 73,
+      "C": 72,
+      "D": 1,
+      "uncertain": 0,
+      "B_plus_C": 145,
+      "B_plus_C_percent": 91.77
+    },
+    "hybrid_case_level": {
+      "A": 12,
+      "B": 72,
+      "C": 72,
+      "D": 0,
+      "uncertain": 2,
+      "B_plus_C": 144,
+      "B_plus_C_percent": 91.14
+    },
+    "design_weighted": {
+      "A": 12.0,
+      "B": 72.5,
+      "C": 67.67,
+      "D": 0.0,
+      "uncertain": 5.83,
+      "B_plus_C": 140.17,
+      "B_plus_C_percent": 88.71,
+      "projected_95_interval_percent": [76.47, 91.23]
+    }
+  },
+  "uncertain_case_ids": ["memos_long:2093", "memos_medium:3401"],
+  "verification": {
+    "unit_tests": "4 passed",
+    "integrated_rows": 158,
+    "integrated_unique_case_ids": 158,
+    "human_reviewed_rows": 43,
+    "hash_match_for_archived_workbook": true,
+    "secret_scan": "passed",
+    "api_calls": 0,
+    "gpu_hours": 0
+  },
+  "artifacts": [
+    "artifacts/scripts/16_integrate_containment_human_validation.py",
+    "artifacts/tests/test_experiment7_human_validation_integration.py",
+    "artifacts/experiment/实验7最终人工验证报告.md",
+    "artifacts/outputs/human_validation_sample_final_confidence_adjusted.xlsx",
+    "artifacts/outputs/human_validation_results.json",
+    "artifacts/outputs/human_validation_results.md",
+    "artifacts/outputs/human_validation_adjudication.json",
+    "artifacts/outputs/human_validation_disagreements.csv",
+    "artifacts/outputs/integrated_case_summary.csv",
+    "artifacts/outputs/integrated_case_summary.jsonl"
+  ],
+  "secrets_persisted": false
+}

@@ -1,0 +1,17 @@
+Experiment 7 human-validation integration summary
+=================================================
+
+Added a deterministic integration script that:
+- validates all 43 human-review rows and preserves the original A-P cells;
+- verifies the fixed 13-case census plus 30/145 random-sample design;
+- computes raw, rendered, and final-label agreement with Wilson intervals;
+- retains machine-census, hybrid case-level, and design-weighted reporting views;
+- expands the 30/145 stratum with explicit sampling weights;
+- archives the filled workbook by SHA-256 without modifying the submission;
+- produces an integrated 158-case CSV/JSONL and two-case uncertainty report.
+
+One transparent derived adjudication corrects memos_long:2093 rendered coverage from
+partial to contained because the exact context explicitly includes the gold activity and
+the submitted note says no key fact was lost. Its final label remains uncertain.
+
+No API calls, retriever changes, memory-store writes, or inference-feature changes occurred.
