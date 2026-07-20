@@ -1,0 +1,63 @@
+{
+  "round": "round_0063",
+  "timestamp": "2026-07-20T11:43:31+08:00",
+  "task": "Implement and run Experiment 7 containment audit for the frozen 158-case recovery pool",
+  "status": "completed_stage_1_human_validation_pending",
+  "workspace": "D:\\幻觉",
+  "experiment_id": "e7_memos_containment_audit_v1",
+  "candidate_pool": {
+    "count": 158,
+    "candidate_ids_sha256": "ca95bc55035ed689eb9c09615cae18cfd995030d89260d856b8d031918d31eae",
+    "source_workbook_sha256": "db428cc47875bb808f7b6c0ce394d095e3d9470032d0ff78a6db2e4d1a4b796d",
+    "selection": "Recomputed from final evidence sufficiency and final Run1-Run3 labels; authoritative final classification verified",
+    "recomputed_source_counts": {
+      "robust_generation_failure": 133,
+      "ua3_representation_or_admission_failure": 158,
+      "evidence_definition_failure": 90
+    }
+  },
+  "protocol": {
+    "judge_model": "deepseek-v4-flash",
+    "temperature": 0,
+    "thinking": "disabled",
+    "protocol_change": "LongCat credentials were unavailable; used configured DeepSeek judge and retained stratified human validation",
+    "retriever_frozen": true,
+    "memory_store_frozen": true,
+    "distractor_labels_used_as_features": false
+  },
+  "automatic_results": {
+    "successful_audits": 158,
+    "A_evidence_missing": 12,
+    "B_present_not_rendered": 73,
+    "C_rendered_not_used": 72,
+    "D_judge_error": 1,
+    "post_retrieval_repairable_B_plus_C": 145,
+    "post_retrieval_repairable_share_percent": 91.77,
+    "status": "preliminary until human validation"
+  },
+  "human_validation": {
+    "workbook_rows": 43,
+    "raw_partial_or_missing_census": 13,
+    "raw_contained_seeded_sample": 30,
+    "seed": 20260720,
+    "status": "prepared_not_labeled"
+  },
+  "verification": {
+    "unit_tests": "5 passed",
+    "candidate_integrity": "passed",
+    "prompt_hash_integrity": "passed",
+    "model_identity": "passed",
+    "xlsx_validation": "passed",
+    "secret_scan": "passed",
+    "historical_failed_calls_recovered": 2
+  },
+  "artifacts": [
+    "artifacts/scripts/14_run_containment_audit.py",
+    "artifacts/scripts/15_analyze_containment_audit.py",
+    "artifacts/tests/test_experiment7_containment_audit.py",
+    "artifacts/experiment/实验7思路.md",
+    "artifacts/experiment/实验7阶段1结果.md",
+    "artifacts/outputs/e7_memos_containment_audit_v1/"
+  ],
+  "secrets_persisted": false
+}

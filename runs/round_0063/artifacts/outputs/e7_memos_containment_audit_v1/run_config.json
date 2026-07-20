@@ -1,0 +1,93 @@
+{
+  "experiment_id": "e7_memos_containment_audit_v1",
+  "created_at": "2026-07-20T11:38:51+0800",
+  "hypothesis": "The 158 direct-gold recoveries mix upstream content loss, adapter rendering loss, and evidence-use failure; only cases whose required facts exist in the frozen MemOS payload are repairable by the post-retrieval layer.",
+  "primary_metric": "counts and shares of deterministic labels A/B/C/D among the frozen 158 cases",
+  "independent_variable": "evidence view: raw returned objects versus exact UA3 rendered context",
+  "fixed_conditions": {
+    "candidate_pool_sha256": "ca95bc55035ed689eb9c09615cae18cfd995030d89260d856b8d031918d31eae",
+    "judge_model": "deepseek-v4-flash",
+    "thinking": "disabled",
+    "temperature": 0,
+    "max_tokens": 768,
+    "prompt_template_sha256": "af20df2d2b3dd9873901ee51f940b803d374a56a5807a58cd72fabfbe4030bc7",
+    "retriever": "frozen; no new retrieval",
+    "memory_store": "frozen; no writes or rewrites"
+  },
+  "auditor_protocol_note": "LongCat credentials were unavailable on 2026-07-20; the automatic containment census uses deepseek-v4-flash at temperature 0 with thinking disabled, followed by the pre-registered stratified human validation.",
+  "experiment_matrix": [
+    {
+      "run_id": "E7-AUTO-ALL",
+      "factor": "evidence view",
+      "value": "raw payload + exact UA3 rendering",
+      "n": 158,
+      "expected_outcome": "separate A/B/C/D failure ownership"
+    },
+    {
+      "run_id": "E7-HUMAN-A",
+      "factor": "validation stratum",
+      "value": "up to 30 deterministic raw partial/missing cases; census if fewer",
+      "n": "min(30, stratum size)",
+      "expected_outcome": "estimate false missing judgments"
+    },
+    {
+      "run_id": "E7-HUMAN-CONTAINED",
+      "factor": "validation stratum",
+      "value": "30 deterministic samples from raw contained",
+      "n": "min(30, stratum size)",
+      "expected_outcome": "estimate false containment judgments"
+    }
+  ],
+  "resource_estimate": {
+    "gpu_hours": 0,
+    "api_calls_including_smoke": 159,
+    "estimated_input_characters": 2274825,
+    "estimated_input_tokens_rough": 568706,
+    "maximum_output_tokens": 121344,
+    "monetary_cost": "not hard-coded; compute from recorded token usage and the provider account's current rates",
+    "expected_storage_mb": 5.68
+  },
+  "analysis_plan": {
+    "primary": "A/B/C/D counts, proportions, and Wilson 95% intervals",
+    "secondary": "raw/rendered coverage, temporal-loss status, dataset and question-type strata",
+    "human_validation": "30 raw missing/partial + 30 raw contained, deterministic seed 20260720",
+    "failed_calls": "remain unresolved and block final analysis unless --allow-incomplete is used"
+  },
+  "secrets_persisted": false,
+  "smoke_test": {
+    "ok": true,
+    "requested_model": "deepseek-v4-flash",
+    "response_model": "deepseek-v4-flash",
+    "base_url": "https://api.deepseek.com",
+    "thinking": "disabled",
+    "temperature": 0,
+    "parsed": {
+      "raw_coverage": "contained",
+      "rendered_coverage": "contained",
+      "direct_gold_recovery_valid": true,
+      "raw_supporting_memory_indices": [],
+      "raw_supporting_fields": [],
+      "missing_material_facts": [],
+      "facts_lost_in_rendering": [],
+      "temporal_information_status": "not_needed",
+      "judge_reported_consistency_error": false,
+      "consistency_error": false,
+      "rationale": "ok",
+      "audit_label": "C_rendered_not_used"
+    },
+    "usage": {
+      "completion_tokens": 83,
+      "prompt_tokens": 111,
+      "total_tokens": 194,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 0
+      },
+      "prompt_cache_hit_tokens": 0,
+      "prompt_cache_miss_tokens": 111
+    },
+    "latency_ms": 2026.71,
+    "created_at": "2026-07-20T11:38:53+0800"
+  }
+}

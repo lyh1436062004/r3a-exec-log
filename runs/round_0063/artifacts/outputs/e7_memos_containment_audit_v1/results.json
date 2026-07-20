@@ -1,0 +1,148 @@
+{
+  "experiment_id": "e7_memos_containment_audit_v1",
+  "coverage": {
+    "candidates": 158,
+    "successful_audits": 158,
+    "unresolved": 0
+  },
+  "label_counts": {
+    "C_rendered_not_used": 72,
+    "A_evidence_missing": 12,
+    "B_present_not_rendered": 73,
+    "D_judge_error": 1
+  },
+  "label_statistics": [
+    {
+      "label": "A_evidence_missing",
+      "count": 12,
+      "share": 0.0759493670886076,
+      "wilson_95_low": 0.04397745222183943,
+      "wilson_95_high": 0.12805176095733722
+    },
+    {
+      "label": "B_present_not_rendered",
+      "count": 73,
+      "share": 0.4620253164556962,
+      "wilson_95_low": 0.38611152708413515,
+      "wilson_95_high": 0.5397418352901195
+    },
+    {
+      "label": "C_rendered_not_used",
+      "count": 72,
+      "share": 0.45569620253164556,
+      "wilson_95_low": 0.38001122715896307,
+      "wilson_95_high": 0.5334843622776674
+    },
+    {
+      "label": "D_judge_error",
+      "count": 1,
+      "share": 0.006329113924050633,
+      "wilson_95_low": 0.0011181190763210579,
+      "wilson_95_high": 0.03497559178898904
+    }
+  ],
+  "raw_coverage_counts": {
+    "contained": 145,
+    "missing": 7,
+    "partial": 6
+  },
+  "rendered_coverage_counts": {
+    "contained": 72,
+    "missing": 26,
+    "partial": 60
+  },
+  "temporal_information_status_counts": {
+    "preserved": 99,
+    "not_needed": 54,
+    "lost_in_rendering": 1,
+    "missing_from_raw": 4
+  },
+  "post_retrieval_repairable": {
+    "count_B_plus_C": 145,
+    "share_of_158": 0.9177215189873418,
+    "adapter_specific_B": 73,
+    "evidence_use_specific_C": 72
+  },
+  "grouped": [
+    {
+      "field": "dataset",
+      "value": "long",
+      "n": 78,
+      "A_evidence_missing": 6,
+      "B_present_not_rendered": 30,
+      "C_rendered_not_used": 42,
+      "D_judge_error": 0
+    },
+    {
+      "field": "dataset",
+      "value": "medium",
+      "n": 80,
+      "A_evidence_missing": 6,
+      "B_present_not_rendered": 43,
+      "C_rendered_not_used": 30,
+      "D_judge_error": 1
+    },
+    {
+      "field": "question_type",
+      "value": "Basic Fact Recall",
+      "n": 55,
+      "A_evidence_missing": 5,
+      "B_present_not_rendered": 25,
+      "C_rendered_not_used": 25,
+      "D_judge_error": 0
+    },
+    {
+      "field": "question_type",
+      "value": "Dynamic Update",
+      "n": 14,
+      "A_evidence_missing": 0,
+      "B_present_not_rendered": 8,
+      "C_rendered_not_used": 6,
+      "D_judge_error": 0
+    },
+    {
+      "field": "question_type",
+      "value": "Generalization & Application",
+      "n": 59,
+      "A_evidence_missing": 1,
+      "B_present_not_rendered": 24,
+      "C_rendered_not_used": 33,
+      "D_judge_error": 1
+    },
+    {
+      "field": "question_type",
+      "value": "Memory Conflict",
+      "n": 6,
+      "A_evidence_missing": 1,
+      "B_present_not_rendered": 1,
+      "C_rendered_not_used": 4,
+      "D_judge_error": 0
+    },
+    {
+      "field": "question_type",
+      "value": "Multi-hop Inference",
+      "n": 24,
+      "A_evidence_missing": 5,
+      "B_present_not_rendered": 15,
+      "C_rendered_not_used": 4,
+      "D_judge_error": 0
+    }
+  ],
+  "judge_usage": {
+    "completion_tokens": 37286,
+    "prompt_tokens": 536988,
+    "total_tokens": 574274,
+    "prompt_cache_hit_tokens": 6400,
+    "prompt_cache_miss_tokens": 530588
+  },
+  "human_validation": {
+    "seed": 20260720,
+    "requested_per_stratum": 30,
+    "sample_rows": 43,
+    "strata": {
+      "raw_contained": 30,
+      "raw_partial_or_missing": 13
+    },
+    "status": "prepared; requires human labels"
+  }
+}

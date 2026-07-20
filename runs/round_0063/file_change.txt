@@ -1,0 +1,20 @@
+Task-scoped project additions:
+- 脚本/3.0/14_run_containment_audit.py
+- 脚本/3.0/15_analyze_containment_audit.py
+- tests/test_experiment7_containment_audit.py
+- 实验结果/实验7--证据审查/实验7阶段1结果.md
+- outputs/e7_memos_containment_audit_v1/ (15 generated experiment artifacts)
+
+Input retained unchanged:
+- 实验结果/实验7--证据审查/实验7思路.md
+
+Key outputs:
+- candidate_pool.jsonl and candidate_manifest.json
+- audit_results.jsonl
+- containment_case_summary.jsonl and containment_case_summary.csv
+- results.json and results.md
+- human_validation_sample.jsonl, CSV, and XLSX
+- run_config.json, experiment_matrix.md, smoke_test.json, run_counts.json, failures.jsonl
+
+The project workspace was already dirty before this task. Existing modified, deleted,
+and untracked files outside the paths above were not edited, staged, reverted, or removed.

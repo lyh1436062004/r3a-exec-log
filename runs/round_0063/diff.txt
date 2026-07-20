@@ -1,0 +1,25 @@
+Experiment 7 task diff summary
+==============================
+
+Added a resumable containment-audit runner that:
+- freezes and hashes the authoritative 158-case pool;
+- recomputes the source classification instead of trusting the stale recommended-class cache;
+- joins each case to the complete MemOS returned objects and exact UA3 context;
+- excludes gold memory IDs and distractor labels from audit inputs;
+- obtains independent raw/rendered/recovery judgments and maps them deterministically to A/B/C/D;
+- validates model identity, JSON structure, prompt hashes, and retry/cache behavior.
+
+Added an analysis pipeline that:
+- reports A/B/C/D counts, Wilson intervals, coverage and temporal diagnostics;
+- produces dataset and question-type stratification;
+- prepares a deterministic 43-row human-validation CSV/JSONL/XLSX asset;
+- preserves token usage and experiment provenance.
+
+Added five unit tests covering:
+- A/B/C/D mapping;
+- impossible raw/rendered coverage consistency;
+- exact reconstruction of the frozen 158-case pool;
+- exclusion of retrieval-label inference features;
+- deterministic stratified human sampling.
+
+No retriever or memory-store implementation was modified.
