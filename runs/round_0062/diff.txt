@@ -1,0 +1,5 @@
+No task-scoped diff exists in the A2 project workspace.
+
+This was a read-only review task. The three supplied Markdown files were copied into
+the execution-log round as provenance artifacts. Pre-existing workspace changes are
+outside this task and are intentionally excluded from this diff.
