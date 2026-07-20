@@ -1,0 +1,17 @@
+{
+  "round": "round_0066",
+  "timestamp": "2026-07-20T13:47:26+08:00",
+  "task": "Clarify the final Experiment 7 A/B/C/D counts",
+  "status": "completed",
+  "final_reporting_view": "hybrid case-level; human labels override 43 reviewed cases and machine labels remain for 115 unreviewed cases",
+  "counts": {
+    "A_evidence_missing": 12,
+    "B_present_not_rendered": 72,
+    "C_rendered_not_used": 72,
+    "D_judge_error": 0,
+    "uncertain": 2,
+    "total": 158
+  },
+  "clarification": "A-D sum to 156 because two benchmark-ambiguous cases remain explicitly uncertain and must not be forced into A-D.",
+  "project_changes_by_this_task": []
+}
