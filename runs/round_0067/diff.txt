@@ -1,0 +1,11 @@
+No task-scoped diff was made in the A2 project workspace.
+
+Two local discovery/compatibility SKILL.md files were added under the user-level
+Codex skill installation root. Exact copies are stored in this round's artifacts:
+
+- artifacts/beautiful-html-templates.SKILL.md
+- artifacts/remotion-video-production.SKILL.md
+
+All other installed files are unmodified upstream content identified by repository
+and commit in installed_skills_manifest.json. Existing frontend-slides and
+remotion-best-practices installations were retained without overwrite.

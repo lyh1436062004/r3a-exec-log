@@ -1,0 +1,35 @@
+Task-scoped changes
+===================
+
+User-level Codex skill installation root:
+C:\Users\78443\.codex\skills
+
+New upstream skill/library directories:
+- humanize-ppt
+- guizang-ppt-skill
+- beautiful-html-templates
+- ppt-master
+- baoyu-image-gen
+- remotion-video-toolkit
+
+Already present and retained without overwrite:
+- frontend-slides
+- remotion-best-practices
+
+New local compatibility entry:
+- remotion-video-production\SKILL.md
+
+Local discovery entry added to an upstream library that lacks SKILL.md:
+- beautiful-html-templates\SKILL.md
+
+Execution-log outputs:
+- runs\round_0067\run_summary.json
+- runs\round_0067\file_change.txt
+- runs\round_0067\diff.txt
+- runs\round_0067\installed_skills_manifest.json
+- runs\round_0067\artifacts\beautiful-html-templates.SKILL.md
+- runs\round_0067\artifacts\remotion-video-production.SKILL.md
+
+Project workspace:
+- No task-scoped files changed under D:\幻觉.
+- Pre-existing dirty worktree entries were preserved.

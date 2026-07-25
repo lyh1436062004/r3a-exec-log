@@ -1,0 +1,33 @@
+{
+  "round": "round_0067",
+  "task": "Install Humanize PPT and its requested downstream presentation, image, and Remotion skills",
+  "status": "completed",
+  "workspace": "D:\\幻觉",
+  "installation_root": "C:\\Users\\78443\\.codex\\skills",
+  "completed_at": "2026-07-25T16:40:00+08:00",
+  "result": {
+    "requested_skill_entries_available": 9,
+    "new_upstream_installs": [
+      "humanize-ppt",
+      "guizang-ppt-skill",
+      "beautiful-html-templates",
+      "ppt-master",
+      "baoyu-image-gen",
+      "remotion-video-toolkit"
+    ],
+    "already_present": [
+      "frontend-slides",
+      "remotion-best-practices"
+    ],
+    "compatibility_entry_created": [
+      "remotion-video-production"
+    ],
+    "validation": "All nine entries contain SKILL.md; the two locally created compatibility entry files passed quick_validate.py."
+  },
+  "notes": [
+    "Direct GitHub downloads repeatedly stalled; upstream repositories were installed through shallow or sparse clones using a GitHub download mirror without changing repository provenance.",
+    "beautiful-html-templates has no upstream SKILL.md, so a minimal local discovery entry was added that delegates to the upstream AGENTS.md workflow.",
+    "remotion-video-production was added as a minimal orchestration compatibility entry pairing the installed remotion-best-practices and remotion-video-toolkit skills.",
+    "No project workspace files were modified by this task; the workspace was already dirty before installation."
+  ]
+}

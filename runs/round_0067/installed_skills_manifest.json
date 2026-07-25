@@ -1,0 +1,68 @@
+{
+  "installation_root": "C:\\Users\\78443\\.codex\\skills",
+  "skills": [
+    {
+      "name": "humanize-ppt",
+      "source": "https://github.com/LearnPrompt/humanize-ppt",
+      "source_commit": "2c36a8e30606bab7ea9c637614b569d87b34f23b",
+      "status": "installed",
+      "skill_sha256": "43DDC6B095F3BD6119CF9CEDEC5CADB043916C2D602AB8338D9497A71C7EC6E1"
+    },
+    {
+      "name": "guizang-ppt-skill",
+      "source": "https://github.com/op7418/guizang-ppt-skill",
+      "source_commit": "929c2ecb63a22b54d400c4911ed70bf96c2b355d",
+      "status": "installed",
+      "skill_sha256": "1BD95C9FEC5BC0830C47CC193F3908CA65616A6B368B2A3D4FC9AA0D9B97A95D"
+    },
+    {
+      "name": "frontend-slides",
+      "source": "pre-existing local installation",
+      "source_commit": null,
+      "status": "already_present",
+      "skill_sha256": "ED0E3007FD2098CC55FFAFC1ACF6660E201DC98CD2204F61FADBE17F3B6B8888"
+    },
+    {
+      "name": "beautiful-html-templates",
+      "source": "https://github.com/zarazhangrui/beautiful-html-templates",
+      "source_commit": "e5e204fb1f3b06290846e7dcd7aceddabeceec8c",
+      "status": "installed_with_local_discovery_entry",
+      "skill_sha256": "5C05975E8A3D771BEE8B073E5FFCDD208730161FEF2A1DDA80A136B4F3EB3828"
+    },
+    {
+      "name": "ppt-master",
+      "source": "https://github.com/hugohe3/ppt-master/tree/main/skills/ppt-master",
+      "source_commit": "1912f0112c711e7b46d893a461648c4cde437314",
+      "status": "installed_sparse",
+      "skill_sha256": "A3F7CFE2378E1281DD602AFA05BAF7BE84C0E997B42D0343B6771AACABF4BF14"
+    },
+    {
+      "name": "baoyu-image-gen",
+      "source": "https://github.com/JimLiu/baoyu-skills/tree/main/skills/baoyu-image-gen",
+      "source_commit": "6b7a2e417500561a5ecdd0b168332f4142584617",
+      "status": "installed_sparse",
+      "skill_sha256": "72A813BCC5E7E0E3314F1AF4993F18968F5A0841372FEB64619D4FA08C2D4ADA"
+    },
+    {
+      "name": "remotion-video-production",
+      "source": "local compatibility entry",
+      "source_commit": null,
+      "status": "created_and_validated",
+      "skill_sha256": "BF10BD956240B2C1F3AD8D583F0793D64D2664320D59A1325E822200A6704E90"
+    },
+    {
+      "name": "remotion-best-practices",
+      "source": "pre-existing local installation",
+      "source_commit": null,
+      "status": "already_present",
+      "skill_sha256": "2461D2BCAF838175D5F54167B6A894A294A5C3541CADAED53FD77E07554513BA"
+    },
+    {
+      "name": "remotion-video-toolkit",
+      "source": "https://github.com/shreefentsar/remotion-video-toolkit",
+      "source_commit": "81a412e7872f21f4989e4c07f48cc5b494c294a9",
+      "status": "installed",
+      "skill_sha256": "C4C6C495910F3EDFC38B7636EA57ECB99FBF4D44C5CE24DE404EB75B54BC849C"
+    }
+  ]
+}
