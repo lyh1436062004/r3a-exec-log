@@ -1,0 +1,12 @@
+Project code, data, tests, memory stores and retrievers: no modifications.
+Preserved all pre-existing project changes.
+Added eight execution-log files under runs/round_0070 only:
+  run_summary.json
+  file_change.txt
+  diff.txt
+  research-sessions/2026-10-08-longmemeval-fit/SUMMARY.md
+  research-sessions/2026-10-08-longmemeval-fit/papers-reviewed.json
+  research-sessions/2026-10-08-longmemeval-fit/relevant-papers.json
+  research-sessions/2026-10-08-longmemeval-fit/initial-search-results.json
+  research-sessions/2026-10-08-longmemeval-fit/citations/citation-graph.json
+No credentials, workbook contents, raw benchmark datasets, caches or unrelated artifacts included.

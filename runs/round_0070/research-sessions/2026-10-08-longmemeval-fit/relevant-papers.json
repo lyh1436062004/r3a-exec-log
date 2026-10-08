@@ -1,0 +1,23 @@
+{
+  "10.48550/arXiv.2410.10813": {
+    "title": "LongMemEval: Benchmarking Chat Assistants on Long-Term Interactive Memory",
+    "status": "highly_relevant",
+    "score": 10,
+    "source": "primary_source_search",
+    "found_data": ["benchmark task and mechanism fit", "oracle diagnostic", "grading rules"]
+  },
+  "10.48550/arXiv.2605.12493": {
+    "title": "LongMemEval-V2: Evaluating Long-Term Agent Memory Toward Experienced Colleagues",
+    "status": "highly_relevant",
+    "score": 9,
+    "source": "linked_from_original_official_repository",
+    "found_data": ["version and scope boundary"]
+  },
+  "10.48550/arXiv.2311.09210": {
+    "title": "Chain-of-Note: Enhancing Robustness in Retrieval-Augmented Language Models",
+    "status": "relevant",
+    "score": 8,
+    "source": "backward_from:10.48550/arXiv.2410.10813",
+    "found_data": ["reading baseline"]
+  }
+}
