@@ -1,0 +1,15 @@
+{
+  "round": "round_0071",
+  "client_date": "2026-10-08",
+  "task": "Clarify whether original LongMemEval provides gold memory annotations",
+  "result": "Gold session IDs, gold turn flags, and an oracle evidence-session dataset are provided; they are not backend-generated gold memory IDs.",
+  "verified_fields": ["answer_session_ids", "has_answer", "answer"],
+  "oracle_file": "longmemeval_oracle.json",
+  "abstention_boundary": "Official retrieval evaluation excludes 30 abstention questions without gold answer locations.",
+  "scope": "Original LongMemEval / cleaned, not V2",
+  "source": "https://raw.githubusercontent.com/xiaowu0162/LongMemEval/main/README.md",
+  "documentation_lookup_fallback": "Context7 tools unavailable; official author README read directly",
+  "project_files_modified": [],
+  "new_log_files": ["gold_evidence_clarification.md", "run_summary.json", "file_change.txt", "diff.txt"],
+  "experiments_run": false
+}

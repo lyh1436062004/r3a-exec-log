@@ -1,0 +1,3 @@
+No implementation diff: this task is a documentation-backed factual clarification.
+Added four execution-log files on original LongMemEval gold evidence annotations and leakage boundaries.
+No changes to memory store, retriever, tests or experiment scripts.

@@ -1,0 +1,4 @@
+Project files: no task-generated modifications.
+Preserved all pre-existing project changes.
+Added only runs/round_0071/gold_evidence_clarification.md, run_summary.json, file_change.txt and diff.txt.
+No benchmark raw data, credentials, caches or unrelated artifacts uploaded.
