@@ -1,0 +1,9 @@
+arm,baseline_correct_total,baseline_correct_paired,C_to_H,C_to_O,O_to_H
+B0,0,0,,,
+B1,0,0,,,
+B2,0,0,,,
+A2,0,0,,,
+A2-nogate,0,0,,,
+A2-nosal,0,0,,,
+A2-nolic,0,0,,,
+A2-noblock,0,0,,,

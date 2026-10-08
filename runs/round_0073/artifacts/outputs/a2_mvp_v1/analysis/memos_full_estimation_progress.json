@@ -1,0 +1,13 @@
+{
+  "completed": 3725,
+  "failed": 893,
+  "cache_hit": 0,
+  "validation_warnings": 901,
+  "scheduled": 4062,
+  "usage_this_execution": {
+    "prompt_tokens": 5183939,
+    "completion_tokens": 2832388,
+    "total_tokens": 8016327
+  },
+  "elapsed_seconds": 1260.6
+}

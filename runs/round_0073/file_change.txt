@@ -1,0 +1,56 @@
+Round 0073
+New A2 MVP source files (15), unchanged previous scripts; local diagnostic/research outputs refreshed.
+No memory store or retriever changes; unrelated user changes retained.
+
+Artifacts copied under artifacts/:
+A 脚本/3.0/a2_schema.py
+A 脚本/3.0/a2_stage0_adapter.py
+A 脚本/3.0/a2_stage1_estimator.py
+A 脚本/3.0/a2_stage2_decision.py
+A 脚本/3.0/a2_stage3_render.py
+A 脚本/3.0/a2_pipeline.py
+A 脚本/3.0/a2_calibrate.py
+A 脚本/3.0/a2_arms.py
+A 脚本/3.0/20_build_pool.py
+A 脚本/3.0/21_run_generation.py
+A 脚本/3.0/22_judge.py
+A 脚本/3.0/23_analyze.py
+A 脚本/3.0/24_intrinsic_eval.py
+A 脚本/3.0/25_build_longmemeval.py
+A 脚本/3.0/test_a2_invariants.py
+A 脚本/3.0/CODEX_TASK_A2_MVP.md
+A outputs/a2_mvp_v1/RESULTS.md
+A outputs/a2_mvp_v1/preflight.json
+A outputs/a2_mvp_v1/run_config.json
+A outputs/a2_mvp_v1/api_run_blocker.json
+A outputs/a2_mvp_v1/longmemeval_blocker.json
+A outputs/a2_mvp_v1/leakage_failures.jsonl
+A outputs/a2_mvp_v1/analysis/invariants_full.json
+A outputs/a2_mvp_v1/analysis/invariants_offline.json
+A outputs/a2_mvp_v1/analysis/memos__deepseek-chat_actions.csv
+A outputs/a2_mvp_v1/analysis/memos__deepseek-chat_decomposition_cases.csv
+A outputs/a2_mvp_v1/analysis/memos__deepseek-chat_deltas.csv
+A outputs/a2_mvp_v1/analysis/memos__deepseek-chat_flips.csv
+A outputs/a2_mvp_v1/analysis/memos__deepseek-chat_harm.csv
+A outputs/a2_mvp_v1/analysis/memos__deepseek-chat_intrinsic_confusion.csv
+A outputs/a2_mvp_v1/analysis/memos__deepseek-chat_intrinsic_oracle_join.csv
+A outputs/a2_mvp_v1/analysis/memos__deepseek-chat_intrinsic_relation_cases.csv
+A outputs/a2_mvp_v1/analysis/memos__deepseek-chat_intrinsic_risk_cases.csv
+A outputs/a2_mvp_v1/analysis/memos__deepseek-chat_intrinsic.json
+A outputs/a2_mvp_v1/analysis/memos__deepseek-chat_mcnemar.csv
+A outputs/a2_mvp_v1/analysis/memos__deepseek-chat_rates.csv
+A outputs/a2_mvp_v1/analysis/memos__deepseek-chat_reference_deltas.csv
+A outputs/a2_mvp_v1/analysis/memos__deepseek-chat_summary.json
+A outputs/a2_mvp_v1/analysis/memos__deepseek-chat_transitions.csv
+A outputs/a2_mvp_v1/analysis/memos_full_estimation_budget.json
+A outputs/a2_mvp_v1/analysis/memos_full_estimation_progress.json
+A outputs/a2_mvp_v1/analysis/memos_group_probe.json
+A outputs/a2_mvp_v1/analysis/preimplementation_group_probe.json
+A outputs/a2_mvp_v1/pools/memos_pool_equivalence.json
+A outputs/a2_mvp_v1/pools/memos_pool_summary.json
+A research-sessions/2026-10-09-longmemeval-gold-clarification/SUMMARY.md
+A research-sessions/2026-10-09-longmemeval-gold-clarification/papers-reviewed.json
+A research-sessions/2026-10-09-longmemeval-gold-clarification/relevant-papers.json
+A research-sessions/2026-10-09-longmemeval-gold-clarification/citations/citation-graph.json
+
+Excluded raw pools, credentials, and caches.

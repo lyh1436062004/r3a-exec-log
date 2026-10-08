@@ -1,0 +1,17 @@
+{
+  "date": "2026-10-09",
+  "status": "requires_external_account_change",
+  "reason": "DeepSeek account balance is insufficient for API calls",
+  "diagnostic": {"endpoint": "GET /user/balance", "http_status": 200, "is_available": false, "paid_calls": 0},
+  "source": "https://api-docs.deepseek.com/api/get-user-balance/",
+  "actions": ["Stopped verified owned processes 15344 and 10660", "Preserved all disk caches", "Did not start judge or intervention runs"],
+  "pool_size": 4062,
+  "stage1": {"cached": 3739, "successful": 2832, "failed_safe_fallback": 907, "not_cached": 323, "recorded_tokens": 8016327},
+  "B0_generation": {"recorded": 3932, "successful": 3000, "failed": 932, "not_recorded": 130, "recorded_tokens": 2400551},
+  "support_audit_recorded_tokens": 6516011,
+  "recorded_total_tokens": 16932889,
+  "incomplete_call_usage": "May exclude in-flight calls killed before usage was persisted; these are recorded-cache totals, not billing totals",
+  "experimental_results": "No fresh B0 verdicts or A2 intervention results; failed estimates and generation errors must not be counted as successes",
+  "recovery": "Account availability must be restored by the user. Reuse successful caches. Explicitly retry failed Stage1 caches rather than silently treating safe fallback as a valid posterior.",
+  "goal_complete": false
+}

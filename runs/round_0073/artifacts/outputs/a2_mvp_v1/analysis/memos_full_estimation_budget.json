@@ -1,0 +1,14 @@
+{
+  "phase": "pool_validation_stage1_full",
+  "estimated_calls": 4062,
+  "max_attempts": 12186,
+  "model": "deepseek-chat",
+  "temperature": 0,
+  "workers": 12,
+  "seed": 20260709,
+  "prompt_hash": "aa04d19ba5bc732d5f61a265c4c3171dbd38dcc10cab8813cbcfd9d85618e51f",
+  "pool_sha256": "d7cee7d676670a3d37e82b9dd82118cc1176a86ccb3e1538079c29adfb43c6c8",
+  "pool_text_sha256": "9d485333868c383b4161630b8417e6314320027133f7ef74794af4009e8eb16b",
+  "scope": "Full-pool Stage1 prerequisites for exact calibration/invariant10; not intervention main experiment",
+  "requires_yes": true
+}

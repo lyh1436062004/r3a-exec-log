@@ -1,0 +1,42 @@
+{
+  "n_cases": 4062,
+  "n_raw": 46647,
+  "memory_key_rate": 0.5200763178768195,
+  "entity_anchors_rate": 0.5200763178768195,
+  "multi_record_group_count": 5064,
+  "group_size_distribution": {
+    "1": 28202,
+    "2": 2216,
+    "3": 1279,
+    "4": 790,
+    "5": 477,
+    "6": 302
+  },
+  "adapter": {
+    "n_records": 46647,
+    "time_source": {
+      "meta_ingest": 46647
+    },
+    "time_proxy_count": 46647,
+    "time_proxy_rate": 1.0,
+    "capability_mask": {
+      "text": true,
+      "event_time": false,
+      "ingest_time": true,
+      "entity_anchors": true,
+      "source_session": true,
+      "retrieval_score": true,
+      "confidence": true
+    },
+    "capability_rates": {
+      "text": 1.0,
+      "event_time": 0.0,
+      "ingest_time": 1.0,
+      "entity_anchors": 0.5200763178768195,
+      "source_session": 1.0,
+      "retrieval_score": 1.0,
+      "confidence": 0.5200763178768195
+    }
+  },
+  "source": "D:\\幻觉\\outputs\\a2_mvp_v1\\pools\\memos_pool.jsonl"
+}

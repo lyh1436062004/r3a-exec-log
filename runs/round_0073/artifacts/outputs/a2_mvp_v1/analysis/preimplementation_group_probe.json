@@ -1,0 +1,12 @@
+{
+  "source": "outputs/e1_memos_full_oracle_v2/samples_memos_full.jsonl",
+  "scope": "old1987 pool, measured before Stage2 set-decision implementation; new-pool statistics will be rerun",
+  "n_cases": 1987,
+  "n_raw": 22385,
+  "memory_key_rate": 0.5275854366763457,
+  "entity_anchors_rate": 0.5275854366763457,
+  "multi_record_group_count": 2379,
+  "group_size_distribution": {"1": 13469, "2": 1018, "3": 608, "4": 358, "5": 245, "6": 150},
+  "time_source": {"meta_ingest": 22385},
+  "time_is_proxy_rate": 1.0
+}

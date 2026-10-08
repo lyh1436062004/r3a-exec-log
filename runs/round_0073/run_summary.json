@@ -1,0 +1,127 @@
+{
+  "round": "round_0073",
+  "date": "2026-10-09",
+  "task": "A2 MVP implementation checkpoint, account-failure diagnosis, and LongMemEval gold-evidence clarification",
+  "status": "partial_checkpoint_goal_not_complete",
+  "user_latest_question": "它有没有gold memory",
+  "answer": "Original LongMemEval/cleaned has answer_session_ids and turn has_answer gold evidence; not backend-generated gold memory object IDs.",
+  "sources": [
+    "https://github.com/xiaowu0162/LongMemEval#-dataset-format",
+    "https://github.com/xiaowu0162/LongMemEval#memory-retrieval",
+    "https://api-docs.deepseek.com/api/get-user-balance/"
+  ],
+  "implementation": {
+    "architecture": "Stage0 -> Stage1 -> Stage2 -> Stage3",
+    "new_source_files": 15,
+    "existing_00_15_modified": false,
+    "memory_store_modified": false,
+    "memos_retriever_rerun": false
+  },
+  "verification": {
+    "offline_checks": 17,
+    "offline_failures": 0,
+    "full_pool_hash": "pass",
+    "full_pool_template_leakage": "pass, zero matches",
+    "real_groups": "pass, 5064 groups of size >=2",
+    "real_monotonicity": "pending",
+    "fresh_B0_equivalence": "pending",
+    "smoke_all_green_proven": false
+  },
+  "runtime": {
+    "pool_n": 4062,
+    "stage1": {
+      "cached": 3739,
+      "successful": 2832,
+      "failed": 907,
+      "missing": 323
+    },
+    "B0_generation": {
+      "recorded": 3932,
+      "successful": 3000,
+      "failed": 932,
+      "missing": 130
+    },
+    "new_judge_calls": 0,
+    "A2_intervention_runs": 0,
+    "recorded_tokens": 16932889,
+    "account_diagnostic": {
+      "http_status": 200,
+      "is_available": false,
+      "paid_calls": 0
+    },
+    "owned_processes_stopped": [
+      15344,
+      10660
+    ],
+    "cache_preserved": true
+  },
+  "remaining": "Fresh B0 and full Stage1, judge, calibration, real invariants, 150 smoke, 400-first/full experiments, sensitivity, mandatory Stage E, five A2 cases",
+  "lme_download": "one ConnectTimeout; no repeated download; fallback E required",
+  "goal_status": "active; first account-blocker audit, not complete or paused",
+  "project_status_counts": {
+    "modified": 9,
+    "deleted": 29,
+    "untracked": 125
+  },
+  "unrelated_changes_preserved": true,
+  "artifacts": [
+    "脚本/3.0/a2_schema.py",
+    "脚本/3.0/a2_stage0_adapter.py",
+    "脚本/3.0/a2_stage1_estimator.py",
+    "脚本/3.0/a2_stage2_decision.py",
+    "脚本/3.0/a2_stage3_render.py",
+    "脚本/3.0/a2_pipeline.py",
+    "脚本/3.0/a2_calibrate.py",
+    "脚本/3.0/a2_arms.py",
+    "脚本/3.0/20_build_pool.py",
+    "脚本/3.0/21_run_generation.py",
+    "脚本/3.0/22_judge.py",
+    "脚本/3.0/23_analyze.py",
+    "脚本/3.0/24_intrinsic_eval.py",
+    "脚本/3.0/25_build_longmemeval.py",
+    "脚本/3.0/test_a2_invariants.py",
+    "脚本/3.0/CODEX_TASK_A2_MVP.md",
+    "outputs/a2_mvp_v1/RESULTS.md",
+    "outputs/a2_mvp_v1/preflight.json",
+    "outputs/a2_mvp_v1/run_config.json",
+    "outputs/a2_mvp_v1/api_run_blocker.json",
+    "outputs/a2_mvp_v1/longmemeval_blocker.json",
+    "outputs/a2_mvp_v1/leakage_failures.jsonl",
+    "outputs/a2_mvp_v1/analysis/invariants_full.json",
+    "outputs/a2_mvp_v1/analysis/invariants_offline.json",
+    "outputs/a2_mvp_v1/analysis/memos__deepseek-chat_actions.csv",
+    "outputs/a2_mvp_v1/analysis/memos__deepseek-chat_decomposition_cases.csv",
+    "outputs/a2_mvp_v1/analysis/memos__deepseek-chat_deltas.csv",
+    "outputs/a2_mvp_v1/analysis/memos__deepseek-chat_flips.csv",
+    "outputs/a2_mvp_v1/analysis/memos__deepseek-chat_harm.csv",
+    "outputs/a2_mvp_v1/analysis/memos__deepseek-chat_intrinsic_confusion.csv",
+    "outputs/a2_mvp_v1/analysis/memos__deepseek-chat_intrinsic_oracle_join.csv",
+    "outputs/a2_mvp_v1/analysis/memos__deepseek-chat_intrinsic_relation_cases.csv",
+    "outputs/a2_mvp_v1/analysis/memos__deepseek-chat_intrinsic_risk_cases.csv",
+    "outputs/a2_mvp_v1/analysis/memos__deepseek-chat_intrinsic.json",
+    "outputs/a2_mvp_v1/analysis/memos__deepseek-chat_mcnemar.csv",
+    "outputs/a2_mvp_v1/analysis/memos__deepseek-chat_rates.csv",
+    "outputs/a2_mvp_v1/analysis/memos__deepseek-chat_reference_deltas.csv",
+    "outputs/a2_mvp_v1/analysis/memos__deepseek-chat_summary.json",
+    "outputs/a2_mvp_v1/analysis/memos__deepseek-chat_transitions.csv",
+    "outputs/a2_mvp_v1/analysis/memos_full_estimation_budget.json",
+    "outputs/a2_mvp_v1/analysis/memos_full_estimation_progress.json",
+    "outputs/a2_mvp_v1/analysis/memos_group_probe.json",
+    "outputs/a2_mvp_v1/analysis/preimplementation_group_probe.json",
+    "outputs/a2_mvp_v1/pools/memos_pool_equivalence.json",
+    "outputs/a2_mvp_v1/pools/memos_pool_summary.json",
+    "research-sessions/2026-10-09-longmemeval-gold-clarification/SUMMARY.md",
+    "research-sessions/2026-10-09-longmemeval-gold-clarification/papers-reviewed.json",
+    "research-sessions/2026-10-09-longmemeval-gold-clarification/relevant-papers.json",
+    "research-sessions/2026-10-09-longmemeval-gold-clarification/citations/citation-graph.json"
+  ],
+  "excluded": [
+    ".env",
+    "keys and credentials",
+    "full raw pools",
+    "estimator/support caches",
+    "generation and context prompt caches",
+    "__pycache__",
+    ".pytest_cache"
+  ]
+}
