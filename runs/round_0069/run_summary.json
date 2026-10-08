@@ -1,0 +1,13 @@
+{
+  "round": "round_0069",
+  "client_date": "2026-10-08",
+  "task": "Explain which Experiment 7 failure types the memory-admission mechanism can address",
+  "status": "completed",
+  "source": "outputs/e7_memos_containment_audit_v1/human_validation_results.json",
+  "hybrid_case_counts": {"A": 12, "B": 72, "C": 72, "D": 0, "uncertain": 2},
+  "conclusion": "Full post-retrieval controller targets B and C; core decision and authorization mainly targets C. A may permit safer uncertainty but cannot recover absent facts; D belongs to evaluation.",
+  "code_check": "UA3 selects gold_ids before memory_text rendering, so B mixes selection loss with field/rendering loss.",
+  "claim_boundary": "144 B/C cases are diagnosed targets, not proven repaired cases. Effects require frozen-retrieval intervention comparisons.",
+  "project_changes": [],
+  "artifacts": ["mechanism_scope.md", "run_summary.json", "file_change.txt", "diff.txt"]
+}

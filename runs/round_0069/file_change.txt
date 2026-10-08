@@ -1,0 +1,4 @@
+Project workspace: no task-scoped code or result changes.
+Read Experiment 7 human validation results and UA3 context construction code.
+Added only runs/round_0069/{mechanism_scope.md,run_summary.json,file_change.txt,diff.txt} to the execution log.
+Pre-existing workspace changes were preserved.

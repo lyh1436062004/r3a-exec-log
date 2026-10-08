@@ -1,0 +1,2 @@
+No task-scoped project diff.
+Execution-log additions explain mechanism scope for A/B/C/D, distinguish B selection loss from adapter loss, and constrain claims to diagnosed targets until intervention experiments verify actual gains.
