@@ -1,0 +1,63 @@
+{
+  "research_question": "最近很火的 Jev 是否可以用于 A2 幻觉项目",
+  "date": "2026-10-08",
+  "timezone": "Asia/Shanghai",
+  "type": "targeted feasibility assessment, not an exhaustive systematic review",
+  "queries": [
+    "Jev AI agent 最近 很火 Jev",
+    "Jev official TypeSafe AI documentation calibrated decisions",
+    "site:typesafe.ai Jev docs API",
+    "site:github.com typesafeai jev"
+  ],
+  "authoritative_sources": [
+    {
+      "title": "TypeSafe Introduction",
+      "url": "https://docs.typesafe.ai/introduction"
+    },
+    {
+      "title": "Confidence",
+      "url": "https://docs.typesafe.ai/confidence"
+    },
+    {
+      "title": "Classifying RAG passages",
+      "url": "https://docs.typesafe.ai/cookbooks/classifying_rag_passages"
+    },
+    {
+      "title": "Jev 1.13 jaggedness",
+      "url": "https://docs.typesafe.ai/model-jaggedness/jev-1.13"
+    },
+    {
+      "title": "Models",
+      "url": "https://docs.typesafe.ai/models"
+    },
+    {
+      "title": "Quick start",
+      "url": "https://docs.typesafe.ai/introduction/quickstart"
+    },
+    {
+      "title": "Just Ask Jev: Reinforcement Learning for Calibrated Decisions as a Zero-Shot Detector of AI Alignment Failures",
+      "url": "https://arxiv.org/abs/2609.29429"
+    },
+    {
+      "title": "Evaluating and Benchmarking the System One Model Jev",
+      "url": "https://arxiv.org/abs/2609.37647"
+    }
+  ],
+  "retrieval_note": "Third-party landing pages were used for discovery only. Claims are supported by official documentation, original papers or local artifacts.",
+  "network_note": "A later attempt to retrieve additional confidence details failed; no unobserved details were inferred.",
+  "project_documents": [
+    "README_更新版_20260617.md",
+    "research_questions_更新版_20260617.md",
+    "Research Roadmap_更新版_20260617.md",
+    "脚本/3.0/r3a_v2_selector.py",
+    "outputs/r3a_v2_2_p1_audit_integration/p1_decision_freeze.md",
+    "outputs/r3a_v2_2_triggered_utility_eval/triggered_utility_eval_report.md",
+    "r3a-exec-log/runs/round_0065/run_summary.json",
+    "r3a-exec-log/runs/round_0066/run_summary.json"
+  ],
+  "assessed_papers": 5,
+  "deeply_considered": 2,
+  "abstract_screen_only": 3,
+  "live_jev_calls": 0,
+  "experiments_run": 0
+}

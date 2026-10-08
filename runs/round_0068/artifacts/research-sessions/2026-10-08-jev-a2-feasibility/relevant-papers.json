@@ -1,0 +1,50 @@
+{
+  "arxiv:2609.29429": {
+    "title": "Just Ask Jev: Reinforcement Learning for Calibrated Decisions as a Zero-Shot Detector of AI Alignment Failures",
+    "url": "https://arxiv.org/abs/2609.29429",
+    "html_url": "https://arxiv.org/html/2609.29429v1",
+    "status": "highly_relevant",
+    "score": 9,
+    "score_components": {
+      "keywords": 3,
+      "data_type": 4,
+      "specificity": 2
+    },
+    "reading_depth": "Full-text relevant sections including hallucination, calibration, context availability and limitations",
+    "source": "web_search",
+    "reviewed_on": "2026-10-08",
+    "findings": [
+      "Typed decisions can be used for hallucination monitoring with source context",
+      "Detector ranking and deployed threshold/calibration require separate evaluation",
+      "Gains involving label-defining context must not be treated as deployable evidence"
+    ],
+    "limits": [
+      "One RLCD model, mostly English scorer-labelled benchmarks",
+      "No direct A2/R3a memory-admission experiment"
+    ]
+  },
+  "arxiv:2609.37647": {
+    "title": "Evaluating and Benchmarking the System One Model Jev",
+    "url": "https://arxiv.org/abs/2609.37647",
+    "html_url": "https://arxiv.org/html/2609.37647v1",
+    "status": "highly_relevant",
+    "score": 8,
+    "score_components": {
+      "keywords": 3,
+      "data_type": 3,
+      "specificity": 2
+    },
+    "reading_depth": "Abstract and full-text opening/method summary; not a complete paper replication",
+    "source": "web_search",
+    "reviewed_on": "2026-10-08",
+    "findings": [
+      "Classification/NLI is relevant to relation adjudication",
+      "Choice and binary probability behaviour differ",
+      "Thresholds tuned on separate development data can improve binary decisions"
+    ],
+    "limits": [
+      "No memory-specific refutation-admission result",
+      "Public benchmark calibration need not transfer to HaluMem"
+    ]
+  }
+}

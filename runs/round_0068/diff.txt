@@ -1,0 +1,599 @@
+diff --git a/runs/round_0068/artifacts/research-sessions/2026-10-08-jev-a2-feasibility/SUMMARY.md b/runs/round_0068/artifacts/research-sessions/2026-10-08-jev-a2-feasibility/SUMMARY.md
+new file mode 100644
+index 0000000..6c5ed60
+--- /dev/null
++++ b/runs/round_0068/artifacts/research-sessions/2026-10-08-jev-a2-feasibility/SUMMARY.md
+@@ -0,0 +1,115 @@
++# Jev 能否用于 A2 / R3a：可行性判断与最小验证方案
++
++称呼：陆含
++资料核对：2026-10-07 至 2026-10-08（Asia/Shanghai）
++任务类型：资料研究与方案评估；本轮未接入 Jev、未调用其 API、未执行新实验。
++
++## 结论
++
++可以尝试。最贴合现有 A2 的用途，是把 Jev 当作“问题前提与已检索记忆之间的关系判别器”，辅助 R3a 选择具备反证资格的记忆。它也可以用于回答后的证据支持检查。当前证据支持开展独立对照实验，尚不足以支持替换已冻结的 R3a-v2.2，或宣称项目能因此消除幻觉。
++
++建议顺序：先做影子判别与人工分歧审计，再比较相同条件下的 selector，最后才考虑干预最终回答。保留记忆库、检索器、候选集合、现有主线及评价口径。
++
++## 1. Jev 的能力及需要澄清的说法
++
++Jev 是 TypeSafe 的 System One 模型，接收 state 与类型化问题，返回 Choice、Score 或 Noul；它不负责生成最终自然语言回答。Choice 适合关系分类或从既有 memory_id 中选择，Noul 适合输出一个条件成立的概率。[官方介绍](https://docs.typesafe.ai/introduction)
++
++类型受约束能避免输出不存在的类别、任意新增字段等问题，但合法类别仍可能选错。“零幻觉”不能直接解释为“不会误判反证”或“生成器回答一定正确”。官方列出的局限包括字面理解、复杂间接关系、时间比较和大段无关上下文。[官方局限](https://docs.typesafe.ai/model-jaggedness/jev-1.13)
++
++Choice/Score 的 confidence 由答案概率分布计算，不能直接当成某条证据客观正确的概率；Noul 没有同样的 confidence 字段。多个条件的概率也不能未经验证就相乘当作最终准入概率。[置信度说明](https://docs.typesafe.ai/confidence)
++
++截至本次查询，官方列出的版本是 jev-1.13.0，价格为每百万输入 token 0.042 美元，输出不计费。研究应固定版本并保存返回的模型版本、状态、问题、概率和调用成本；官网速度演示不代表本项目端到端速度。[模型与定价](https://docs.typesafe.ai/models)
++
++## 2. 与项目当前状态的对应
++
++本地关键文档实际为 README_更新版_20260617.md、research_questions_更新版_20260617.md 和 Research Roadmap_更新版_20260617.md。它们界定了“检索后、推理前”的使用资格控制，当前正式主张限定在 Memory Conflict / false-premise correction。
++
++现有 脚本/3.0/r3a_v2_selector.py 把判断拆成：
++1. 问题前提锚点匹配；
++2. 实体、槽位与值对齐；
++3. 时间 / 事件条件相容；
++4. 显式反驳，且不把“未提及”当作“否定”。
++
++Jev 可以提供这些关系的语义判断，代码继续控制最终准入、证据身份和 no-op。现有代码中的 confidence = 10 + _refutation_strength(prop) 是启发式分值，与 Jev 的分布统计量不是同一尺度，不能沿用同名字段的阈值。
++
++后续报告比六月概述更适合决定是否改方法：
++- P1 审计的 120 条候选中，118 条属于非反证或非反证但有用，未确认真反证漏触发；冻结结论为 do_not_revise_r3a_v2_2。不能因为 Jev 是新模型就把疑似候选当成漏判。
++- 78 个已触发样本的 utility 报告：R0 为 C/H/O = 34/9/35，B_triggered 为 36/8/34；correct 的配对检验 p = 0.831812。该结果没有建立显著的回答正确率提升。
++- 实验 7 的最终混合口径为 A=12、B=72、C=72、D=0、uncertain=2，共 158 个诊断案例；43 个案例有人审，其余保留机器判断。这是诊断案例的归因，不能当成全量任务分布。B 指证据存在但未呈现，C 指呈现后未使用，二者需要分别验证。
++
++对应的本地依据：
++- [项目概述](../../README_更新版_20260617.md)
++- [P1 冻结决策](../../outputs/r3a_v2_2_p1_audit_integration/p1_decision_freeze.md)
++- [已触发样本收益](../../outputs/r3a_v2_2_triggered_utility_eval/triggered_utility_eval_report.md)
++- [实验 7 最终计数](../../r3a-exec-log/runs/round_0066/run_summary.json)
++
++## 3. 两个接入位置
++
++| 位置 | Jev 判断内容 | 代码负责的动作 | 优先级 |
++|---|---|---|---|
++| 检索后、回答前 | 某条记忆是否明确反驳当前前提 | 选择已有 memory_id、核对原文、按现有策略准入或 no-op | 首选试验 |
++| 回答生成后 | 回答中的具体断言是否受到给定证据支持；是否忽略明确反证 | 记录分歧；以后独立验证受控重答 | 次选试验 |
++
++第一阶段的输入只包含 question、raw_memories 及推理时本就可见的元数据。排除 gold_answer、question_type、baseline_label、distractor 标签和人工最终裁决。评价阶段可以使用冻结的 gold-only 口径和人工关系标签。
++
++逐条记忆可采用以下原子问题：
++- 是否指向同一实体与同一属性 / 活动？
++- 文本是否明确否定问题中的主张，或给出与该主张不相容的状态？
++- 该反驳是否适用于问题指定的时间与事件范围？
++
++关系选项应包含 REFUTES_PREMISE、DIRECT_SUPPORT、INSUFFICIENT_TO_DECIDE、OTHER；最终证据选择包含 NONE。时间先后、日期窗口和 ID 到原文的映射交给代码。不把未来计划等同于已发生事件，不把偏好不同等同于决策反转，不把缺少信息等同于反证。
++
++这是拟议接口，不是已验证策略；多条原子问题分别可靠，不代表组合门控已经可靠。需要评价最终准入结果。
++
++Jev 不会自动把遗漏的原文送进回答上下文，也不会保证生成器使用已送入的证据。对于实验 7 的 B 类，应检查准入证据是否完整呈现；对于 C 类，应固定相同证据呈现方式后检验回答是否改善。回答后核验需要提供实际呈现的来源，不能借助 gold 把检测包装成可部署能力。
++
++## 4. 最小对照方案
++
++### 第一阶段：影子判别，不改变现有回答
++
++优先使用约 200–300 条可独立审计的问句—记忆对，覆盖明确反证、同主题但槽位不同、时间不匹配、模糊关系和未提及。纳入规则未触发及非目标案例；分层仅用于采样和事后统计。
++
++按会话 / 用户分离开发集与测试集，避免同一批记忆同时参与阈值选择和最终评价。旧审计数据可以做开发参考，但不能一边据其改提示、一边再把同批数据当最终测试。
++
++比较现有规则、Jev、结构化输出的通用 LLM，使用相同输入和关系定义。人工盲审分歧，记录抽样方式与分层权重。核心问题是：Jev 是否识别到真实、可用且规则未识别的关系，以及是否新增误准入。
++
++### 第二阶段：固定实验条件比较最终回答
++
++| 分支 | 作用 |
++|---|---|
++| R0 | 原始回答基线 |
++| Rule-A2 | 冻结的 R3a-v2.2 |
++| Jev-A2 | 相同候选问题集合与准入呈现策略，使用 Jev 选择证据或 NONE |
++| LLM-A2 | 相同接口，使用通用 LLM 判断关系 |
++| Rule+Jev | 仅核验现有规则提出的候选，作为单独的否决策略消融 |
++
++先在相同规则 gate 的问题集合上比较 selector；按实际触发交集补做分析，区分证据选择收益与弃权 / gate 改变的收益。扩展未触发样本是另一个实验，不与 selector 对照混在一起。
++
++固定记忆库、检索结果、候选记忆、生成模型、随机设置、上下文预算、呈现模板和评价口径。无准入证据时回到既有 no-op，不强制生成器回答 Unknown。
++
++需要报告：
++- 反证准入 precision、机会 recall、覆盖率、非目标误触发；机会 recall 的分母必须经审计确认有反证，不能用可疑候选代替。
++- 整体与目标子集 C/H/O，尤其 omission→correct、omission→hallucination、correct→hallucination。
++- 证据是否完整呈现，以及呈现后是否被回答采用。
++- 最终准入概率的校准、风险与覆盖率、延迟和总调用成本。
++- 配对置信区间；Jev 不同时担任方法组件和唯一最终裁判。
++
++成功标准应预先约定：在相近反证精度下增加经确认的覆盖，或改善最终 C/H/O 且有合理的净修复收益。只有格式更稳定、调用更便宜或触发更多，不足以证明幻觉得到改善。
++
++## 5. 论文贡献与相关工作
++
++官方已有 Classifying RAG passages 示例：检索后判断相关性、可用证据、前提冲突和提示注入，并把证据与冲突信息分别送给生成器。因此，“在检索与生成之间增加 Jev gate”本身不能作为本项目的新贡献。[官方 RAG 示例](https://docs.typesafe.ai/cookbooks/classifying_rag_passages)
++
++两个直接相关的预印本：
++- [Just Ask Jev / RLCDAlignBench](https://arxiv.org/abs/2609.29429)：包含幻觉检测，并分析输入上下文、标签定义和校准问题；没有证明长期记忆中的反证准入能改善最终回答。
++- [Evaluating and Benchmarking the System One Model Jev](https://arxiv.org/abs/2609.37647)：覆盖分类与自然语言推断；显示二值概率不能机械沿用 0.5 阈值。结果不能直接移植为 HaluMem 的反证精度。
++
++由这些来源与项目证据作出的研究判断是：贡献应放在“命题条件化的记忆反证资格定义、明确的 no-op / 准入动作、呈现与使用的因果对照、误准入与遗漏的权衡”，并检验这些原则能否跨判别器成立。Jev 可作为一个实现和强对照。
++
++## 6. 检索与记录方法
++
++这是围绕具体接入决策的定向资料核查，不是全面系统综述。搜索包括 Jev 官方 TypeSafe 文档、Jev calibrated decisions、Jev hallucination detection，并核对本地方法、冻结审计、utility 报告和实验 7 执行记录。最终判断仅引用官方文档、原论文和本地记录。
++
++重点核查原文或相关章节的论文 2 篇，另外仅摘要筛选相关技术方向 3 篇；完整引用网络未遍历。已在 papers-reviewed.json 中区分阅读深度，并保留相关论文列表和搜索记录。
++
++本轮新增研究记录；未修改现有 selector、prompt、记忆库、检索器或测试。Jev 的项目内精度、校准、回答收益和端到端成本均待实测。
+diff --git a/runs/round_0068/artifacts/research-sessions/2026-10-08-jev-a2-feasibility/citations/citation-graph.json b/runs/round_0068/artifacts/research-sessions/2026-10-08-jev-a2-feasibility/citations/citation-graph.json
+new file mode 100644
+index 0000000..c61f848
+--- /dev/null
++++ b/runs/round_0068/artifacts/research-sessions/2026-10-08-jev-a2-feasibility/citations/citation-graph.json
+@@ -0,0 +1,16 @@
++{
++  "nodes": [
++    {
++      "id": "arxiv:2609.29429",
++      "title": "Just Ask Jev: Reinforcement Learning for Calibrated Decisions as a Zero-Shot Detector of AI Alignment Failures",
++      "url": "https://arxiv.org/abs/2609.29429"
++    },
++    {
++      "id": "arxiv:2609.37647",
++      "title": "Evaluating and Benchmarking the System One Model Jev",
++      "url": "https://arxiv.org/abs/2609.37647"
++    }
++  ],
++  "edges": [],
++  "scope_note": "No unverified citation edges recorded. A full backward/forward citation traversal was outside this focused feasibility assessment."
++}
+diff --git a/runs/round_0068/artifacts/research-sessions/2026-10-08-jev-a2-feasibility/initial-search-results.json b/runs/round_0068/artifacts/research-sessions/2026-10-08-jev-a2-feasibility/initial-search-results.json
+new file mode 100644
+index 0000000..acebb64
+--- /dev/null
++++ b/runs/round_0068/artifacts/research-sessions/2026-10-08-jev-a2-feasibility/initial-search-results.json
+@@ -0,0 +1,63 @@
++{
++  "research_question": "最近很火的 Jev 是否可以用于 A2 幻觉项目",
++  "date": "2026-10-08",
++  "timezone": "Asia/Shanghai",
++  "type": "targeted feasibility assessment, not an exhaustive systematic review",
++  "queries": [
++    "Jev AI agent 最近 很火 Jev",
++    "Jev official TypeSafe AI documentation calibrated decisions",
++    "site:typesafe.ai Jev docs API",
++    "site:github.com typesafeai jev"
++  ],
++  "authoritative_sources": [
++    {
++      "title": "TypeSafe Introduction",
++      "url": "https://docs.typesafe.ai/introduction"
++    },
++    {
++      "title": "Confidence",
++      "url": "https://docs.typesafe.ai/confidence"
++    },
++    {
++      "title": "Classifying RAG passages",
++      "url": "https://docs.typesafe.ai/cookbooks/classifying_rag_passages"
++    },
++    {
++      "title": "Jev 1.13 jaggedness",
++      "url": "https://docs.typesafe.ai/model-jaggedness/jev-1.13"
++    },
++    {
++      "title": "Models",
++      "url": "https://docs.typesafe.ai/models"
++    },
++    {
++      "title": "Quick start",
++      "url": "https://docs.typesafe.ai/introduction/quickstart"
++    },
++    {
++      "title": "Just Ask Jev: Reinforcement Learning for Calibrated Decisions as a Zero-Shot Detector of AI Alignment Failures",
++      "url": "https://arxiv.org/abs/2609.29429"
++    },
++    {
++      "title": "Evaluating and Benchmarking the System One Model Jev",
++      "url": "https://arxiv.org/abs/2609.37647"
++    }
++  ],
++  "retrieval_note": "Third-party landing pages were used for discovery only. Claims are supported by official documentation, original papers or local artifacts.",
++  "network_note": "A later attempt to retrieve additional confidence details failed; no unobserved details were inferred.",
++  "project_documents": [
++    "README_更新版_20260617.md",
++    "research_questions_更新版_20260617.md",
++    "Research Roadmap_更新版_20260617.md",
++    "脚本/3.0/r3a_v2_selector.py",
++    "outputs/r3a_v2_2_p1_audit_integration/p1_decision_freeze.md",
++    "outputs/r3a_v2_2_triggered_utility_eval/triggered_utility_eval_report.md",
++    "r3a-exec-log/runs/round_0065/run_summary.json",
++    "r3a-exec-log/runs/round_0066/run_summary.json"
++  ],
++  "assessed_papers": 5,
++  "deeply_considered": 2,
++  "abstract_screen_only": 3,
++  "live_jev_calls": 0,
++  "experiments_run": 0
++}
+diff --git a/runs/round_0068/artifacts/research-sessions/2026-10-08-jev-a2-feasibility/papers-reviewed.json b/runs/round_0068/artifacts/research-sessions/2026-10-08-jev-a2-feasibility/papers-reviewed.json
+new file mode 100644
+index 0000000..2063937
+--- /dev/null
++++ b/runs/round_0068/artifacts/research-sessions/2026-10-08-jev-a2-feasibility/papers-reviewed.json
+@@ -0,0 +1,98 @@
++{
++  "arxiv:2609.29429": {
++    "title": "Just Ask Jev: Reinforcement Learning for Calibrated Decisions as a Zero-Shot Detector of AI Alignment Failures",
++    "url": "https://arxiv.org/abs/2609.29429",
++    "html_url": "https://arxiv.org/html/2609.29429v1",
++    "status": "highly_relevant",
++    "score": 9,
++    "score_components": {
++      "keywords": 3,
++      "data_type": 4,
++      "specificity": 2
++    },
++    "reading_depth": "Full-text relevant sections including hallucination, calibration, context availability and limitations",
++    "source": "web_search",
++    "reviewed_on": "2026-10-08",
++    "findings": [
++      "Typed decisions can be used for hallucination monitoring with source context",
++      "Detector ranking and deployed threshold/calibration require separate evaluation",
++      "Gains involving label-defining context must not be treated as deployable evidence"
++    ],
++    "limits": [
++      "One RLCD model, mostly English scorer-labelled benchmarks",
++      "No direct A2/R3a memory-admission experiment"
++    ]
++  },
++  "arxiv:2609.37647": {
++    "title": "Evaluating and Benchmarking the System One Model Jev",
++    "url": "https://arxiv.org/abs/2609.37647",
++    "html_url": "https://arxiv.org/html/2609.37647v1",
++    "status": "highly_relevant",
++    "score": 8,
++    "score_components": {
++      "keywords": 3,
++      "data_type": 3,
++      "specificity": 2
++    },
++    "reading_depth": "Abstract and full-text opening/method summary; not a complete paper replication",
++    "source": "web_search",
++    "reviewed_on": "2026-10-08",
++    "findings": [
++      "Classification/NLI is relevant to relation adjudication",
++      "Choice and binary probability behaviour differ",
++      "Thresholds tuned on separate development data can improve binary decisions"
++    ],
++    "limits": [
++      "No memory-specific refutation-admission result",
++      "Public benchmark calibration need not transfer to HaluMem"
++    ]
++  },
++  "arxiv:2609.24052": {
++    "title": "Calibrated Decisions at Scale: Converting Police Crash Narratives into Probabilistic Crash Variables with a System One Model (Jev)",
++    "url": "https://arxiv.org/abs/2609.24052",
++    "status": "possibly_relevant",
++    "score": 5,
++    "score_components": {
++      "keywords": 2,
++      "data_type": 2,
++      "specificity": 1
++    },
++    "reading_depth": "Search-result abstract only",
++    "source": "web_search",
++    "reviewed_on": "2026-10-08",
++    "reason": "Typed narrative coding is an adjacent pattern; outside memory-conflict scope",
++    "used_for_final_claims": false
++  },
++  "arxiv:2609.33689": {
++    "title": "Type-Safe Decision Frameworks for Agentic 5G Control: A Theory-Driven Testbed Characterization of Where They Can Be Applied",
++    "url": "https://arxiv.org/abs/2609.33689",
++    "status": "possibly_relevant",
++    "score": 6,
++    "score_components": {
++      "keywords": 2,
++      "data_type": 3,
++      "specificity": 1
++    },
++    "reading_depth": "Search-result abstract only",
++    "source": "web_search",
++    "reviewed_on": "2026-10-08",
++    "reason": "Adjacent evidence about typed decisions and question changes, but outside memory QA",
++    "used_for_final_claims": false
++  },
++  "arxiv:2609.28940": {
++    "title": "Calibrated Decision Models for Autonomous Penetration-Testing Harnesses: JEV and Laya as System One Decision Layers for LLM-Driven Pentest Agents",
++    "url": "https://arxiv.org/abs/2609.28940",
++    "status": "possibly_relevant",
++    "score": 5,
++    "score_components": {
++      "keywords": 2,
++      "data_type": 2,
++      "specificity": 1
++    },
++    "reading_depth": "Search-result abstract only",
++    "source": "web_search",
++    "reviewed_on": "2026-10-08",
++    "reason": "Decision-layer engineering analogy; single exploratory domain-specific runs",
++    "used_for_final_claims": false
++  }
++}
+diff --git a/runs/round_0068/artifacts/research-sessions/2026-10-08-jev-a2-feasibility/relevant-papers.json b/runs/round_0068/artifacts/research-sessions/2026-10-08-jev-a2-feasibility/relevant-papers.json
+new file mode 100644
+index 0000000..2c554b7
+--- /dev/null
++++ b/runs/round_0068/artifacts/research-sessions/2026-10-08-jev-a2-feasibility/relevant-papers.json
+@@ -0,0 +1,50 @@
++{
++  "arxiv:2609.29429": {
++    "title": "Just Ask Jev: Reinforcement Learning for Calibrated Decisions as a Zero-Shot Detector of AI Alignment Failures",
++    "url": "https://arxiv.org/abs/2609.29429",
++    "html_url": "https://arxiv.org/html/2609.29429v1",
++    "status": "highly_relevant",
++    "score": 9,
++    "score_components": {
++      "keywords": 3,
++      "data_type": 4,
++      "specificity": 2
++    },
++    "reading_depth": "Full-text relevant sections including hallucination, calibration, context availability and limitations",
++    "source": "web_search",
++    "reviewed_on": "2026-10-08",
++    "findings": [
++      "Typed decisions can be used for hallucination monitoring with source context",
++      "Detector ranking and deployed threshold/calibration require separate evaluation",
++      "Gains involving label-defining context must not be treated as deployable evidence"
++    ],
++    "limits": [
++      "One RLCD model, mostly English scorer-labelled benchmarks",
++      "No direct A2/R3a memory-admission experiment"
++    ]
++  },
++  "arxiv:2609.37647": {
++    "title": "Evaluating and Benchmarking the System One Model Jev",
++    "url": "https://arxiv.org/abs/2609.37647",
++    "html_url": "https://arxiv.org/html/2609.37647v1",
++    "status": "highly_relevant",
++    "score": 8,
++    "score_components": {
++      "keywords": 3,
++      "data_type": 3,
++      "specificity": 2
++    },
++    "reading_depth": "Abstract and full-text opening/method summary; not a complete paper replication",
++    "source": "web_search",
++    "reviewed_on": "2026-10-08",
++    "findings": [
++      "Classification/NLI is relevant to relation adjudication",
++      "Choice and binary probability behaviour differ",
++      "Thresholds tuned on separate development data can improve binary decisions"
++    ],
++    "limits": [
++      "No memory-specific refutation-admission result",
++      "Public benchmark calibration need not transfer to HaluMem"
++    ]
++  }
++}
+diff --git a/runs/round_0068/file_change.txt b/runs/round_0068/file_change.txt
+new file mode 100644
+index 0000000..6e963e7
+--- /dev/null
++++ b/runs/round_0068/file_change.txt
+@@ -0,0 +1,159 @@
++Task: assess Jev feasibility for A2 / R3a
++Existing project code, tests, selectors, prompts, memory store and retriever were not edited.
++New task artifacts:
++A research-sessions/2026-10-08-jev-a2-feasibility/SUMMARY.md
++A research-sessions/2026-10-08-jev-a2-feasibility/papers-reviewed.json
++A research-sessions/2026-10-08-jev-a2-feasibility/relevant-papers.json
++A research-sessions/2026-10-08-jev-a2-feasibility/initial-search-results.json
++A research-sessions/2026-10-08-jev-a2-feasibility/citations/citation-graph.json
++
++Full project git status --short snapshot:
++Pre-existing unrelated modifications/deletions/untracked paths are listed for provenance; their contents were not copied into this round.
++ M AGENTS.md
++ M outputs/r3a_v2_dev_replay/r3a_v2_dev_replay_report.md
++ M outputs/r3a_v2_dev_replay/r3a_v2_full_selector_replay.jsonl
++ M outputs/r3a_v2_dev_replay/r3a_v2_full_selector_replay_report.md
++ M outputs/r3a_v2_dev_replay/r3a_v2_new_audit_candidates.csv
++ M outputs/r3a_v2_dev_replay/r3a_v2_selected_evidence_replay.jsonl
++ M outputs/r3a_v2_dev_replay/r3a_v2_selected_evidence_replay_report.md
++ M tests/test_r3a_v2_selector.py
++ D 临时/人工审查/031-060.xlsx
++ D 临时/人工审查/061-090.xlsx
++ D 临时/人工审查/091_120.xlsx
++ D 临时/人工审查/121-150.xlsx
++ D 临时/人工审查/151-180.xlsx
++ D 临时/人工审查/1_30.csv
++ D 临时/人工审查/error_type.md
++ D 临时/人工审查/final_selector_judgment.md
++ D 临时/人工审查/judge_issue.md
++ D 临时/人工审查/二审.md
++ D 临时/人工审查/复核.xlsx
++ D 临时/人工审查/审查.xlsx
++ D 临时/人工审查/终版--上传.xlsx
++ D 临时/人工审查/终版.xlsx
++ D 指令/第七次---DU诊断（纯统计不发API）.md
++ D "指令/第三次---推广V1到Dynamic Update和Memory Boundary.md"
++ D "指令/第二次---跑 Dynamic Update  Memory Boundary.md"
++ D 指令/第二次修复实验指令.md
++ D 指令/第五次---基础评测执行指令.md
++ D 指令/第八次---DU专项normal_qa的prompt_AB实验.md
++ D 指令/第六次---5系统真实API评测指令.md
++ D 指令/第六次---多系统评测执行指令（完整版）.md
++ D 指令/第十一次---Mem0_Long离线A2挂载评测.md
++ D 指令/第十二次---Memobase本地部署与安装验证.md
++ D 指令/第十五次---完整Context资产采集（离线拦截基础设施）.md
++ D 指令/第十四次---A2后端信号自适应阶段1（纯config零改本体）.md
++ D 指令/第十次---环境修复与验证.md
++ D 指令/第四次---多系统评测设计与执行.md
++ M 脚本/3.0/r3a_v2_selector.py
++ D 讨论/三路结果.md
++?? .codex_work/
++?? .kiro/
++?? .tours/
++?? outputs/019f6927-aa95-74d1-a404-3bfcc2eb0f2b_recovery/
++?? outputs/baseline_full/baseline_full_run_summary.md
++?? outputs/baseline_full/memobase_baseline_runbook_2026-06-01.md
++?? outputs/baseline_sharded_v2/mem0_medium/key_04_user4/run.log
++?? outputs/baseline_sharded_v2/mem0_medium/key_10_user10/run.log
++?? outputs/baseline_sharded_v2/mem0_medium/manifest.json
++?? outputs/baseline_wrong_gold_semantic_audit/
++?? outputs/baseline_wrong_gold_topk_audit/
++?? outputs/dss_skills_presentation/
++?? outputs/e1_memos_full_oracle/
++?? outputs/e1_memos_full_oracle_v2/
++?? outputs/e1_memos_generation_failure_oracle_v1/
++?? outputs/e7_memos_containment_audit_v1/
++?? outputs/r3a_v2_2_ab5_smoke/
++?? outputs/r3a_v2_2_full_offline_opportunity_census/
++?? outputs/r3a_v2_2_mc_human_audit_integration/
++?? outputs/r3a_v2_2_mc_stratified_coverage_audit/
++?? outputs/r3a_v2_2_p1_audit_integration/
++?? outputs/r3a_v2_2_p1_manual_audit_prep/
++?? outputs/r3a_v2_2_smoke_diagnostics/
++?? outputs/r3a_v2_2_triggered_utility_eval/
++?? outputs/supermemory_long_user0_key_capacity_test/manifest.json
++?? outputs/unified_parsing_task_conversation_full.md
++?? research-sessions/
++?? run_mem0_long_gold_only_rejudge.py
++?? tests/test_experiment7_containment_audit.py
++?? tests/test_experiment7_human_validation_integration.py
++?? 临时/人工审查/审查MC/
++?? 临时/人工审查/审查生成错误率/
++?? 临时/纠错/
++?? 修正V3/_run_mem0_tuning.py
++?? 修正V3/_run_proj_mem0.py
++?? 修正V3/_run_proj_supermemory.py
++?? 修正V3/_run_supermemory_heldout.py
++?? 修正V3/adaptive_stage1_runner.py
++?? 修正V3/adaptive_threshold_proj.py
++?? 修正V3/build_context_assets.py
++?? 实验结果/
++?? 指令/从前6.19/
++?? 指令/修改R3a/
++?? 指令/重构/
++?? 脚本/2.0-修复版/_diag_sm_threshold.py
++?? 脚本/2.0-修复版/_test_a2_offline_replay.py
++?? 脚本/2.0-修复版/_test_mem0_a2_qa_user0.py
++?? 脚本/2.0-修复版/_test_mem0_quota_user0_long.py
++?? 脚本/2.0-修复版/_test_sm_a2_qa_user0.py
++?? 脚本/2.0-修复版/_test_sm_a2_qa_user0_v2.py
++?? 脚本/2.0-修复版/_test_sm_quota_1user.py
++?? 脚本/2.0-修复版/_verify_sm_key_isolation.py
++?? 脚本/2.0-修复版/run_mem0_medium_3way_offline.py
++?? 脚本/2.0-修复版/run_mem0_medium_ab_offline.py
++?? 脚本/2.0-修复版/run_memobase_long_baseline.py
++?? 脚本/2.0-修复版/run_memobase_medium_baseline.py
++?? 脚本/2.0-修复版/run_sm_baseline_full.py
++?? 脚本/2.0-修复版/smoke_memobase.py
++?? 脚本/2.0-修复版/smoke_memos.py
++?? 脚本/2.0-修复版/smoke_supermemory.py
++?? 脚本/2.0-修复版/smoke_zep.py
++?? 脚本/3.0/00_verify_serializer.py
++?? 脚本/3.0/01_select_memos_full.py
++?? 脚本/3.0/02_generate_memos_full.py
++?? 脚本/3.0/03_judge_memos_full.py
++?? 脚本/3.0/04_analyze_memos_full.py
++?? 脚本/3.0/05_audit_memos_full.py
++?? 脚本/3.0/06_supp_license_analysis.py
++?? 脚本/3.0/07_verify_unified_admission.py
++?? 脚本/3.0/08_analyze_unified_admission.py
++?? 脚本/3.0/09_verify_unified_a1_a5.py
++?? 脚本/3.0/10_analyze_unified_a1_a5.py
++?? 脚本/3.0/11_run_generation_failure_oracle.py
++?? 脚本/3.0/12_analyze_generation_failure_oracle.py
++?? 脚本/3.0/13_build_generation_failure_audit_workbook.mjs
++?? 脚本/3.0/14_run_containment_audit.py
++?? 脚本/3.0/15_analyze_containment_audit.py
++?? 脚本/3.0/16_integrate_containment_human_validation.py
++?? 脚本/3.0/_assemble_round_0053.py
++?? 脚本/3.0/_audit_force_write.py
++?? 脚本/3.0/_audit_make_batches.py
++?? 脚本/3.0/_audit_merge_and_write.py
++?? 脚本/3.0/_e7_check_sizes.py
++?? 脚本/3.0/_e7_export_rows.py
++?? 脚本/3.0/_fix_pv_formulas.py
++?? 脚本/3.0/_inspect_G_mechanics.py
++?? 脚本/3.0/_inspect_audit_workbooks.py
++?? 脚本/3.0/_inspect_e7_dv.py
++?? 脚本/3.0/_inspect_e7_full.py
++?? 脚本/3.0/_inspect_e7_workbook.py
++?? 脚本/3.0/_inspect_now.py
++?? 脚本/3.0/_verify_integrity.py
++?? 脚本/3.0/_verify_workbook.py
++?? 脚本/3.0/audit_baseline_wrong_gold_topk.py
++?? 脚本/3.0/audit_gold_evidence_semantic_retrieval.py
++?? 脚本/3.0/audit_r3a_v2_2_mc_coverage.py
++?? 脚本/3.0/census_r3a_v2_2_full_offline_opportunities.py
++?? 脚本/3.0/diagnose_r3a_v2_2_low_trigger.py
++?? 脚本/3.0/e1_memos_oracle_common.py
++?? 脚本/3.0/evaluate_r3a_v2_2_triggered_utility.py
++?? 脚本/3.0/fill_r3a_v2_2_p1_manual_audit_5shen.py
++?? 脚本/3.0/integrate_r3a_v2_2_p1_audit_freeze.py
++?? 脚本/3.0/prepare_r3a_v2_2_p1_manual_audit.py
++?? 脚本/统一解析/
++?? 讨论/F5的看法.md
++?? "讨论/从week accept到accept.md"
++?? 讨论/修复condition的建议.md
++?? 讨论/翻转实验想法.md
++
++Execution-log git status --short after the round commit is verified separately; it is expected to be empty.
+diff --git a/runs/round_0068/run_summary.json b/runs/round_0068/run_summary.json
+new file mode 100644
+index 0000000..1994da4
+--- /dev/null
++++ b/runs/round_0068/run_summary.json
+@@ -0,0 +1,56 @@
++{
++  "round": "round_0068",
++  "timestamp": "2026-10-08T08:22:09+08:00",
++  "task": "Assess Jev for A2 post-retrieval counterevidence admission",
++  "status": "completed_assessment_no_integration",
++  "workspace": "D:\\幻觉",
++  "research_date": "2026-10-08",
++  "findings": [
++    "Jev is suitable for a controlled relation-classifier comparison, not yet a justified replacement for frozen R3a-v2.2.",
++    "Typed output constraints do not establish factual correctness, refutation correctness or final-answer faithfulness.",
++    "Official TypeSafe RAG passage classification already overlaps with the high-level gate pattern.",
++    "Current project freeze and downstream evidence rendering/usage diagnostics require independent, staged validation."
++  ],
++  "project_changes": [
++    "research-sessions/2026-10-08-jev-a2-feasibility/SUMMARY.md",
++    "research-sessions/2026-10-08-jev-a2-feasibility/papers-reviewed.json",
++    "research-sessions/2026-10-08-jev-a2-feasibility/relevant-papers.json",
++    "research-sessions/2026-10-08-jev-a2-feasibility/initial-search-results.json",
++    "research-sessions/2026-10-08-jev-a2-feasibility/citations/citation-graph.json"
++  ],
++  "artifacts": [
++    "artifacts/research-sessions/2026-10-08-jev-a2-feasibility/SUMMARY.md",
++    "artifacts/research-sessions/2026-10-08-jev-a2-feasibility/papers-reviewed.json",
++    "artifacts/research-sessions/2026-10-08-jev-a2-feasibility/relevant-papers.json",
++    "artifacts/research-sessions/2026-10-08-jev-a2-feasibility/initial-search-results.json",
++    "artifacts/research-sessions/2026-10-08-jev-a2-feasibility/citations/citation-graph.json"
++  ],
++  "output_files": [
++    "research-sessions/2026-10-08-jev-a2-feasibility/SUMMARY.md",
++    "research-sessions/2026-10-08-jev-a2-feasibility/papers-reviewed.json",
++    "research-sessions/2026-10-08-jev-a2-feasibility/relevant-papers.json",
++    "research-sessions/2026-10-08-jev-a2-feasibility/initial-search-results.json",
++    "research-sessions/2026-10-08-jev-a2-feasibility/citations/citation-graph.json",
++    "runs/round_0068/run_summary.json runs/round_0068/file_change.txt runs/round_0068/diff.txt"
++  ],
++  "verification": {
++    "json_documents_parsed": 4,
++    "source_documents_and_papers_checked": true,
++    "secret_scan_of_task_artifacts": "passed",
++    "project_status_entries": 146,
++    "preexisting_workspace_status_entries_observed": 145,
++    "production_code_changes": 0,
++    "new_tests": 0,
++    "experiment_runs": 0,
++    "live_jev_calls": 0,
++    "rationale_for_no_tests": "Research documents only; structured JSON validated."
++  },
++  "github_sync": {
++    "repository": "lyh1436062004/r3a-exec-log",
++    "branch": "main",
++    "push_required": true,
++    "actions_workflow": "R3a Round Analyzer",
++    "actions_trigger_expected": "push to main changing runs/**; actual run will be verified after push"
++  },
++  "secrets_persisted": false
++}

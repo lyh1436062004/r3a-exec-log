@@ -1,0 +1,159 @@
+Task: assess Jev feasibility for A2 / R3a
+Existing project code, tests, selectors, prompts, memory store and retriever were not edited.
+New task artifacts:
+A research-sessions/2026-10-08-jev-a2-feasibility/SUMMARY.md
+A research-sessions/2026-10-08-jev-a2-feasibility/papers-reviewed.json
+A research-sessions/2026-10-08-jev-a2-feasibility/relevant-papers.json
+A research-sessions/2026-10-08-jev-a2-feasibility/initial-search-results.json
+A research-sessions/2026-10-08-jev-a2-feasibility/citations/citation-graph.json
+
+Full project git status --short snapshot:
+Pre-existing unrelated modifications/deletions/untracked paths are listed for provenance; their contents were not copied into this round.
+ M AGENTS.md
+ M outputs/r3a_v2_dev_replay/r3a_v2_dev_replay_report.md
+ M outputs/r3a_v2_dev_replay/r3a_v2_full_selector_replay.jsonl
+ M outputs/r3a_v2_dev_replay/r3a_v2_full_selector_replay_report.md
+ M outputs/r3a_v2_dev_replay/r3a_v2_new_audit_candidates.csv
+ M outputs/r3a_v2_dev_replay/r3a_v2_selected_evidence_replay.jsonl
+ M outputs/r3a_v2_dev_replay/r3a_v2_selected_evidence_replay_report.md
+ M tests/test_r3a_v2_selector.py
+ D 临时/人工审查/031-060.xlsx
+ D 临时/人工审查/061-090.xlsx
+ D 临时/人工审查/091_120.xlsx
+ D 临时/人工审查/121-150.xlsx
+ D 临时/人工审查/151-180.xlsx
+ D 临时/人工审查/1_30.csv
+ D 临时/人工审查/error_type.md
+ D 临时/人工审查/final_selector_judgment.md
+ D 临时/人工审查/judge_issue.md
+ D 临时/人工审查/二审.md
+ D 临时/人工审查/复核.xlsx
+ D 临时/人工审查/审查.xlsx
+ D 临时/人工审查/终版--上传.xlsx
+ D 临时/人工审查/终版.xlsx
+ D 指令/第七次---DU诊断（纯统计不发API）.md
+ D "指令/第三次---推广V1到Dynamic Update和Memory Boundary.md"
+ D "指令/第二次---跑 Dynamic Update  Memory Boundary.md"
+ D 指令/第二次修复实验指令.md
+ D 指令/第五次---基础评测执行指令.md
+ D 指令/第八次---DU专项normal_qa的prompt_AB实验.md
+ D 指令/第六次---5系统真实API评测指令.md
+ D 指令/第六次---多系统评测执行指令（完整版）.md
+ D 指令/第十一次---Mem0_Long离线A2挂载评测.md
+ D 指令/第十二次---Memobase本地部署与安装验证.md
+ D 指令/第十五次---完整Context资产采集（离线拦截基础设施）.md
+ D 指令/第十四次---A2后端信号自适应阶段1（纯config零改本体）.md
+ D 指令/第十次---环境修复与验证.md
+ D 指令/第四次---多系统评测设计与执行.md
+ M 脚本/3.0/r3a_v2_selector.py
+ D 讨论/三路结果.md
+?? .codex_work/
+?? .kiro/
+?? .tours/
+?? outputs/019f6927-aa95-74d1-a404-3bfcc2eb0f2b_recovery/
+?? outputs/baseline_full/baseline_full_run_summary.md
+?? outputs/baseline_full/memobase_baseline_runbook_2026-06-01.md
+?? outputs/baseline_sharded_v2/mem0_medium/key_04_user4/run.log
+?? outputs/baseline_sharded_v2/mem0_medium/key_10_user10/run.log
+?? outputs/baseline_sharded_v2/mem0_medium/manifest.json
+?? outputs/baseline_wrong_gold_semantic_audit/
+?? outputs/baseline_wrong_gold_topk_audit/
+?? outputs/dss_skills_presentation/
+?? outputs/e1_memos_full_oracle/
+?? outputs/e1_memos_full_oracle_v2/
+?? outputs/e1_memos_generation_failure_oracle_v1/
+?? outputs/e7_memos_containment_audit_v1/
+?? outputs/r3a_v2_2_ab5_smoke/
+?? outputs/r3a_v2_2_full_offline_opportunity_census/
+?? outputs/r3a_v2_2_mc_human_audit_integration/
+?? outputs/r3a_v2_2_mc_stratified_coverage_audit/
+?? outputs/r3a_v2_2_p1_audit_integration/
+?? outputs/r3a_v2_2_p1_manual_audit_prep/
+?? outputs/r3a_v2_2_smoke_diagnostics/
+?? outputs/r3a_v2_2_triggered_utility_eval/
+?? outputs/supermemory_long_user0_key_capacity_test/manifest.json
+?? outputs/unified_parsing_task_conversation_full.md
+?? research-sessions/
+?? run_mem0_long_gold_only_rejudge.py
+?? tests/test_experiment7_containment_audit.py
+?? tests/test_experiment7_human_validation_integration.py
+?? 临时/人工审查/审查MC/
+?? 临时/人工审查/审查生成错误率/
+?? 临时/纠错/
+?? 修正V3/_run_mem0_tuning.py
+?? 修正V3/_run_proj_mem0.py
+?? 修正V3/_run_proj_supermemory.py
+?? 修正V3/_run_supermemory_heldout.py
+?? 修正V3/adaptive_stage1_runner.py
+?? 修正V3/adaptive_threshold_proj.py
+?? 修正V3/build_context_assets.py
+?? 实验结果/
+?? 指令/从前6.19/
+?? 指令/修改R3a/
+?? 指令/重构/
+?? 脚本/2.0-修复版/_diag_sm_threshold.py
+?? 脚本/2.0-修复版/_test_a2_offline_replay.py
+?? 脚本/2.0-修复版/_test_mem0_a2_qa_user0.py
+?? 脚本/2.0-修复版/_test_mem0_quota_user0_long.py
+?? 脚本/2.0-修复版/_test_sm_a2_qa_user0.py
+?? 脚本/2.0-修复版/_test_sm_a2_qa_user0_v2.py
+?? 脚本/2.0-修复版/_test_sm_quota_1user.py
+?? 脚本/2.0-修复版/_verify_sm_key_isolation.py
+?? 脚本/2.0-修复版/run_mem0_medium_3way_offline.py
+?? 脚本/2.0-修复版/run_mem0_medium_ab_offline.py
+?? 脚本/2.0-修复版/run_memobase_long_baseline.py
+?? 脚本/2.0-修复版/run_memobase_medium_baseline.py
+?? 脚本/2.0-修复版/run_sm_baseline_full.py
+?? 脚本/2.0-修复版/smoke_memobase.py
+?? 脚本/2.0-修复版/smoke_memos.py
+?? 脚本/2.0-修复版/smoke_supermemory.py
+?? 脚本/2.0-修复版/smoke_zep.py
+?? 脚本/3.0/00_verify_serializer.py
+?? 脚本/3.0/01_select_memos_full.py
+?? 脚本/3.0/02_generate_memos_full.py
+?? 脚本/3.0/03_judge_memos_full.py
+?? 脚本/3.0/04_analyze_memos_full.py
+?? 脚本/3.0/05_audit_memos_full.py
+?? 脚本/3.0/06_supp_license_analysis.py
+?? 脚本/3.0/07_verify_unified_admission.py
+?? 脚本/3.0/08_analyze_unified_admission.py
+?? 脚本/3.0/09_verify_unified_a1_a5.py
+?? 脚本/3.0/10_analyze_unified_a1_a5.py
+?? 脚本/3.0/11_run_generation_failure_oracle.py
+?? 脚本/3.0/12_analyze_generation_failure_oracle.py
+?? 脚本/3.0/13_build_generation_failure_audit_workbook.mjs
+?? 脚本/3.0/14_run_containment_audit.py
+?? 脚本/3.0/15_analyze_containment_audit.py
+?? 脚本/3.0/16_integrate_containment_human_validation.py
+?? 脚本/3.0/_assemble_round_0053.py
+?? 脚本/3.0/_audit_force_write.py
+?? 脚本/3.0/_audit_make_batches.py
+?? 脚本/3.0/_audit_merge_and_write.py
+?? 脚本/3.0/_e7_check_sizes.py
+?? 脚本/3.0/_e7_export_rows.py
+?? 脚本/3.0/_fix_pv_formulas.py
+?? 脚本/3.0/_inspect_G_mechanics.py
+?? 脚本/3.0/_inspect_audit_workbooks.py
+?? 脚本/3.0/_inspect_e7_dv.py
+?? 脚本/3.0/_inspect_e7_full.py
+?? 脚本/3.0/_inspect_e7_workbook.py
+?? 脚本/3.0/_inspect_now.py
+?? 脚本/3.0/_verify_integrity.py
+?? 脚本/3.0/_verify_workbook.py
+?? 脚本/3.0/audit_baseline_wrong_gold_topk.py
+?? 脚本/3.0/audit_gold_evidence_semantic_retrieval.py
+?? 脚本/3.0/audit_r3a_v2_2_mc_coverage.py
+?? 脚本/3.0/census_r3a_v2_2_full_offline_opportunities.py
+?? 脚本/3.0/diagnose_r3a_v2_2_low_trigger.py
+?? 脚本/3.0/e1_memos_oracle_common.py
+?? 脚本/3.0/evaluate_r3a_v2_2_triggered_utility.py
+?? 脚本/3.0/fill_r3a_v2_2_p1_manual_audit_5shen.py
+?? 脚本/3.0/integrate_r3a_v2_2_p1_audit_freeze.py
+?? 脚本/3.0/prepare_r3a_v2_2_p1_manual_audit.py
+?? 脚本/统一解析/
+?? 讨论/F5的看法.md
+?? "讨论/从week accept到accept.md"
+?? 讨论/修复condition的建议.md
+?? 讨论/翻转实验想法.md
+
+Execution-log git status --short after the round commit is verified separately; it is expected to be empty.

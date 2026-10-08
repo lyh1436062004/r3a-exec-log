@@ -1,0 +1,16 @@
+{
+  "nodes": [
+    {
+      "id": "arxiv:2609.29429",
+      "title": "Just Ask Jev: Reinforcement Learning for Calibrated Decisions as a Zero-Shot Detector of AI Alignment Failures",
+      "url": "https://arxiv.org/abs/2609.29429"
+    },
+    {
+      "id": "arxiv:2609.37647",
+      "title": "Evaluating and Benchmarking the System One Model Jev",
+      "url": "https://arxiv.org/abs/2609.37647"
+    }
+  ],
+  "edges": [],
+  "scope_note": "No unverified citation edges recorded. A full backward/forward citation traversal was outside this focused feasibility assessment."
+}

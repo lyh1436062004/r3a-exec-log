@@ -1,0 +1,98 @@
+{
+  "arxiv:2609.29429": {
+    "title": "Just Ask Jev: Reinforcement Learning for Calibrated Decisions as a Zero-Shot Detector of AI Alignment Failures",
+    "url": "https://arxiv.org/abs/2609.29429",
+    "html_url": "https://arxiv.org/html/2609.29429v1",
+    "status": "highly_relevant",
+    "score": 9,
+    "score_components": {
+      "keywords": 3,
+      "data_type": 4,
+      "specificity": 2
+    },
+    "reading_depth": "Full-text relevant sections including hallucination, calibration, context availability and limitations",
+    "source": "web_search",
+    "reviewed_on": "2026-10-08",
+    "findings": [
+      "Typed decisions can be used for hallucination monitoring with source context",
+      "Detector ranking and deployed threshold/calibration require separate evaluation",
+      "Gains involving label-defining context must not be treated as deployable evidence"
+    ],
+    "limits": [
+      "One RLCD model, mostly English scorer-labelled benchmarks",
+      "No direct A2/R3a memory-admission experiment"
+    ]
+  },
+  "arxiv:2609.37647": {
+    "title": "Evaluating and Benchmarking the System One Model Jev",
+    "url": "https://arxiv.org/abs/2609.37647",
+    "html_url": "https://arxiv.org/html/2609.37647v1",
+    "status": "highly_relevant",
+    "score": 8,
+    "score_components": {
+      "keywords": 3,
+      "data_type": 3,
+      "specificity": 2
+    },
+    "reading_depth": "Abstract and full-text opening/method summary; not a complete paper replication",
+    "source": "web_search",
+    "reviewed_on": "2026-10-08",
+    "findings": [
+      "Classification/NLI is relevant to relation adjudication",
+      "Choice and binary probability behaviour differ",
+      "Thresholds tuned on separate development data can improve binary decisions"
+    ],
+    "limits": [
+      "No memory-specific refutation-admission result",
+      "Public benchmark calibration need not transfer to HaluMem"
+    ]
+  },
+  "arxiv:2609.24052": {
+    "title": "Calibrated Decisions at Scale: Converting Police Crash Narratives into Probabilistic Crash Variables with a System One Model (Jev)",
+    "url": "https://arxiv.org/abs/2609.24052",
+    "status": "possibly_relevant",
+    "score": 5,
+    "score_components": {
+      "keywords": 2,
+      "data_type": 2,
+      "specificity": 1
+    },
+    "reading_depth": "Search-result abstract only",
+    "source": "web_search",
+    "reviewed_on": "2026-10-08",
+    "reason": "Typed narrative coding is an adjacent pattern; outside memory-conflict scope",
+    "used_for_final_claims": false
+  },
+  "arxiv:2609.33689": {
+    "title": "Type-Safe Decision Frameworks for Agentic 5G Control: A Theory-Driven Testbed Characterization of Where They Can Be Applied",
+    "url": "https://arxiv.org/abs/2609.33689",
+    "status": "possibly_relevant",
+    "score": 6,
+    "score_components": {
+      "keywords": 2,
+      "data_type": 3,
+      "specificity": 1
+    },
+    "reading_depth": "Search-result abstract only",
+    "source": "web_search",
+    "reviewed_on": "2026-10-08",
+    "reason": "Adjacent evidence about typed decisions and question changes, but outside memory QA",
+    "used_for_final_claims": false
+  },
+  "arxiv:2609.28940": {
+    "title": "Calibrated Decision Models for Autonomous Penetration-Testing Harnesses: JEV and Laya as System One Decision Layers for LLM-Driven Pentest Agents",
+    "url": "https://arxiv.org/abs/2609.28940",
+    "status": "possibly_relevant",
+    "score": 5,
+    "score_components": {
+      "keywords": 2,
+      "data_type": 2,
+      "specificity": 1
+    },
+    "reading_depth": "Search-result abstract only",
+    "source": "web_search",
+    "reviewed_on": "2026-10-08",
+    "reason": "Decision-layer engineering analogy; single exploratory domain-specific runs",
+    "used_for_final_claims": false
+  }
+}
