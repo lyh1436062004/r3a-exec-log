@@ -1,0 +1,35 @@
+{
+  "round": "round_0072",
+  "client_date": "2026-10-09",
+  "task": "Reverify LongMemEval gold evidence granularity",
+  "status": "complete",
+  "scope": "Original LongMemEval / cleaned, not V2",
+  "result": "Official gold evidence is session- and turn-level; no backend-generated gold memory IDs.",
+  "verified_fields": [
+    "answer_session_ids",
+    "has_answer",
+    "answer"
+  ],
+  "oracle_file": "longmemeval_oracle.json",
+  "abstention_boundary": "30 abstention instances have no ground truth answer location and are excluded from official retrieval evaluation",
+  "sources": [
+    "https://github.com/xiaowu0162/LongMemEval#-dataset-format",
+    "https://github.com/xiaowu0162/LongMemEval#memory-retrieval"
+  ],
+  "project_files_modified": [],
+  "experiments_run": false,
+  "paid_api_calls": 0,
+  "new_log_files": [
+    "gold_evidence_clarification.md",
+    "run_summary.json",
+    "file_change.txt",
+    "diff.txt",
+    "project_status.txt"
+  ],
+  "project_status_counts": {
+    "modified": 9,
+    "deleted": 29,
+    "untracked": 119
+  },
+  "unrelated_changes_preserved": true
+}
