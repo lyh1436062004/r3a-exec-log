@@ -70,7 +70,11 @@
   },
   "unrelated_changes_preserved": true,
   "repo": "r3a-exec-log",
-  "github_sync_status": "commit_and_push_pending_at_snapshot",
+  "github_sync_status": "initial_commit_pushed; byte-preservation follow-up prepared",
+  "initial_pushed_commit": "7290d5b4cf23c4eb5416b30a81488ab519efa19c",
+  "initial_actions_run": "https://github.com/lyh1436062004/r3a-exec-log/actions/runs/37865441101",
+  "initial_actions_conclusion": "success",
+  "artifact_byte_preservation": "Per-round -text attributes plus explicit renormalization preserve original artifact bytes and recorded SHA256 values; follow-up has no experiment-content changes",
   "exclusions": [
     "Credentials and key files",
     "Raw pools and large unrelated datasets",
