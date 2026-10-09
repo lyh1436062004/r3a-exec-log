@@ -1,0 +1,17 @@
+{
+  "verified_at_utc": "2026-10-09 00:19:11 UTC",
+  "pool": "memos",
+  "pool_n": 4062,
+  "pool_sha256": "d7cee7d676670a3d37e82b9dd82118cc1176a86ccb3e1538079c29adfb43c6c8",
+  "successful_B0_rows_checked": 3000,
+  "successful_B0_cache_matches": 3000,
+  "successful_B0_cache_mismatches": 0,
+  "checks": ["Recomputed generation cache key with current endpoint and seven controller hashes", "Prompt byte equality", "Recomputed B0 context cache key", "Stored context equals original frozen context_str_full"],
+  "estimator_cache_plan_before_resume": {"successful": 2832, "failed": 907, "missing_or_stale": 323, "new_calls": 1230},
+  "generation_calls_before_resume": 1062,
+  "core_controller_changed": false,
+  "generation_cache_version_changed": false,
+  "account_available_before_resume": true,
+  "failed_estimates_recovery_policy": "Archive matching failed caches byte-exactly; preserve successful caches; no memory-store mutation",
+  "manifest_note": "Historical interrupted manifest lacked context_keys; cache verification used recomputed frozen contexts. Normal B0 resume rebuilt the manifest without replacing successful generations."
+}

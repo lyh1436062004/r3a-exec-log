@@ -1,0 +1,2 @@
+# Preserve artifact bytes so recorded hashes remain reproducible on Windows.
+artifacts/** -text

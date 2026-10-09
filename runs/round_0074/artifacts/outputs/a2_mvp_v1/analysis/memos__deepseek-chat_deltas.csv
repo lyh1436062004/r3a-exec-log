@@ -1,0 +1,25 @@
+arm,reference,label,n_paired,gained,lost,delta_pp,ci95_low_pp,ci95_high_pp,ci_method
+B0,B0,correct,4062,0,0,0.0,-0.12352733418599622,0.12352733418599622,paired discordance; Bonferroni difference of 97.5% Wilson intervals
+B0,B0,hallucination,4062,0,0,0.0,-0.12352733418599622,0.12352733418599622,paired discordance; Bonferroni difference of 97.5% Wilson intervals
+B0,B0,omission,4062,0,0,0.0,-0.12352733418599622,0.12352733418599622,paired discordance; Bonferroni difference of 97.5% Wilson intervals
+B1,B0,correct,0,0,0,,,,
+B1,B0,hallucination,0,0,0,,,,
+B1,B0,omission,0,0,0,,,,
+B2,B0,correct,0,0,0,,,,
+B2,B0,hallucination,0,0,0,,,,
+B2,B0,omission,0,0,0,,,,
+A2,B0,correct,0,0,0,,,,
+A2,B0,hallucination,0,0,0,,,,
+A2,B0,omission,0,0,0,,,,
+A2-nogate,B0,correct,0,0,0,,,,
+A2-nogate,B0,hallucination,0,0,0,,,,
+A2-nogate,B0,omission,0,0,0,,,,
+A2-nosal,B0,correct,0,0,0,,,,
+A2-nosal,B0,hallucination,0,0,0,,,,
+A2-nosal,B0,omission,0,0,0,,,,
+A2-nolic,B0,correct,0,0,0,,,,
+A2-nolic,B0,hallucination,0,0,0,,,,
+A2-nolic,B0,omission,0,0,0,,,,
+A2-noblock,B0,correct,0,0,0,,,,
+A2-noblock,B0,hallucination,0,0,0,,,,
+A2-noblock,B0,omission,0,0,0,,,,

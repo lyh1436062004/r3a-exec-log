@@ -1,0 +1,9 @@
+{
+  "status": "blocked",
+  "fallback": "E",
+  "dataset": "xiaowu0162/longmemeval-cleaned",
+  "variant": "cleaned S",
+  "network_attempts_policy": "one; no repeat",
+  "reason": "ConnectTimeout: HTTPSConnectionPool(host='huggingface.co', port=443): Max retries exceeded with url: /api/datasets/xiaowu0162/longmemeval-cleaned (Caused by ConnectTimeoutError(<HTTPSConnection(host='huggingface.co', port=443) at 0x2d93ddbe750>, 'Connection to huggingface.co timed out. (connect timeout=60)'))",
+  "llm_calls": 0
+}

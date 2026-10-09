@@ -1,0 +1,228 @@
+{
+  "mode": "offline_synthetic",
+  "seed": 20260709,
+  "script_sha256": "1230e06ca3a7fefb89b35942f84878f911a92d7b68e2e25a1950f4af5996743a",
+  "external_api_calls": 0,
+  "synthetic_checks": 19,
+  "results": [
+    {
+      "test": "01_adapter_complete",
+      "status": "pass",
+      "details": {
+        "complete_fact_fields": true,
+        "empty_records_rejected": 4
+      }
+    },
+    {
+      "test": "02_time_exhaustive",
+      "status": "pass",
+      "details": {
+        "random_records": 200,
+        "observed_sources": [
+          "meta_event",
+          "meta_ingest",
+          "none",
+          "text_cue"
+        ]
+      }
+    },
+    {
+      "test": "03_cost_matrix",
+      "status": "pass",
+      "details": {
+        "one_hot_actions": {
+          "SUPPORT": "VOUCH",
+          "REFUTE": "REFUTE",
+          "SUPERSEDED": "BLOCK",
+          "CURRENT": "VOUCH",
+          "MISBIND": "BLOCK",
+          "INSUFFICIENT": "BLOCK"
+        }
+      }
+    },
+    {
+      "test": "04_weighted_hedging",
+      "status": "pass",
+      "details": {
+        "half_support_half_insufficient": "QUALIFY"
+      }
+    },
+    {
+      "test": "05_exclusive_sets",
+      "status": "pass",
+      "details": {
+        "unknown_time": "all_QUALIFY",
+        "dated": "DEMOTE_VOUCH",
+        "ingest_proxy_warning": true,
+        "tied_time": "all_QUALIFY"
+      }
+    },
+    {
+      "test": "06_aggregates_unchanged",
+      "status": "pass",
+      "details": {
+        "aggregate_actions_preserved": 3
+      }
+    },
+    {
+      "test": "07_authorization_lock",
+      "status": "pass",
+      "details": {
+        "all_six_actions_checked": true,
+        "salience_prefix_is_not_authorization": true
+      }
+    },
+    {
+      "test": "09_frozen_render",
+      "status": "pass",
+      "details": {
+        "rendered_raw_indices": [
+          2,
+          3,
+          1,
+          4,
+          0
+        ],
+        "mutation": false
+      }
+    },
+    {
+      "test": "extra_estimation_validation",
+      "status": "pass",
+      "details": {
+        "missing_ids_repaired": true,
+        "posterior_normalized": true,
+        "invalid_posteriors_safe": true,
+        "failed_estimation_noop_all_dynamic_arms": true
+      }
+    },
+    {
+      "test": "extra_noop_bypass_ablation",
+      "status": "pass",
+      "details": {
+        "byte_exact_noop": true,
+        "all_block_bypass": true,
+        "ablation_nonmutation": true
+      }
+    },
+    {
+      "test": "extra_scope_constraints",
+      "status": "pass",
+      "details": {
+        "condition_requires_record_substring": true,
+        "refutation_priority": true
+      }
+    },
+    {
+      "test": "extra_label_isolation",
+      "status": "pass",
+      "details": {
+        "two_input_estimator": true,
+        "deployment_schema_allowlisted": true,
+        "gold_hint_session_ids_hidden": true
+      }
+    },
+    {
+      "test": "extra_estimator_cache_exception",
+      "status": "pass",
+      "details": {
+        "identical_input_one_call": true,
+        "changed_input_cache_miss": true,
+        "invalid_json_three_mock_attempts_then_safe": true,
+        "external_api_calls": 0
+      }
+    },
+    {
+      "test": "extra_failed_estimate_recovery",
+      "status": "pass",
+      "details": {
+        "failed_history_byte_exact": true,
+        "successful_cache_untouched": true,
+        "stale_cache_not_removed_by_recovery": true,
+        "budget_read_only": true,
+        "account_guard_before_recovery_and_inference": true,
+        "repeat_success_zero_calls": true,
+        "archived_usage_counted_once": true,
+        "external_api_calls": 0
+      }
+    },
+    {
+      "test": "extra_judge_account_guard",
+      "status": "pass",
+      "details": {
+        "unavailable_account_zero_judge_calls": true,
+        "no_fake_verdict": true,
+        "external_api_calls": 0
+      }
+    },
+    {
+      "test": "extra_calibration_formula_conflict",
+      "status": "pass",
+      "details": {
+        "exact_ratio_not_smoothed": true,
+        "counterexample_to_universal_monotonicity": [
+          0.0,
+          1.0,
+          0.5
+        ],
+        "strict_guard_detects_counterexample": true,
+        "does_not_verify_real_invariant_10": true,
+        "sha_split_threshold_and_degeneracy_verified": true
+      }
+    },
+    {
+      "test": "extra_leak_checker_boundary",
+      "status": "pass",
+      "details": {
+        "all_fixed_templates_enumerated": 6,
+        "unknown_injection_rejected": true,
+        "five_token_answer_and_evidence_hits": true,
+        "four_tokens_no_fivegram_hit": true,
+        "legacy_globals_unchanged": true
+      }
+    },
+    {
+      "test": "extra_generation_cache_factors",
+      "status": "pass",
+      "details": {
+        "all_arm_tau_lambda_endpoint_prompt_controller_estimate_context_factors_keyed": true,
+        "analysis_labels_do_not_change_deployment_identity": true
+      }
+    },
+    {
+      "test": "extra_b0_artifact_linkage",
+      "status": "pass",
+      "details": {
+        "fresh_context_and_generation_key_required": true,
+        "synthetic_fixture_only": true
+      }
+    },
+    {
+      "test": "08_full_pool_leakage",
+      "status": "not_run_offline",
+      "reason": "Synthetic-only mode does not establish the required full-pool invariant"
+    },
+    {
+      "test": "10_real_noop_monotonic",
+      "status": "not_run_offline",
+      "reason": "Synthetic-only mode does not establish the required full-pool invariant"
+    },
+    {
+      "test": "11_real_pool_equivalence",
+      "status": "not_run_offline",
+      "reason": "Synthetic-only mode does not establish the required full-pool invariant"
+    },
+    {
+      "test": "12_real_group_nondegeneration",
+      "status": "not_run_offline",
+      "reason": "Synthetic-only mode does not establish the required full-pool invariant"
+    }
+  ],
+  "failed": 0,
+  "pending": 0,
+  "waived_by_spec": 0,
+  "full_pool_verified": false,
+  "all_assertions_passed": false,
+  "smoke_all_green_proven": false,
+  "overall": "synthetic_pass"
+}

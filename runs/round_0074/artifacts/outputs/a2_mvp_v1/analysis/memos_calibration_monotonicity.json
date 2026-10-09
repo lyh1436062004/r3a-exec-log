@@ -1,0 +1,44 @@
+{
+  "required_invariant": 10,
+  "passed": false,
+  "violations": [
+    {
+      "previous_tau": 0.0,
+      "tau": 0.05,
+      "previous_noop_err": 0.4090909090909091,
+      "noop_err": 0.1032258064516129
+    },
+    {
+      "previous_tau": 0.05,
+      "tau": 0.08,
+      "previous_noop_err": 0.1032258064516129,
+      "noop_err": 0.10256410256410256
+    },
+    {
+      "previous_tau": 0.55,
+      "tau": 0.65,
+      "previous_noop_err": 0.2942057942057942,
+      "noop_err": 0.29405891163255116
+    },
+    {
+      "previous_tau": 0.65,
+      "tau": 0.7,
+      "previous_noop_err": 0.29405891163255116,
+      "noop_err": 0.293971101145989
+    },
+    {
+      "previous_tau": 0.85,
+      "tau": 0.9,
+      "previous_noop_err": 0.3011753183153771,
+      "noop_err": 0.3010752688172043
+    },
+    {
+      "previous_tau": 0.9,
+      "tau": 0.95,
+      "previous_noop_err": 0.3010752688172043,
+      "noop_err": 0.30078125
+    }
+  ],
+  "scope": "full",
+  "formula_unchanged": true
+}

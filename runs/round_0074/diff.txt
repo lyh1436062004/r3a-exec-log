@@ -1,0 +1,519 @@
+Source/report changes versus round_0073 snapshots; unrelated workspace edits and large generated caches excluded.
+
+warning: in the working copy of 'D:\幻觉\r3a-exec-log\runs\round_0073\artifacts\脚本\3.0\21_run_generation.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'D:\幻觉\脚本\3.0\21_run_generation.py', LF will be replaced by CRLF the next time Git touches it
+diff --git "a/D:\\幻觉\\r3a-exec-log\\runs\\round_0073\\artifacts\\脚本\\3.0\\21_run_generation.py" "b/D:\\幻觉\\脚本\\3.0\\21_run_generation.py"
+index b1e95df..e486ef4 100644
+--- "a/D:\\幻觉\\r3a-exec-log\\runs\\round_0073\\artifacts\\脚本\\3.0\\21_run_generation.py"
++++ "b/D:\\幻觉\\脚本\\3.0\\21_run_generation.py"
+@@ -15,6 +15,7 @@ from threading import Lock
+ from types import SimpleNamespace
+ from typing import Any
+ 
++import requests
+ from dotenv import dotenv_values
+ from openai import OpenAI
+ 
+@@ -23,7 +24,7 @@ from a2_arms import B1_STATIC_INSTRUCTION, MAIN_ARMS, get_arm
+ from a2_pipeline import run_pipeline_detailed
+ from a2_schema import Action, DeploymentSample, EstimateResult
+ from a2_stage0_adapter import adapt
+-from a2_stage1_estimator import estimate_cache_key, estimate_cache_path, estimate_cached
++from a2_stage1_estimator import _load_cached, estimate_cache_key, estimate_cache_path, estimate_cached
+ from a2_stage3_render import all_injection_templates
+ 
+ OUT_DIR = common.ROOT / "outputs" / "a2_mvp_v1"
+@@ -238,6 +239,79 @@ def generation_cache_key(case_id: str, arm: str, prompt: str,
+                       "tau": context_meta["tau"], "lambda_o": context_meta["lambda_o"]})
+ 
+ 
++def estimate_cache_plan(samples: list[dict[str, Any]], pool: str, out_dir: Path,
++                        model: str, retry_failed: bool = False) -> dict[str, int]:
++    """Read-only resume budget using the estimator's actual cache validator."""
++    counts: Counter[str] = Counter({"successful": 0, "failed": 0, "missing_or_stale": 0})
++    for row in samples:
++        view = deployment_view(row)
++        records = adapt(view.raw_memories, view.system_kind)
++        key = estimate_cache_key(view.question, records, model)
++        cached = _load_cached(estimate_cache_path(str(row["case_id"]), pool, out_dir), key, records)
++        status = "missing_or_stale" if cached is None else "failed" if cached.failed else "successful"
++        counts[status] += 1
++    counts["new_calls"] = counts["missing_or_stale"] + (counts["failed"] if retry_failed else 0)
++    return dict(counts)
++
++
++def archive_failed_estimates(samples: list[dict[str, Any]], pool: str, out_dir: Path,
++                             model: str) -> list[dict[str, Any]]:
++    """Explicit outer-runner recovery only; never edit a successful estimate.
++
++    Preserve each matching failed cache byte-for-byte before removing that one
++    active cache entry. The unchanged Stage 1 then performs its ordinary miss.
++    No record, prompt, relation, risk formula or controller identity is changed.
++    """
++    archived = []
++    cache_root = (out_dir / "estimates").resolve()
++    for row in samples:
++        view = deployment_view(row)
++        records = adapt(view.raw_memories, view.system_kind)
++        path = estimate_cache_path(str(row["case_id"]), pool, out_dir)
++        key = estimate_cache_key(view.question, records, model)
++        cached = _load_cached(path, key, records)
++        if cached is None or not cached.failed:
++            continue
++        if path.is_symlink() or not path.resolve().is_relative_to(cache_root):
++            raise ValueError("Failed-cache recovery target is outside the estimates directory")
++        snapshot = path.read_bytes()
++        history = (out_dir / "analysis" / "estimate_failure_history" / path.parent.name /
++                   f"{path.stem}__{time.time_ns()}.json")
++        history.parent.mkdir(parents=True, exist_ok=True)
++        # Exclusive creation: do not overwrite another run's historical entry.
++        with history.open("xb") as stream:
++            stream.write(snapshot)
++        if history.read_bytes() != snapshot or path.read_bytes() != snapshot:
++            raise RuntimeError("Failed estimate changed during recovery; active cache retained")
++        path.unlink()
++        event = {"case_id": str(row["case_id"]), "input_hash": key,
++                 "cache_path": str(path), "archive_path": str(history),
++                 "archive_sha256": hashlib.sha256(snapshot).hexdigest(),
++                 "old_usage": cached.telemetry.get("usage", {}),
++                 "created_at": time.strftime("%Y-%m-%dT%H:%M:%S%z")}
++        archived.append(event)
++        common.append_jsonl(out_dir / "analysis" / f"{path.parent.name}_estimate_retry_history.jsonl", event)
++    return archived
++
++
++def require_account_available(endpoint: dict[str, Any]) -> None:
++    """Stop a paid batch on a verified DeepSeek account failure, not fake results."""
++    base_url = str(endpoint["base_url"]).rstrip("/")
++    if base_url not in {"https://api.deepseek.com", "https://api.deepseek.com/v1"}:
++        return  # No invented availability endpoint for another provider.
++    client = make_endpoint_client(endpoint)
++    try:
++        response = requests.get("https://api.deepseek.com/user/balance",
++                                headers={"Authorization": "Bearer " + client.api_key}, timeout=15)
++        value = response.json().get("is_available") if response.status_code == 200 else None
++        available = value if isinstance(value, bool) else None
++    except Exception as error:
++        raise RuntimeError(f"Account availability check failed ({type(error).__name__}); no inference started") from None
++    if response.status_code != 200 or available is not True:
++        raise RuntimeError(f"DeepSeek account unavailable (HTTP {response.status_code}, "
++                           f"is_available={available}); no inference or failed-cache recovery started")
++
++
+ def prepare_estimates(samples: list[dict[str, Any]], pool: str, out_dir: Path,
+                       client: Any, model: str, workers: int) -> tuple[dict[str, EstimateResult], dict[str, int]]:
+     estimates: dict[str, EstimateResult] = {}
+@@ -350,6 +424,8 @@ def parse_args() -> argparse.Namespace:
+     parser.add_argument("--tau", type=float)
+     parser.add_argument("--out-dir", type=Path, default=OUT_DIR)
+     parser.add_argument("--estimate-only", action="store_true")
++    parser.add_argument("--retry-failed-estimates", action="store_true",
++                        help="After --yes/account check, archive matching failed Stage 1 caches and retry them; keep successful caches")
+     parser.add_argument("--yes", action="store_true")
+     parser.add_argument("--dry-run", action="store_true")
+     args = parser.parse_args()
+@@ -382,6 +458,8 @@ def main() -> None:
+         arms = ["B0", *arms]
+         additional_baseline = True
+     requires_estimate = args.estimate_only or any(arm not in {"B0", "B1"} for arm in arms)
++    if args.retry_failed_estimates and not requires_estimate:
++        raise ValueError("--retry-failed-estimates requires --estimate-only or an estimated arm")
+     def pipeline_calls(count: int) -> int:
+         generations = 0 if args.estimate_only else count * len(arms) * len(names)
+         judges = generations * (2 if args.pool == "longmemeval" else 1)
+@@ -396,6 +474,9 @@ def main() -> None:
+         print("Pipeline budget exceeds 30,000: effective selection is --subset 400; judge with --subset 400", flush=True)
+     estimate_calls = len(samples) * int(requires_estimate)
+     generation_calls = 0 if args.estimate_only else len(samples) * len(arms) * len(names)
++    controller_endpoint = registry[next(iter(registry))]
++    cache_plan = (estimate_cache_plan(samples, args.pool, args.out_dir, controller_endpoint["model"],
++                                      args.retry_failed_estimates) if requires_estimate else {})
+     budget = {
+         "pool": args.pool, "n_samples": len(samples), "arms": arms,
+         "actual_generators": [registry[name] for name in names],
+@@ -412,6 +493,7 @@ def main() -> None:
+         "effective_selection": selection_name(args.limit, args.subset),
+         "pool_sha256": file_hash(pool_path), "lambda_o": args.lambda_o, "alpha": args.alpha,
+         "tau_explicit": json_number(args.tau), "estimate_only": args.estimate_only,
++        "retry_failed_estimates": args.retry_failed_estimates, "estimator_cache_plan": cache_plan,
+         "cache_policy": "all prompt-visible inputs, endpoint, configuration, controller hashes",
+     }
+     print(json.dumps({"Budget": budget}, ensure_ascii=False, indent=2), flush=True)
+@@ -439,15 +521,20 @@ def main() -> None:
+     if args.limit == 150:
+         common.write_json(args.out_dir / "analysis" / f"{args.pool}_smoke_manifest.json", manifest)
+     estimates, estimation_usage = {}, {}
+-    controller_endpoint = registry[next(iter(registry))]
++    archived_failures = []
+     if requires_estimate:
++        if cache_plan["new_calls"]:
++            require_account_available(controller_endpoint)
++        if args.retry_failed_estimates:
++            archived_failures = archive_failed_estimates(samples, args.pool, args.out_dir, controller_endpoint["model"])
+         estimates, estimation_usage = prepare_estimates(
+             samples, args.pool, args.out_dir, make_endpoint_client(controller_endpoint),
+             controller_endpoint["model"], args.workers)
+     if args.estimate_only:
+         common.write_json(args.out_dir / "analysis" / f"{args.pool}_estimate_run_summary.json",
+                           {"scheduled": len(samples), "usage_this_run": estimation_usage,
+-                           "failed": sum(result.failed for result in estimates.values()), "manifest": manifest})
++                           "failed": sum(result.failed for result in estimates.values()), "manifest": manifest,
++                           "archived_failed_estimates": archived_failures})
+         return
+     gated = any(get_arm(arm).gate_enabled for arm in arms)
+     try:
+@@ -512,6 +599,8 @@ def main() -> None:
+     leakage_path = args.out_dir / "leakage_failures.jsonl"
+     leakage_path.parent.mkdir(parents=True, exist_ok=True)
+     leakage_path.touch(exist_ok=True)
++    for name in {task["generator"] for task in tasks}:
++        require_account_available(registry[name])
+     clients = {name: make_endpoint_client(registry[name]) for name in names}
+ 
+     def run(task: dict[str, Any]) -> dict[str, Any]:
+@@ -552,6 +641,7 @@ def main() -> None:
+     summary = {"scheduled_generation_calls": len(tasks), "failed": errors,
+                "leakage_failed_contexts": len(leakage), "tau": json_number(tau),
+                "usage_generation_this_run": dict(generated_usage), "usage_estimation_this_run": estimation_usage,
++               "archived_failed_estimates": archived_failures,
+                "manifest": manifest, "budget": budget,
+                "no_op_contexts": sum(row["no_op"] for row in context_rows),
+                "deferred_gated_arms": budget.get("deferred_gated_arms", False)}
+
+warning: in the working copy of 'D:\幻觉\r3a-exec-log\runs\round_0073\artifacts\脚本\3.0\22_judge.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'D:\幻觉\脚本\3.0\22_judge.py', LF will be replaced by CRLF the next time Git touches it
+diff --git "a/D:\\幻觉\\r3a-exec-log\\runs\\round_0073\\artifacts\\脚本\\3.0\\22_judge.py" "b/D:\\幻觉\\脚本\\3.0\\22_judge.py"
+index 9d7a7a9..c7d509a 100644
+--- "a/D:\\幻觉\\r3a-exec-log\\runs\\round_0073\\artifacts\\脚本\\3.0\\22_judge.py"
++++ "b/D:\\幻觉\\脚本\\3.0\\22_judge.py"
+@@ -316,6 +316,8 @@ def main() -> None:
+         raise RuntimeError("Pass --yes after reviewing the printed judge budget")
+     if budget["estimated_calls_upper_bound"] > 30_000:
+         raise RuntimeError("Judge budget exceeds 30,000; generate and judge the same --subset 400 first")
++    if tasks:
++        runner.require_account_available(endpoint)
+     lock = Lock()
+     client = runner.make_endpoint_client(endpoint)
+ 
+
+warning: in the working copy of 'D:\幻觉\r3a-exec-log\runs\round_0073\artifacts\脚本\3.0\23_analyze.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'D:\幻觉\脚本\3.0\23_analyze.py', LF will be replaced by CRLF the next time Git touches it
+diff --git "a/D:\\幻觉\\r3a-exec-log\\runs\\round_0073\\artifacts\\脚本\\3.0\\23_analyze.py" "b/D:\\幻觉\\脚本\\3.0\\23_analyze.py"
+index b7d5647..5532d72 100644
+--- "a/D:\\幻觉\\r3a-exec-log\\runs\\round_0073\\artifacts\\脚本\\3.0\\23_analyze.py"
++++ "b/D:\\幻觉\\脚本\\3.0\\23_analyze.py"
+@@ -647,6 +647,17 @@ def cache_usage(out_dir: Path) -> dict[str, Any]:
+                         for field in ("prompt_tokens", "completion_tokens", "total_tokens"):
+                             actual[field] += int(event.get("usage", {}).get(field) or 0)
+                 totals[kind] = actual
++    # Recovery moves the old failed estimate out of the active cache. Include
++    # its recorded usage once, even if its journal entry was replayed twice.
++    recovered_seen: set[str] = set()
++    for ledger in (out_dir / "analysis").glob("*_estimate_retry_history.jsonl"):
++        for event in read_jsonl(ledger):
++            history_id = event.get("archive_path")
++            if not history_id or str(history_id) in recovered_seen:
++                continue
++            recovered_seen.add(str(history_id))
++            for field in ("prompt_tokens", "completion_tokens", "total_tokens"):
++                totals["estimates"][field] += int(event.get("old_usage", {}).get(field) or 0)
+     support = Counter()
+     support_execution = read_json(out_dir / "support_audit" / "last_execution.json", {})
+     if support_execution.get("completed") is not None and isinstance(support_execution.get("usage"), dict):
+@@ -658,7 +669,7 @@ def cache_usage(out_dir: Path) -> dict[str, Any]:
+                     support[field] += int(usage.get(field) or 0)
+     totals["pool_support_audit"] = support
+     return {"measured_usage": {kind: dict(usage) for kind, usage in totals.items()},
+-            "scope": "Provider-reported generation/judge attempt ledgers when present, otherwise unique retained caches; per-case estimate caches; support last_execution once (attempt-ledger fallback). No cache+ledger double counting. Replaced estimator-failure histories may be incomplete; this is not a billing statement. No usage returned by transport failures is unknown, not asserted zero."}
++            "scope": "Provider-reported generation/judge attempt ledgers when present, otherwise unique retained caches; per-case estimate caches plus unique failed-cache recovery journals; support last_execution once (attempt-ledger fallback). No cache+ledger double counting. Histories lost before recovery journals were available may be incomplete; this is not a billing statement. No usage returned by transport failures is unknown, not asserted zero."}
+ 
+ 
+ def failure_examples(out_dir: Path, summary: dict[str, Any], maximum: int = 5) -> list[dict[str, Any]]:
+
+warning: in the working copy of 'D:\幻觉\r3a-exec-log\runs\round_0073\artifacts\脚本\3.0\test_a2_invariants.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'D:\幻觉\脚本\3.0\test_a2_invariants.py', LF will be replaced by CRLF the next time Git touches it
+diff --git "a/D:\\幻觉\\r3a-exec-log\\runs\\round_0073\\artifacts\\脚本\\3.0\\test_a2_invariants.py" "b/D:\\幻觉\\脚本\\3.0\\test_a2_invariants.py"
+index 864c793..f1886e1 100644
+--- "a/D:\\幻觉\\r3a-exec-log\\runs\\round_0073\\artifacts\\脚本\\3.0\\test_a2_invariants.py"
++++ "b/D:\\幻觉\\脚本\\3.0\\test_a2_invariants.py"
+@@ -398,6 +398,101 @@ def test_estimator_cache_and_exception() -> dict[str, Any]:
+             "invalid_json_three_mock_attempts_then_safe": True, "external_api_calls": 0}
+ 
+ 
++def test_failed_estimate_recovery() -> dict[str, Any]:
++    module = load_numbered("a2_invariant_estimate_recovery", "21_run_generation.py")
++    samples = [{"case_id": f"neutral:{name}", "question": "Where?", "raw_memories": [{"text": "Paris"}],
++                "system_kind": "memos", "user_name": "fixture", "context_str_full": "frozen", "pref_note": ""}
++               for name in ("successful", "failed", "stale", "missing")]
++    records = adapt(samples[0]["raw_memories"], "memos")
++    content = json.dumps({"risk": 0.8, "sufficiency": 0.8, "premise_conflict": False,
++                          "memories": [{"id": "m1", "relation": one_hot("SUPPORT"),
++                                        "condition_present": False, "condition_text": "",
++                                        "condition_satisfied": "UNKNOWN", "entity_match": "MATCH"}]})
++    client, invalid = MockEstimatorClient(content), MockEstimatorClient("not json")
++    from e1_memos_oracle_common import retry_call, append_jsonl
++    with tempfile.TemporaryDirectory(prefix="a2_invariant_recovery_") as folder:
++        out = Path(folder)
++        estimate_cached("Where?", records, samples[0]["case_id"], "memos", out, client=client)
++        with patch("a2_stage1_estimator.retry_call", lambda label, fn, **kwargs: retry_call(label, fn, retries=3, sleep_base=0)):
++            failed = estimate_cached("Where?", records, samples[1]["case_id"], "memos", out, client=invalid)
++            estimate_cached("Old input?", records, samples[2]["case_id"], "memos", out, client=invalid)
++        assert failed.failed and failed.risk == 0.0
++        successful_path, failed_path, stale_path = [estimate_cache_path(row["case_id"], "memos", out) for row in samples[:3]]
++        successful_bytes, failed_bytes, stale_bytes = (p.read_bytes() for p in (successful_path, failed_path, stale_path))
++        assert module.estimate_cache_plan(samples, "memos", out, "deepseek-chat") == {
++            "successful": 1, "failed": 1, "missing_or_stale": 2, "new_calls": 2}
++        assert module.estimate_cache_plan(samples, "memos", out, "deepseek-chat", True)["new_calls"] == 3
++        assert invalid.calls == 6 and client.calls == 1  # Budget inspection is read-only.
++        for row in samples:
++            append_jsonl(out / "pools" / "memos_pool.jsonl", row)
++        endpoint = {"generator": "deepseek-chat", "model": "deepseek-chat",
++                    "base_url": "https://api.deepseek.com", "key_variable": "SYNTHETIC_KEY",
++                    "url_variable": "SYNTHETIC_URL"}
++        response = SimpleNamespace(status_code=200, json=lambda: {"is_available": False})
++        with patch.object(module, "generator_registry", return_value={"deepseek-chat": endpoint}), \
++             patch.object(module, "make_endpoint_client", return_value=SimpleNamespace(api_key="synthetic-not-a-key")), \
++             patch.object(module.requests, "get", return_value=response) as request, \
++             patch.object(sys, "argv", ["21_run_generation.py", "--pool", "memos", "--arm", "B0", "--estimate-only",
++                                        "--retry-failed-estimates", "--yes", "--out-dir", str(out)]), patch("builtins.print"):
++            try:
++                module.main()
++            except RuntimeError as error:
++                assert "is_available=False" in str(error) and "synthetic-not-a-key" not in str(error)
++            else:
++                raise AssertionError("Unavailable account did not stop the batch")
++            assert request.call_count == 1
++        assert failed_path.read_bytes() == failed_bytes and successful_path.read_bytes() == successful_bytes
++        assert not (out / "analysis" / "estimate_failure_history").exists()
++        history = module.archive_failed_estimates(samples, "memos", out, "deepseek-chat")
++        assert len(history) == 1 and history[0]["case_id"] == samples[1]["case_id"]
++        assert not failed_path.exists() and Path(history[0]["archive_path"]).read_bytes() == failed_bytes
++        assert successful_path.read_bytes() == successful_bytes and stale_path.read_bytes() == stale_bytes
++        assert module.archive_failed_estimates(samples, "memos", out, "deepseek-chat") == []
++        fresh = MockEstimatorClient(content)
++        results, usage = module.prepare_estimates(samples, "memos", out, fresh, "deepseek-chat", 2)
++        assert fresh.calls == 3 and not any(result.failed for result in results.values()) and usage["total_tokens"] == 45
++        module.prepare_estimates(samples, "memos", out, fresh, "deepseek-chat", 2)
++        assert fresh.calls == 3 and successful_path.read_bytes() == successful_bytes
++        assert module.estimate_cache_plan(samples, "memos", out, "deepseek-chat", True)["new_calls"] == 0
++        analyzer = load_numbered("a2_invariant_recovery_usage", "23_analyze.py")
++        append_jsonl(out / "analysis" / "memos_estimate_retry_history.jsonl", history[0])
++        measured = analyzer.cache_usage(out)["measured_usage"]["estimates"]
++        assert measured["total_tokens"] == 105  # 4 active mock caches*15 + old failed*45, once.
++    return {"failed_history_byte_exact": True, "successful_cache_untouched": True,
++            "stale_cache_not_removed_by_recovery": True, "budget_read_only": True,
++            "account_guard_before_recovery_and_inference": True, "repeat_success_zero_calls": True,
++            "archived_usage_counted_once": True,
++            "external_api_calls": 0}
++
++
++def test_judge_account_guard() -> dict[str, Any]:
++    judge = load_numbered("a2_invariant_judge_guard", "22_judge.py")
++    endpoint = {"generator": "deepseek-chat", "model": "deepseek-chat", "base_url": "https://api.deepseek.com",
++                "key_variable": "SYNTHETIC_KEY", "url_variable": "SYNTHETIC_URL"}
++    sample = {"case_id": "neutral:guard"}
++    response = SimpleNamespace(status_code=200, json=lambda: {"is_available": False})
++    with tempfile.TemporaryDirectory(prefix="a2_invariant_judge_guard_") as folder:
++        args = SimpleNamespace(pool="memos", arm="B0", generator="deepseek-chat", judge_generator=None,
++                               lambda_o=1.0, workers=2, out_dir=Path(folder), yes=True, dry_run=False, limit=0, subset=0)
++        with patch.object(judge, "parse_args", return_value=args), \
++             patch.object(judge.runner, "generator_registry", return_value={"deepseek-chat": endpoint}), \
++             patch.object(judge, "load_selection", return_value=([sample], {"context_keys": {}})), \
++             patch.object(judge, "current_generations", return_value=([(sample, {})], [])), \
++             patch.object(judge, "judge_cache_key", return_value="mock-key"), \
++             patch.object(judge.runner, "make_endpoint_client", return_value=SimpleNamespace(api_key="synthetic-not-a-key")), \
++             patch.object(judge.runner.requests, "get", return_value=response) as request, \
++             patch.object(judge, "judge_one") as paid_judge, patch("builtins.print"):
++            try:
++                judge.main()
++            except RuntimeError as error:
++                assert "is_available=False" in str(error)
++            else:
++                raise AssertionError("Unavailable account did not stop judging")
++            assert request.call_count == 1 and paid_judge.call_count == 0
++            assert not (Path(folder) / "verdicts").exists()
++    return {"unavailable_account_zero_judge_calls": True, "no_fake_verdict": True, "external_api_calls": 0}
++
++
+ def test_calibration_formula_and_conflict() -> dict[str, Any]:
+     module = load_numbered("a2_invariant_calibration_synthetic", "a2_calibrate.py")
+     rows = [{"case_id": "synthetic:a", "risk": 0.1, "baseline_wrong": True},
+@@ -680,6 +775,8 @@ def main() -> int:
+         ("extra_noop_bypass_ablation", test_noop_bypass_and_ablation),
+         ("extra_scope_constraints", test_scope_constraints), ("extra_label_isolation", test_label_isolation),
+         ("extra_estimator_cache_exception", test_estimator_cache_and_exception),
++        ("extra_failed_estimate_recovery", test_failed_estimate_recovery),
++        ("extra_judge_account_guard", test_judge_account_guard),
+         ("extra_calibration_formula_conflict", test_calibration_formula_and_conflict),
+         ("extra_leak_checker_boundary", test_leak_checker_boundary),
+         ("extra_generation_cache_factors", test_generation_cache_all_factors),
+
+warning: in the working copy of 'D:\幻觉\r3a-exec-log\runs\round_0073\artifacts\outputs\a2_mvp_v1\RESULTS.md', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'D:\幻觉\outputs\a2_mvp_v1\RESULTS.md', LF will be replaced by CRLF the next time Git touches it
+diff --git "a/D:\\幻觉\\r3a-exec-log\\runs\\round_0073\\artifacts\\outputs\\a2_mvp_v1\\RESULTS.md" "b/D:\\幻觉\\outputs\\a2_mvp_v1\\RESULTS.md"
+index da67524..7f4a2fa 100644
+--- "a/D:\\幻觉\\r3a-exec-log\\runs\\round_0073\\artifacts\\outputs\\a2_mvp_v1\\RESULTS.md"
++++ "b/D:\\幻觉\\outputs\\a2_mvp_v1\\RESULTS.md"
+@@ -1,112 +1,106 @@
+ # A2 MVP 结果报告
+ 
+-状态：部分实现与验证完成，真实实验因外部账户余额不足而中断；任务未完成。日期：2026-10-09。
+-本文只报告已落盘的真实证据；API错误、未执行和安全回退不计作实验成绩。
++日期：2026-10-09。全池Stage1、B0生成与判分完成；第10项真实不变量失败，停止在四臂冒烟之前。任务未完成，没有A2收益结论。
+ 
+ ## 0. 环境与配置
+ 
+-- Python：D:/conda_envs/o1/python.exe；凭据从 github/HaluMem/eval/.env 读取，未输出或上传凭据。
+-- 仅一个实际端点：OPENAI_API_KEY / OPENAI_BASE_URL，https://api.deepseek.com；真实已调用模型 deepseek-chat，temperature=0。尚未执行本轮 judge。
+-- 实测依赖：openai 2.37.0、dotenv 可用、numpy 2.3.5、pandas 3.0.1、scipy 1.17.1、requests 2.32.5、sklearn 1.8.0、datasets 4.7.0；缺 rank_bm25、hypothesis。没有安装新包，使用纯 Python 检索回退与普通断言。
+-- 15个任务指定的新文件已实现；00–15与旧 common 未改，未修改 memory store 或 memos retriever。脚本身份见 run_config.json 和本轮源文件快照。
+-- 原序列化校验通过：1987/1987字节一致；pref_note 1986；旧错题池 visible_supported 763、serialization_loss 133。这些是旧池结果，不冒充新池比例。
+-- 本轮停止时：Stage1缓存3739条，成功2832、失败安全回退907、未缓存323；B0生成记录3932条，成功3000、失败932、未记录130。两项专属进程已停止，缓存保留。
+-- 已记录tokens：支持审查6,516,011；Stage1 8,016,327；B0生成2,400,551；合计16,932,889。仅指已返回并持久化的用量，可能不含中断时尚未落盘的调用，不是账户账单。
+-- 证据：preflight.json、run_config.json、api_run_blocker.json、analysis/invariants_offline.json、analysis/invariants_full.json。
++- Python：D:/conda_envs/o1/python.exe。唯一实际端点为OPENAI_API_KEY / OPENAI_BASE_URL，https://api.deepseek.com；生成器、估计器与judge均为deepseek-chat，temperature=0，并发≤12。凭据不输出、不上传。
++- 实测依赖：openai 2.37.0、dotenv可用、numpy 2.3.5、pandas 3.0.1、scipy 1.17.1、requests 2.32.5、sklearn 1.8.0、datasets 4.7.0。缺rank_bm25、hypothesis；没有安装新包，采用纯Python检索与普通断言。
++- 15个指定文件已实现。本轮仅增强21/22/23运行器与测试的恢复、预检、用量记录；七个核心控制器文件与round_0073哈希一致。00–15、旧common、memory store、memos retriever均未改。
++- 配置：outputs/a2_mvp_v1/run_config.json；项目Git基线e04380ab7e201f4073fff3adc9451c5c83478719；新增源码身份以SHA256及round_0074快照为准。
++- 复用2832条成功估计、3000条成功B0。907条失败估计已逐字节备份；新增1230条估计、1062条B0、4062条judge全部成功。当前三项均4062条，无缺失或失败回退。
++- 本次新增已记录tokens：估计3,534,335；生成834,225；judge 828,969；合计5,197,529。累计：支持审查6,516,011、估计11,550,662、生成3,234,776、judge 828,969，共22,130,418。仅为已持久化返回用量，不是账单；中断时未落盘用量未知。
++- 历史账户阻断已解除；所有付费进程已结束。证据：api_run_blocker.json、analysis/resume_cache_audit.json、analysis/resume_execution_summary.json。
+ 
+ ## 0.5 池定义与等价性校验
+ 
+-池按 strict_supported / partial_supported、非空 gold evidence、serializer_ok 构建，不以 baseline 对错筛选。
++按strict_supported / partial_supported、非空gold evidence、serializer_ok建池，不按baseline对错筛选。来源6934条，排除空证据1656、无检回支持1216；新池4062条：strict 3507、partial 555。
+ 
+-- 原始来源6934条；排除空证据1656、无检回支持1216；新池4062条：strict_supported 3507，partial_supported 555。
+-- 归档baseline分层：C2933、H988、O141。这不是本轮 fresh B0 判分，不能用于证明重放等价性或当前收益。
+-- 补充3291条实际支持审查，全部取得结果；原始6934条序列化逐字节一致。
+-- 归档口径下新池错题1129，与旧1987差858；这里只是建池差异。本轮B0尚无成功judge，fresh B0 correct/wrong数量及最终集合差异均未取得，不填写0或声称已验证。
+-- 新池SHA256：d7cee7d676670a3d37e82b9dd82118cc1176a86ccb3e1538079c29adfb43c6c8。
+-- 真实记忆46647条；memory_key有值率与entity_anchors非空率均52.0076%；组大小≥2的组5064个。分组大小：1/28202，2/2216，3/1279，4/790，5/477，6/302。
+-- time_source：meta_ingest 46647；time_is_proxy=True占100%。没有观测到真实event_time，不能把写入时间当作已验证的事件时间。
+-- 4062条B0 context已逐条验证与context_str_full相同、no_op=True且无标注，但生成/判分未完整。
++归档baseline为C2933/H988/O141；fresh B0为C2836/H1003/O223，即正确2836、错误1226。新错题集合不等于原1987条：原集合1154条未进入新错题集合，新错题新增393条，对称差1547条，数量净差761。来源范围及重放生成/判定可能造成差异，未全部归因于单一因素。第11项已执行，按§13记录为非阻断豁免，而非“等价通过”。
+ 
+-## 1. 阶段 A 冒烟结果（150条）
++原6934条序列化字节一致；旧1987条校验亦通过，pref_note 1986、visible_supported 763、serialization_loss 133仅为旧池统计。新池4062条B0上下文与冻结context_str_full字节一致、无标注。
+ 
+-尚未执行四臂真实冒烟；B1/B2/A2均无本轮成绩。不得越过验收进入干预主实验。
++新池SHA256：d7cee7d676670a3d37e82b9dd82118cc1176a86ccb3e1538079c29adfb43c6c8。真实记忆46647条；memory_key有值率与entity_anchors非空率均52.0076%；大小≥2的组5064个。time_source全部meta_ingest，time_is_proxy=True占100%，不能把写入代理当作已验证的事件时间。
+ 
+-17项离线合成/核心检查通过。全池哈希、全部固定模板泄漏检查（0命中）与真实分组非退化通过；真实门控单调性与fresh B0集合等价性因缺少完整B0判分而pending。完整测试不是全绿，不能用离线通过冒充完整验收。
++## 1. 阶段 A 冒烟结果（150条）
+ 
+-生成与评判运行器的模拟联测通过：temperature=0、重复运行零新增调用、输入变化缓存失效、旧阈值缓存隔离、错误不伪装O；这不是真实四臂实验结果。
++尚未运行四臂真实冒烟。19项离线检查通过；全池哈希、固定模板泄漏（0命中）、真实分组通过。第10项实测失败，6处noop_err下降；第11项完成但因不等价按§13豁免；pending=0，full_pool_verified=false。未声称测试全绿，未绕过验收进入干预实验。
+ 
+ ## 2. memos 主实验（新池全部）
+ 
+-4062条、八臂目标未完成。各臂C/H/O、Wilson区间、ΔC/ΔH/ΔO、McNemar、转移矩阵、O→H、do-no-harm、flip、A2动作/no-op/BLOCK统计均未取得；不以“零例”代替“未观测”。
++仅B0完成，95% Wilson区间如下：
+ 
+-完整主阶段预计69054次调用，超过30000，后续必须先固定400条并报告，再分阶段推进全量；400条不能替代完整目标。
++| 判定 | 条数/4062 | 比例 | 95%区间 |
++|---|---:|---:|---:|
++| C | 2836 | 69.8178% | 68.3880%–71.2102% |
++| H | 1003 | 24.6923% | 23.3905%–26.0419% |
++| O | 223 | 5.4899% | 4.8305%–6.2334% |
++
++B1/B2/A2与四个消融臂未取得成绩；ΔC/ΔH/ΔO、McNemar、转移矩阵、O→H、do-no-harm、flip、动作与BLOCK分布不可计算。未执行不填0。全阶段预估69054次调用，须先固定400条并报告，再分阶段完成全4062条；400条不替代完整目标。
+ 
+ ## 3. 错误分解协议
+ 
+-仅有局部事后可见性观测：221条严格gold序列化丢失；其余因partial定位或fresh B0/A2判分缺失而未完成归因。
++事后原始谓词：严格gold序列化丢失221条；gold可见且B0错781条。partial定位555条未知；检索支持池内未观测严格检索失败，不代表全数据无检索问题；没有A2结果，生成失败分解未完成。
+ 
+-规范原始四谓词并非互斥：“准入/使用失败”与“生成失败”可能重叠，且不覆盖baseline正确样本。分析器同时保存原始谓词与显式互斥层级、正确/未知残余；不伪造四段原谓词合计100%。逐条证据见analysis/memos__deepseek-chat_decomposition_cases.csv。
++四原谓词可能重叠且不覆盖baseline正确样本，不能原样合计100%。显式互斥层级为：baseline正确残余2836、序列化丢失144、未知或证据未齐1082，合计4062。这不是已完成的四类错误归因。逐条记录见analysis/memos__deepseek-chat_decomposition_cases.csv。
+ 
+ ## 4. oracle–learned 归因分解
+ 
+-A3=46.13%、UA3=53.29%仅为历史参考，不能与当前未判分的新池混用。
+-
+-B2与A2真实flip未取得。未重跑ORACLE_REL；已有UA3使用神谕hard map，不能冒充“神谕关系＋真实Stage2”的分数。只有同输入、同ID且分母一致时才能计算描述性差值；目前未取得这样的本轮判分配对。
++A3=46.13%、UA3=53.29%仅作历史参考，不与当前新池混算收益；未重跑ORACLE_REL。历史UA3不是“神谕关系＋真实Stage2”的成绩。B2/A2真实flip及逐阶段损耗仍未取得。
+ 
+ ## 5. 校准
+ 
+-划分与经验风险公式已严格实现：case_id SHA256前8位mod2，cal求阈值，test仅评估。尚未使用完整fresh B0标签校准；τ、coverage、noop_err、degenerate_flag以及四档α曲线均未取得。
++保持原公式与case_id SHA256前8位mod2划分：cal 2048、test 2014。原算法实测：
++
++| α | τ | cal coverage | cal noop_err | test coverage | test noop_err | 退化 |
++|---|---:|---:|---:|---:|---:|---|
++| 0.05 | -∞ | 0% | 0%* | 0% | 0%* | 是 |
++| 0.10 | -∞ | 0% | 0%* | 0% | 0%* | 是 |
++| 0.20 | 0.15 | 56.2500% | 19.0972% | 56.4548% | 18.9974% | 否 |
++| 0.30 | 0.80 | 98.5840% | 29.6682% | 98.2622% | 30.0657% | 否 |
++
++*空no-op集合按指定max(1,n)公式记0，不代表观测到零风险。
++
++**主设定α=0.10：门控退化为全程干预，τ=-∞、degenerate_flag=true。** 没有调高α绕过失败。α=0.30的test错误率超过30%，不能宣称严格有限样本保证。
+ 
+-按指定公式计算的经验noop_err并不数学保证随τ单调不减；合成反例检查已验证严格测试能发现下降。没有平滑曲线、改公式或放宽断言；真实第10项仍pending。若后续真实数据不通过，须报告规范冲突，不能伪造全绿，也不能宣称未经证明的严格conformal有限样本保证。
++第10项首个真实反例：τ=0时no-op 22条、错9条，错误率40.9091%；τ=0.05时155条、错16条，降至10.3226%。新增133条中仅7条错，累计比例因此下降。经验累计比例没有普遍单调保证。未平滑、改公式、改risk或放宽断言。完整曲线、6处下降与原阈值见analysis/invariant_10_actual_noop_curve.json、analysis/memos_calibration_monotonicity.json、calibration/memos.json。
+ 
+ ## 6. 消融
+ 
+-A2-nogate / A2-nosal / A2-nolic / A2-noblock均未执行真实生成判分。ΔC/ΔH/ΔO未取得。
++A2-nogate / A2-nosal / A2-nolic / A2-noblock未执行真实生成判分，ΔC/ΔH/ΔO未取得。
+ 
+ ## 7. λ_O 敏感性
+ 
+-0.3 / 0.6 / 1.0 / 2.0四档同400条敏感性实验未执行；不能推测ΔH/ΔO。
++0.3 / 0.6 / 1.0 / 2.0四档同400条实验未执行，ΔH/ΔO未取得。
+ 
+ ## 8. 估计器内在评估
+ 
+-仅分析现存缓存，不调用API。成功估计2832条；907条失败回退不计关系质量；323条缺失。
++4062条当前输入哈希匹配的成功估计；10849个事后粗代理位置，accuracy=48.5667%、六类macro-F1=0.132987。代理目标仅SUPPORT 8720、SUPERSEDED 2129；gold统一映射SUPPORT但真实可能REFUTE/CURRENT，部分题型仅提供粗提示。四个目标类没有独立标注，不能称为六类真实关系准确率。混淆矩阵与逐条记录已保存。
+ 
+-事后粗代理有7500个可归类位置：代理accuracy=47.9733%，六类macro-F1=0.133990。必须限定解释：gold位置按任务约定全部映射SUPPORT，但真实gold可能REFUTE/CURRENT；非gold仅由部分题型提示给出粗目标，其余跳过。这不是六类独立人工标注准确率，不能据此宣布真实关系判断质量。
+-
+-混淆矩阵与逐条代理见analysis/memos__deepseek-chat_intrinsic_confusion.csv及_intrinsic_relation_cases.csv。sufficiency与真实oracle修复相关性、risk的fresh B0 AUC均因缺少本轮判分配对而未取得。
++risk对fresh B0错误的AUC=0.688526（4062条、错误1226）。risk均值：B0正确0.185705、错误0.270954。与同输入、历史错且fresh B0也错的UA3记录精确配对616条，历史修复296条；sufficiency与修复的点二列相关r=0.062156。这些是事后关联，不证明A2收益或因果效果。
+ 
+ ## 9. 跨生成器（或跨记忆系统）
+ 
+-仅1个端点，阶段D按任务书跳过，不虚构其他生成器。
+-
+-阶段E目标池已离线构建：mem0 4476、memobase 4940、supermemory 184；仅历史baseline错题。B1/A2真实运行尚未执行；后续只能报flip，不能在这些错题池声称测得do-no-harm或有效noop_err。
++仅1个实际端点，阶段D跳过。阶段E离线池：mem0 4476、memobase 4940、supermemory 184；仅历史baseline错题。B1/A2未运行；后续只能在这些池报告flip，不能报告有效noop_err或do-no-harm。
+ 
+ ## 10. LongMemEval（或阻断＋阶段E）
+ 
+-仅尝试一次xiaowu0162/longmemeval-cleaned元数据访问，Hugging Face ConnectTimeout；没有重复下载、没有检索或实验成绩。按照任务书转阶段E，E仍为必需且未完成。证据：longmemeval_blocker.json。
+-
+-适配与纯Python TF-IDF / top_k=20代码已实现并离线验证，但没有取得真实数据修订与文件hash，不能称实际LongMemEval验证已完成。
++单次Hugging Face元数据访问ConnectTimeout；未反复下载，按任务书转必需阶段E，E未完成。适配与纯Python TF-IDF/top_k=20离线验证通过，但未取得真实数据版本/hash，不称实际benchmark验证完成。
+ 
+-本次用户问题核验：原LongMemEval/cleaned提供answer_session_ids（证据会话）、轮次has_answer（证据位置）与answer（标准答案），另有仅保留证据会话的longmemeval_oracle.json；不是Mem0/MemOS生成记忆对象的标准ID。拒答题无标准答案位置，官方检索评估排除30条拒答题。依据：[官方数据格式](https://github.com/xiaowu0162/LongMemEval#-dataset-format)、[官方检索说明](https://github.com/xiaowu0162/LongMemEval#memory-retrieval)。
+-
+-这些gold定位只用于oracle和事后审查，不进入A2部署输入。更新题/拒答题遵循官方规则；不得把原论文已讨论的oracle reading failure说成首次发现。
++LongMemEval提供answer_session_ids、has_answer及标准answer，oracle文件仅保留证据会话；这是gold evidence，不是MemOS等后端生成的gold memory对象ID。官方检索评估排除30条拒答题。定位仅用于oracle/事后评估，不进入部署输入。来源：[官方数据格式](https://github.com/xiaowu0162/LongMemEval#-dataset-format)、[官方检索说明](https://github.com/xiaowu0162/LongMemEval#memory-retrieval)。
+ 
+ ## 11. 意外发现与失败案例
+ 
+-尚无本轮A2生成判分，未取得5条真实A2成功/失败案例。不能将Stage1安全默认或API错误包装成A2效果案例。
+-
+-已观测的负面事实：全部时间来自写入代理；907条估计失败安全回退；932条B0生成错误；单次LongMemEval下载失败。余额不足是外部执行阻断，不等同于模型幻觉性能下降。
++未运行A2，至少5条真实A2案例交付未满足，不用Stage1或B0例子冒充。已确认负结果：全部时间为写入代理；noop_err有6处下降；α=0.10无可行正覆盖阈值；fresh B0错题集合不同；LongMemEval单次下载失败。
+ 
+ ## 12. 结论与下一步
+ 
+-四阶段可运行实现及离线验证完成，但真实实验与交付验收未完成。尚无A2相对强B1收益数字，不能宣布有效、泛化或完整交付。
++已完成真实估计、全池baseline与判分，尚无A2相对强B1收益数字，不能宣布有效、泛化或完整交付。物理隔离输入、核心哈希不变与无泄漏检查支撑实现边界，不代替效果证据。
+ 
+-继续的前提：用户恢复当前DeepSeek账户额度；之后复用成功缓存，显式重试失败估计，补齐fresh B0与judge、完整校准和真实不变量；门槛通过后依序执行150冒烟、400先行/全池主实验及阶段E。不要更改冻结集合、代价矩阵、固定模板、划分或验收断言。
++先由用户明确处理第10项冲突；获得合规方向后才恢复150四臂验收、400先行/全池八臂、敏感性、必需阶段E和真实A2案例。冻结集合、代价矩阵、固定模板、主α及划分均未更改。
+ 
+ ## 13. 阻断与未完成项
+ 
+-官方GET /user/balance返回HTTP200、is_available=false，表示余额不足以调用API（[官方字段定义](https://api-docs.deepseek.com/api/get-user-balance/)）。已停止经身份验证的两项实验进程，磁盘产物保留，没有充值或切换凭据。证据：api_run_blocker.json。
+-
+-仍缺：完整fresh B0判分与等价性；完整Stage1；真实单调性/校准；150四臂验收；八臂全池与敏感性；阶段E；5条A2案例。失败不得记作C/H/O，未完成不填0，不以旧oracle分数补位。
++当前不是额度阻断。第10项“经验noop_err逐点单调不减”与原公式及真实数据冲突，测试以exit=1失败，不能靠合规代码修复保证不存在下降；需要用户修订规范或给出其他处置。详见analysis/invariant_10_spec_conflict.md。
+ 
+-本报告为阶段性检查点，持久目标未标记complete。
++按§13，池不等价和门控退化本身不是阻断；第10项尚无豁免。全部付费进程结束，未越过验收、未改测试、未标记目标complete。仍缺150四臂、干预主实验、消融、敏感性、阶段E与5条A2案例。

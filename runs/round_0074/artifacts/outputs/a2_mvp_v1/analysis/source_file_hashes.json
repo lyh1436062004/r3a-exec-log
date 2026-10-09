@@ -1,0 +1,18 @@
+{
+  "a2_schema.py": "b9c42626002f1544a669068e51adcf01f6e3b4d0b6388ad6077de6bc844fcfe9",
+  "a2_stage0_adapter.py": "7b4141f476dd0660f1e35d1a2acd8a425b39696f258fa66e8800d01e56629532",
+  "a2_stage1_estimator.py": "8d031c74f13f08a7e41672fc0469c0c4a42936d318d2dcb54429d2a4dececd66",
+  "a2_stage2_decision.py": "9d557afe5d353a75e82261ecf38d7aaebf77d47036aff3629d62d718227e28e4",
+  "a2_stage3_render.py": "7fc3fea7f469f86be997f40e45ed62d13092cd3d342323249c09c3263bede483",
+  "a2_pipeline.py": "f0cac58aacab7574cb097b94aba34e2026aa539a08ec9d07946decdae86f02ad",
+  "a2_calibrate.py": "31b9ae5714ba6efc32b1c25db767c120d23ffb3812f0886bff05d3ca561c5507",
+  "a2_arms.py": "fbab93f194fe54287b105b8d5bae7a15c0bbba37c083c96e32f65b68fbe000ef",
+  "20_build_pool.py": "a3e9527e64241d1a33ed7c1d73aa4a5aebcdd55fc1bb87ed1cc38c4243e1c8bd",
+  "21_run_generation.py": "f5c1a49217968f88f6cdd7ac155fb0995b1593377babc410f4352d665fc938c9",
+  "22_judge.py": "2832341bd926f9b6ee94e07917a7bfb30962db7e6e0d35f74de2db5354c38213",
+  "23_analyze.py": "07fc220300c2bc204050a2ce6aeb3453f4c95e6dc5253b409ff53234394fc122",
+  "24_intrinsic_eval.py": "19aeb91561c9300fa61adf6182c432e081346dd065a470781facf34b1dda4a89",
+  "25_build_longmemeval.py": "17f892cc30e73ce8a7f25740b4de43182756a11d350157101661ad3be27d01f0",
+  "test_a2_invariants.py": "1230e06ca3a7fefb89b35942f84878f911a92d7b68e2e25a1950f4af5996743a",
+  "CODEX_TASK_A2_MVP.md": "553220c9da90fb5c7b368ba30eaf64b25edbfc0f2fd0bdd48e922563b4e07da2"
+}

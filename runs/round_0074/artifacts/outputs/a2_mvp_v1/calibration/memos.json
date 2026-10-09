@@ -1,0 +1,68 @@
+{
+  "alpha": 0.1,
+  "tau": "-inf",
+  "coverage": 0.0,
+  "noop_err": 0.0,
+  "n_cal": 2048,
+  "n_cal_baseline_wrong": 616,
+  "n_cal_noop": 0,
+  "degenerate_flag": true,
+  "test": {
+    "tau": "-inf",
+    "coverage": 0.0,
+    "noop_err": 0.0,
+    "n": 2014,
+    "n_noop": 0,
+    "n_noop_wrong": 0
+  },
+  "monotonicity_violations": [
+    {
+      "previous_tau": 0.0,
+      "tau": 0.05,
+      "previous_noop_err": 0.4090909090909091,
+      "noop_err": 0.1032258064516129
+    },
+    {
+      "previous_tau": 0.05,
+      "tau": 0.08,
+      "previous_noop_err": 0.1032258064516129,
+      "noop_err": 0.10256410256410256
+    },
+    {
+      "previous_tau": 0.55,
+      "tau": 0.65,
+      "previous_noop_err": 0.2942057942057942,
+      "noop_err": 0.29405891163255116
+    },
+    {
+      "previous_tau": 0.65,
+      "tau": 0.7,
+      "previous_noop_err": 0.29405891163255116,
+      "noop_err": 0.293971101145989
+    },
+    {
+      "previous_tau": 0.85,
+      "tau": 0.9,
+      "previous_noop_err": 0.3011753183153771,
+      "noop_err": 0.3010752688172043
+    },
+    {
+      "previous_tau": 0.9,
+      "tau": 0.95,
+      "previous_noop_err": 0.3010752688172043,
+      "noop_err": 0.30078125
+    }
+  ],
+  "n_estimator_failed": 0,
+  "failure_override_note": "failed estimates bypass even tau=-inf; curve above is the exact risk<=tau formula",
+  "guarantee_note": "Empirical cal-split selection per task book, not a distribution-free finite-sample conformal proof",
+  "pool": "memos",
+  "scope": "full",
+  "version": "task-book-exact-empirical-gate-v1",
+  "seed": 20260709,
+  "input_hash": "5b70067a0d77e2e2ddb952ee981ac335144e5cb440fea244c13480ea555591eb",
+  "baseline_sources": [
+    "fresh_b0"
+  ],
+  "n_total": 4062
+}

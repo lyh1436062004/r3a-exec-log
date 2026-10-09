@@ -1,0 +1,9 @@
+arm,baseline_correct_total,baseline_correct_paired,C_to_H,C_to_O,O_to_H
+B0,2836,2836,0,0,0
+B1,2836,0,,,
+B2,2836,0,,,
+A2,2836,0,,,
+A2-nogate,2836,0,,,
+A2-nosal,2836,0,,,
+A2-nolic,2836,0,,,
+A2-noblock,2836,0,,,
