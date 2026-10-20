@@ -1,0 +1,2 @@
+Added only runs/round_0077/ diagnostic report and execution-log records.
+No experiment code, caches, datasets, keys, or unrelated user edits changed.

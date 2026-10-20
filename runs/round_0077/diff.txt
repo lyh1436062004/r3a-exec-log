@@ -1,0 +1,2 @@
+No production code changes. Append-only cost diagnostic based on retained usage records.
+Findings: 75,983,852 recorded tokens; full eight-arm generation/judging and verbose per-memory estimation dominate scale. Per-phase call limits do not impose a cumulative monetary limit.

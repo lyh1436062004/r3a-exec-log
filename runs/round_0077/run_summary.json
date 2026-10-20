@@ -1,0 +1,19 @@
+{
+  "round": "round_0077",
+  "task": "Diagnose A2 MVP API expense from historical usage; no new paid calls",
+  "date": "2026-10-20",
+  "measured_tokens": {
+    "generations": 39531005,
+    "judges": 6980645,
+    "memos_estimates": 11550662,
+    "mem0_estimates": 11405529,
+    "support_audit": 6516011,
+    "total": 75983852
+  },
+  "successful_generation_calls": 33696,
+  "successful_judge_calls": 33696,
+  "new_paid_calls": 0,
+  "limitations": "Recorded usage, not a billing statement; historical unpersisted usage and failures without usage are unknown. No monetary amount inferred.",
+  "modified_experiment_code": [],
+  "outputs": ["artifacts/API费用核查.md", "run_summary.json", "file_change.txt", "diff.txt", ".gitattributes"]
+}
