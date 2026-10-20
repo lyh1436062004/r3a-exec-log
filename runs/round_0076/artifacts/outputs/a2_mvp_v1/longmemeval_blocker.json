@@ -1,0 +1,9 @@
+{
+  "status": "blocked",
+  "fallback": "E",
+  "dataset": "xiaowu0162/longmemeval-cleaned",
+  "variant": "cleaned S",
+  "network_attempts_policy": "amendment01: <=3 strategies; historical default counts as first",
+  "reason": "RuntimeError: All 3 authorized LongMemEval acquisition strategies unavailable; proceed to mandatory stage E",
+  "llm_calls": 0
+}

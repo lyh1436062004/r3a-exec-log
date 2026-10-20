@@ -1,0 +1,12 @@
+{
+  "pool": "supermemory",
+  "pool_n": 184,
+  "pool_sha256": "d3f13c52f21d34e7c16af7294f0a15ad54632c6d5f138925370267fda429b8e3",
+  "archived_baseline_labels": {
+    "hallucination": 122,
+    "omission": 62
+  },
+  "evaluation_scope": "archived_wrong_only_stage_E_flip_rate_only",
+  "baseline_correct_available": false,
+  "fresh_B0_replayed": false
+}

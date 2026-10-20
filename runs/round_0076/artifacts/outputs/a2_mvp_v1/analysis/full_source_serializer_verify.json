@@ -1,0 +1,14 @@
+{
+  "performed_at": "2026-10-09T09:28:33+0800",
+  "external_api_calls": 0,
+  "sources": {
+    "outputs\\baseline_full\\memos_long\\memos_long_qa.jsonl": "30514ccecae000e8b8be0fb91230e14829476a0f09679737dec0bb8271b51e64",
+    "outputs\\baseline_full\\memos_medium\\memos_medium_qa.jsonl": "da21444808a8ef185dd0f9273a0b951a72f0432354a50f7002d38b3ef6707edc"
+  },
+  "source_n": 6934,
+  "byte_exact": 6934,
+  "failed": 0,
+  "failed_case_ids": [],
+  "passed": true,
+  "method": "Existing frozen baseline serializer and pref-note recovery; fresh read-only audit of all source records"
+}

@@ -1,0 +1,27 @@
+{
+  "max_strategies": 3,
+  "attempts": [
+    {
+      "strategy": 1,
+      "method": "default_HF_prior_metadata_attempt",
+      "status": "failed",
+      "reason": "ConnectTimeout: HTTPSConnectionPool(host='huggingface.co', port=443): Max retries exceeded with url: /api/datasets/xiaowu0162/longmemeval-cleaned (Caused by ConnectTimeoutError(<HTTPSConnection(host='huggingface.co', port=443) at 0x2d93ddbe750>, 'Connection to huggingface.co timed out. (connect timeout=60)'))",
+      "evidence": "D:\\幻觉\\outputs\\a2_mvp_v1\\longmemeval_blocker.json",
+      "no_duplicate_default_retry": true
+    },
+    {
+      "strategy": 2,
+      "method": "datasets_HF_mirror",
+      "status": "failed",
+      "started_at": "2026-10-09T10:10:58+0800",
+      "reason": "ConnectTimeout: HTTPSConnectionPool(host='hf-mirror.com', port=443): Max retries exceeded with url: /api/datasets/xiaowu0162/longmemeval-cleaned (Caused by ConnectTimeoutError(<HTTPSConnection(host='hf-mirror.com', port=443) at 0x2285059d6a0>, 'Connection to hf-mirror.com timed out. (connect timeout=15)'))"
+    },
+    {
+      "strategy": 3,
+      "method": "official_dataset_git",
+      "status": "failed",
+      "started_at": "2026-10-09T10:11:13+0800",
+      "reason": "RuntimeError: Official dataset git clone exited 128"
+    }
+  ]
+}

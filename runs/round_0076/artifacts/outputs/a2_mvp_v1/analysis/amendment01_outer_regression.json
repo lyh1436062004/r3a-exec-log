@@ -1,0 +1,16 @@
+{
+  "tests_run": 5,
+  "failures": 0,
+  "errors": 0,
+  "passed": true,
+  "external_api_calls": 0,
+  "source_sha256": "8b82afb75e7d98a615b1d5fb471bb2206239f59fc32bab7e1dc3d497a06347d2",
+  "coverage": [
+    "archived wrong-only flip denominator",
+    "no fabricated fresh B0",
+    "budgeted sequential stages",
+    "shared alpha/tau",
+    "frozen core/pool and zero leakage",
+    "separate no-op replay drift and active intervention"
+  ]
+}

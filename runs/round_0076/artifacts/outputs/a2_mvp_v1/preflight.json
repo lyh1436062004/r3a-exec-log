@@ -1,0 +1,17 @@
+{
+  "date": "2026-10-09",
+  "python": "D:/conda_envs/o1/python.exe",
+  "environment_source": "github/HaluMem/eval/.env",
+  "endpoints": [{"key_variable": "OPENAI_API_KEY", "url_variable": "OPENAI_BASE_URL", "base_url": "https://api.deepseek.com"}],
+  "endpoint_count": 1,
+  "dependencies": {
+    "openai": "2.37.0", "dotenv": "available", "numpy": "2.3.5", "pandas": "3.0.1",
+    "scipy": "1.17.1", "requests": "2.32.5", "sklearn": "1.8.0", "rank_bm25": "missing",
+    "datasets": "4.7.0", "hypothesis": "missing"
+  },
+  "fallbacks": {"retriever": "pure-Python TF-IDF and cosine", "tests": "ordinary Python assertions"},
+  "serializer_check": {"passed": true, "samples": 1987, "byte_exact": 1987, "pref_note": 1986, "visible_supported": 763, "serialization_loss": 133},
+  "new_pool_warning": "Existing samples file contains only 1987 baseline-wrong cases. Reconstructing the required mixed-correctness pool requires baseline_full source records and retrieval support audit for previously unaudited correct cases.",
+  "no_packages_installed": true,
+  "no_secrets_printed": true
+}

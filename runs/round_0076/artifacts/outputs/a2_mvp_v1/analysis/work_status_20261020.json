@@ -1,0 +1,35 @@
+{
+  "as_of": "2026-10-20",
+  "task": "read_only_status_review",
+  "new_model_api_calls": 0,
+  "experiment_resumed": false,
+  "active_experiment_processes": 0,
+  "last_recorded_experiment_stop": "2026-10-09T10:41:34+08:00",
+  "last_recorded_stop_reason": "DeepSeek HTTP 200, is_available=False",
+  "current_account_availability": "not_rechecked",
+  "experiment_complete": false,
+  "memos": {
+    "n": 4062,
+    "eight_arms_generated_and_judged": true,
+    "alpha": 0.20,
+    "tau": 0.15,
+    "A2_CHO": [2849, 906, 307],
+    "B1_CHO": [2688, 721, 653],
+    "B2_CHO": [2900, 996, 166],
+    "B0_CHO": [2836, 1003, 223],
+    "nogate_CHO": [2909, 863, 290],
+    "A2_vs_B1_correct_delta_pp": 3.96356474643033,
+    "A2_vs_B1_correct_ci95_pp": [2.0842105890345284, 5.83312673208613],
+    "A2_vs_B1_exact_mcnemar_p": 1.8573448570391233e-10,
+    "sensitivity_same400_complete": true
+  },
+  "stage_E": {
+    "mem0": {"n": 4476, "valid_estimates": 3929, "failed_estimates": 547, "generation_rows": 0, "verdict_rows": 0},
+    "memobase": {"n": 4940, "valid_estimates": 0, "generation_rows": 0, "verdict_rows": 0},
+    "supermemory": {"n": 184, "valid_estimates": 0, "generation_rows": 0, "verdict_rows": 0}
+  },
+  "experiment7": {"audited_n": 158, "human_reviewed_n": 43, "hybrid_ABCD": [12, 72, 72, 0], "uncertain": 2, "hybrid_B_plus_C": 144, "design_weighted_repairable_percent": 88.71},
+  "LME": {"authorized_strategies_including_historical_first": 3, "failed_strategies": 3, "scores_available": false},
+  "verification": {"current_seven_core_hashes_match_round0073": true, "recorded_serializer_byte_exact": 6934, "recorded_invariant_failures": 0, "recorded_invariant_pending": 0, "recorded_spec_waivers": 1},
+  "summary_source": "outputs/a2_mvp_v1/WORK_STATUS_2026-10-20.md"
+}

@@ -1,0 +1,445 @@
+{
+  "amendment": "01",
+  "events": [
+    {
+      "stage": "full_group1_judge",
+      "arguments": [
+        "22_judge.py",
+        "--pool",
+        "memos",
+        "--arm",
+        "B0,B1,B2",
+        "--generator",
+        "deepseek-chat",
+        "--yes"
+      ],
+      "started_at": "2026-10-09T09:13:35+0800",
+      "status": "completed",
+      "exit_code": 0,
+      "finished_at": "2026-10-09T09:21:19+0800"
+    },
+    {
+      "stage": "full_group1_analysis",
+      "arguments": [
+        "23_analyze.py",
+        "--pool",
+        "memos",
+        "--generator",
+        "deepseek-chat"
+      ],
+      "started_at": "2026-10-09T09:21:19+0800",
+      "status": "completed",
+      "exit_code": 0,
+      "finished_at": "2026-10-09T09:21:36+0800"
+    },
+    {
+      "stage": "full_group2_generation",
+      "arguments": [
+        "21_run_generation.py",
+        "--pool",
+        "memos",
+        "--arm",
+        "A2,A2-nogate,A2-nosal",
+        "--generator",
+        "deepseek-chat",
+        "--alpha",
+        "0.20",
+        "--yes"
+      ],
+      "started_at": "2026-10-09T09:21:36+0800",
+      "status": "completed",
+      "exit_code": 0,
+      "finished_at": "2026-10-09T09:33:08+0800"
+    },
+    {
+      "stage": "full_group2_judge",
+      "arguments": [
+        "22_judge.py",
+        "--pool",
+        "memos",
+        "--arm",
+        "A2,A2-nogate,A2-nosal",
+        "--generator",
+        "deepseek-chat",
+        "--yes"
+      ],
+      "started_at": "2026-10-09T09:33:08+0800",
+      "status": "completed",
+      "exit_code": 0,
+      "finished_at": "2026-10-09T09:46:01+0800"
+    },
+    {
+      "stage": "full_group2_analysis",
+      "arguments": [
+        "23_analyze.py",
+        "--pool",
+        "memos",
+        "--generator",
+        "deepseek-chat"
+      ],
+      "started_at": "2026-10-09T09:46:01+0800",
+      "status": "completed",
+      "exit_code": 0,
+      "finished_at": "2026-10-09T09:46:36+0800"
+    },
+    {
+      "stage": "full_group3_generation",
+      "arguments": [
+        "21_run_generation.py",
+        "--pool",
+        "memos",
+        "--arm",
+        "A2-nolic,A2-noblock",
+        "--generator",
+        "deepseek-chat",
+        "--alpha",
+        "0.20",
+        "--yes"
+      ],
+      "started_at": "2026-10-09T09:46:36+0800",
+      "status": "completed",
+      "exit_code": 0,
+      "finished_at": "2026-10-09T09:54:44+0800"
+    },
+    {
+      "stage": "full_group3_judge",
+      "arguments": [
+        "22_judge.py",
+        "--pool",
+        "memos",
+        "--arm",
+        "A2-nolic,A2-noblock",
+        "--generator",
+        "deepseek-chat",
+        "--yes"
+      ],
+      "started_at": "2026-10-09T09:54:44+0800",
+      "status": "completed",
+      "exit_code": 0,
+      "finished_at": "2026-10-09T10:03:49+0800"
+    },
+    {
+      "stage": "full_group3_analysis",
+      "arguments": [
+        "23_analyze.py",
+        "--pool",
+        "memos",
+        "--generator",
+        "deepseek-chat"
+      ],
+      "started_at": "2026-10-09T10:03:49+0800",
+      "status": "completed",
+      "exit_code": 0,
+      "finished_at": "2026-10-09T10:04:34+0800"
+    },
+    {
+      "stage": "intrinsic",
+      "arguments": [
+        "24_intrinsic_eval.py",
+        "--pool",
+        "memos"
+      ],
+      "started_at": "2026-10-09T10:04:34+0800",
+      "status": "completed",
+      "exit_code": 0,
+      "finished_at": "2026-10-09T10:04:54+0800"
+    },
+    {
+      "stage": "sensitivity_0.3_generation",
+      "arguments": [
+        "21_run_generation.py",
+        "--pool",
+        "memos",
+        "--arm",
+        "A2",
+        "--generator",
+        "deepseek-chat",
+        "--subset",
+        "400",
+        "--lambda-o",
+        "0.3",
+        "--alpha",
+        "0.20",
+        "--yes"
+      ],
+      "started_at": "2026-10-09T10:04:55+0800",
+      "status": "completed",
+      "exit_code": 0,
+      "finished_at": "2026-10-09T10:05:26+0800"
+    },
+    {
+      "stage": "sensitivity_0.3_judge",
+      "arguments": [
+        "22_judge.py",
+        "--pool",
+        "memos",
+        "--arm",
+        "A2",
+        "--generator",
+        "deepseek-chat",
+        "--subset",
+        "400",
+        "--lambda-o",
+        "0.3",
+        "--yes"
+      ],
+      "started_at": "2026-10-09T10:05:26+0800",
+      "status": "completed",
+      "exit_code": 0,
+      "finished_at": "2026-10-09T10:05:55+0800"
+    },
+    {
+      "stage": "sensitivity_0.3_analysis",
+      "arguments": [
+        "23_analyze.py",
+        "--pool",
+        "memos",
+        "--generator",
+        "deepseek-chat",
+        "--subset",
+        "400"
+      ],
+      "started_at": "2026-10-09T10:05:55+0800",
+      "status": "completed",
+      "exit_code": 0,
+      "finished_at": "2026-10-09T10:06:37+0800"
+    },
+    {
+      "stage": "sensitivity_0.6_generation",
+      "arguments": [
+        "21_run_generation.py",
+        "--pool",
+        "memos",
+        "--arm",
+        "A2",
+        "--generator",
+        "deepseek-chat",
+        "--subset",
+        "400",
+        "--lambda-o",
+        "0.6",
+        "--alpha",
+        "0.20",
+        "--yes"
+      ],
+      "started_at": "2026-10-09T10:06:37+0800",
+      "status": "completed",
+      "exit_code": 0,
+      "finished_at": "2026-10-09T10:07:09+0800"
+    },
+    {
+      "stage": "sensitivity_0.6_judge",
+      "arguments": [
+        "22_judge.py",
+        "--pool",
+        "memos",
+        "--arm",
+        "A2",
+        "--generator",
+        "deepseek-chat",
+        "--subset",
+        "400",
+        "--lambda-o",
+        "0.6",
+        "--yes"
+      ],
+      "started_at": "2026-10-09T10:07:09+0800",
+      "status": "completed",
+      "exit_code": 0,
+      "finished_at": "2026-10-09T10:07:37+0800"
+    },
+    {
+      "stage": "sensitivity_0.6_analysis",
+      "arguments": [
+        "23_analyze.py",
+        "--pool",
+        "memos",
+        "--generator",
+        "deepseek-chat",
+        "--subset",
+        "400"
+      ],
+      "started_at": "2026-10-09T10:07:37+0800",
+      "status": "completed",
+      "exit_code": 0,
+      "finished_at": "2026-10-09T10:08:20+0800"
+    },
+    {
+      "stage": "sensitivity_1.0_generation",
+      "arguments": [
+        "21_run_generation.py",
+        "--pool",
+        "memos",
+        "--arm",
+        "A2",
+        "--generator",
+        "deepseek-chat",
+        "--subset",
+        "400",
+        "--lambda-o",
+        "1.0",
+        "--alpha",
+        "0.20",
+        "--yes"
+      ],
+      "started_at": "2026-10-09T10:08:20+0800",
+      "status": "completed",
+      "exit_code": 0,
+      "finished_at": "2026-10-09T10:08:29+0800"
+    },
+    {
+      "stage": "sensitivity_1.0_judge",
+      "arguments": [
+        "22_judge.py",
+        "--pool",
+        "memos",
+        "--arm",
+        "A2",
+        "--generator",
+        "deepseek-chat",
+        "--subset",
+        "400",
+        "--lambda-o",
+        "1.0",
+        "--yes"
+      ],
+      "started_at": "2026-10-09T10:08:29+0800",
+      "status": "completed",
+      "exit_code": 0,
+      "finished_at": "2026-10-09T10:08:31+0800"
+    },
+    {
+      "stage": "sensitivity_1.0_analysis",
+      "arguments": [
+        "23_analyze.py",
+        "--pool",
+        "memos",
+        "--generator",
+        "deepseek-chat",
+        "--subset",
+        "400"
+      ],
+      "started_at": "2026-10-09T10:08:32+0800",
+      "status": "completed",
+      "exit_code": 0,
+      "finished_at": "2026-10-09T10:09:14+0800"
+    },
+    {
+      "stage": "sensitivity_2.0_generation",
+      "arguments": [
+        "21_run_generation.py",
+        "--pool",
+        "memos",
+        "--arm",
+        "A2",
+        "--generator",
+        "deepseek-chat",
+        "--subset",
+        "400",
+        "--lambda-o",
+        "2.0",
+        "--alpha",
+        "0.20",
+        "--yes"
+      ],
+      "started_at": "2026-10-09T10:09:14+0800",
+      "status": "completed",
+      "exit_code": 0,
+      "finished_at": "2026-10-09T10:09:45+0800"
+    },
+    {
+      "stage": "sensitivity_2.0_judge",
+      "arguments": [
+        "22_judge.py",
+        "--pool",
+        "memos",
+        "--arm",
+        "A2",
+        "--generator",
+        "deepseek-chat",
+        "--subset",
+        "400",
+        "--lambda-o",
+        "2.0",
+        "--yes"
+      ],
+      "started_at": "2026-10-09T10:09:45+0800",
+      "status": "completed",
+      "exit_code": 0,
+      "finished_at": "2026-10-09T10:10:14+0800"
+    },
+    {
+      "stage": "sensitivity_2.0_analysis",
+      "arguments": [
+        "23_analyze.py",
+        "--pool",
+        "memos",
+        "--generator",
+        "deepseek-chat",
+        "--subset",
+        "400"
+      ],
+      "started_at": "2026-10-09T10:10:14+0800",
+      "status": "completed",
+      "exit_code": 0,
+      "finished_at": "2026-10-09T10:10:57+0800"
+    },
+    {
+      "stage": "longmemeval_acquisition",
+      "arguments": [
+        "25_build_longmemeval.py",
+        "--amendment01",
+        "--yes"
+      ],
+      "started_at": "2026-10-09T10:10:57+0800",
+      "status": "completed",
+      "exit_code": 0,
+      "finished_at": "2026-10-09T10:11:35+0800"
+    },
+    {
+      "stage": "longmemeval_generation",
+      "status": "skipped_source_unavailable"
+    },
+    {
+      "stage": "longmemeval_judge",
+      "status": "skipped_source_unavailable"
+    },
+    {
+      "stage": "longmemeval_analysis",
+      "status": "skipped_source_unavailable"
+    },
+    {
+      "stage": "stageE_mem0_generation",
+      "arguments": [
+        "21_run_generation.py",
+        "--pool",
+        "mem0",
+        "--arm",
+        "B1,A2",
+        "--generator",
+        "deepseek-chat",
+        "--alpha",
+        "0.20",
+        "--yes"
+      ],
+      "started_at": "2026-10-09T10:11:35+0800",
+      "status": "failed",
+      "exit_code": 1,
+      "finished_at": "2026-10-09T10:41:34+0800",
+      "diagnostic_tail": [
+        "A2 estimation safely fell back (RuntimeError)",
+        "estimates completed=4475/4476",
+        "A2 estimation safely fell back (RuntimeError)",
+        "estimates completed=4476/4476",
+        "Traceback (most recent call last):",
+        "  File \"D:\\幻觉\\脚本\\3.0\\21_run_generation.py\", line 655, in <module>",
+        "    main()",
+        "  File \"D:\\幻觉\\脚本\\3.0\\21_run_generation.py\", line 605, in main",
+        "    require_account_available(registry[name])",
+        "  File \"D:\\幻觉\\脚本\\3.0\\21_run_generation.py\", line 311, in require_account_available",
+        "    raise RuntimeError(f\"DeepSeek account unavailable (HTTP {response.status_code}, \"",
+        "RuntimeError: DeepSeek account unavailable (HTTP 200, is_available=False); no inference or failed-cache recovery started"
+      ]
+    }
+  ]
+}

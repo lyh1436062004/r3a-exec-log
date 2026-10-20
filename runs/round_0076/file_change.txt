@@ -1,0 +1,8 @@
+Current task: status review only; no experiment implementation, inference, memory-store, retriever, calibration, or parameter changes.
+New output: outputs/a2_mvp_v1/WORK_STATUS_2026-10-20.md
+New output: outputs/a2_mvp_v1/analysis/work_status_20261020.json
+Archived snapshots: prior interrupted MVP code and key existing reports/diagnostics, plus Experiment 7 validation results. These are snapshots, not code edits performed during this status review.
+Prior owned round_0075 draft is preserved unchanged and not staged in this round.
+Root workspace status at review: 9 modified, 29 deleted, 130 untracked entries; unrelated work preserved.
+Excluded: credentials, env files, key workbooks, raw memory pools/datasets, estimator/generation/context caches, attempt ledgers, and Python caches.
+Exact final project status is recorded separately in project_git_status_short.txt.

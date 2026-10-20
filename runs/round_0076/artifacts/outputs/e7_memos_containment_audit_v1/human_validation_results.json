@@ -1,0 +1,287 @@
+{
+  "experiment_id": "e7_memos_containment_audit_v1",
+  "analysis_stage": "human_validation_integrated",
+  "created_at": "2026-07-20T13:26:10+0800",
+  "provenance": {
+    "filled_workbook": "C:\\Users\\78443\\Downloads\\human_validation_sample_final_confidence_adjusted.xlsx",
+    "filled_workbook_sha256": "b62a470532d7ee4b9832b33805b8a5d818f2651e78de8909607b933dbe03cf74",
+    "blank_workbook": "D:\\幻觉\\outputs\\e7_memos_containment_audit_v1\\human_validation_sample.xlsx",
+    "blank_workbook_sha256": "05a29e5df54b5e14a46dab1ffecae5d0487cc8a7b0933414bc86df76abc07d4d",
+    "sheets": [
+      "Containment人工复核",
+      "标签说明"
+    ],
+    "review_rows": 43,
+    "unique_case_ids": 43,
+    "immutable_cell_differences": 0,
+    "validation_errors": 0,
+    "stratum_counts": {
+      "raw_contained": 30,
+      "raw_partial_or_missing": 13
+    }
+  },
+  "adjudications": [
+    {
+      "case_id": "memos_long:2093",
+      "field": "human_rendered_coverage",
+      "submitted_value": "partial",
+      "adjudicated_value": "contained",
+      "reason": "The exact UA3 context explicitly contains 'organizing charity sports events'; the submitted note also states that both activities were retained and no key fact was lost."
+    }
+  ],
+  "population": 158,
+  "human_review": {
+    "rows": 43,
+    "human_label_counts": {
+      "C_rendered_not_used": 14,
+      "B_present_not_rendered": 15,
+      "uncertain": 2,
+      "A_evidence_missing": 12
+    },
+    "confidence_counts": {
+      "medium": 22,
+      "high": 21
+    },
+    "machine_human_confusion": {
+      "C_rendered_not_used -> C_rendered_not_used": 14,
+      "B_present_not_rendered -> B_present_not_rendered": 15,
+      "B_present_not_rendered -> uncertain": 1,
+      "A_evidence_missing -> A_evidence_missing": 12,
+      "D_judge_error -> uncertain": 1
+    },
+    "raw_coverage_agreement": {
+      "agree": 43,
+      "n": 43,
+      "rate": 1.0,
+      "wilson_95_low": 0.9179901967742088,
+      "wilson_95_high": 1.0
+    },
+    "rendered_coverage_agreement": {
+      "agree": 42,
+      "n": 43,
+      "rate": 0.9767441860465116,
+      "wilson_95_low": 0.8794100655939282,
+      "wilson_95_high": 0.9958829127256662
+    },
+    "final_label_exact_agreement": {
+      "agree": 41,
+      "n": 43,
+      "rate": 0.9534883720930233,
+      "wilson_95_low": 0.8454450199593603,
+      "wilson_95_high": 0.9871507399056197
+    },
+    "concrete_label_agreement_excluding_uncertain": {
+      "agree": 41,
+      "n": 41,
+      "rate": 1.0,
+      "wilson_95_low": 0.9143324298155681,
+      "wilson_95_high": 0.9999999999999999
+    },
+    "disagreement_or_uncertain_cases": 2
+  },
+  "sampling_design": {
+    "population_by_stratum": {
+      "raw_partial_or_missing": 13,
+      "raw_contained": 145
+    },
+    "strata": [
+      {
+        "stratum": "raw_partial_or_missing",
+        "population_n": 13,
+        "sample_n": 13,
+        "sampling_fraction": 1.0,
+        "machine_labels": {
+          "A_evidence_missing": 12,
+          "D_judge_error": 1
+        },
+        "human_labels": {
+          "A_evidence_missing": 12,
+          "uncertain": 1
+        },
+        "exact_label_agreement": 12
+      },
+      {
+        "stratum": "raw_contained",
+        "population_n": 145,
+        "sample_n": 30,
+        "sampling_fraction": 0.20689655172413793,
+        "machine_labels": {
+          "C_rendered_not_used": 14,
+          "B_present_not_rendered": 16
+        },
+        "human_labels": {
+          "C_rendered_not_used": 14,
+          "B_present_not_rendered": 15,
+          "uncertain": 1
+        },
+        "exact_label_agreement": 29
+      }
+    ],
+    "estimator": "stratum expansion; projected intervals expand stratum Wilson intervals"
+  },
+  "machine_census_counts": {
+    "C_rendered_not_used": 72,
+    "A_evidence_missing": 12,
+    "B_present_not_rendered": 73,
+    "D_judge_error": 1
+  },
+  "hybrid_case_level_counts": {
+    "C_rendered_not_used": 72,
+    "A_evidence_missing": 12,
+    "B_present_not_rendered": 72,
+    "uncertain": 2
+  },
+  "hybrid_definition": "human labels override 43 reviewed cases; machine labels retained for 115 unreviewed cases",
+  "design_weighted_label_estimates": [
+    {
+      "label": "A_evidence_missing",
+      "estimated_count": 12.0,
+      "estimated_share": 0.0759493670886076,
+      "projected_95_low_count": 12.0,
+      "projected_95_high_count": 28.45944201022547,
+      "projected_95_low_share": 0.0759493670886076,
+      "projected_95_high_share": 0.18012305069762954,
+      "stratum_contributions": {
+        "raw_partial_or_missing": {
+          "population_n": 13,
+          "sample_n": 13,
+          "sample_positive": 12,
+          "projected_total": 12.0,
+          "projected_low": 12.0,
+          "projected_high": 12.0
+        },
+        "raw_contained": {
+          "population_n": 145,
+          "sample_n": 30,
+          "sample_positive": 0,
+          "projected_total": 0.0,
+          "projected_low": 0.0,
+          "projected_high": 16.45944201022547
+        }
+      }
+    },
+    {
+      "label": "B_present_not_rendered",
+      "estimated_count": 72.5,
+      "estimated_share": 0.4588607594936709,
+      "projected_95_low_count": 48.07348217877396,
+      "projected_95_high_count": 96.92651782122603,
+      "projected_95_low_share": 0.3042625454352782,
+      "projected_95_high_share": 0.6134589735520635,
+      "stratum_contributions": {
+        "raw_partial_or_missing": {
+          "population_n": 13,
+          "sample_n": 13,
+          "sample_positive": 0,
+          "projected_total": 0.0,
+          "projected_low": 0.0,
+          "projected_high": 0.0
+        },
+        "raw_contained": {
+          "population_n": 145,
+          "sample_n": 30,
+          "sample_positive": 15,
+          "projected_total": 72.5,
+          "projected_low": 48.07348217877396,
+          "projected_high": 96.92651782122603
+        }
+      }
+    },
+    {
+      "label": "C_rendered_not_used",
+      "estimated_count": 67.66666666666667,
+      "estimated_share": 0.42827004219409287,
+      "projected_95_low_count": 43.83696391616464,
+      "projected_95_high_count": 92.59366555118372,
+      "projected_95_low_share": 0.2774491387099028,
+      "projected_95_high_share": 0.5860358579188844,
+      "stratum_contributions": {
+        "raw_partial_or_missing": {
+          "population_n": 13,
+          "sample_n": 13,
+          "sample_positive": 0,
+          "projected_total": 0.0,
+          "projected_low": 0.0,
+          "projected_high": 0.0
+        },
+        "raw_contained": {
+          "population_n": 145,
+          "sample_n": 30,
+          "sample_positive": 14,
+          "projected_total": 67.66666666666667,
+          "projected_low": 43.83696391616464,
+          "projected_high": 92.59366555118372
+        }
+      }
+    },
+    {
+      "label": "D_judge_error",
+      "estimated_count": 0.0,
+      "estimated_share": 0.0,
+      "projected_95_low_count": 0.0,
+      "projected_95_high_count": 16.45944201022547,
+      "projected_95_low_share": 0.0,
+      "projected_95_high_share": 0.10417368360902196,
+      "stratum_contributions": {
+        "raw_partial_or_missing": {
+          "population_n": 13,
+          "sample_n": 13,
+          "sample_positive": 0,
+          "projected_total": 0.0,
+          "projected_low": 0.0,
+          "projected_high": 0.0
+        },
+        "raw_contained": {
+          "population_n": 145,
+          "sample_n": 30,
+          "sample_positive": 0,
+          "projected_total": 0.0,
+          "projected_low": 0.0,
+          "projected_high": 16.45944201022547
+        }
+      }
+    },
+    {
+      "label": "uncertain",
+      "estimated_count": 5.833333333333333,
+      "estimated_share": 0.03691983122362869,
+      "projected_95_low_count": 1.856745605333806,
+      "projected_95_high_count": 25.172066937543303,
+      "projected_95_low_share": 0.011751554464138014,
+      "projected_95_high_share": 0.1593168793515399,
+      "stratum_contributions": {
+        "raw_partial_or_missing": {
+          "population_n": 13,
+          "sample_n": 13,
+          "sample_positive": 1,
+          "projected_total": 1.0,
+          "projected_low": 1.0,
+          "projected_high": 1.0
+        },
+        "raw_contained": {
+          "population_n": 145,
+          "sample_n": 30,
+          "sample_positive": 1,
+          "projected_total": 4.833333333333333,
+          "projected_low": 0.8567456053338061,
+          "projected_high": 24.172066937543303
+        }
+      }
+    }
+  ],
+  "design_weighted_post_retrieval_repairable": {
+    "estimated_count": 140.16666666666666,
+    "estimated_share": 0.8871308016877637,
+    "projected_95_low_count": 120.8279330624567,
+    "projected_95_high_count": 144.14325439466617,
+    "projected_95_low_share": 0.7647337535598525,
+    "projected_95_high_share": 0.9122990784472542,
+    "definition": "human final label is B or C"
+  },
+  "resource_usage": {
+    "gpu_hours": 0,
+    "api_calls": 0,
+    "wall_clock": "local workbook validation and deterministic aggregation only"
+  },
+  "final_status": "human validation complete; two cases remain explicitly uncertain"
+}

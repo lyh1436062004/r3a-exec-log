@@ -1,0 +1,260 @@
+{
+  "secret_scan_passed": true,
+  "artifacts": [
+    {
+      "path": "脚本/3.0/a2_schema.py",
+      "bytes": 3584,
+      "sha256": "b9c42626002f1544a669068e51adcf01f6e3b4d0b6388ad6077de6bc844fcfe9"
+    },
+    {
+      "path": "脚本/3.0/a2_stage0_adapter.py",
+      "bytes": 8336,
+      "sha256": "7b4141f476dd0660f1e35d1a2acd8a425b39696f258fa66e8800d01e56629532"
+    },
+    {
+      "path": "脚本/3.0/a2_stage1_estimator.py",
+      "bytes": 18622,
+      "sha256": "8d031c74f13f08a7e41672fc0469c0c4a42936d318d2dcb54429d2a4dececd66"
+    },
+    {
+      "path": "脚本/3.0/a2_stage2_decision.py",
+      "bytes": 10490,
+      "sha256": "9d557afe5d353a75e82261ecf38d7aaebf77d47036aff3629d62d718227e28e4"
+    },
+    {
+      "path": "脚本/3.0/a2_stage3_render.py",
+      "bytes": 5334,
+      "sha256": "7fc3fea7f469f86be997f40e45ed62d13092cd3d342323249c09c3263bede483"
+    },
+    {
+      "path": "脚本/3.0/a2_pipeline.py",
+      "bytes": 4417,
+      "sha256": "f0cac58aacab7574cb097b94aba34e2026aa539a08ec9d07946decdae86f02ad"
+    },
+    {
+      "path": "脚本/3.0/a2_arms.py",
+      "bytes": 3821,
+      "sha256": "fbab93f194fe54287b105b8d5bae7a15c0bbba37c083c96e32f65b68fbe000ef"
+    },
+    {
+      "path": "脚本/3.0/a2_calibrate.py",
+      "bytes": 14003,
+      "sha256": "f5eaa642e7953817e549bcf616f3e1b59e8c32b86931516ab0d84e81ba84aa93"
+    },
+    {
+      "path": "脚本/3.0/20_build_pool.py",
+      "bytes": 23521,
+      "sha256": "a3e9527e64241d1a33ed7c1d73aa4a5aebcdd55fc1bb87ed1cc38c4243e1c8bd"
+    },
+    {
+      "path": "脚本/3.0/21_run_generation.py",
+      "bytes": 36807,
+      "sha256": "5db8b21170872fbe25a08ff52b78531559fb8b200322a45295a206705ba45d1f"
+    },
+    {
+      "path": "脚本/3.0/22_judge.py",
+      "bytes": 20235,
+      "sha256": "2832341bd926f9b6ee94e07917a7bfb30962db7e6e0d35f74de2db5354c38213"
+    },
+    {
+      "path": "脚本/3.0/23_analyze.py",
+      "bytes": 77996,
+      "sha256": "19838ca0752a78fe5d923797f92894a92aa9c607c61200a7566926aef9c3fb76"
+    },
+    {
+      "path": "脚本/3.0/24_intrinsic_eval.py",
+      "bytes": 12801,
+      "sha256": "19aeb91561c9300fa61adf6182c432e081346dd065a470781facf34b1dda4a89"
+    },
+    {
+      "path": "脚本/3.0/25_build_longmemeval.py",
+      "bytes": 20692,
+      "sha256": "e369d2079c6688014cc97245dc537227f55ce9579f9883ece6a21c92c3a56d57"
+    },
+    {
+      "path": "脚本/3.0/26_run_amendment01.py",
+      "bytes": 7264,
+      "sha256": "d00ee55b35bf6cad0d0765ca7fc67058b18bcf5dfb7d3a929b75da00f2042a33"
+    },
+    {
+      "path": "脚本/3.0/test_a2_invariants.py",
+      "bytes": 51047,
+      "sha256": "b42ea1bec885c8c9a2da6f75d8e61a86a83099b1772301fdf779435f406116dd"
+    },
+    {
+      "path": "脚本/3.0/test_amendment01_workflow.py",
+      "bytes": 4210,
+      "sha256": "8b82afb75e7d98a615b1d5fb471bb2206239f59fc32bab7e1dc3d497a06347d2"
+    },
+    {
+      "path": "脚本/3.0/e1_memos_oracle_common.py",
+      "bytes": 22413,
+      "sha256": "ad85fa903240143da292bcb09098d86c8fc341365a1f0213bd2b0b8a8ca3e1cc"
+    },
+    {
+      "path": "脚本/3.0/00_verify_serializer.py",
+      "bytes": 6236,
+      "sha256": "0d7c8a4f1bf352e0cf04208ee3096a50bb7db55dfb964ef8c28afb1fb3717d5d"
+    },
+    {
+      "path": "脚本/3.0/_archive_amendment01.py",
+      "bytes": 12628,
+      "sha256": "682577345fca5ec9208ba67299386b2a637a7ca03e457de45c54d036a07316e7"
+    },
+    {
+      "path": "脚本/3.0/04_analyze_memos_full.py",
+      "bytes": 13397,
+      "sha256": "ab98d231d6802b03477439bb8aa2f88af325a59678fc8bb52a7533366db0ffce"
+    },
+    {
+      "path": "脚本/3.0/audit_gold_evidence_semantic_retrieval.py",
+      "bytes": 24429,
+      "sha256": "961c0f1a5686e5d7413ab78f717dbb4a5b0447c2d04cd2c097af5069c40f2f27"
+    },
+    {
+      "path": "脚本/3.0/CODEX_TASK_A2_MVP.md",
+      "bytes": 52983,
+      "sha256": "f227717ee5835819739c25b7cb65583848ff53a55be1f9748ad5a122a241a9eb"
+    },
+    {
+      "path": "脚本/3.0/CODEX_TASK_A2_MVP_AMENDMENT_01.md",
+      "bytes": 11535,
+      "sha256": "0c86e58bc59b441f6b18442411f8fce73ac06e8bb43c22563827589bf667f145"
+    },
+    {
+      "path": "outputs/a2_mvp_v1/WORK_STATUS_2026-10-20.md",
+      "bytes": 5594,
+      "sha256": "d1d6f99c39a6ab3f69efe0480b21f4d7831093f75046d139b5b7dc8edb192f56"
+    },
+    {
+      "path": "outputs/a2_mvp_v1/RESULTS.md",
+      "bytes": 35900,
+      "sha256": "900e8702e50972e679130903e1119a2713d87b23eb1dd01b0e81d456901ec199"
+    },
+    {
+      "path": "outputs/a2_mvp_v1/RESULTS_subset400.md",
+      "bytes": 32021,
+      "sha256": "131e454f6c2ca846a3a9ffc4e9427d535aa3319880bc4c35f338c74d429bb532"
+    },
+    {
+      "path": "outputs/a2_mvp_v1/preflight.json",
+      "bytes": 1079,
+      "sha256": "a6b738a3db3c878c02f339904704d6154752b2a4febb36f3ad391a0210720e29"
+    },
+    {
+      "path": "outputs/a2_mvp_v1/run_config.json",
+      "bytes": 4349802,
+      "sha256": "c571542ff9cbb1cedc26eeb7607af7cd293403136659627337923544616ecde5"
+    },
+    {
+      "path": "outputs/a2_mvp_v1/longmemeval_blocker.json",
+      "bytes": 362,
+      "sha256": "787b5b3f01fb250b1cdadae44ec2449a935672db835f15fdcac82983acd383c6"
+    },
+    {
+      "path": "outputs/a2_mvp_v1/api_run_blocker.json",
+      "bytes": 1590,
+      "sha256": "dbf7e4c166d7b5cafa017304d901084983e82d8c4e18f64b1ca8d9ed9cc304f0"
+    },
+    {
+      "path": "outputs/a2_mvp_v1/calibration/memos.json",
+      "bytes": 2180,
+      "sha256": "489ba8a8779fad53c587989e87454776f84d309f054a6f724cc1ab5237625d8c"
+    },
+    {
+      "path": "outputs/a2_mvp_v1/pools/memos_pool_summary.json",
+      "bytes": 23847,
+      "sha256": "233d82ff494a7fa044d20bc677b0835f479201593a864c5f2b8f0f1e327d4504"
+    },
+    {
+      "path": "outputs/a2_mvp_v1/pools/mem0_pool_summary.json",
+      "bytes": 356,
+      "sha256": "7393ce3b3120ef72fac0418f9c5e58354a2e297e8d3259b84308ad0ff36896fa"
+    },
+    {
+      "path": "outputs/a2_mvp_v1/pools/memobase_pool_summary.json",
+      "bytes": 359,
+      "sha256": "4e5cf71f379cc4aca7dceaf02e0fefb14204a5996ae1e6ab346f8e464a017b43"
+    },
+    {
+      "path": "outputs/a2_mvp_v1/pools/supermemory_pool_summary.json",
+      "bytes": 359,
+      "sha256": "9b2b440d0259aa5f0b88bb5c6b25537175a99294291a8ff82fefbb03cd236c90"
+    },
+    {
+      "path": "outputs/a2_mvp_v1/analysis/work_status_20261020.json",
+      "bytes": 1767,
+      "sha256": "dac9681f3cc3fe897b954c9160553fc034221fa8e65424fdfa56818d69d8b7b7"
+    },
+    {
+      "path": "outputs/a2_mvp_v1/analysis/amendment01_workflow.json",
+      "bytes": 11084,
+      "sha256": "9919ac399f199a5e5065d7b46110ef7a82bdd9d77a446025e58c9588a64123b5"
+    },
+    {
+      "path": "outputs/a2_mvp_v1/analysis/longmemeval_acquisition_attempts.json",
+      "bytes": 1323,
+      "sha256": "9929fb57e1aa39bf0bcf00e3cbf92ae998be1a9c1425508b326024af08eeb78e"
+    },
+    {
+      "path": "outputs/a2_mvp_v1/analysis/memos__deepseek-chat_summary.json",
+      "bytes": 5041603,
+      "sha256": "75bb8b57d090c617158b7b9d84a2c900dab8dc12e371da3adc78d3ef8ca20cac"
+    },
+    {
+      "path": "outputs/a2_mvp_v1/analysis/memos__deepseek-chat__subset400_summary.json",
+      "bytes": 1819508,
+      "sha256": "aaaf9cdf162322caca868dd207a68882c670b974b8255e8e990450ec6b77fadd"
+    },
+    {
+      "path": "outputs/a2_mvp_v1/analysis/memos__deepseek-chat__smoke_summary.json",
+      "bytes": 1606930,
+      "sha256": "262b7b9e38ec4b80d1713dac56964ec12a6c5a90667442d4f70541e4e673d1e3"
+    },
+    {
+      "path": "outputs/a2_mvp_v1/analysis/memos_calibration_monotonicity.json",
+      "bytes": 5363,
+      "sha256": "c5cd081f8d00dafe86ab52c48424ec366d3a07ede6abcb85f70d92170c28364e"
+    },
+    {
+      "path": "outputs/a2_mvp_v1/analysis/memos_calibration_curve.csv",
+      "bytes": 731,
+      "sha256": "06c5577668a488105c106548b04f1af53fbbd0e90184cca670456a857dbb7df2"
+    },
+    {
+      "path": "outputs/a2_mvp_v1/analysis/full_source_serializer_verify.json",
+      "bytes": 592,
+      "sha256": "0a43b7c3f3b923efc671bfe0179659d625667e2b706238371e5955e1e037fe1b"
+    },
+    {
+      "path": "outputs/a2_mvp_v1/analysis/invariants_full.json",
+      "bytes": 55462,
+      "sha256": "7ccb9e80a557e99b3d4fe00ae71c0f8511273fa61994c93ce36aed0e73a72b9f"
+    },
+    {
+      "path": "outputs/a2_mvp_v1/analysis/amendment01_outer_regression.json",
+      "bytes": 453,
+      "sha256": "f102a02c243b16302956421a103fc21ac2d63bfecb9f0af6bba412707d9bdde2"
+    },
+    {
+      "path": "outputs/a2_mvp_v1/analysis/memos_failure_examples.json",
+      "bytes": 2977,
+      "sha256": "52d670e39bf4ab6a3cf5b9c7a1e45f5232320c5e7cee7a863ec4929d720659d4"
+    },
+    {
+      "path": "outputs/e7_memos_containment_audit_v1/human_validation_results.md",
+      "bytes": 3485,
+      "sha256": "fd3e0e91512b48909a5a6dacfffa9fc5307ca36f5bf8dda466445a30beb57b98"
+    },
+    {
+      "path": "outputs/e7_memos_containment_audit_v1/human_validation_results.json",
+      "bytes": 9354,
+      "sha256": "dd00da8a143637e173bffe90e9e1b8ef8ac02fa918afa4eed8a7f41a1d566656"
+    },
+    {
+      "path": "outputs/e7_memos_containment_audit_v1/results.md",
+      "bytes": 1863,
+      "sha256": "d5ad26c2deeab71c7ff9810e69ff3b58787124651fa1a654852420cd0393de78"
+    }
+  ]
+}

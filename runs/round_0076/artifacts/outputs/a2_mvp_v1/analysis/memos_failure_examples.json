@@ -1,0 +1,82 @@
+[
+  {
+    "case_id": "memos_long:1007",
+    "question": "Did Donna remove her dislike for processed snacks due to a focus on taste rather than sustainability on Mar 09, 2037?",
+    "category": "C→H/O回归",
+    "B0_label": "correct",
+    "A2_label": "omission",
+    "B1_label": "correct",
+    "B0_answer": "No; she focused on sustainability and health.",
+    "A2_answer": "Existing memories do not confirm this; they only mention sustainability and health, not taste or removing a dislike for processed snacks.",
+    "A2_nolic_label": "correct",
+    "license_associated_regression": true,
+    "decision_note": "",
+    "actions": {
+      "BLOCK": 10,
+      "QUALIFY": 2
+    }
+  },
+  {
+    "case_id": "memos_long:1004",
+    "question": "What type of documentaries did Donna decide to focus on after the sustainability summit on September 29, 2036?",
+    "category": "错→对救回",
+    "B0_label": "hallucination",
+    "A2_label": "correct",
+    "B1_label": "hallucination",
+    "B0_answer": "Films offering practical environmental solutions.",
+    "A2_answer": "Sustainability-related documentaries.",
+    "A2_nolic_label": "correct",
+    "license_associated_regression": false,
+    "decision_note": "risk_gate_noop",
+    "actions": {}
+  },
+  {
+    "case_id": "memos_long:1226",
+    "question": "Did Taylor David plan to avoid spontaneous trips due to their lack of benefits?",
+    "category": "C→H/O回归",
+    "B0_label": "correct",
+    "A2_label": "omission",
+    "B1_label": "correct",
+    "B0_answer": "No. Taylor found a spontaneous trip unexpectedly relaxing and inspiring shortly before March 1, 2042, shifting their perspective positively.",
+    "A2_answer": "No; recent trip was relaxing and inspiring.",
+    "A2_nolic_label": "correct",
+    "license_associated_regression": true,
+    "decision_note": "",
+    "actions": {
+      "REFUTE": 1,
+      "QUALIFY": 3,
+      "BLOCK": 3
+    }
+  },
+  {
+    "case_id": "memos_long:1015",
+    "question": "Did Donna establish EcoStrategic Consulting before March 01, 2038?",
+    "category": "错→对救回",
+    "B0_label": "hallucination",
+    "A2_label": "correct",
+    "B1_label": "correct",
+    "B0_answer": "Yes, on July 1, 2038.",
+    "A2_answer": "No, she established it on July 1, 2038.",
+    "A2_nolic_label": "correct",
+    "license_associated_regression": false,
+    "decision_note": "risk_gate_noop",
+    "actions": {}
+  },
+  {
+    "case_id": "memos_long:1149",
+    "question": "What type of movies does Taylor prefer as of Dec 17, 2033?",
+    "category": "仍未修复",
+    "B0_label": "hallucination",
+    "A2_label": "hallucination",
+    "B1_label": "omission",
+    "B0_answer": "Psychological thrillers.",
+    "A2_answer": "Psychological thrillers.",
+    "A2_nolic_label": "correct",
+    "license_associated_regression": true,
+    "decision_note": "",
+    "actions": {
+      "BLOCK": 2,
+      "QUALIFY": 10
+    }
+  }
+]

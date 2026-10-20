@@ -1,0 +1,12 @@
+{
+  "pool": "mem0",
+  "pool_n": 4476,
+  "pool_sha256": "55de38ea67810a6fd0e4e5aa8731322294488df3c4fb1aa113976a588b262182",
+  "archived_baseline_labels": {
+    "hallucination": 1106,
+    "omission": 3370
+  },
+  "evaluation_scope": "archived_wrong_only_stage_E_flip_rate_only",
+  "baseline_correct_available": false,
+  "fresh_B0_replayed": false
+}

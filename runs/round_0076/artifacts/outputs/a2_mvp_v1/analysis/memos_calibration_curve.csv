@@ -1,0 +1,5 @@
+﻿alpha,tau,cal_coverage,cal_noop_err,test_coverage,test_noop_err,n_cal,n_test,degenerate_flag,scope,candidate_grid_includes_empty_minus_inf,positive_coverage_feasible_candidates,feasible_interval_count,feasible_set_contiguous_on_candidate_grid,conservative_prefix_tau,conservative_prefix_coverage,conservative_prefix_noop_err
+0.05,-inf,0.0,0.0,0.0,0.0,2048,2014,True,full,True,0,1,True,-inf,0.0,0.0
+0.1,-inf,0.0,0.0,0.0,0.0,2048,2014,True,full,True,0,1,True,-inf,0.0,0.0
+0.2,0.15,0.5625,0.1909722222222222,0.5645481628599801,0.18997361477572558,2048,2014,False,full,True,4,2,False,-inf,0.0,0.0
+0.3,0.8,0.98583984375,0.29668152550767707,0.9826216484607746,0.3006568974229409,2048,2014,False,full,True,17,2,False,-inf,0.0,0.0
