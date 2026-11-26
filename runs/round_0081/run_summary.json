@@ -1,0 +1,19 @@
+{
+  "round": "round_0081",
+  "date": "2026-11-26",
+  "task": "Summarize A2 research evidence, current limits and next experiments",
+  "last_experiment": "2026-10-09",
+  "last_status_review": "2026-10-20",
+  "project_files_modified": [],
+  "new_model_api_calls": 0,
+  "memos_completed_cases_per_arm": 4062,
+  "memos_completed_arms": 8,
+  "stage_E_complete": false,
+  "outputs": [
+    "research_progress.md",
+    "run_summary.json",
+    "file_change.txt",
+    "diff.txt",
+    "project_git_status_short.txt"
+  ]
+}

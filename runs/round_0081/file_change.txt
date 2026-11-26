@@ -1,0 +1,5 @@
+A	runs/round_0081/research_progress.md
+A	runs/round_0081/run_summary.json
+A	runs/round_0081/file_change.txt
+A	runs/round_0081/diff.txt
+A	runs/round_0081/project_git_status_short.txt
