@@ -1,0 +1,15 @@
+{
+  "round": "round_0080",
+  "date": "2026-11-26",
+  "task": "Verify how Codex identifies the active subscription and how Business seats are confirmed",
+  "sources": [
+    "https://help.openai.com/en/articles/8792828-chatgpt-business-overview",
+    "https://help.openai.com/en/articles/8792536-managing-billing-and-seats-in-chatgpt-business"
+  ],
+  "modified_project_files": [],
+  "outputs": [
+    "run_summary.json",
+    "file_change.txt",
+    "diff.txt"
+  ]
+}
